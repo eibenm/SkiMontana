@@ -99,7 +99,7 @@
         NSUInteger countArea = [sectionInfo numberOfObjects];
         NSUInteger countRoutes = [skiArea.ski_routes.allObjects count];
         //NSLog(@"%lu", countArea + countRoutes);
-        return countArea;
+        //return countArea;
         return countArea + countRoutes;
     }
     
@@ -108,23 +108,25 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *cellIdentifier = @"Cell";
     
-    UITableViewCell *cell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
     }
     
+    //NSLog(@"Section: %ld, Row: %ld", (long)indexPath.section, (long)indexPath.row);
+    
+    SkiAreas *skiArea = [[self.fetchedResultsController fetchedObjects] objectAtIndex:indexPath.section];
+    
     if (indexPath.row == 0) {
-        SkiAreas *skiArea = [self.fetchedResultsController objectAtIndexPath:indexPath];
         cell.textLabel.text = skiArea.name_area;
     }
     else {
-        SkiRoutes *skiRoute = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        SkiRoutes *skiRoute = [skiArea.ski_routes.allObjects objectAtIndex:indexPath.row - 1];
         cell.textLabel.text = skiRoute.name_route;
     }
-
-    
+        
     return cell;
 }
 
@@ -139,36 +141,6 @@
 
 - (NSFetchedResultsController *)fetchedResultsController
 {
-    /*
-    if (_fetchedResultsController != nil) {
-        return _fetchedResultsController;
-    }
-    
-    [NSFetchedResultsController deleteCacheWithName:nil];
-    
-    NSFetchRequest *fetchRequest = [NSFetchRequest new];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:SM_SkiRoutes inManagedObjectContext:self.managedObjectContext];
-    
-    NSSortDescriptor *sortDescriptor1 = [[NSSortDescriptor alloc] initWithKey:@"ski_area.name_area" ascending:YES];
-    NSSortDescriptor *sortDescriptor2 = [[NSSortDescriptor alloc] initWithKey:@"name_route" ascending:YES];
-    NSArray *descriptors = @[sortDescriptor1, sortDescriptor2];
-    
-    [fetchRequest setEntity:entity];
-    [fetchRequest setFetchBatchSize:20];
-    [fetchRequest setSortDescriptors:descriptors];
-    
-    NSFetchedResultsController *fetchedResultsController = [[NSFetchedResultsController alloc]
-                                                            initWithFetchRequest:fetchRequest
-                                                            managedObjectContext:self.managedObjectContext
-                                                            sectionNameKeyPath:@"ski_area.name_area"
-                                                            cacheName:nil];
-    
-    fetchedResultsController.delegate = self;
-    self.fetchedResultsController = fetchedResultsController;
-    
-    return _fetchedResultsController;
-    */
-    
     if (_fetchedResultsController != nil) {
         return _fetchedResultsController;
     }
@@ -222,15 +194,6 @@
 }
 
 @end
-
-
-
-
-
-
-
-
-
 
 
 
