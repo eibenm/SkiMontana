@@ -1,0 +1,154 @@
+{
+    "skiAreas": [
+        {
+            "name_area": "Greater Gallatins",
+            "conditions": "Most routes described in this group have a relatively shallow snowpack and generally receive between 200-300 inches of snow per year. While this area can certainly receive wind loading events, it is not as susceptible to these events as other areas. This region also seems to get frequent but smaller snowfalls as opposed to infrequent big snowfalls.",
+            "color": "#434343",
+            "permissions": 1,
+            "skiarea_image": null,
+            "skiarea_routes": [
+                {
+                    "name_route": "The Mt. Ellis Burn",
+                    "overview": "One of the classic Bozeman ski trips, Mt. Ellis appears prominently as a forested high point on the skyline southeast of town. With stable snowpack, you’ll be rewarded with excellent glade skiing and fairly long vertical drop. An old fire near the top (hence the name “The Burn”) has thinned the trees and created a small, open bowl which then funnels into one of three avalanche run-outs that get more narrow, but more mellow as you descend. ",
+                    "short_desc": "A Bozeman classic",
+                    "notes": "Because the parking area is a Montana state lands area, you are required to purchase a land use permit before recreating.",
+                    "skiroute_gps": [
+                        {
+                            "waypoint": "Parking",
+                            "lat": 45.608833,
+                            "lon": -110.92425,
+                            "lat_dms": "45°36'31.88N",
+                            "lon_dms": "110°55'27.34W"
+                        },
+                        {
+                            "waypoint": "A",
+                            "lat": 45.599472,
+                            "lon": -110.931722,
+                            "lat_dms": "45°35'58.14N",
+                            "lon_dms": "110°55'54.24W"
+                        },
+                        {
+                            "waypoint": "B",
+                            "lat": 45.590056,
+                            "lon": -110.950417,
+                            "lat_dms": "45°35'24.23N",
+                            "lon_dms": "110°57'01.51W"
+                        },
+                        {
+                            "waypoint": "C",
+                            "lat": 44.571194,
+                            "lon": -110.96,
+                            "lat_dms": "44°34'16.33N",
+                            "lon_dms": "110°57'36.01W"
+                        },
+                        {
+                            "waypoint": "Summit",
+                            "lat": 45.577611,
+                            "lon": -110.955028,
+                            "lat_dms": "45°34'39.45N",
+                            "lon_dms": "110°57'18.19W"
+                        },
+                        {
+                            "waypoint": "D",
+                            "lat": 45.580639,
+                            "lon": -110.936306,
+                            "lat_dms": "45°34'50.34N",
+                            "lon_dms": "110°56'10.79W"
+                        }
+                    ],
+                    "skiroute_images": [
+                        {
+                            "filename": "DSC_0134.jpg",
+                            "avatar": "KX4xgZvxLCcnKebYo8Gw4mmffn_vgzeV.jpg",
+                            "caption": "Enjoying the Burn!"
+                        }
+                    ]
+                },
+                {
+                    "name_route": "Little Ellis",
+                    "overview": "The key thing that Little Ellis has to offer is a quick access point near Bozeman that sees little skier traffic. One of the things which may keep folks away is confusion over access rights in the area — this approach uses a public access point on Montana state land which requires you to purchase an access permit in advance. Once you have your permit taken care of, you’ll be treated to one of the closest places to backcountry ski near Bozeman which also has great views of Gallatin Valley from the top.",
+                    "short_desc": "Uncrowded and close to Bozeman",
+                    "notes": "Due to frequent logging in the area there are several meadows on the lower slopes of Little Ellis that provide easy skiing. If you are feeling concerned about the snowpack on the summit or you are looking for an easy adventure close to town, you may wish to spend a little time exploring in the area.",
+                    "skiroute_gps": [
+                        {
+                            "waypoint": "Parking",
+                            "lat": 45.627361,
+                            "lon": -110.960472,
+                            "lat_dms": "45°37'38.50N",
+                            "lon_dms": "110°57'37.75W"
+                        },
+                        {
+                            "waypoint": "A",
+                            "lat": 45.61375,
+                            "lon": -110.965056,
+                            "lat_dms": "45°36'49.59N",
+                            "lon_dms": "110°57'54.27W"
+                        },
+                        {
+                            "waypoint": "B",
+                            "lat": 45.611167,
+                            "lon": -110.951167,
+                            "lat_dms": "45°36'40.21N",
+                            "lon_dms": "110°57'04.20W"
+                        },
+                        {
+                            "waypoint": "Summit",
+                            "lat": 45.596806,
+                            "lon": -110.961472,
+                            "lat_dms": "45°35'48.50N",
+                            "lon_dms": "110°57'41.30W"
+                        }
+                    ],
+                    "skiroute_images": [
+                        {
+                            "filename": "little ellis (vertical).jpg",
+                            "avatar": "O2iE1ewCqwAWtafOzg4uXlJflCf9nQdF.jpg",
+                            "caption": "Easy turns down Little Ellis."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name_area": "Hyalite Canyon",
+            "conditions": "Technically this is a sub-region within the Gallatin Range, however it has the advantage of higher elevation and so it sees annual snowfall in the range of 300-400 inches per year and a more consistent and stable snowpack. The higher peaks in areas such as Hyalite Peak and Mt. Blackmore do receive occasional extreme wind events.",
+            "color": "#0000ff",
+            "permissions": 1,
+            "skiarea_image": null,
+            "skiarea_routes": []
+        },
+        {
+            "name_area": "Bridger Range",
+            "conditions": "The Bridgers are a special range. When storms blow in from the northwest, the magical Bridger Bowl Cloud (BBC) sometimes forms and results in sudden and unforecast snowfall events of 20-30+ inches, even when the town of Bozeman and all other ranges stay completely dry! To make things even sweeter, the BBC also leaves behind very low density snow that is quite fun to ski due to its extremely fluffy nature, and is known to the Bridger Bowl marketing department as \"Cold Smoke\" or to others as champagne powder or cowboy pow. \r\n\tThe very top of the Bridgers (called The Ridge) receives frequent extreme wind conditions which generally blow west to east and load the eastern side of the Bridgers with snow that is stripped off of the western side. In general this leaves the western slope of the Bridgers with a shallower and more unstable snowpack. Typical annual snowfall for the Bridgers ranges from 300-400 inches a year.\r\n",
+            "color": "#ff00ff",
+            "permissions": 1,
+            "skiarea_image": null,
+            "skiarea_routes": []
+        },
+        {
+            "name_area": "Madison Range",
+            "conditions": "This range is usually divided into Northern and Southern Madisons. The Northern Madisons have a similar personality to Hyalite Canyon, whereas the Southern Madisons tend to get more snow. In general when snowstorms hit hard they do not hit both ends of the Madisons equally, so there may actually be snow events where the northern range is left high and dry and the Southern Madisons get hammered. Typically annual snowfall is about 300-400 inches for the northern range and 400-500 inches for the southern range.",
+            "color": "#00ffff",
+            "permissions": 1,
+            "skiarea_image": null,
+            "skiarea_routes": []
+        },
+        {
+            "name_area": "Absaroka Range",
+            "conditions": "Perhaps the wildest and most untamed of the local ranges, the Absarokas feature huge vertical rise, epic terrain and drastic weather contrasts. It's not unusual to find completely dry and barren parking lots when accessing the high Absarokas peaks only to see wonderfully deep snowpack higher up. This range also tends to see the most wind of the local ranges — sometimes entire slopes of snow will get completely scoured down to the ground and redeposited as seemingly fresh snow on other slopes. Given the terrain and weather, this range has the trickiest avalanche conditions around. It's difficult to say what the average snowfall is, but it is probably in the spread of 100-400 inches per year depending on elevation.",
+            "color": "#ff9900",
+            "permissions": 1,
+            "skiarea_image": null,
+            "skiarea_routes": []
+        },
+        {
+            "name_area": "Beartooth Mountains",
+            "conditions": "The Beartooths have the most consistent snow in the area and like the Southern Madisons can get pounded with big storms. These regular snowfalls often result in a deep and stable snowpack which makes for fantastic skiing. The only downsides to this area are the limited access points available to those without snowmobiles and the relatively long drive from Bozeman or Big Sky. Typically annual snowfall is about 500 glorious inches a year.",
+            "color": "#00ff00",
+            "permissions": 1,
+            "skiarea_image": null,
+            "skiarea_routes": []
+        }
+    ],
+    "glossary": []
+}

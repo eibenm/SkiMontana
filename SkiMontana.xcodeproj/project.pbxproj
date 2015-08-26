@@ -1,0 +1,852 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CB17F6731AA93F4600048BC5 /* SMSkiAreaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB17F6721AA93F4600048BC5 /* SMSkiAreaTableViewCell.m */; };
+		CB17F6761AA93F5C00048BC5 /* SMSkiRouteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB17F6751AA93F5C00048BC5 /* SMSkiRouteTableViewCell.m */; };
+		CB3FBFC41AB67AFD00D5A037 /* SMAppearanceModifier.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3FBFC31AB67AFD00D5A037 /* SMAppearanceModifier.m */; };
+		CB4208A11AA3B94200ADFA97 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4208A01AA3B94200ADFA97 /* UIImage+ImageEffects.m */; };
+		CB4208A51AA3B98700ADFA97 /* UIFont+SkiMontana.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4208A41AA3B98700ADFA97 /* UIFont+SkiMontana.m */; };
+		CB4208A81AA3BB5100ADFA97 /* SMAreasTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4208A71AA3BB5100ADFA97 /* SMAreasTableViewController.m */; };
+		CB4208E41AA3E5C800ADFA97 /* NSArray+SkiMontana.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4208E31AA3E5C800ADFA97 /* NSArray+SkiMontana.m */; };
+		CB4208E61AA3FA6C00ADFA97 /* database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = CB4208E51AA3FA6C00ADFA97 /* database.sqlite */; };
+		CB4208E91AA3FDB500ADFA97 /* SMInitialSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4208E81AA3FDB500ADFA97 /* SMInitialSegue.m */; };
+		CB56C2731A9D63530002495F /* SMWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB56C2721A9D63530002495F /* SMWebViewController.m */; };
+		CB7446231AEDBE670070B36D /* SMDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7446221AEDBE670070B36D /* SMDetailsViewController.m */; };
+		CB7446261AEEA36A0070B36D /* SMDetailsInformationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7446251AEEA36A0070B36D /* SMDetailsInformationTableViewCell.m */; };
+		CB7446291AEEA38E0070B36D /* SMDetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7446281AEEA38E0070B36D /* SMDetailsTableViewCell.m */; };
+		CB76D9C61AFC6102005EC2E8 /* SMRouteMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB76D9C51AFC6102005EC2E8 /* SMRouteMapViewController.m */; };
+		CB8694C21B09639B00D4A93F /* Headers in Resources */ = {isa = PBXBuildFile; fileRef = CB8694BF1B09639B00D4A93F /* Headers */; };
+		CB8694C31B09639B00D4A93F /* libMapbox.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8694C01B09639B00D4A93F /* libMapbox.a */; };
+		CB8694C41B09639B00D4A93F /* Mapbox.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CB8694C11B09639B00D4A93F /* Mapbox.bundle */; };
+		CB8694C71B09649200D4A93F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8694C61B09649200D4A93F /* CoreLocation.framework */; };
+		CB8694C91B09649D00D4A93F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8694C81B09649D00D4A93F /* QuartzCore.framework */; };
+		CB8694CB1B0964AC00D4A93F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8694CA1B0964AC00D4A93F /* libz.dylib */; };
+		CB8694CE1B0A8B6300D4A93F /* CLLocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8694CD1B0A8B6300D4A93F /* CLLocationHelper.m */; };
+		CB9695201A9A3EF6009757B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB96951F1A9A3EF6009757B7 /* main.m */; };
+		CB9695231A9A3EF6009757B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9695221A9A3EF6009757B7 /* AppDelegate.m */; };
+		CB9695291A9A3EF6009757B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB9695271A9A3EF6009757B7 /* Main.storyboard */; };
+		CB96952B1A9A3EF6009757B7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB96952A1A9A3EF6009757B7 /* Images.xcassets */; };
+		CB96952E1A9A3EF6009757B7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB96952C1A9A3EF6009757B7 /* LaunchScreen.xib */; };
+		CB96953A1A9A3EF6009757B7 /* SkiMontanaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9695391A9A3EF6009757B7 /* SkiMontanaTests.m */; };
+		CB9695451A9A3FC1009757B7 /* SMIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9695441A9A3FC1009757B7 /* SMIntroViewController.m */; };
+		CB96954C1A9A43A7009757B7 /* SMConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = CB96954B1A9A43A7009757B7 /* SMConstants.m */; };
+		CB99FF451AB61F010067E547 /* UIColor+FromHex.m in Sources */ = {isa = PBXBuildFile; fileRef = CB99FF441AB61F010067E547 /* UIColor+FromHex.m */; };
+		CB99FF481AB624F10067E547 /* SMAreaOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB99FF471AB624F10067E547 /* SMAreaOverviewViewController.m */; };
+		CB99FF4D1AB634270067E547 /* SMNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB99FF4A1AB634270067E547 /* SMNavigationController.m */; };
+		CB99FF4E1AB634270067E547 /* SMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB99FF4C1AB634270067E547 /* SMViewController.m */; };
+		CB99FF591AB6347F0067E547 /* SMBaseAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = CB99FF501AB6347F0067E547 /* SMBaseAnimation.m */; };
+		CB99FF5A1AB6347F0067E547 /* SMFlipAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = CB99FF521AB6347F0067E547 /* SMFlipAnimation.m */; };
+		CB99FF5B1AB6347F0067E547 /* SMLayerAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = CB99FF541AB6347F0067E547 /* SMLayerAnimation.m */; };
+		CB99FF5C1AB6347F0067E547 /* SMScaleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = CB99FF561AB6347F0067E547 /* SMScaleAnimation.m */; };
+		CB99FF5D1AB6347F0067E547 /* SMSlideAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = CB99FF581AB6347F0067E547 /* SMSlideAnimation.m */; };
+		CB99FF611AB635940067E547 /* SMTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB99FF601AB635940067E547 /* SMTableViewController.m */; };
+		CBA338A31B8280F0001BA5FF /* SMDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA338961B8280F0001BA5FF /* SMDataManager.m */; };
+		CBA338AC1B82821F001BA5FF /* skiappdata.json in Resources */ = {isa = PBXBuildFile; fileRef = CBA338AB1B82821F001BA5FF /* skiappdata.json */; };
+		CBA338AF1B8282AD001BA5FF /* SMUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA338AE1B8282AD001BA5FF /* SMUtilities.m */; };
+		CBA338B21B82A0A2001BA5FF /* SkiRoutes.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA338B11B82A0A2001BA5FF /* SkiRoutes.m */; };
+		CBA338B51B82A0A3001BA5FF /* SkiAreas.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA338B41B82A0A3001BA5FF /* SkiAreas.m */; };
+		CBA338B81B82A0A3001BA5FF /* Glossary.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA338B71B82A0A3001BA5FF /* Glossary.m */; };
+		CBA338BB1B82A0A3001BA5FF /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA338BA1B82A0A3001BA5FF /* File.m */; };
+		CBA338BE1B82A0A3001BA5FF /* Gps.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA338BD1B82A0A3001BA5FF /* Gps.m */; };
+		CBA338C31B82A3DD001BA5FF /* SkiDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBA338C11B82A3DD001BA5FF /* SkiDataModel.xcdatamodeld */; };
+		CBA338CA1B82A883001BA5FF /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA338C91B82A883001BA5FF /* libsqlite3.dylib */; };
+		CBA338D91B82BACB001BA5FF /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA338D81B82BACB001BA5FF /* Reachability.m */; };
+		CBA338DC1B82BBD1001BA5FF /* SMReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA338DB1B82BBD1001BA5FF /* SMReachabilityManager.m */; };
+		CBB480801AA5703600C2A7E3 /* SMOverviewMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB4807F1AA5703600C2A7E3 /* SMOverviewMapViewController.m */; };
+		CBB4808E1AA5793A00C2A7E3 /* IMG_0190.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CBB480881AA5793A00C2A7E3 /* IMG_0190.jpg */; };
+		CBB4808F1AA5793A00C2A7E3 /* IMGP1106.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CBB480891AA5793A00C2A7E3 /* IMGP1106.jpg */; };
+		CBB480901AA5793A00C2A7E3 /* IMGP1108.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CBB4808A1AA5793A00C2A7E3 /* IMGP1108.jpg */; };
+		CBB480911AA5793A00C2A7E3 /* IMGP1109.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CBB4808B1AA5793A00C2A7E3 /* IMGP1109.jpg */; };
+		CBB480921AA5793A00C2A7E3 /* IMGP1110.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CBB4808C1AA5793A00C2A7E3 /* IMGP1110.jpg */; };
+		CBB480931AA5793A00C2A7E3 /* IMGP1111.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CBB4808D1AA5793A00C2A7E3 /* IMGP1111.jpg */; };
+		CBB480971AA57A8F00C2A7E3 /* UIButton+TintImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB480961AA57A8F00C2A7E3 /* UIButton+TintImage.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CB9695341A9A3EF6009757B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CB9695121A9A3EF6009757B7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CB9695191A9A3EF6009757B7;
+			remoteInfo = SkiMontana;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CB17F6711AA93F4600048BC5 /* SMSkiAreaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSkiAreaTableViewCell.h; sourceTree = "<group>"; };
+		CB17F6721AA93F4600048BC5 /* SMSkiAreaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSkiAreaTableViewCell.m; sourceTree = "<group>"; };
+		CB17F6741AA93F5C00048BC5 /* SMSkiRouteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSkiRouteTableViewCell.h; sourceTree = "<group>"; };
+		CB17F6751AA93F5C00048BC5 /* SMSkiRouteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSkiRouteTableViewCell.m; sourceTree = "<group>"; };
+		CB3FBFC21AB67AFD00D5A037 /* SMAppearanceModifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAppearanceModifier.h; sourceTree = "<group>"; };
+		CB3FBFC31AB67AFD00D5A037 /* SMAppearanceModifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAppearanceModifier.m; sourceTree = "<group>"; };
+		CB42089F1AA3B94200ADFA97 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		CB4208A01AA3B94200ADFA97 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		CB4208A31AA3B98700ADFA97 /* UIFont+SkiMontana.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+SkiMontana.h"; sourceTree = "<group>"; };
+		CB4208A41AA3B98700ADFA97 /* UIFont+SkiMontana.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+SkiMontana.m"; sourceTree = "<group>"; };
+		CB4208A61AA3BB5100ADFA97 /* SMAreasTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAreasTableViewController.h; sourceTree = "<group>"; };
+		CB4208A71AA3BB5100ADFA97 /* SMAreasTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAreasTableViewController.m; sourceTree = "<group>"; };
+		CB4208E21AA3E5C800ADFA97 /* NSArray+SkiMontana.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+SkiMontana.h"; sourceTree = "<group>"; };
+		CB4208E31AA3E5C800ADFA97 /* NSArray+SkiMontana.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+SkiMontana.m"; sourceTree = "<group>"; };
+		CB4208E51AA3FA6C00ADFA97 /* database.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = database.sqlite; sourceTree = "<group>"; };
+		CB4208E71AA3FDB500ADFA97 /* SMInitialSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMInitialSegue.h; sourceTree = "<group>"; };
+		CB4208E81AA3FDB500ADFA97 /* SMInitialSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMInitialSegue.m; sourceTree = "<group>"; };
+		CB56C2711A9D63530002495F /* SMWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMWebViewController.h; sourceTree = "<group>"; };
+		CB56C2721A9D63530002495F /* SMWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMWebViewController.m; sourceTree = "<group>"; };
+		CB7446211AEDBE670070B36D /* SMDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDetailsViewController.h; sourceTree = "<group>"; };
+		CB7446221AEDBE670070B36D /* SMDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDetailsViewController.m; sourceTree = "<group>"; };
+		CB7446241AEEA36A0070B36D /* SMDetailsInformationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDetailsInformationTableViewCell.h; sourceTree = "<group>"; };
+		CB7446251AEEA36A0070B36D /* SMDetailsInformationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDetailsInformationTableViewCell.m; sourceTree = "<group>"; };
+		CB7446271AEEA38E0070B36D /* SMDetailsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDetailsTableViewCell.h; sourceTree = "<group>"; };
+		CB7446281AEEA38E0070B36D /* SMDetailsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDetailsTableViewCell.m; sourceTree = "<group>"; };
+		CB76D9C41AFC6102005EC2E8 /* SMRouteMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRouteMapViewController.h; sourceTree = "<group>"; };
+		CB76D9C51AFC6102005EC2E8 /* SMRouteMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRouteMapViewController.m; sourceTree = "<group>"; };
+		CB8694BF1B09639B00D4A93F /* Headers */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Headers; sourceTree = "<group>"; };
+		CB8694C01B09639B00D4A93F /* libMapbox.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMapbox.a; sourceTree = "<group>"; };
+		CB8694C11B09639B00D4A93F /* Mapbox.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Mapbox.bundle; sourceTree = "<group>"; };
+		CB8694C61B09649200D4A93F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		CB8694C81B09649D00D4A93F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CB8694CA1B0964AC00D4A93F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		CB8694CC1B0A8B6300D4A93F /* CLLocationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLocationHelper.h; sourceTree = "<group>"; };
+		CB8694CD1B0A8B6300D4A93F /* CLLocationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLocationHelper.m; sourceTree = "<group>"; };
+		CB96951A1A9A3EF6009757B7 /* SkiMontana.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkiMontana.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB96951E1A9A3EF6009757B7 /* SkiMontana-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SkiMontana-Info.plist"; sourceTree = "<group>"; };
+		CB96951F1A9A3EF6009757B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CB9695211A9A3EF6009757B7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CB9695221A9A3EF6009757B7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CB9695281A9A3EF6009757B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CB96952A1A9A3EF6009757B7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		CB96952D1A9A3EF6009757B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		CB9695331A9A3EF6009757B7 /* SkiMontanaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkiMontanaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB9695381A9A3EF6009757B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB9695391A9A3EF6009757B7 /* SkiMontanaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SkiMontanaTests.m; sourceTree = "<group>"; };
+		CB9695431A9A3FC1009757B7 /* SMIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMIntroViewController.h; sourceTree = "<group>"; };
+		CB9695441A9A3FC1009757B7 /* SMIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMIntroViewController.m; sourceTree = "<group>"; };
+		CB9695461A9A415F009757B7 /* SkiMontana-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SkiMontana-Prefix.pch"; sourceTree = "<group>"; };
+		CB96954A1A9A43A7009757B7 /* SMConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMConstants.h; sourceTree = "<group>"; };
+		CB96954B1A9A43A7009757B7 /* SMConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMConstants.m; sourceTree = "<group>"; };
+		CB99FF431AB61F010067E547 /* UIColor+FromHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FromHex.h"; sourceTree = "<group>"; };
+		CB99FF441AB61F010067E547 /* UIColor+FromHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FromHex.m"; sourceTree = "<group>"; };
+		CB99FF461AB624F10067E547 /* SMAreaOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAreaOverviewViewController.h; sourceTree = "<group>"; };
+		CB99FF471AB624F10067E547 /* SMAreaOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAreaOverviewViewController.m; sourceTree = "<group>"; };
+		CB99FF491AB634270067E547 /* SMNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMNavigationController.h; sourceTree = "<group>"; };
+		CB99FF4A1AB634270067E547 /* SMNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMNavigationController.m; sourceTree = "<group>"; };
+		CB99FF4B1AB634270067E547 /* SMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMViewController.h; sourceTree = "<group>"; };
+		CB99FF4C1AB634270067E547 /* SMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMViewController.m; sourceTree = "<group>"; };
+		CB99FF4F1AB6347F0067E547 /* SMBaseAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMBaseAnimation.h; sourceTree = "<group>"; };
+		CB99FF501AB6347F0067E547 /* SMBaseAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMBaseAnimation.m; sourceTree = "<group>"; };
+		CB99FF511AB6347F0067E547 /* SMFlipAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFlipAnimation.h; sourceTree = "<group>"; };
+		CB99FF521AB6347F0067E547 /* SMFlipAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFlipAnimation.m; sourceTree = "<group>"; };
+		CB99FF531AB6347F0067E547 /* SMLayerAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMLayerAnimation.h; sourceTree = "<group>"; };
+		CB99FF541AB6347F0067E547 /* SMLayerAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMLayerAnimation.m; sourceTree = "<group>"; };
+		CB99FF551AB6347F0067E547 /* SMScaleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMScaleAnimation.h; sourceTree = "<group>"; };
+		CB99FF561AB6347F0067E547 /* SMScaleAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMScaleAnimation.m; sourceTree = "<group>"; };
+		CB99FF571AB6347F0067E547 /* SMSlideAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSlideAnimation.h; sourceTree = "<group>"; };
+		CB99FF581AB6347F0067E547 /* SMSlideAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSlideAnimation.m; sourceTree = "<group>"; };
+		CB99FF5F1AB635940067E547 /* SMTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTableViewController.h; sourceTree = "<group>"; };
+		CB99FF601AB635940067E547 /* SMTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTableViewController.m; sourceTree = "<group>"; };
+		CBA338951B8280F0001BA5FF /* SMDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDataManager.h; sourceTree = "<group>"; };
+		CBA338961B8280F0001BA5FF /* SMDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDataManager.m; sourceTree = "<group>"; };
+		CBA338981B8280F0001BA5FF /* SMManagedObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMManagedObjects.h; sourceTree = "<group>"; };
+		CBA338AB1B82821F001BA5FF /* skiappdata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = skiappdata.json; sourceTree = "<group>"; };
+		CBA338AD1B8282AD001BA5FF /* SMUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMUtilities.h; sourceTree = "<group>"; };
+		CBA338AE1B8282AD001BA5FF /* SMUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMUtilities.m; sourceTree = "<group>"; };
+		CBA338B01B82A0A2001BA5FF /* SkiRoutes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkiRoutes.h; sourceTree = "<group>"; };
+		CBA338B11B82A0A2001BA5FF /* SkiRoutes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkiRoutes.m; sourceTree = "<group>"; };
+		CBA338B31B82A0A3001BA5FF /* SkiAreas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkiAreas.h; sourceTree = "<group>"; };
+		CBA338B41B82A0A3001BA5FF /* SkiAreas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkiAreas.m; sourceTree = "<group>"; };
+		CBA338B61B82A0A3001BA5FF /* Glossary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Glossary.h; sourceTree = "<group>"; };
+		CBA338B71B82A0A3001BA5FF /* Glossary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Glossary.m; sourceTree = "<group>"; };
+		CBA338B91B82A0A3001BA5FF /* File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = File.h; sourceTree = "<group>"; };
+		CBA338BA1B82A0A3001BA5FF /* File.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = File.m; sourceTree = "<group>"; };
+		CBA338BC1B82A0A3001BA5FF /* Gps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gps.h; sourceTree = "<group>"; };
+		CBA338BD1B82A0A3001BA5FF /* Gps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gps.m; sourceTree = "<group>"; };
+		CBA338C21B82A3DD001BA5FF /* SkiDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SkiDataModel.xcdatamodel; sourceTree = "<group>"; };
+		CBA338C91B82A883001BA5FF /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		CBA338D71B82BACB001BA5FF /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		CBA338D81B82BACB001BA5FF /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		CBA338DA1B82BBD1001BA5FF /* SMReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMReachabilityManager.h; sourceTree = "<group>"; };
+		CBA338DB1B82BBD1001BA5FF /* SMReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMReachabilityManager.m; sourceTree = "<group>"; };
+		CBB4807E1AA5703600C2A7E3 /* SMOverviewMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMOverviewMapViewController.h; sourceTree = "<group>"; };
+		CBB4807F1AA5703600C2A7E3 /* SMOverviewMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMOverviewMapViewController.m; sourceTree = "<group>"; };
+		CBB480881AA5793A00C2A7E3 /* IMG_0190.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0190.jpg; sourceTree = "<group>"; };
+		CBB480891AA5793A00C2A7E3 /* IMGP1106.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMGP1106.jpg; sourceTree = "<group>"; };
+		CBB4808A1AA5793A00C2A7E3 /* IMGP1108.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMGP1108.jpg; sourceTree = "<group>"; };
+		CBB4808B1AA5793A00C2A7E3 /* IMGP1109.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMGP1109.jpg; sourceTree = "<group>"; };
+		CBB4808C1AA5793A00C2A7E3 /* IMGP1110.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMGP1110.jpg; sourceTree = "<group>"; };
+		CBB4808D1AA5793A00C2A7E3 /* IMGP1111.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMGP1111.jpg; sourceTree = "<group>"; };
+		CBB480951AA57A8F00C2A7E3 /* UIButton+TintImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+TintImage.h"; sourceTree = "<group>"; };
+		CBB480961AA57A8F00C2A7E3 /* UIButton+TintImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+TintImage.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CB9695171A9A3EF6009757B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB8694C91B09649D00D4A93F /* QuartzCore.framework in Frameworks */,
+				CB8694C71B09649200D4A93F /* CoreLocation.framework in Frameworks */,
+				CB8694C31B09639B00D4A93F /* libMapbox.a in Frameworks */,
+				CBA338CA1B82A883001BA5FF /* libsqlite3.dylib in Frameworks */,
+				CB8694CB1B0964AC00D4A93F /* libz.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB9695301A9A3EF6009757B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CB235EAE1A9A591C0002E482 /* Utility Classes */ = {
+			isa = PBXGroup;
+			children = (
+				CBA338AD1B8282AD001BA5FF /* SMUtilities.h */,
+				CBA338AE1B8282AD001BA5FF /* SMUtilities.m */,
+				CB8694CC1B0A8B6300D4A93F /* CLLocationHelper.h */,
+				CB8694CD1B0A8B6300D4A93F /* CLLocationHelper.m */,
+				CBA338D71B82BACB001BA5FF /* Reachability.h */,
+				CBA338D81B82BACB001BA5FF /* Reachability.m */,
+				CBA338DA1B82BBD1001BA5FF /* SMReachabilityManager.h */,
+				CBA338DB1B82BBD1001BA5FF /* SMReachabilityManager.m */,
+			);
+			name = "Utility Classes";
+			sourceTree = "<group>";
+		};
+		CB4208A21AA3B94C00ADFA97 /* Catagories */ = {
+			isa = PBXGroup;
+			children = (
+				CB42089F1AA3B94200ADFA97 /* UIImage+ImageEffects.h */,
+				CB4208A01AA3B94200ADFA97 /* UIImage+ImageEffects.m */,
+				CB4208A31AA3B98700ADFA97 /* UIFont+SkiMontana.h */,
+				CB4208A41AA3B98700ADFA97 /* UIFont+SkiMontana.m */,
+				CB4208E21AA3E5C800ADFA97 /* NSArray+SkiMontana.h */,
+				CB4208E31AA3E5C800ADFA97 /* NSArray+SkiMontana.m */,
+				CBB480951AA57A8F00C2A7E3 /* UIButton+TintImage.h */,
+				CBB480961AA57A8F00C2A7E3 /* UIButton+TintImage.m */,
+				CB99FF431AB61F010067E547 /* UIColor+FromHex.h */,
+				CB99FF441AB61F010067E547 /* UIColor+FromHex.m */,
+			);
+			name = Catagories;
+			sourceTree = "<group>";
+		};
+		CB4208EA1AA4039400ADFA97 /* Segues */ = {
+			isa = PBXGroup;
+			children = (
+				CB4208E71AA3FDB500ADFA97 /* SMInitialSegue.h */,
+				CB4208E81AA3FDB500ADFA97 /* SMInitialSegue.m */,
+			);
+			name = Segues;
+			sourceTree = "<group>";
+		};
+		CB437C3E1A9C230600315353 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CB8694C51B0963A300D4A93F /* Mapbox */,
+				CB8694C81B09649D00D4A93F /* QuartzCore.framework */,
+				CB8694C61B09649200D4A93F /* CoreLocation.framework */,
+				CBA338C91B82A883001BA5FF /* libsqlite3.dylib */,
+				CB8694CA1B0964AC00D4A93F /* libz.dylib */,
+			);
+			name = Frameworks;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		CB8694C51B0963A300D4A93F /* Mapbox */ = {
+			isa = PBXGroup;
+			children = (
+				CB8694BF1B09639B00D4A93F /* Headers */,
+				CB8694C01B09639B00D4A93F /* libMapbox.a */,
+				CB8694C11B09639B00D4A93F /* Mapbox.bundle */,
+			);
+			name = Mapbox;
+			path = SkiMontana;
+			sourceTree = "<group>";
+		};
+		CB9695111A9A3EF6009757B7 = {
+			isa = PBXGroup;
+			children = (
+				CB96951C1A9A3EF6009757B7 /* SkiMontana */,
+				CB9695361A9A3EF6009757B7 /* SkiMontanaTests */,
+				CB96951B1A9A3EF6009757B7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CB96951B1A9A3EF6009757B7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CB96951A1A9A3EF6009757B7 /* SkiMontana.app */,
+				CB9695331A9A3EF6009757B7 /* SkiMontanaTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CB96951C1A9A3EF6009757B7 /* SkiMontana */ = {
+			isa = PBXGroup;
+			children = (
+				CB9695211A9A3EF6009757B7 /* AppDelegate.h */,
+				CB9695221A9A3EF6009757B7 /* AppDelegate.m */,
+				CB9695431A9A3FC1009757B7 /* SMIntroViewController.h */,
+				CB9695441A9A3FC1009757B7 /* SMIntroViewController.m */,
+				CB4208A61AA3BB5100ADFA97 /* SMAreasTableViewController.h */,
+				CB4208A71AA3BB5100ADFA97 /* SMAreasTableViewController.m */,
+				CB99FF461AB624F10067E547 /* SMAreaOverviewViewController.h */,
+				CB99FF471AB624F10067E547 /* SMAreaOverviewViewController.m */,
+				CBB4807E1AA5703600C2A7E3 /* SMOverviewMapViewController.h */,
+				CBB4807F1AA5703600C2A7E3 /* SMOverviewMapViewController.m */,
+				CB7446211AEDBE670070B36D /* SMDetailsViewController.h */,
+				CB7446221AEDBE670070B36D /* SMDetailsViewController.m */,
+				CB76D9C41AFC6102005EC2E8 /* SMRouteMapViewController.h */,
+				CB76D9C51AFC6102005EC2E8 /* SMRouteMapViewController.m */,
+				CBB480871AA5774D00C2A7E3 /* TableCells */,
+				CB4208EA1AA4039400ADFA97 /* Segues */,
+				CB235EAE1A9A591C0002E482 /* Utility Classes */,
+				CB96955A1A9A46CD009757B7 /* Data Manager */,
+				CB99FF5E1AB634860067E547 /* Animation Controllers */,
+				CB96954D1A9A467B009757B7 /* Base Classes */,
+				CB4208A21AA3B94C00ADFA97 /* Catagories */,
+				CB9695271A9A3EF6009757B7 /* Main.storyboard */,
+				CB96952A1A9A3EF6009757B7 /* Images.xcassets */,
+				CB96952C1A9A3EF6009757B7 /* LaunchScreen.xib */,
+				CBB480941AA5794000C2A7E3 /* Ski Images */,
+				CB96951D1A9A3EF6009757B7 /* Supporting Files */,
+				CB437C3E1A9C230600315353 /* Frameworks */,
+			);
+			path = SkiMontana;
+			sourceTree = "<group>";
+		};
+		CB96951D1A9A3EF6009757B7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CBA338AB1B82821F001BA5FF /* skiappdata.json */,
+				CB4208E51AA3FA6C00ADFA97 /* database.sqlite */,
+				CB96951E1A9A3EF6009757B7 /* SkiMontana-Info.plist */,
+				CB9695461A9A415F009757B7 /* SkiMontana-Prefix.pch */,
+				CB96951F1A9A3EF6009757B7 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CB9695361A9A3EF6009757B7 /* SkiMontanaTests */ = {
+			isa = PBXGroup;
+			children = (
+				CB9695391A9A3EF6009757B7 /* SkiMontanaTests.m */,
+				CB9695371A9A3EF6009757B7 /* Supporting Files */,
+			);
+			path = SkiMontanaTests;
+			sourceTree = "<group>";
+		};
+		CB9695371A9A3EF6009757B7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CB9695381A9A3EF6009757B7 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CB96954D1A9A467B009757B7 /* Base Classes */ = {
+			isa = PBXGroup;
+			children = (
+				CB96954A1A9A43A7009757B7 /* SMConstants.h */,
+				CB96954B1A9A43A7009757B7 /* SMConstants.m */,
+				CB3FBFC21AB67AFD00D5A037 /* SMAppearanceModifier.h */,
+				CB3FBFC31AB67AFD00D5A037 /* SMAppearanceModifier.m */,
+				CB99FF491AB634270067E547 /* SMNavigationController.h */,
+				CB99FF4A1AB634270067E547 /* SMNavigationController.m */,
+				CB99FF4B1AB634270067E547 /* SMViewController.h */,
+				CB99FF4C1AB634270067E547 /* SMViewController.m */,
+				CB99FF5F1AB635940067E547 /* SMTableViewController.h */,
+				CB99FF601AB635940067E547 /* SMTableViewController.m */,
+				CB56C2711A9D63530002495F /* SMWebViewController.h */,
+				CB56C2721A9D63530002495F /* SMWebViewController.m */,
+			);
+			name = "Base Classes";
+			sourceTree = "<group>";
+		};
+		CB96955A1A9A46CD009757B7 /* Data Manager */ = {
+			isa = PBXGroup;
+			children = (
+				CBA338951B8280F0001BA5FF /* SMDataManager.h */,
+				CBA338961B8280F0001BA5FF /* SMDataManager.m */,
+				CBA338C11B82A3DD001BA5FF /* SkiDataModel.xcdatamodeld */,
+				CBA338AA1B828105001BA5FF /* Managed Models */,
+			);
+			name = "Data Manager";
+			sourceTree = "<group>";
+		};
+		CB99FF5E1AB634860067E547 /* Animation Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CB99FF4F1AB6347F0067E547 /* SMBaseAnimation.h */,
+				CB99FF501AB6347F0067E547 /* SMBaseAnimation.m */,
+				CB99FF511AB6347F0067E547 /* SMFlipAnimation.h */,
+				CB99FF521AB6347F0067E547 /* SMFlipAnimation.m */,
+				CB99FF531AB6347F0067E547 /* SMLayerAnimation.h */,
+				CB99FF541AB6347F0067E547 /* SMLayerAnimation.m */,
+				CB99FF551AB6347F0067E547 /* SMScaleAnimation.h */,
+				CB99FF561AB6347F0067E547 /* SMScaleAnimation.m */,
+				CB99FF571AB6347F0067E547 /* SMSlideAnimation.h */,
+				CB99FF581AB6347F0067E547 /* SMSlideAnimation.m */,
+			);
+			name = "Animation Controllers";
+			sourceTree = "<group>";
+		};
+		CBA338AA1B828105001BA5FF /* Managed Models */ = {
+			isa = PBXGroup;
+			children = (
+				CBA338981B8280F0001BA5FF /* SMManagedObjects.h */,
+				CBA338BC1B82A0A3001BA5FF /* Gps.h */,
+				CBA338BD1B82A0A3001BA5FF /* Gps.m */,
+				CBA338B91B82A0A3001BA5FF /* File.h */,
+				CBA338BA1B82A0A3001BA5FF /* File.m */,
+				CBA338B61B82A0A3001BA5FF /* Glossary.h */,
+				CBA338B71B82A0A3001BA5FF /* Glossary.m */,
+				CBA338B31B82A0A3001BA5FF /* SkiAreas.h */,
+				CBA338B41B82A0A3001BA5FF /* SkiAreas.m */,
+				CBA338B01B82A0A2001BA5FF /* SkiRoutes.h */,
+				CBA338B11B82A0A2001BA5FF /* SkiRoutes.m */,
+			);
+			name = "Managed Models";
+			sourceTree = "<group>";
+		};
+		CBB480871AA5774D00C2A7E3 /* TableCells */ = {
+			isa = PBXGroup;
+			children = (
+				CB17F6711AA93F4600048BC5 /* SMSkiAreaTableViewCell.h */,
+				CB17F6721AA93F4600048BC5 /* SMSkiAreaTableViewCell.m */,
+				CB17F6741AA93F5C00048BC5 /* SMSkiRouteTableViewCell.h */,
+				CB17F6751AA93F5C00048BC5 /* SMSkiRouteTableViewCell.m */,
+				CB7446241AEEA36A0070B36D /* SMDetailsInformationTableViewCell.h */,
+				CB7446251AEEA36A0070B36D /* SMDetailsInformationTableViewCell.m */,
+				CB7446271AEEA38E0070B36D /* SMDetailsTableViewCell.h */,
+				CB7446281AEEA38E0070B36D /* SMDetailsTableViewCell.m */,
+			);
+			name = TableCells;
+			sourceTree = "<group>";
+		};
+		CBB480941AA5794000C2A7E3 /* Ski Images */ = {
+			isa = PBXGroup;
+			children = (
+				CBB480881AA5793A00C2A7E3 /* IMG_0190.jpg */,
+				CBB480891AA5793A00C2A7E3 /* IMGP1106.jpg */,
+				CBB4808A1AA5793A00C2A7E3 /* IMGP1108.jpg */,
+				CBB4808B1AA5793A00C2A7E3 /* IMGP1109.jpg */,
+				CBB4808C1AA5793A00C2A7E3 /* IMGP1110.jpg */,
+				CBB4808D1AA5793A00C2A7E3 /* IMGP1111.jpg */,
+			);
+			name = "Ski Images";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CB9695191A9A3EF6009757B7 /* SkiMontana */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB96953D1A9A3EF6009757B7 /* Build configuration list for PBXNativeTarget "SkiMontana" */;
+			buildPhases = (
+				CB9695161A9A3EF6009757B7 /* Sources */,
+				CB9695171A9A3EF6009757B7 /* Frameworks */,
+				CB9695181A9A3EF6009757B7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SkiMontana;
+			productName = SkiMontana;
+			productReference = CB96951A1A9A3EF6009757B7 /* SkiMontana.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CB9695321A9A3EF6009757B7 /* SkiMontanaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB9695401A9A3EF6009757B7 /* Build configuration list for PBXNativeTarget "SkiMontanaTests" */;
+			buildPhases = (
+				CB96952F1A9A3EF6009757B7 /* Sources */,
+				CB9695301A9A3EF6009757B7 /* Frameworks */,
+				CB9695311A9A3EF6009757B7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CB9695351A9A3EF6009757B7 /* PBXTargetDependency */,
+			);
+			name = SkiMontanaTests;
+			productName = SkiMontanaTests;
+			productReference = CB9695331A9A3EF6009757B7 /* SkiMontanaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CB9695121A9A3EF6009757B7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Gneiss Software";
+				TargetAttributes = {
+					CB9695191A9A3EF6009757B7 = {
+						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = T8FKWXWY96;
+					};
+					CB9695321A9A3EF6009757B7 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = CB9695191A9A3EF6009757B7;
+					};
+				};
+			};
+			buildConfigurationList = CB9695151A9A3EF6009757B7 /* Build configuration list for PBXProject "SkiMontana" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CB9695111A9A3EF6009757B7;
+			productRefGroup = CB96951B1A9A3EF6009757B7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CB9695191A9A3EF6009757B7 /* SkiMontana */,
+				CB9695321A9A3EF6009757B7 /* SkiMontanaTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CB9695181A9A3EF6009757B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB8694C41B09639B00D4A93F /* Mapbox.bundle in Resources */,
+				CB4208E61AA3FA6C00ADFA97 /* database.sqlite in Resources */,
+				CBB480921AA5793A00C2A7E3 /* IMGP1110.jpg in Resources */,
+				CBB4808E1AA5793A00C2A7E3 /* IMG_0190.jpg in Resources */,
+				CB9695291A9A3EF6009757B7 /* Main.storyboard in Resources */,
+				CBB480911AA5793A00C2A7E3 /* IMGP1109.jpg in Resources */,
+				CB96952E1A9A3EF6009757B7 /* LaunchScreen.xib in Resources */,
+				CBB480931AA5793A00C2A7E3 /* IMGP1111.jpg in Resources */,
+				CBB4808F1AA5793A00C2A7E3 /* IMGP1106.jpg in Resources */,
+				CB96952B1A9A3EF6009757B7 /* Images.xcassets in Resources */,
+				CB8694C21B09639B00D4A93F /* Headers in Resources */,
+				CBB480901AA5793A00C2A7E3 /* IMGP1108.jpg in Resources */,
+				CBA338AC1B82821F001BA5FF /* skiappdata.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB9695311A9A3EF6009757B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CB9695161A9A3EF6009757B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB17F6761AA93F5C00048BC5 /* SMSkiRouteTableViewCell.m in Sources */,
+				CB99FF481AB624F10067E547 /* SMAreaOverviewViewController.m in Sources */,
+				CBB480801AA5703600C2A7E3 /* SMOverviewMapViewController.m in Sources */,
+				CB9695451A9A3FC1009757B7 /* SMIntroViewController.m in Sources */,
+				CB17F6731AA93F4600048BC5 /* SMSkiAreaTableViewCell.m in Sources */,
+				CB4208A81AA3BB5100ADFA97 /* SMAreasTableViewController.m in Sources */,
+				CBA338DC1B82BBD1001BA5FF /* SMReachabilityManager.m in Sources */,
+				CB99FF5A1AB6347F0067E547 /* SMFlipAnimation.m in Sources */,
+				CB99FF611AB635940067E547 /* SMTableViewController.m in Sources */,
+				CBA338B21B82A0A2001BA5FF /* SkiRoutes.m in Sources */,
+				CBA338AF1B8282AD001BA5FF /* SMUtilities.m in Sources */,
+				CB76D9C61AFC6102005EC2E8 /* SMRouteMapViewController.m in Sources */,
+				CB4208E41AA3E5C800ADFA97 /* NSArray+SkiMontana.m in Sources */,
+				CB99FF4E1AB634270067E547 /* SMViewController.m in Sources */,
+				CBA338D91B82BACB001BA5FF /* Reachability.m in Sources */,
+				CBA338C31B82A3DD001BA5FF /* SkiDataModel.xcdatamodeld in Sources */,
+				CB96954C1A9A43A7009757B7 /* SMConstants.m in Sources */,
+				CB7446261AEEA36A0070B36D /* SMDetailsInformationTableViewCell.m in Sources */,
+				CBA338BB1B82A0A3001BA5FF /* File.m in Sources */,
+				CB7446291AEEA38E0070B36D /* SMDetailsTableViewCell.m in Sources */,
+				CB99FF4D1AB634270067E547 /* SMNavigationController.m in Sources */,
+				CB3FBFC41AB67AFD00D5A037 /* SMAppearanceModifier.m in Sources */,
+				CB9695231A9A3EF6009757B7 /* AppDelegate.m in Sources */,
+				CBB480971AA57A8F00C2A7E3 /* UIButton+TintImage.m in Sources */,
+				CBA338BE1B82A0A3001BA5FF /* Gps.m in Sources */,
+				CB7446231AEDBE670070B36D /* SMDetailsViewController.m in Sources */,
+				CB4208A11AA3B94200ADFA97 /* UIImage+ImageEffects.m in Sources */,
+				CB8694CE1B0A8B6300D4A93F /* CLLocationHelper.m in Sources */,
+				CBA338B51B82A0A3001BA5FF /* SkiAreas.m in Sources */,
+				CB56C2731A9D63530002495F /* SMWebViewController.m in Sources */,
+				CB4208A51AA3B98700ADFA97 /* UIFont+SkiMontana.m in Sources */,
+				CB9695201A9A3EF6009757B7 /* main.m in Sources */,
+				CB99FF451AB61F010067E547 /* UIColor+FromHex.m in Sources */,
+				CB4208E91AA3FDB500ADFA97 /* SMInitialSegue.m in Sources */,
+				CB99FF5B1AB6347F0067E547 /* SMLayerAnimation.m in Sources */,
+				CB99FF5C1AB6347F0067E547 /* SMScaleAnimation.m in Sources */,
+				CB99FF5D1AB6347F0067E547 /* SMSlideAnimation.m in Sources */,
+				CBA338B81B82A0A3001BA5FF /* Glossary.m in Sources */,
+				CB99FF591AB6347F0067E547 /* SMBaseAnimation.m in Sources */,
+				CBA338A31B8280F0001BA5FF /* SMDataManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB96952F1A9A3EF6009757B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB96953A1A9A3EF6009757B7 /* SkiMontanaTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CB9695351A9A3EF6009757B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CB9695191A9A3EF6009757B7 /* SkiMontana */;
+			targetProxy = CB9695341A9A3EF6009757B7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CB9695271A9A3EF6009757B7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CB9695281A9A3EF6009757B7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CB96952C1A9A3EF6009757B7 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CB96952D1A9A3EF6009757B7 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CB96953B1A9A3EF6009757B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CB96953C1A9A3EF6009757B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CB96953E1A9A3EF6009757B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SkiMontana/SkiMontana-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEV=1",
+					"$(inherited)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"$(SRCROOT)/SkiMontana/Headers\"",
+				);
+				INFOPLIST_FILE = "SkiMontana/SkiMontana-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SkiMontana",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CB96953F1A9A3EF6009757B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SkiMontana/SkiMontana-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "DEV=0";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"$(SRCROOT)/SkiMontana/Headers\"",
+				);
+				INFOPLIST_FILE = "SkiMontana/SkiMontana-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SkiMontana",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		CB9695411A9A3EF6009757B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SkiMontanaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SkiMontana.app/SkiMontana";
+			};
+			name = Debug;
+		};
+		CB9695421A9A3EF6009757B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SkiMontanaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SkiMontana.app/SkiMontana";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CB9695151A9A3EF6009757B7 /* Build configuration list for PBXProject "SkiMontana" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB96953B1A9A3EF6009757B7 /* Debug */,
+				CB96953C1A9A3EF6009757B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB96953D1A9A3EF6009757B7 /* Build configuration list for PBXNativeTarget "SkiMontana" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB96953E1A9A3EF6009757B7 /* Debug */,
+				CB96953F1A9A3EF6009757B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB9695401A9A3EF6009757B7 /* Build configuration list for PBXNativeTarget "SkiMontanaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB9695411A9A3EF6009757B7 /* Debug */,
+				CB9695421A9A3EF6009757B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CBA338C11B82A3DD001BA5FF /* SkiDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CBA338C21B82A3DD001BA5FF /* SkiDataModel.xcdatamodel */,
+			);
+			currentVersion = CBA338C21B82A3DD001BA5FF /* SkiDataModel.xcdatamodel */;
+			path = SkiDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = CB9695121A9A3EF6009757B7 /* Project object */;
+}

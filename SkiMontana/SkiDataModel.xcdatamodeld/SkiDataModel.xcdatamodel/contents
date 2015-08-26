@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14E46" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="File" representedClassName="File" syncable="YES">
+        <attribute name="avatar" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="caption" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="filename" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="ski_area" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SkiAreas" inverseName="ski_area_image" inverseEntity="SkiAreas" syncable="YES"/>
+        <relationship name="ski_route" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SkiRoutes" inverseName="ski_route_images" inverseEntity="SkiRoutes" syncable="YES"/>
+    </entity>
+    <entity name="Glossary" representedClassName="Glossary" syncable="YES">
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="term" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Gps" representedClassName="Gps" syncable="YES">
+        <attribute name="lat" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="lat_dms" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lon" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="lon_dms" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="waypoint" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="ski_route" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SkiRoutes" inverseName="ski_route_gps" inverseEntity="SkiRoutes" syncable="YES"/>
+    </entity>
+    <entity name="SkiAreas" representedClassName="SkiAreas" syncable="YES">
+        <attribute name="bounds_northeast" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bounds_southwest" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="color" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="conditions" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name_area" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="permissions" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="ski_area_image" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="File" inverseName="ski_area" inverseEntity="File" syncable="YES"/>
+        <relationship name="ski_routes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SkiRoutes" inverseName="ski_area" inverseEntity="SkiRoutes" syncable="YES"/>
+    </entity>
+    <entity name="SkiRoutes" representedClassName="SkiRoutes" syncable="YES">
+        <attribute name="aspects" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="avalanche_danger" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="avalanche_info" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bounds_northeast" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bounds_southwest" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="directions" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="distance" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="elevation_gain" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="gps_guidance" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="kml" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name_route" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="overview" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="short_desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="skier_traffic" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="snowfall" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vertical" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="ski_area" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SkiAreas" inverseName="ski_routes" inverseEntity="SkiAreas" syncable="YES"/>
+        <relationship name="ski_route_gps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Gps" inverseName="ski_route" inverseEntity="Gps" syncable="YES"/>
+        <relationship name="ski_route_images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="File" inverseName="ski_route" inverseEntity="File" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="SkiAreas" positionX="-7515" positionY="-4861" width="128" height="163"/>
+        <element name="SkiRoutes" positionX="-7337" positionY="-5086" width="128" height="343"/>
+        <element name="File" positionX="-7155" positionY="-4653" width="128" height="118"/>
+        <element name="Gps" positionX="-7130" positionY="-4867" width="128" height="28"/>
+        <element name="Glossary" positionX="-7488" positionY="-4617" width="128" height="73"/>
+    </elements>
+</model>
