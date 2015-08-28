@@ -26,6 +26,9 @@
 @end
 
 @implementation SMAreasTableViewController
+{
+    NSMutableArray *_isShowingArray;
+}
 
 - (void)viewDidLoad
 {
@@ -41,204 +44,11 @@
     }
     
     self.title = @"Ski Guide";
-}
-
-- (void)setupMapButton
-{
-    self.mapButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.mapButtonBlackBackground = [UIImage imageNamed:@"globe_icon"];
-    self.mapButtonBlueBackground = [self.mapButton tintedImageWithColor:[UIColor blueColor] image:self.mapButtonBlackBackground];
-    [self.mapButton setImage:self.mapButtonBlackBackground forState:UIControlStateNormal];
-    [self.mapButton setImage:self.mapButtonBlueBackground forState:UIControlStateSelected];
-    [self.mapButton setImage:self.mapButtonBlueBackground forState:UIControlStateHighlighted];
-    [self.mapButton addTarget:self action:@selector(presentMapViewController) forControlEvents:UIControlEventTouchUpInside];
-    [self.mapButton sizeToFit];
-    UIBarButtonItem *mapBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.mapButton];
-    [self.navigationItem setLeftBarButtonItem:mapBarButtonItem];
-}
-
-- (void)presentMapViewController
-{
-    void (^presentation)(void) = ^(void) {
-        [self.mapButton setImage:self.mapButtonBlackBackground forState:UIControlStateNormal];
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        SMOverviewMapViewController *overivewMapViewController = (SMOverviewMapViewController *)[storyboard instantiateViewControllerWithIdentifier:@"overviewMap"];
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:overivewMapViewController];
-        navController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-        navController.navigationBarHidden = NO;
-        [self presentViewController:navController animated:YES completion:nil];
-    };
     
-    [self.mapButton setImage:self.mapButtonBlueBackground forState:UIControlStateNormal];
-    CABasicAnimation *pulseAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-    pulseAnimation.duration = 0.15f;
-    pulseAnimation.toValue = [NSNumber numberWithFloat:1.4f];
-    pulseAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    pulseAnimation.autoreverses = YES;
-    [CATransaction setCompletionBlock:presentation];
-    [self.mapButton.layer addAnimation:pulseAnimation forKey:nil];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
-
-#pragma mark - UITableViewDataSource
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return [[self.fetchedResultsController sections] count];
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    if ([[self.fetchedResultsController sections] count] > 0) {
-        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
-        SkiAreas *skiArea = [sectionInfo objects][0];
-        NSUInteger countArea = [sectionInfo numberOfObjects];
-        NSUInteger countRoutes = [skiArea.ski_routes.allObjects count];
-        //NSLog(@"%lu", countArea + countRoutes);
-        //return countArea;
-        return countArea + countRoutes;
-    }
+    NSArray *fetchedObjects = [self.fetchedResultsController fetchedObjects];
     
-    return 0;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *cellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
-    }
-    
-    //NSLog(@"Section: %ld, Row: %ld", (long)indexPath.section, (long)indexPath.row);
-    
-    SkiAreas *skiArea = [[self.fetchedResultsController fetchedObjects] objectAtIndex:indexPath.section];
-    
-    if (indexPath.row == 0) {
-        cell.textLabel.text = skiArea.name_area;
-    }
-    else {
-        SkiRoutes *skiRoute = [skiArea.ski_routes.allObjects objectAtIndex:indexPath.row - 1];
-        cell.textLabel.text = skiRoute.name_route;
-    }
-        
-    return cell;
-}
-
-#pragma mark - UITableViewDelegate
-
-- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"Section Selected: %li", (long)indexPath.section);
-}
-
-#pragma mark - NSFetchedResultsController
-
-- (NSFetchedResultsController *)fetchedResultsController
-{
-    if (_fetchedResultsController != nil) {
-        return _fetchedResultsController;
-    }
-    
-    [NSFetchedResultsController deleteCacheWithName:nil];
-    
-    NSFetchRequest *fetchRequest = [NSFetchRequest new];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:SM_SkiAreas inManagedObjectContext:self.managedObjectContext];
-    
-    NSSortDescriptor *sortDescriptor1 = [[NSSortDescriptor alloc] initWithKey:@"name_area" ascending:YES];
-    NSArray *descriptors = @[sortDescriptor1];
-    
-    [fetchRequest setEntity:entity];
-    [fetchRequest setFetchBatchSize:20];
-    [fetchRequest setSortDescriptors:descriptors];
-    
-    NSFetchedResultsController *fetchedResultsController = [[NSFetchedResultsController alloc]
-            initWithFetchRequest:fetchRequest
-            managedObjectContext:self.managedObjectContext
-            sectionNameKeyPath:@"name_area"
-            cacheName:nil];
-    
-    fetchedResultsController.delegate = self;
-    self.fetchedResultsController = fetchedResultsController;
-    
-    return _fetchedResultsController;
-}
-
-/*
-- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
-{
-    return [self.fetchedResultsController sectionIndexTitles];
-}
-
-- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
-{
-    return [self.fetchedResultsController sectionForSectionIndexTitle:title atIndex:index];
-}
-*/
-
-#pragma mark - NSFetchedResultsControllerDelegate
-
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
-{
-    [self.tableView beginUpdates];
-}
-
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
-{
-    [self.tableView endUpdates];
-}
-
-@end
-
-
-
-
-
-
-
-
-
-
-/*
-@interface SMAreasTableViewController ()
-{
-    NSMutableArray *_skiInformation;
-    NSMutableArray *_isShowingArray;
-}
-
-@property (strong, nonatomic) SkiAreas *area;
-@property (strong, nonatomic) SkiRoutes *route;
-
-@property (weak, nonatomic) UIButton *mapButton;
-@property (strong, nonatomic) UIImage *mapButtonBlackBackground;
-@property (weak, nonatomic) UIImage *mapButtonBlueBackground;
-
-@end
-
-@implementation SMAreasTableViewController
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    [self setupMapButton];
-    
-    self.title = @"Ski Guide";
-    
-    NSArray *skiAreaObjects = [[SMDataManager database] getSkiAreas];
-
-    _skiInformation = [NSMutableArray new];
-    [skiAreaObjects enumerateObjectsUsingBlock:^(SkiAreas *area, NSUInteger idx, BOOL *stop) {
-        [_skiInformation addObject:[[[SMDataManager database] getSkiRoutesByAreaID:area.id] mutableCopy]];
-        [[_skiInformation lastObject] insertObject:area atIndex:0];
-    }];
-    
-    _isShowingArray = [[NSMutableArray alloc] initWithCapacity:[_skiInformation count]];
-    [_skiInformation enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    _isShowingArray = [[NSMutableArray alloc] initWithCapacity:[fetchedObjects count]];
+    [fetchedObjects enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         [_isShowingArray addObject:[NSNumber numberWithBool:NO]];
     }];
     
@@ -300,23 +110,23 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [_skiInformation count];
+    return [[self.fetchedResultsController sections] count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    for (NSArray *infos in _skiInformation) {
-        if (section == [_skiInformation indexOfObject:infos]) {
-            if ([[_isShowingArray objectAtIndex:[_skiInformation indexOfObject:infos]] boolValue] == NO) {
-                return 1;
-            }
-            else {
-                return [infos count];
-            }
+    if ([[self.fetchedResultsController sections] count] > 0) {
+        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
+        SkiAreas *skiArea = [sectionInfo objects][0];
+        NSUInteger indexofCurrentObject = [[self.fetchedResultsController fetchedObjects] indexOfObject:skiArea];
+        if ([[_isShowingArray objectAtIndex:indexofCurrentObject] boolValue] == NO) {
+            return 1;
         }
+        NSUInteger countArea = [sectionInfo numberOfObjects];
+        NSUInteger countRoutes = [skiArea.ski_routes.allObjects count];
+        return countArea + countRoutes;
     }
-    
-    return 1;
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -337,37 +147,39 @@
     selectedCellView.backgroundColor = [UIColor colorWithRed:0.0f green:0.0f blue:0.6f alpha:0.2];
     cell.selectedBackgroundView = selectedCellView;
     
-    
-    for (NSArray *infoArray in _skiInformation) {
-        if (indexPath.section == [_skiInformation indexOfObject:infoArray]) {
-            if (indexPath.row == 0) {
-                self.area = [infoArray objectAtIndex:indexPath.row];
-                
-                cell.viewAreaColor.backgroundColor = [UIColor colorwithHexString:self.area.color alpha:1.0];
-                cell.labelAreaName.text = self.area.name_area;
-                
-                if (![[_isShowingArray objectAtIndex:[_skiInformation indexOfObject:infoArray]] boolValue]) {
-                    cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow_up"]];
-                }
-                else {
-                    cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow_down"]];
-                }
-            }
-            else {
-                self.route = [infoArray objectAtIndex:indexPath.row];
-                
-                cell.labelRouteName.text = self.route.name_route;
-                cell.textViewShortDescription.text = self.route.short_description;
-                cell.textViewShortDescription.textContainer.lineFragmentPadding = 0;
-                cell.textViewShortDescription.textContainerInset = UIEdgeInsetsZero;
-                cell.imageViewAreaImage.image = [UIImage imageNamed:self.route.image];
-                
-                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                cell.accessoryView = nil;
-            }
+    NSArray *skiAreaObjects = [self.fetchedResultsController fetchedObjects];
+    SkiAreas *skiArea = [skiAreaObjects objectAtIndex:indexPath.section];
+
+    if (indexPath.row == 0) {
+        cell.viewAreaColor.backgroundColor = [UIColor colorwithHexString:skiArea.color alpha:1.0];
+        cell.labelAreaName.text = skiArea.name_area;
+        
+        if (![[_isShowingArray objectAtIndex:[skiAreaObjects indexOfObject:skiArea]] boolValue]) {
+            cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow_up"]];
+        }
+        else {
+            cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow_down"]];
         }
     }
-    
+    else {
+        SkiRoutes *skiRoute = [skiArea.ski_routes.allObjects objectAtIndex:indexPath.row - 1];
+        NSSet *skiRouteImages = skiRoute.ski_route_images;
+        
+        cell.labelRouteName.text = skiRoute.name_route;
+        cell.textViewShortDescription.text = skiRoute.short_desc;
+        cell.textViewShortDescription.textContainer.lineFragmentPadding = 0;
+        cell.textViewShortDescription.textContainerInset = UIEdgeInsetsZero;
+        if ([skiRouteImages count]) {
+            File *image = [skiRouteImages.allObjects firstObject];
+            cell.imageViewAreaImage.image = [UIImage imageNamed:image.avatar];
+        }
+        else {
+            cell.imageViewAreaImage.backgroundColor = [UIColor blackColor];
+        }
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.accessoryView = nil;
+    }
+        
     return cell;
 }
 
@@ -385,7 +197,9 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [_skiInformation enumerateObjectsUsingBlock:^(id infoArray, NSUInteger index, BOOL *stop) {
+    // Collapse or expand section when the skiArea cell is selected
+    NSArray *skiAreaObjects = [self.fetchedResultsController fetchedObjects];
+    [skiAreaObjects enumerateObjectsUsingBlock:^(id skiArea, NSUInteger index, BOOL *stop) {
         if (indexPath.section == index) {
             if (indexPath.row == 0) {
                 BOOL isShowing = [_isShowingArray[index] boolValue];
@@ -397,8 +211,65 @@
     }];
 }
 
+#pragma mark - NSFetchedResultsController
+
+- (NSFetchedResultsController *)fetchedResultsController
+{
+    if (_fetchedResultsController != nil) {
+        return _fetchedResultsController;
+    }
+    
+    [NSFetchedResultsController deleteCacheWithName:nil];
+    
+    NSFetchRequest *fetchRequest = [NSFetchRequest new];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:SM_SkiAreas inManagedObjectContext:self.managedObjectContext];
+    
+    NSSortDescriptor *sortDescriptor1 = [[NSSortDescriptor alloc] initWithKey:@"name_area" ascending:YES];
+    NSArray *descriptors = @[sortDescriptor1];
+    
+    [fetchRequest setEntity:entity];
+    [fetchRequest setFetchBatchSize:20];
+    [fetchRequest setSortDescriptors:descriptors];
+    
+    NSFetchedResultsController *fetchedResultsController = [[NSFetchedResultsController alloc]
+            initWithFetchRequest:fetchRequest
+            managedObjectContext:self.managedObjectContext
+            sectionNameKeyPath:@"name_area"
+            cacheName:nil];
+    
+    fetchedResultsController.delegate = self;
+    self.fetchedResultsController = fetchedResultsController;
+    
+    return _fetchedResultsController;
+}
+
+/*
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    return [self.fetchedResultsController sectionIndexTitles];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+{
+    return [self.fetchedResultsController sectionForSectionIndexTitle:title atIndex:index];
+}
+*/
+
+#pragma mark - NSFetchedResultsControllerDelegate
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
+{
+    [self.tableView beginUpdates];
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    [self.tableView endUpdates];
+}
+
 #pragma mark - Navigation
 
+/*
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if([segue.identifier isEqualToString:@"showRoute"]) {
@@ -425,6 +296,6 @@
         modalController.area_id = [NSNumber numberWithInt:area.id];
     }
 }
-
-@end
 */
+ 
+@end
