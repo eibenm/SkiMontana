@@ -269,17 +269,17 @@
 
 #pragma mark - Navigation
 
-/*
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    NSArray *skiAreaObjects = [self.fetchedResultsController fetchedObjects];
+    
     if([segue.identifier isEqualToString:@"showRoute"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        SkiAreas *area = _skiInformation[indexPath.section][0];
-        SkiRoutes *route = _skiInformation[indexPath.section][indexPath.row];
+        SkiAreas *skiArea = [skiAreaObjects objectAtIndex:indexPath.section];
+        SkiRoutes *skiRoute = [skiArea.ski_routes.allObjects objectAtIndex:indexPath.row - 1];
         SMDetailsViewController *viewController = [segue destinationViewController];
-        viewController.name_area = area.name_area;
-        viewController.route_id = [NSNumber numberWithInt:route.id];
-        // Overwriting back text on next view controller.
+        viewController.nameArea = skiArea.name_area;
+        viewController.skiRoute = skiRoute;
         UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:nil action:nil];
         [self.navigationItem setBackBarButtonItem:newBackButton];
     }
@@ -287,15 +287,14 @@
     if ([segue.identifier isEqualToString:@"showAreaOverview"]) {
         CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tableView];
         NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
-        SkiAreas *area = _skiInformation[indexPath.section][indexPath.row];
+        SkiAreas *skiArea = [skiAreaObjects objectAtIndex:indexPath.section];
         SMAreasTableViewController *thisViewController = (SMAreasTableViewController *) self;
         SMAreaOverviewViewController *modalController = [segue destinationViewController];
         SMLayerAnimation *layerAnimation = [[SMLayerAnimation alloc] initWithType:SMLayerAnimationCover];
         thisViewController.animationController = layerAnimation;
         modalController.transitioningDelegate = self.transitioningDelegate;
-        modalController.area_id = [NSNumber numberWithInt:area.id];
+        modalController.skiArea = skiArea;
     }
 }
-*/
  
 @end

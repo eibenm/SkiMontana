@@ -6,10 +6,8 @@
 //  Copyright (c) 2015 Gneiss Software. All rights reserved.
 //
 
-/*
 #import "SMDetailsViewController.h"
 #import "SMRouteMapViewController.h"
-#import "SMDataManager.h"
 
 #import "SMDetailsTableViewCell.h"
 
@@ -40,14 +38,11 @@ static CGFloat scalingFactor = 0.6f;
     CGFloat _defaultTitleY;
     
     BOOL _isPulling;
-    SkiRoutes *_route;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    _route = [[SMDataManager database] getSkiRouteByRouteID:self.route_id.intValue];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -60,8 +55,8 @@ static CGFloat scalingFactor = 0.6f;
     _defaultHeaderHeight = self.headerViewHeight.constant;
     _defaultTitleY = self.areaTitle.center.y;
     
-    [self.areaTitle setText:self.name_area];
-    [self.routeTitle setText:_route.name_route];
+    [self.areaTitle setText:self.nameArea];
+    [self.routeTitle setText:self.skiRoute.name_route];
     
     self.offscreenCells = [NSMutableDictionary dictionary];
 }
@@ -119,26 +114,26 @@ static CGFloat scalingFactor = 0.6f;
     }
     
     if ([cellIdentifier isEqualToString:@"content"]) {
-        [cell.labelElevation setText:[NSString stringWithFormat:@"%d ft", _route.elevation_gain]];
-        [cell.labelVertical setText:[NSString stringWithFormat:@"%d ft", _route.vertical]];
-        [cell.labelSlope setText:_route.aspects];
-        [cell.labelDistance setText:[NSString stringWithFormat:@"~%.1f mi", _route.distance]];
-        [cell.labelSnowfall setText:[NSString stringWithFormat:@"%@ in", _route.snowfall]];
-        [cell.labelAvalanche setText:_route.avalanche_danger];
-        [cell.labelSkierTraffic setText:_route.skier_traffic];
+        [cell.labelElevation setText:[NSString stringWithFormat:@"%@ ft", self.skiRoute.elevation_gain]];
+        [cell.labelVertical setText:[NSString stringWithFormat:@"%@ ft", self.skiRoute.vertical]];
+        [cell.labelSlope setText:self.skiRoute.aspects];
+        [cell.labelDistance setText:[NSString stringWithFormat:@"~%@ mi", self.skiRoute.distance]];
+        [cell.labelSnowfall setText:[NSString stringWithFormat:@"%@ in", self.skiRoute.snowfall]];
+        [cell.labelAvalanche setText:self.skiRoute.avalanche_danger];
+        [cell.labelSkierTraffic setText:self.skiRoute.skier_traffic];
     }
     else if ([cellIdentifier isEqualToString:@"overview"]) {
-        [cell.labelOverviewInformation setText:_route.overview];
+        [cell.labelOverviewInformation setText:self.skiRoute.overview];
         [cell setNeedsUpdateConstraints];
         [cell updateConstraintsIfNeeded];
     }
     else if ([cellIdentifier isEqualToString:@"avalanche"]) {
-        [cell.labelAvalancheInformation setText:_route.avalanche_info];
+        [cell.labelAvalancheInformation setText:self.skiRoute.avalanche_info];
         [cell setNeedsUpdateConstraints];
         [cell updateConstraintsIfNeeded];
     }
     else if ([cellIdentifier isEqualToString:@"directions"]) {
-        [cell.labelDirectionsInformation setText:_route.directions];
+        [cell.labelDirectionsInformation setText:self.skiRoute.directions];
         [cell setNeedsUpdateConstraints];
         [cell updateConstraintsIfNeeded];
     }
@@ -173,7 +168,7 @@ static CGFloat scalingFactor = 0.6f;
     }
     
     if ([cellIdentifier isEqualToString:@"overview"]) {
-        [cell.labelOverviewInformation setText:_route.overview];
+        [cell.labelOverviewInformation setText:self.skiRoute.overview];
         [cell setNeedsUpdateConstraints];
         [cell updateConstraintsIfNeeded];
         cell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(tableView.bounds), CGRectGetHeight(cell.bounds));
@@ -183,7 +178,7 @@ static CGFloat scalingFactor = 0.6f;
         height += 1;
     }
     else if ([cellIdentifier isEqualToString:@"avalanche"]) {
-        [cell.labelAvalancheInformation setText:_route.avalanche_info];
+        [cell.labelAvalancheInformation setText:self.skiRoute.avalanche_info];
         [cell setNeedsUpdateConstraints];
         [cell updateConstraintsIfNeeded];
         cell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(tableView.bounds), CGRectGetHeight(cell.bounds));
@@ -193,7 +188,7 @@ static CGFloat scalingFactor = 0.6f;
         height += 1;
     }
     else if ([cellIdentifier isEqualToString:@"directions"]) {
-        [cell.labelDirectionsInformation setText:_route.directions];
+        [cell.labelDirectionsInformation setText:self.skiRoute.directions];
         [cell setNeedsUpdateConstraints];
         [cell updateConstraintsIfNeeded];
         cell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(tableView.bounds), CGRectGetHeight(cell.bounds));
@@ -290,4 +285,3 @@ static CGFloat scalingFactor = 0.6f;
 }
 
 @end
-*/

@@ -7,10 +7,11 @@
 //
 
 #import "SMViewController.h"
+#import "SMDataManager.h"
 
 @interface SMDetailsViewController : SMViewController
 
-@property (strong, nonatomic) NSString *name_area;
-@property (strong, nonatomic) NSNumber *route_id;
+@property (strong, nonatomic) NSString *nameArea;
+@property (strong, nonatomic) SkiRoutes *skiRoute;
 
 @end

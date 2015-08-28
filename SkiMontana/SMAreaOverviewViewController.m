@@ -7,7 +7,6 @@
 //
 
 #import "SMAreaOverviewViewController.h"
-//#import "SMDataManager.h"
 
 @interface SMAreaOverviewViewController() <UINavigationBarDelegate>
 
@@ -37,11 +36,9 @@
     UINavigationItem *navItem = [UINavigationItem new];
     [navItem setLeftBarButtonItem:backButton];
     [self.navigationBar setItems:@[navItem] animated:NO];
-        
-    //SkiAreas *area = [[SMDataManager database] getSkiAreaByAreaID:self.area_id.intValue];
-
-    //[self.labelAreaTitle setText:area.name_area];
-    //[self.textViewDescription setText:area.conditions];
+    
+    [self.labelAreaTitle setText:self.skiArea.name_area];
+    [self.textViewDescription setText:self.skiArea.conditions];
     
     [self.textViewDescription.textContainer setLineFragmentPadding:0];
     [self.textViewDescription setTextContainerInset:UIEdgeInsetsZero];

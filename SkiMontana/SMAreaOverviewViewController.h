@@ -6,8 +6,10 @@
 //  Copyright (c) 2015 Gneiss Software. All rights reserved.
 //
 
+#import "SMDataManager.h"
+
 @interface SMAreaOverviewViewController : UIViewController
 
-@property (strong, nonatomic) NSNumber *area_id;
+@property (strong, nonatomic) SkiAreas *skiArea;
 
 @end
