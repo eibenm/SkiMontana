@@ -31,11 +31,11 @@
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissViewController)];
     self.navItem = [UINavigationItem new];
     [self.navItem setLeftBarButtonItem:backButton];
-    [self.navigationBar setItems:@[self.navItem] animated:NO];
+    [self.navigationBar setItems:[NSArray arrayWithObject:self.navItem] animated:NO];
     
     
     [[RMConfiguration sharedInstance] setAccessToken:MAPBOX_ACCESS_TOKEN];
-    RMMapboxSource *tileSource = [[RMMapboxSource alloc] initWithMapID:@"mapbox.satellite"];
+    RMMapboxSource *tileSource = [[RMMapboxSource alloc] initWithMapID:@"mapbox.streets"];
     self.mapView = [[RMMapView alloc] initWithFrame:self.mapViewContainer.bounds andTilesource:tileSource];
     self.mapView.delegate = self;
     self.mapView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
