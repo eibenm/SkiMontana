@@ -33,7 +33,6 @@
     [self.navItem setLeftBarButtonItem:backButton];
     [self.navigationBar setItems:[NSArray arrayWithObject:self.navItem] animated:NO];
     
-    
     [[RMConfiguration sharedInstance] setAccessToken:MAPBOX_ACCESS_TOKEN];
     RMMapboxSource *tileSource = [[RMMapboxSource alloc] initWithMapID:@"mapbox.streets"];
     self.mapView = [[RMMapView alloc] initWithFrame:self.mapViewContainer.bounds andTilesource:tileSource];
@@ -53,26 +52,31 @@
     LocationServiceStatus status = [CLLocationHelper checkLocationServiceStatus];
     switch (status) {
         case LocationServiceDisabled:
+        {
             [self showLocationServicesAlert];
-            NSLog(@"Disabled");
+            [self.mapView setZoom:12.0f atCoordinate:CLLocationCoordinate2DMake(45.682145, -111.046954) animated:YES];
             break;
+        }
             
         case LocationServiceEnabled:
-            NSLog(@"Enabled");
+        {
+#if TARGET_IPHONE_SIMULATOR
+            [self.mapView setZoom:12.0f atCoordinate:CLLocationCoordinate2DMake(45.682145, -111.046954) animated:YES];
             break;
+#else
+            float userLat = self.mapView.userLocation.location.coordinate.latitude;
+            float userLon = self.mapView.userLocation.location.coordinate.longitude;
+            [self.mapView setZoom:12.0f atCoordinate:CLLocationCoordinate2DMake(userLat, userLon) animated:YES];
+            break;
+#endif
+        }
             
-        default:
-            break;
+        default: break;
     }
     
     [self.navItem setRightBarButtonItem:[[RMUserTrackingBarButtonItem alloc] initWithMapView:self.mapView]];
     [self.navItem.rightBarButtonItem setTintColor:[UIColor colorWithRed:0.120 green:0.550 blue:0.670 alpha:1.000]];
     [self.mapView setUserTrackingMode:RMUserTrackingModeNone];
-    
-    float userLat = self.mapView.userLocation.location.coordinate.latitude;
-    float userLon = self.mapView.userLocation.location.coordinate.longitude;
-    
-    NSLog(@"User is at location\nlat: %f\nlon: %f", userLat, userLon);
 }
 
 - (void)dismissViewController

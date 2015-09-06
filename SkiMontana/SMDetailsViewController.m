@@ -15,7 +15,7 @@
 
 static NSString *cellIdentifier;
 
-static CGFloat scalingFactor = 0.6f;
+static CGFloat scalingFactor = 0.3f;
 
 @interface SMDetailsViewController() <UITableViewDelegate, UITableViewDataSource>
 
@@ -26,6 +26,11 @@ static CGFloat scalingFactor = 0.6f;
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerViewHeight;
 
+@property (nonatomic, assign) CGFloat offsetStartingY;
+@property (nonatomic, assign) CGFloat offStartingRouteY;
+@property (nonatomic, assign) CGFloat offStartingAreaY;
+@property (nonatomic, assign) CGFloat maxOffsetY;
+
 // A dictionary of offscreen cells that are used within the tableView:heightForRowAtIndexPath: method to
 // handle the height calculations. These are never drawn onscreen.
 @property (strong, nonatomic) NSMutableDictionary *offscreenCells;
@@ -33,12 +38,6 @@ static CGFloat scalingFactor = 0.6f;
 @end
 
 @implementation SMDetailsViewController
-{
-    CGFloat _defaultHeaderHeight;
-    CGFloat _defaultTitleY;
-    
-    BOOL _isPulling;
-}
 
 - (void)viewDidLoad
 {
@@ -48,17 +47,22 @@ static CGFloat scalingFactor = 0.6f;
     self.tableView.dataSource = self;
     self.tableView.estimatedRowHeight = UITableViewAutomaticDimension;
     
-    [self.tableView setContentInset:UIEdgeInsetsMake(self.headerView.frame.size.height, 0, 0, 0)];
-    
-    self.headerView.layer.zPosition = 2;
-    
-    _defaultHeaderHeight = self.headerViewHeight.constant;
-    _defaultTitleY = self.areaTitle.center.y;
+    [self setTitle:self.skiRoute.name_route];
     
     [self.areaTitle setText:self.nameArea];
     [self.routeTitle setText:self.skiRoute.name_route];
     
     self.offscreenCells = [NSMutableDictionary dictionary];
+    
+    self.headerView.layer.zPosition = 2;
+    self.offsetStartingY = self.headerView.frame.size.height;
+    self.offStartingRouteY = self.routeTitle.center.y;
+    self.offStartingAreaY = self.areaTitle.center.y;
+    self.maxOffsetY = 70.0f;
+    
+    [self.tableView setContentInset:UIEdgeInsetsMake(self.offsetStartingY, 0, 0, 0)];
+    //[self.tableView setBackgroundColor:[UIColor clearColor]];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -227,44 +231,39 @@ static CGFloat scalingFactor = 0.6f;
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     CGFloat offset = scrollView.contentOffset.y;
-    CGFloat absoffset = ABS(offset);
     
+    CGFloat offsetDiff = (-1.0f * self.offsetStartingY) - offset;
     
-    //NSLog(@"%f", offset);
+    // Adjusting table content inset
+    // Adjusting height constraint on header
+    // Adjusting labels in header
+    // Adjuting opacity of area label
     
-    // Header view will start at 80 pts height and contract to 45 pts height.
-    
-    if (offset > -80 && offset < -45) {
-        self.headerViewHeight.constant = absoffset;
-        _isPulling = YES;
-        
-        if (offset <= -45) {
-            // Fade Header SubLabel by ratio of offset within the first 40 points.
-            self.areaTitle.alpha = (absoffset - 50) / (80 - 50);
-            self.areaTitle.center = CGPointMake(self.areaTitle.center.x, _defaultTitleY - ((80 - absoffset) * scalingFactor));
-        }
+    if (offsetDiff < -80) {
+        self.tableView.contentInset = UIEdgeInsetsMake(self.maxOffsetY, 0, 0, 0); // 100
+        self.headerViewHeight.constant = self.maxOffsetY;
+        self.routeTitle.center = CGPointMake(self.routeTitle.center.x, self.offStartingRouteY - (80 * scalingFactor));
+        self.areaTitle.center = CGPointMake(self.areaTitle.center.x, self.offStartingAreaY - (80 * scalingFactor));
+        self.areaTitle.layer.opacity = 0;
+    }
+    else if (offsetDiff > 0) {
+        self.tableView.contentInset = UIEdgeInsetsMake(self.offsetStartingY, 0, 0, 0); // 150
+        self.headerViewHeight.constant = self.offsetStartingY;
+        self.routeTitle.center = CGPointMake(self.routeTitle.center.x, self.offStartingRouteY);
+        self.areaTitle.center = CGPointMake(self.areaTitle.center.x, self.offStartingAreaY);
+        self.areaTitle.layer.opacity = 1.0f;
+    }
+    else {
+        self.tableView.contentInset = UIEdgeInsetsMake(ABS(offset), 0, 0, 0);
+        self.headerViewHeight.constant = ABS(offset);
+        self.routeTitle.center = CGPointMake(self.routeTitle.center.x, self.offStartingRouteY - (ABS(offsetDiff) * scalingFactor));
+        self.areaTitle.center = CGPointMake(self.areaTitle.center.x, self.offStartingAreaY - (ABS(offsetDiff) * scalingFactor));
+        self.areaTitle.layer.opacity = 1 - (ABS(offsetDiff) / 50); // Going opaque over the first 50 points
     }
     
-    if (offset > -45 && _isPulling) {
-        self.headerViewHeight.constant = 45;
-        self.areaTitle.alpha = 0;
-        _isPulling = NO;
-    }
-    
-    if (offset < -80 && _isPulling) {
-        self.headerViewHeight.constant = _defaultHeaderHeight;
-        self.areaTitle.center = CGPointMake(self.areaTitle.center.x, _defaultTitleY);
-        self.areaTitle.alpha = 1;
-        _isPulling = NO;
-    }
+    //NSLog(@"Current Offset:  %f", offset);
+    //NSLog(@"Offset Diff: %f", offsetDiff);
 }
-
-
-//- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-//{
-//    NSLog(@"Stopped Height: %f !!!", self.headerViewHeight.constant);
-//}
-
 
 #pragma mark - Navigation
 
