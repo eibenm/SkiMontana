@@ -282,7 +282,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3hk-Yq-jPO" userLabel="Header View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3hk-Yq-jPO" userLabel="Header View" customClass="SMDetailsHeaderView">
                                 <rect key="frame" x="0.0" y="64" width="600" height="150"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Route Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wlg-2v-XPg">
@@ -298,7 +298,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="1kU-Ob-wdg" firstAttribute="leading" secondItem="3hk-Yq-jPO" secondAttribute="leadingMargin" id="13G-YJ-Lom"/>
                                     <constraint firstAttribute="height" constant="150" id="5aJ-BW-AaC"/>
@@ -308,6 +307,11 @@
                                     <constraint firstItem="1kU-Ob-wdg" firstAttribute="trailing" secondItem="3hk-Yq-jPO" secondAttribute="trailingMargin" id="o8q-FH-3Ql"/>
                                     <constraint firstItem="1kU-Ob-wdg" firstAttribute="top" secondItem="wlg-2v-XPg" secondAttribute="bottom" constant="8" id="rWp-12-y6k"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="areaTitle" destination="1kU-Ob-wdg" id="xJ8-Wg-x0b"/>
+                                    <outlet property="headerViewHeight" destination="5aJ-BW-AaC" id="L6c-Nj-eux"/>
+                                    <outlet property="routeTitle" destination="wlg-2v-XPg" id="B0w-HK-0Bx"/>
+                                </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="5VO-kt-fgf">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
@@ -620,7 +624,6 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="IO6-3q-E0Z" firstAttribute="top" secondItem="5VO-kt-fgf" secondAttribute="bottom" id="7vB-rz-QZC"/>
                             <constraint firstItem="5VO-kt-fgf" firstAttribute="leading" secondItem="Xk5-yW-wzU" secondAttribute="leading" id="JGb-3g-IEg"/>
@@ -632,10 +635,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="areaTitle" destination="1kU-Ob-wdg" id="6pQ-QP-va7"/>
                         <outlet property="headerView" destination="3hk-Yq-jPO" id="rv1-Yr-h6f"/>
-                        <outlet property="headerViewHeight" destination="5aJ-BW-AaC" id="bOE-LH-mCB"/>
-                        <outlet property="routeTitle" destination="wlg-2v-XPg" id="LyC-lF-GDA"/>
                         <outlet property="tableView" destination="5VO-kt-fgf" id="hDB-Id-pHh"/>
                     </connections>
                 </viewController>

@@ -8,7 +8,7 @@
 
 #import "SMDetailsViewController.h"
 #import "SMRouteMapViewController.h"
-
+#import "SMDetailsHeaderView.h"
 #import "SMDetailsTableViewCell.h"
 
 #import "SMSlideAnimation.h"
@@ -19,12 +19,9 @@ static CGFloat scalingFactor = 0.3f;
 
 @interface SMDetailsViewController() <UITableViewDelegate, UITableViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UILabel *routeTitle;
-@property (weak, nonatomic) IBOutlet UILabel *areaTitle;
-
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UIView *headerView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerViewHeight;
+@property (weak, nonatomic) IBOutlet SMDetailsHeaderView *headerView;
+@property (weak, nonatomic) IBOutlet UIImageView *mapImageView;
 
 @property (nonatomic, assign) CGFloat offsetStartingY;
 @property (nonatomic, assign) CGFloat offStartingRouteY;
@@ -47,22 +44,29 @@ static CGFloat scalingFactor = 0.3f;
     self.tableView.dataSource = self;
     self.tableView.estimatedRowHeight = UITableViewAutomaticDimension;
     
-    [self setTitle:self.skiRoute.name_route];
-    
-    [self.areaTitle setText:self.nameArea];
-    [self.routeTitle setText:self.skiRoute.name_route];
+    [self.headerView.areaTitle setText:self.nameArea];
+    [self.headerView.routeTitle setText:self.skiRoute.name_route];
     
     self.offscreenCells = [NSMutableDictionary dictionary];
     
     self.headerView.layer.zPosition = 2;
     self.offsetStartingY = self.headerView.frame.size.height;
-    self.offStartingRouteY = self.routeTitle.center.y;
-    self.offStartingAreaY = self.areaTitle.center.y;
+    self.offStartingRouteY = self.headerView.routeTitle.center.y;
+    self.offStartingAreaY = self.headerView.areaTitle.center.y;
     self.maxOffsetY = 70.0f;
     
     [self.tableView setContentInset:UIEdgeInsetsMake(self.offsetStartingY, 0, 0, 0)];
-    //[self.tableView setBackgroundColor:[UIColor clearColor]];
     
+    [self.tableView setBackgroundColor:[UIColor colorWithRed:135.0/255.0 green:206.0/255.0 blue:250.0/255.0 alpha: 1.0]];
+    [self.headerView setBackgroundColor:[UIColor colorWithRed:135.0/255.0 green:206.0/255.0 blue:250.0/255.0 alpha: 1.0]];
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        [self scrollViewDidScroll:self.tableView];
+    } completion:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -114,12 +118,23 @@ static CGFloat scalingFactor = 0.3f;
     }
     
     if ([cellIdentifier isEqualToString:@"map"]) {
-        
+        /*
+        NSString *backgroundImage = [(File *)[self.skiRoute.ski_route_images.allObjects firstObject] avatar];
+        UIImageView *mapImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:backgroundImage]];
+        [mapImage setContentMode:UIViewContentModeScaleAspectFill];
+        [mapImage setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [cell setLayoutMargins:UIEdgeInsetsMake(0, 8, 0, 8)];
+        [cell setClipsToBounds:YES];
+        [cell addSubview:mapImage];
+        NSDictionary *views = NSDictionaryOfVariableBindings(mapImage);
+        [cell addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[mapImage]-|" options:kNilOptions metrics:nil views:views]];
+        [cell addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[mapImage]-|" options:kNilOptions metrics:nil views:views]];
+        */
     }
     
     if ([cellIdentifier isEqualToString:@"content"]) {
         [cell.labelElevation setText:[NSString stringWithFormat:@"%@ ft", self.skiRoute.elevation_gain]];
-        [cell.labelVertical setText:[NSString stringWithFormat:@"%@ ft", self.skiRoute.vertical]];
+        [cell.labelVertical setText:[NSString stringWithFormat:@"%@", self.skiRoute.vertical]];
         [cell.labelSlope setText:self.skiRoute.aspects];
         [cell.labelDistance setText:[NSString stringWithFormat:@"~%@ mi", self.skiRoute.distance]];
         [cell.labelSnowfall setText:[NSString stringWithFormat:@"%@ in", self.skiRoute.snowfall]];
@@ -241,28 +256,25 @@ static CGFloat scalingFactor = 0.3f;
     
     if (offsetDiff < -80) {
         self.tableView.contentInset = UIEdgeInsetsMake(self.maxOffsetY, 0, 0, 0); // 100
-        self.headerViewHeight.constant = self.maxOffsetY;
-        self.routeTitle.center = CGPointMake(self.routeTitle.center.x, self.offStartingRouteY - (80 * scalingFactor));
-        self.areaTitle.center = CGPointMake(self.areaTitle.center.x, self.offStartingAreaY - (80 * scalingFactor));
-        self.areaTitle.layer.opacity = 0;
+        self.headerView.headerViewHeight.constant = self.maxOffsetY;
+        self.headerView.routeTitle.center = CGPointMake(self.headerView.routeTitle.center.x, self.offStartingRouteY - (80 * scalingFactor));
+        self.headerView.areaTitle.center = CGPointMake(self.headerView.areaTitle.center.x, self.offStartingAreaY - (80 * scalingFactor));
+        self.headerView.areaTitle.layer.opacity = 0;
     }
     else if (offsetDiff > 0) {
         self.tableView.contentInset = UIEdgeInsetsMake(self.offsetStartingY, 0, 0, 0); // 150
-        self.headerViewHeight.constant = self.offsetStartingY;
-        self.routeTitle.center = CGPointMake(self.routeTitle.center.x, self.offStartingRouteY);
-        self.areaTitle.center = CGPointMake(self.areaTitle.center.x, self.offStartingAreaY);
-        self.areaTitle.layer.opacity = 1.0f;
+        self.headerView.headerViewHeight.constant = self.offsetStartingY;
+        self.headerView.routeTitle.center = CGPointMake(self.headerView.routeTitle.center.x, self.offStartingRouteY);
+        self.headerView.areaTitle.center = CGPointMake(self.headerView.areaTitle.center.x, self.offStartingAreaY);
+        self.headerView.areaTitle.layer.opacity = 1.0f;
     }
     else {
         self.tableView.contentInset = UIEdgeInsetsMake(ABS(offset), 0, 0, 0);
-        self.headerViewHeight.constant = ABS(offset);
-        self.routeTitle.center = CGPointMake(self.routeTitle.center.x, self.offStartingRouteY - (ABS(offsetDiff) * scalingFactor));
-        self.areaTitle.center = CGPointMake(self.areaTitle.center.x, self.offStartingAreaY - (ABS(offsetDiff) * scalingFactor));
-        self.areaTitle.layer.opacity = 1 - (ABS(offsetDiff) / 50); // Going opaque over the first 50 points
+        self.headerView.headerViewHeight.constant = ABS(offset);
+        self.headerView.routeTitle.center = CGPointMake(self.headerView.routeTitle.center.x, self.offStartingRouteY - (ABS(offsetDiff) * scalingFactor));
+        self.headerView.areaTitle.center = CGPointMake(self.headerView.areaTitle.center.x, self.offStartingAreaY - (ABS(offsetDiff) * scalingFactor));
+        self.headerView.areaTitle.layer.opacity = 1 - (ABS(offsetDiff) / 50); // Going opaque over the first 50 points
     }
-    
-    //NSLog(@"Current Offset:  %f", offset);
-    //NSLog(@"Offset Diff: %f", offsetDiff);
 }
 
 #pragma mark - Navigation

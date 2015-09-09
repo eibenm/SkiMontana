@@ -153,7 +153,7 @@ NSString *const SM_Glossary = @"Glossary";
     _persistentStoreCoordinator = [self persistentStoreCoordinator];
         
     if (!_persistentStoreCoordinator) {
-        return nil;
+        return NO;
     }
     
     NSArray *stores = [_persistentStoreCoordinator persistentStores];
@@ -165,11 +165,11 @@ NSString *const SM_Glossary = @"Glossary";
         BOOL success2 = [[NSFileManager defaultManager] removeItemAtPath:store.URL.path error:&fileError];
         if (!success1) {
             NSLog(@"Error clearing store: %@", storeError.localizedDescription);
-            return nil;
+            return NO;
         }
         if (!success2) {
             NSLog(@"Error clearing DB: %@", fileError.localizedDescription);
-            return nil;
+            return NO;
         }
         storeError = nil;
         fileError = nil;

@@ -2,7 +2,7 @@
 //  SkiRoutes.h
 //  SkiMontana
 //
-//  Created by Matt Eiben on 8/17/15.
+//  Created by Matt Eiben on 9/8/15.
 //  Copyright (c) 2015 Gneiss Software. All rights reserved.
 //
 
@@ -29,7 +29,7 @@
 @property (nonatomic, retain) NSString * short_desc;
 @property (nonatomic, retain) NSString * skier_traffic;
 @property (nonatomic, retain) NSString * snowfall;
-@property (nonatomic, retain) NSNumber * vertical;
+@property (nonatomic, retain) NSString * vertical;
 @property (nonatomic, retain) SkiAreas *ski_area;
 @property (nonatomic, retain) NSSet *ski_route_gps;
 @property (nonatomic, retain) NSSet *ski_route_images;

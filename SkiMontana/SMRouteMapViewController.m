@@ -54,6 +54,7 @@
         case LocationServiceDisabled:
         {
             [self showLocationServicesAlert];
+            // Center on Bozeman
             [self.mapView setZoom:12.0f atCoordinate:CLLocationCoordinate2DMake(45.682145, -111.046954) animated:YES];
             break;
         }
@@ -61,6 +62,7 @@
         case LocationServiceEnabled:
         {
 #if TARGET_IPHONE_SIMULATOR
+            // Center on Bozeman
             [self.mapView setZoom:12.0f atCoordinate:CLLocationCoordinate2DMake(45.682145, -111.046954) animated:YES];
             break;
 #else
