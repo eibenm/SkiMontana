@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB12986F1BA10E6C0046095B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB12986E1BA10E6C0046095B /* Images.xcassets */; };
 		CB17F6731AA93F4600048BC5 /* SMSkiAreaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB17F6721AA93F4600048BC5 /* SMSkiAreaTableViewCell.m */; };
 		CB17F6761AA93F5C00048BC5 /* SMSkiRouteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB17F6751AA93F5C00048BC5 /* SMSkiRouteTableViewCell.m */; };
 		CB3FBFC41AB67AFD00D5A037 /* SMAppearanceModifier.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3FBFC31AB67AFD00D5A037 /* SMAppearanceModifier.m */; };
@@ -37,7 +38,6 @@
 		CB9695201A9A3EF6009757B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB96951F1A9A3EF6009757B7 /* main.m */; };
 		CB9695231A9A3EF6009757B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9695221A9A3EF6009757B7 /* AppDelegate.m */; };
 		CB9695291A9A3EF6009757B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB9695271A9A3EF6009757B7 /* Main.storyboard */; };
-		CB96952B1A9A3EF6009757B7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB96952A1A9A3EF6009757B7 /* Images.xcassets */; };
 		CB96952E1A9A3EF6009757B7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB96952C1A9A3EF6009757B7 /* LaunchScreen.xib */; };
 		CB96953A1A9A3EF6009757B7 /* SkiMontanaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9695391A9A3EF6009757B7 /* SkiMontanaTests.m */; };
 		CB9695451A9A3FC1009757B7 /* SMIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9695441A9A3FC1009757B7 /* SMIntroViewController.m */; };
@@ -60,12 +60,6 @@
 		CBA338D91B82BACB001BA5FF /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA338D81B82BACB001BA5FF /* Reachability.m */; };
 		CBA338DC1B82BBD1001BA5FF /* SMReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA338DB1B82BBD1001BA5FF /* SMReachabilityManager.m */; };
 		CBB480801AA5703600C2A7E3 /* SMOverviewMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB4807F1AA5703600C2A7E3 /* SMOverviewMapViewController.m */; };
-		CBB4808E1AA5793A00C2A7E3 /* IMG_0190.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CBB480881AA5793A00C2A7E3 /* IMG_0190.jpg */; };
-		CBB4808F1AA5793A00C2A7E3 /* IMGP1106.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CBB480891AA5793A00C2A7E3 /* IMGP1106.jpg */; };
-		CBB480901AA5793A00C2A7E3 /* IMGP1108.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CBB4808A1AA5793A00C2A7E3 /* IMGP1108.jpg */; };
-		CBB480911AA5793A00C2A7E3 /* IMGP1109.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CBB4808B1AA5793A00C2A7E3 /* IMGP1109.jpg */; };
-		CBB480921AA5793A00C2A7E3 /* IMGP1110.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CBB4808C1AA5793A00C2A7E3 /* IMGP1110.jpg */; };
-		CBB480931AA5793A00C2A7E3 /* IMGP1111.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CBB4808D1AA5793A00C2A7E3 /* IMGP1111.jpg */; };
 		CBB480971AA57A8F00C2A7E3 /* UIButton+TintImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB480961AA57A8F00C2A7E3 /* UIButton+TintImage.m */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +74,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CB12986E1BA10E6C0046095B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CB17F6711AA93F4600048BC5 /* SMSkiAreaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSkiAreaTableViewCell.h; sourceTree = "<group>"; };
 		CB17F6721AA93F4600048BC5 /* SMSkiAreaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSkiAreaTableViewCell.m; sourceTree = "<group>"; };
 		CB17F6741AA93F5C00048BC5 /* SMSkiRouteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSkiRouteTableViewCell.h; sourceTree = "<group>"; };
@@ -133,7 +128,6 @@
 		CB9695211A9A3EF6009757B7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CB9695221A9A3EF6009757B7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		CB9695281A9A3EF6009757B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CB96952A1A9A3EF6009757B7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CB96952D1A9A3EF6009757B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		CB9695331A9A3EF6009757B7 /* SkiMontanaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkiMontanaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB9695381A9A3EF6009757B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -177,12 +171,6 @@
 		CBA338DB1B82BBD1001BA5FF /* SMReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMReachabilityManager.m; sourceTree = "<group>"; };
 		CBB4807E1AA5703600C2A7E3 /* SMOverviewMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMOverviewMapViewController.h; sourceTree = "<group>"; };
 		CBB4807F1AA5703600C2A7E3 /* SMOverviewMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMOverviewMapViewController.m; sourceTree = "<group>"; };
-		CBB480881AA5793A00C2A7E3 /* IMG_0190.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0190.jpg; sourceTree = "<group>"; };
-		CBB480891AA5793A00C2A7E3 /* IMGP1106.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMGP1106.jpg; sourceTree = "<group>"; };
-		CBB4808A1AA5793A00C2A7E3 /* IMGP1108.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMGP1108.jpg; sourceTree = "<group>"; };
-		CBB4808B1AA5793A00C2A7E3 /* IMGP1109.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMGP1109.jpg; sourceTree = "<group>"; };
-		CBB4808C1AA5793A00C2A7E3 /* IMGP1110.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMGP1110.jpg; sourceTree = "<group>"; };
-		CBB4808D1AA5793A00C2A7E3 /* IMGP1111.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMGP1111.jpg; sourceTree = "<group>"; };
 		CBB480951AA57A8F00C2A7E3 /* UIButton+TintImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+TintImage.h"; sourceTree = "<group>"; };
 		CBB480961AA57A8F00C2A7E3 /* UIButton+TintImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+TintImage.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -318,9 +306,8 @@
 				CB96954D1A9A467B009757B7 /* Base Classes */,
 				CB4208A21AA3B94C00ADFA97 /* Catagories */,
 				CB9695271A9A3EF6009757B7 /* Main.storyboard */,
-				CB96952A1A9A3EF6009757B7 /* Images.xcassets */,
 				CB96952C1A9A3EF6009757B7 /* LaunchScreen.xib */,
-				CBB480941AA5794000C2A7E3 /* Ski Images */,
+				CB12986E1BA10E6C0046095B /* Images.xcassets */,
 				CB96951D1A9A3EF6009757B7 /* Supporting Files */,
 				CB437C3E1A9C230600315353 /* Frameworks */,
 			);
@@ -438,19 +425,6 @@
 			name = TableCells;
 			sourceTree = "<group>";
 		};
-		CBB480941AA5794000C2A7E3 /* Ski Images */ = {
-			isa = PBXGroup;
-			children = (
-				CBB480881AA5793A00C2A7E3 /* IMG_0190.jpg */,
-				CBB480891AA5793A00C2A7E3 /* IMGP1106.jpg */,
-				CBB4808A1AA5793A00C2A7E3 /* IMGP1108.jpg */,
-				CBB4808B1AA5793A00C2A7E3 /* IMGP1109.jpg */,
-				CBB4808C1AA5793A00C2A7E3 /* IMGP1110.jpg */,
-				CBB4808D1AA5793A00C2A7E3 /* IMGP1111.jpg */,
-			);
-			name = "Ski Images";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -534,16 +508,10 @@
 			files = (
 				CB8694C41B09639B00D4A93F /* Mapbox.bundle in Resources */,
 				CB4208E61AA3FA6C00ADFA97 /* database.sqlite in Resources */,
-				CBB480921AA5793A00C2A7E3 /* IMGP1110.jpg in Resources */,
-				CBB4808E1AA5793A00C2A7E3 /* IMG_0190.jpg in Resources */,
+				CB12986F1BA10E6C0046095B /* Images.xcassets in Resources */,
 				CB9695291A9A3EF6009757B7 /* Main.storyboard in Resources */,
-				CBB480911AA5793A00C2A7E3 /* IMGP1109.jpg in Resources */,
 				CB96952E1A9A3EF6009757B7 /* LaunchScreen.xib in Resources */,
-				CBB480931AA5793A00C2A7E3 /* IMGP1111.jpg in Resources */,
-				CBB4808F1AA5793A00C2A7E3 /* IMGP1106.jpg in Resources */,
-				CB96952B1A9A3EF6009757B7 /* Images.xcassets in Resources */,
 				CB8694C21B09639B00D4A93F /* Headers in Resources */,
-				CBB480901AA5793A00C2A7E3 /* IMGP1108.jpg in Resources */,
 				CBA338AC1B82821F001BA5FF /* skiappdata.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,7 +11,7 @@
 @implementation SMWebViewController
 
 - (void)initSMWebViewWithHtmlDoc:(NSString *)htmlName
-{
+{ 
     // Setting up UIWebView
     CGFloat navbarheight = self.navigationController.navigationBar.frame.size.height;
     

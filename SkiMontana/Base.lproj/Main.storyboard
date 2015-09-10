@@ -329,6 +329,9 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="KX4xgZvxLCcnKebYo8Gw4mmffn_vgzeV.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="w9D-5E-XSl">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="119"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="6eT-xW-kNQ" firstAttribute="trailing" secondItem="vMy-uN-hHT" secondAttribute="trailingMargin" id="0P3-76-tt9"/>
@@ -775,4 +778,7 @@
             <point key="canvasLocation" x="2499" y="-1180"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="KX4xgZvxLCcnKebYo8Gw4mmffn_vgzeV.jpg" width="900" height="600"/>
+    </resources>
 </document>
