@@ -287,6 +287,7 @@ static CGFloat scalingFactor = 0.3f;
         SMSlideAnimation *layerAnimation = [[SMSlideAnimation alloc] initWithType:SMSlideAnimationFromRight];
         thisViewController.animationController = layerAnimation;
         modalController.transitioningDelegate = self.transitioningDelegate;
+        modalController.skiRoute = self.skiRoute;
     }
 }
 
