@@ -22,7 +22,6 @@
     [SMAppearanceModifier defaultAppearance];
     [SMConstants documentsFolderIfSimulator];
     [[SMUtilities sharedInstance] downloadSMJson];
-    
     return YES;
 }
 

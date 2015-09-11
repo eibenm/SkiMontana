@@ -18,19 +18,4 @@
 #endif
 }
 
-+ (BOOL)isIOS7OrLater
-{
-    return [[[UIDevice currentDevice] systemVersion] floatValue] >= 7;
-}
-
-+ (BOOL)isIOS8OrLater
-{
-    return [[[UIDevice currentDevice] systemVersion] floatValue] >= 8;
-}
-
-+ (BOOL)isRetinaDevice
-{
-    return [[UIScreen mainScreen] respondsToSelector:@selector(scale)] && [[UIScreen mainScreen] scale] >= 2;
-}
-
 @end

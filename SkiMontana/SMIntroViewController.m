@@ -67,6 +67,51 @@
 {
     [super viewWillAppear:YES];
     [self.navigationController setNavigationBarHidden:YES];
+    
+    /*
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        UIActivityIndicatorView *activity = [[UIActivityIndicatorView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        [activity setBackgroundColor:[UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:0.4]];
+        [activity setCenter:self.view.center];
+        [activity setHidesWhenStopped:YES];
+        [activity setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        [activity setAlpha:0];
+        [activity setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [self.view addSubview:activity];
+        NSDictionary *views1 = NSDictionaryOfVariableBindings(activity);
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[activity]|" options:kNilOptions metrics:nil views:views1]];
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[activity]|" options:kNilOptions metrics:nil views:views1]];
+        
+        UILabel *label = [[UILabel alloc] init];
+        [label setText:@"Loading new Data!"];
+        [label setTextAlignment:NSTextAlignmentCenter];
+        [label setFont:[UIFont boldSkiMontanaFontOfSize:22]];
+        [label setTextColor:[UIColor whiteColor]];
+        [label setTranslatesAutoresizingMaskIntoConstraints:NO];
+        
+        [activity addSubview:label];
+        NSDictionary *views2 = NSDictionaryOfVariableBindings(label);
+        [activity addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[label]-160-|" options:kNilOptions metrics:nil views:views2]];
+        [activity addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[label]|" options:kNilOptions metrics:nil views:views2]];
+        
+        [activity startAnimating];
+        
+        // After 2 seconds, fade the view in
+        // After 2 more seconds, fade the view out
+        [UIView animateWithDuration:0.25 animations:^{
+            [activity setAlpha:1];
+        } completion:^(BOOL finished) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [UIView animateWithDuration:0.25 animations:^{
+                    //[activity setAlpha:0];
+                } completion:^(BOOL finished) {
+                    //[activity stopAnimating];
+                }];
+            });
+        }];
+    });
+    */
 }
 
 - (void)didReceiveMemoryWarning
@@ -78,6 +123,23 @@
 {
     return YES;
 }
+
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+/*
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+{
+    return UIInterfaceOrientationPortrait;
+}
+*/
 
 - (IBAction)startSkiingAction:(id)sender
 {

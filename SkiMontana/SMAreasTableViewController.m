@@ -165,6 +165,10 @@
         SkiRoutes *skiRoute = [skiArea.ski_routes.allObjects objectAtIndex:indexPath.row - 1];
         NSSet *skiRouteImages = skiRoute.ski_route_images;
         
+        if ([skiArea.permissions  isEqual:[NSNumber numberWithBool:NO]]) {
+            cell.backgroundColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:0.2];
+        }
+        
         cell.labelRouteName.text = skiRoute.name_route;
         cell.textViewShortDescription.text = skiRoute.short_desc;
         cell.textViewShortDescription.textContainer.lineFragmentPadding = 0;

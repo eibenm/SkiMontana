@@ -6,6 +6,21 @@
 //  Copyright (c) 2014 Gneiss Software. All rights reserved.
 //
 
+static inline BOOL isIOS7OrLater()
+{
+    return [[[UIDevice currentDevice] systemVersion] floatValue] >= 7;
+}
+
+static inline BOOL isIOS8OrLater()
+{
+    return [[[UIDevice currentDevice] systemVersion] floatValue] >= 8;
+}
+
+static inline BOOL isRetinaDevice()
+{
+    return [[UIScreen mainScreen] respondsToSelector:@selector(scale)] && [[UIScreen mainScreen] scale] >= 2;
+}
+
 static NSString * const SKIAPP_JSON =                    @"skiappdata.json";
 static NSString * const SKIAPP_JSON_URL =                @"http://eibenm.com/downloads/skiappdata.json";
 static NSString * const MAPBOX_ACCESS_TOKEN =            @"pk.eyJ1IjoiZWliZW5tIiwiYSI6ImNBMU11WjAifQ.AVf0Ym7u2Rq4F9KQJ5kPQw";
@@ -35,9 +50,5 @@ static NSString * const SKIAPP_JSON = @"pro.webisite.com";
 @interface SMConstants : NSObject
 
 + (void)documentsFolderIfSimulator;
-
-+ (BOOL)isIOS7OrLater;
-+ (BOOL)isIOS8OrLater;
-+ (BOOL)isRetinaDevice;
 
 @end
