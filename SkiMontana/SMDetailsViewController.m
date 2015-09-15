@@ -28,10 +28,6 @@ static CGFloat scalingFactor = 0.3f;
 @property (nonatomic, assign) CGFloat offStartingAreaY;
 @property (nonatomic, assign) CGFloat maxOffsetY;
 
-// A dictionary of offscreen cells that are used within the tableView:heightForRowAtIndexPath: method to
-// handle the height calculations. These are never drawn onscreen.
-@property (strong, nonatomic) NSMutableDictionary *offscreenCells;
-
 @end
 
 @implementation SMDetailsViewController
@@ -42,12 +38,9 @@ static CGFloat scalingFactor = 0.3f;
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView.estimatedRowHeight = UITableViewAutomaticDimension;
     
     [self.headerView.areaTitle setText:self.nameArea];
     [self.headerView.routeTitle setText:self.skiRoute.name_route];
-    
-    self.offscreenCells = [NSMutableDictionary dictionary];
     
     self.headerView.layer.zPosition = 2;
     self.offsetStartingY = self.headerView.frame.size.height;
@@ -162,69 +155,10 @@ static CGFloat scalingFactor = 0.3f;
 
 #pragma mark - UITableViewDelegate
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    CGFloat height = UITableViewAutomaticDimension;
-    
-    switch (indexPath.row) {
-        case 0: cellIdentifier = @"map"; break;
-        case 1: cellIdentifier = @"content"; break;
-        case 2: cellIdentifier = @"overview"; break;
-        case 3: cellIdentifier = @"avalanche"; break;
-        case 4: cellIdentifier = @"directions"; break;
-    }
-    
-    switch (indexPath.row) {
-        case 0: height = 120; break;
-        case 1: height = 160; break;
-    }
-    
-    SMDetailsTableViewCell *cell = [self.offscreenCells objectForKey:cellIdentifier];
-    
-    if (!cell) {
-        cell = [[SMDetailsTableViewCell alloc] init];
-        [self.offscreenCells setObject:cell forKey:cellIdentifier];
-    }
-    
-    if ([cellIdentifier isEqualToString:@"overview"]) {
-        [cell.labelOverviewInformation setText:self.skiRoute.overview];
-        [cell setNeedsUpdateConstraints];
-        [cell updateConstraintsIfNeeded];
-        cell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(tableView.bounds), CGRectGetHeight(cell.bounds));
-        [cell setNeedsLayout];
-        [cell layoutIfNeeded];
-        CGFloat height = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
-        height += 1;
-    }
-    else if ([cellIdentifier isEqualToString:@"avalanche"]) {
-        [cell.labelAvalancheInformation setText:self.skiRoute.avalanche_info];
-        [cell setNeedsUpdateConstraints];
-        [cell updateConstraintsIfNeeded];
-        cell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(tableView.bounds), CGRectGetHeight(cell.bounds));
-        [cell setNeedsLayout];
-        [cell layoutIfNeeded];
-        CGFloat height = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
-        height += 1;
-    }
-    else if ([cellIdentifier isEqualToString:@"directions"]) {
-        [cell.labelDirectionsInformation setText:self.skiRoute.directions];
-        [cell setNeedsUpdateConstraints];
-        [cell updateConstraintsIfNeeded];
-        cell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(tableView.bounds), CGRectGetHeight(cell.bounds));
-        [cell setNeedsLayout];
-        [cell layoutIfNeeded];
-        CGFloat height = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
-        height += 1;
-    }
-    
-    return height;
-}
-
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     return [[UIView alloc] initWithFrame:CGRectZero];
 }
-
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
