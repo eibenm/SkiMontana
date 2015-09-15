@@ -42,21 +42,23 @@
 {
     SkiDataCompletionHandler completionHandler = ^(NSURLResponse *response, NSData *data, NSError *error) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        NSDictionary *parsedObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-        NSDictionary *internalJson = [self skiAppCurrentJson];
-        
-        NSLog(@"Recieved json from cloud");
-        
-        if (![internalJson isEqualToDictionary:parsedObject]) {
-            NSLog(@"Cloud json is different, refreshing local data!");
-            if ([[SMDataManager sharedInstance] clearPersistentStores]) {
-                NSLog(@"Stores cleared!");
-                [self copyJsonToDataStore:parsedObject];
-                if ([self createCopyOfSkiJsonFromData:parsedObject]) {
-                    NSLog(@"Updated Local Data from server");
-                }
-                else {
-                    NSLog(@"Problem writing Local json file from server");
+        if (data != nil) {
+            NSDictionary *parsedObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+            NSDictionary *internalJson = [self skiAppCurrentJson];
+            
+            NSLog(@"Recieved json from cloud");
+            
+            if (![internalJson[@"version"] isEqualToString:parsedObject[@"version"]]) {
+                NSLog(@"Cloud json is different, refreshing local data!");
+                if ([[SMDataManager sharedInstance] clearPersistentStores]) {
+                    NSLog(@"Stores cleared!");
+                    [self copyJsonToDataStore:parsedObject];
+                    if ([self createCopyOfSkiJsonFromData:parsedObject]) {
+                        NSLog(@"Updated Local Data from server");
+                    }
+                    else {
+                        NSLog(@"Problem writing Local json file from server");
+                    }
                 }
             }
         }

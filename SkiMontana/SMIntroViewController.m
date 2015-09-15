@@ -9,7 +9,8 @@
 #import "SMIntroViewController.h"
 #import "SMNavigationController.h"
 #import "SMAreasTableViewController.h"
-#import "SMInitialSegue.h"
+
+#import "SMDataLoading.h"
 
 @interface SMIntroViewController ()
 
@@ -134,17 +135,13 @@
     return UIInterfaceOrientationMaskPortrait;
 }
 
-/*
-- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
-{
-    return UIInterfaceOrientationPortrait;
-}
-*/
-
 - (IBAction)startSkiingAction:(id)sender
 {
     SMNavigationController *navController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"baseNavigationController"];
-    [[[SMInitialSegue alloc] initWithIdentifier:@"SMInitialSeue" source:self destination:navController] perform];
+    
+    [UIView transitionWithView:self.view.window duration:0.6 options:UIViewAnimationOptionTransitionFlipFromBottom animations:^{
+        [self presentViewController:navController animated:NO completion:nil];
+    } completion:nil];
 }
 
 @end

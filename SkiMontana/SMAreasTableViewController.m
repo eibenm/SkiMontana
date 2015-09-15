@@ -277,13 +277,18 @@
 {
     NSArray *skiAreaObjects = [self.fetchedResultsController fetchedObjects];
     
-    if([segue.identifier isEqualToString:@"showRoute"]) {
+    if ([segue.identifier isEqualToString:@"showRoute"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         SkiAreas *skiArea = [skiAreaObjects objectAtIndex:indexPath.section];
         SkiRoutes *skiRoute = [skiArea.ski_routes.allObjects objectAtIndex:indexPath.row - 1];
         SMDetailsViewController *viewController = [segue destinationViewController];
         viewController.nameArea = skiArea.name_area;
         viewController.skiRoute = skiRoute;
+        UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:nil action:nil];
+        [self.navigationItem setBackBarButtonItem:newBackButton];
+    }
+    
+    if ([segue.identifier isEqualToString:@"showGlossary"]) {
         UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:nil action:nil];
         [self.navigationItem setBackBarButtonItem:newBackButton];
     }

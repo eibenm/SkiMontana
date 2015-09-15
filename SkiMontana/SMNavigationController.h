@@ -10,7 +10,7 @@
 
 @interface SMNavigationController : UINavigationController <UINavigationControllerDelegate>
 
-/** 
+/**
  Animation for the transition
  */
 @property (strong, nonatomic) SMBaseAnimation *animationController;

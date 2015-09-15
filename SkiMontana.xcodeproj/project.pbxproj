@@ -16,7 +16,6 @@
 		CB4208A81AA3BB5100ADFA97 /* SMAreasTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4208A71AA3BB5100ADFA97 /* SMAreasTableViewController.m */; };
 		CB4208E41AA3E5C800ADFA97 /* NSArray+SkiMontana.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4208E31AA3E5C800ADFA97 /* NSArray+SkiMontana.m */; };
 		CB4208E61AA3FA6C00ADFA97 /* database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = CB4208E51AA3FA6C00ADFA97 /* database.sqlite */; };
-		CB4208E91AA3FDB500ADFA97 /* SMInitialSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4208E81AA3FDB500ADFA97 /* SMInitialSegue.m */; };
 		CB54F5FB1B9FD93100D93401 /* SMDetailsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB54F5FA1B9FD93100D93401 /* SMDetailsHeaderView.m */; };
 		CB54F5FE1B9FFB0900D93401 /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = CB54F5FD1B9FFB0900D93401 /* File.m */; };
 		CB54F6011B9FFB0A00D93401 /* Gps.m in Sources */ = {isa = PBXBuildFile; fileRef = CB54F6001B9FFB0A00D93401 /* Gps.m */; };
@@ -52,6 +51,8 @@
 		CB99FF5C1AB6347F0067E547 /* SMScaleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = CB99FF561AB6347F0067E547 /* SMScaleAnimation.m */; };
 		CB99FF5D1AB6347F0067E547 /* SMSlideAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = CB99FF581AB6347F0067E547 /* SMSlideAnimation.m */; };
 		CB99FF611AB635940067E547 /* SMTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB99FF601AB635940067E547 /* SMTableViewController.m */; };
+		CB9C21251BA7635100D0D5DC /* SMGlossaryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9C21241BA7635100D0D5DC /* SMGlossaryTableViewController.m */; };
+		CB9C21281BA7726D00D0D5DC /* SMGlossaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9C21271BA7726D00D0D5DC /* SMGlossaryTableViewCell.m */; };
 		CBA338A31B8280F0001BA5FF /* SMDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA338961B8280F0001BA5FF /* SMDataManager.m */; };
 		CBA338AC1B82821F001BA5FF /* skiappdata.json in Resources */ = {isa = PBXBuildFile; fileRef = CBA338AB1B82821F001BA5FF /* skiappdata.json */; };
 		CBA338AF1B8282AD001BA5FF /* SMUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA338AE1B8282AD001BA5FF /* SMUtilities.m */; };
@@ -61,6 +62,8 @@
 		CBA338DC1B82BBD1001BA5FF /* SMReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA338DB1B82BBD1001BA5FF /* SMReachabilityManager.m */; };
 		CBB480801AA5703600C2A7E3 /* SMOverviewMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB4807F1AA5703600C2A7E3 /* SMOverviewMapViewController.m */; };
 		CBB480971AA57A8F00C2A7E3 /* UIButton+TintImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB480961AA57A8F00C2A7E3 /* UIButton+TintImage.m */; };
+		CBF5CA901BA676AC00FDF3E0 /* SMDataLoading.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBF5CA8F1BA676AC00FDF3E0 /* SMDataLoading.xib */; };
+		CBF5CA931BA676C800FDF3E0 /* SMDataLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF5CA921BA676C800FDF3E0 /* SMDataLoading.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,8 +93,6 @@
 		CB4208E21AA3E5C800ADFA97 /* NSArray+SkiMontana.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+SkiMontana.h"; sourceTree = "<group>"; };
 		CB4208E31AA3E5C800ADFA97 /* NSArray+SkiMontana.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+SkiMontana.m"; sourceTree = "<group>"; };
 		CB4208E51AA3FA6C00ADFA97 /* database.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = database.sqlite; sourceTree = "<group>"; };
-		CB4208E71AA3FDB500ADFA97 /* SMInitialSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMInitialSegue.h; sourceTree = "<group>"; };
-		CB4208E81AA3FDB500ADFA97 /* SMInitialSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMInitialSegue.m; sourceTree = "<group>"; };
 		CB54F5F91B9FD93100D93401 /* SMDetailsHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDetailsHeaderView.h; sourceTree = "<group>"; };
 		CB54F5FA1B9FD93100D93401 /* SMDetailsHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDetailsHeaderView.m; sourceTree = "<group>"; };
 		CB54F5FC1B9FFB0900D93401 /* File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = File.h; sourceTree = "<group>"; };
@@ -157,6 +158,10 @@
 		CB99FF581AB6347F0067E547 /* SMSlideAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSlideAnimation.m; sourceTree = "<group>"; };
 		CB99FF5F1AB635940067E547 /* SMTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTableViewController.h; sourceTree = "<group>"; };
 		CB99FF601AB635940067E547 /* SMTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTableViewController.m; sourceTree = "<group>"; };
+		CB9C21231BA7635100D0D5DC /* SMGlossaryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMGlossaryTableViewController.h; sourceTree = "<group>"; };
+		CB9C21241BA7635100D0D5DC /* SMGlossaryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMGlossaryTableViewController.m; sourceTree = "<group>"; };
+		CB9C21261BA7726D00D0D5DC /* SMGlossaryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMGlossaryTableViewCell.h; sourceTree = "<group>"; };
+		CB9C21271BA7726D00D0D5DC /* SMGlossaryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMGlossaryTableViewCell.m; sourceTree = "<group>"; };
 		CBA338951B8280F0001BA5FF /* SMDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDataManager.h; sourceTree = "<group>"; };
 		CBA338961B8280F0001BA5FF /* SMDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDataManager.m; sourceTree = "<group>"; };
 		CBA338981B8280F0001BA5FF /* SMManagedObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMManagedObjects.h; sourceTree = "<group>"; };
@@ -173,6 +178,9 @@
 		CBB4807F1AA5703600C2A7E3 /* SMOverviewMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMOverviewMapViewController.m; sourceTree = "<group>"; };
 		CBB480951AA57A8F00C2A7E3 /* UIButton+TintImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+TintImage.h"; sourceTree = "<group>"; };
 		CBB480961AA57A8F00C2A7E3 /* UIButton+TintImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+TintImage.m"; sourceTree = "<group>"; };
+		CBF5CA8F1BA676AC00FDF3E0 /* SMDataLoading.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMDataLoading.xib; sourceTree = "<group>"; };
+		CBF5CA911BA676C800FDF3E0 /* SMDataLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDataLoading.h; sourceTree = "<group>"; };
+		CBF5CA921BA676C800FDF3E0 /* SMDataLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDataLoading.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,15 +238,6 @@
 			name = Catagories;
 			sourceTree = "<group>";
 		};
-		CB4208EA1AA4039400ADFA97 /* Segues */ = {
-			isa = PBXGroup;
-			children = (
-				CB4208E71AA3FDB500ADFA97 /* SMInitialSegue.h */,
-				CB4208E81AA3FDB500ADFA97 /* SMInitialSegue.m */,
-			);
-			name = Segues;
-			sourceTree = "<group>";
-		};
 		CB437C3E1A9C230600315353 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,10 +287,15 @@
 				CB9695221A9A3EF6009757B7 /* AppDelegate.m */,
 				CB9695431A9A3FC1009757B7 /* SMIntroViewController.h */,
 				CB9695441A9A3FC1009757B7 /* SMIntroViewController.m */,
+				CBF5CA8F1BA676AC00FDF3E0 /* SMDataLoading.xib */,
+				CBF5CA911BA676C800FDF3E0 /* SMDataLoading.h */,
+				CBF5CA921BA676C800FDF3E0 /* SMDataLoading.m */,
 				CB4208A61AA3BB5100ADFA97 /* SMAreasTableViewController.h */,
 				CB4208A71AA3BB5100ADFA97 /* SMAreasTableViewController.m */,
 				CB99FF461AB624F10067E547 /* SMAreaOverviewViewController.h */,
 				CB99FF471AB624F10067E547 /* SMAreaOverviewViewController.m */,
+				CB9C21231BA7635100D0D5DC /* SMGlossaryTableViewController.h */,
+				CB9C21241BA7635100D0D5DC /* SMGlossaryTableViewController.m */,
 				CBB4807E1AA5703600C2A7E3 /* SMOverviewMapViewController.h */,
 				CBB4807F1AA5703600C2A7E3 /* SMOverviewMapViewController.m */,
 				CB7446211AEDBE670070B36D /* SMDetailsViewController.h */,
@@ -299,7 +303,6 @@
 				CB76D9C41AFC6102005EC2E8 /* SMRouteMapViewController.h */,
 				CB76D9C51AFC6102005EC2E8 /* SMRouteMapViewController.m */,
 				CBB480871AA5774D00C2A7E3 /* TableCells */,
-				CB4208EA1AA4039400ADFA97 /* Segues */,
 				CB235EAE1A9A591C0002E482 /* Utility Classes */,
 				CB96955A1A9A46CD009757B7 /* Data Manager */,
 				CB99FF5E1AB634860067E547 /* Animation Controllers */,
@@ -421,6 +424,8 @@
 				CB7446251AEEA36A0070B36D /* SMDetailsInformationTableViewCell.m */,
 				CB7446271AEEA38E0070B36D /* SMDetailsTableViewCell.h */,
 				CB7446281AEEA38E0070B36D /* SMDetailsTableViewCell.m */,
+				CB9C21261BA7726D00D0D5DC /* SMGlossaryTableViewCell.h */,
+				CB9C21271BA7726D00D0D5DC /* SMGlossaryTableViewCell.m */,
 			);
 			name = TableCells;
 			sourceTree = "<group>";
@@ -508,6 +513,7 @@
 			files = (
 				CB8694C41B09639B00D4A93F /* Mapbox.bundle in Resources */,
 				CB4208E61AA3FA6C00ADFA97 /* database.sqlite in Resources */,
+				CBF5CA901BA676AC00FDF3E0 /* SMDataLoading.xib in Resources */,
 				CB12986F1BA10E6C0046095B /* Images.xcassets in Resources */,
 				CB9695291A9A3EF6009757B7 /* Main.storyboard in Resources */,
 				CB96952E1A9A3EF6009757B7 /* LaunchScreen.xib in Resources */,
@@ -534,12 +540,14 @@
 				CB99FF481AB624F10067E547 /* SMAreaOverviewViewController.m in Sources */,
 				CBB480801AA5703600C2A7E3 /* SMOverviewMapViewController.m in Sources */,
 				CB9695451A9A3FC1009757B7 /* SMIntroViewController.m in Sources */,
+				CBF5CA931BA676C800FDF3E0 /* SMDataLoading.m in Sources */,
 				CB17F6731AA93F4600048BC5 /* SMSkiAreaTableViewCell.m in Sources */,
 				CB4208A81AA3BB5100ADFA97 /* SMAreasTableViewController.m in Sources */,
 				CB54F60A1B9FFB0A00D93401 /* Glossary.m in Sources */,
 				CBA338DC1B82BBD1001BA5FF /* SMReachabilityManager.m in Sources */,
 				CB99FF5A1AB6347F0067E547 /* SMFlipAnimation.m in Sources */,
 				CB99FF611AB635940067E547 /* SMTableViewController.m in Sources */,
+				CB9C21281BA7726D00D0D5DC /* SMGlossaryTableViewCell.m in Sources */,
 				CBA338AF1B8282AD001BA5FF /* SMUtilities.m in Sources */,
 				CB76D9C61AFC6102005EC2E8 /* SMRouteMapViewController.m in Sources */,
 				CB4208E41AA3E5C800ADFA97 /* NSArray+SkiMontana.m in Sources */,
@@ -565,7 +573,7 @@
 				CB54F6041B9FFB0A00D93401 /* SkiAreas.m in Sources */,
 				CB9695201A9A3EF6009757B7 /* main.m in Sources */,
 				CB99FF451AB61F010067E547 /* UIColor+FromHex.m in Sources */,
-				CB4208E91AA3FDB500ADFA97 /* SMInitialSegue.m in Sources */,
+				CB9C21251BA7635100D0D5DC /* SMGlossaryTableViewController.m in Sources */,
 				CB99FF5B1AB6347F0067E547 /* SMLayerAnimation.m in Sources */,
 				CB99FF5C1AB6347F0067E547 /* SMScaleAnimation.m in Sources */,
 				CB99FF5D1AB6347F0067E547 /* SMSlideAnimation.m in Sources */,
