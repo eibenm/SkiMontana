@@ -53,6 +53,7 @@
 		CB99FF611AB635940067E547 /* SMTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB99FF601AB635940067E547 /* SMTableViewController.m */; };
 		CB9C21251BA7635100D0D5DC /* SMGlossaryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9C21241BA7635100D0D5DC /* SMGlossaryTableViewController.m */; };
 		CB9C21281BA7726D00D0D5DC /* SMGlossaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9C21271BA7726D00D0D5DC /* SMGlossaryTableViewCell.m */; };
+		CB9C21301BA7ED5400D0D5DC /* bridgerRange.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CB9C212E1BA7EBD500D0D5DC /* bridgerRange.mbtiles */; };
 		CBA338A31B8280F0001BA5FF /* SMDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA338961B8280F0001BA5FF /* SMDataManager.m */; };
 		CBA338AC1B82821F001BA5FF /* skiappdata.json in Resources */ = {isa = PBXBuildFile; fileRef = CBA338AB1B82821F001BA5FF /* skiappdata.json */; };
 		CBA338AF1B8282AD001BA5FF /* SMUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA338AE1B8282AD001BA5FF /* SMUtilities.m */; };
@@ -162,6 +163,7 @@
 		CB9C21241BA7635100D0D5DC /* SMGlossaryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMGlossaryTableViewController.m; sourceTree = "<group>"; };
 		CB9C21261BA7726D00D0D5DC /* SMGlossaryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMGlossaryTableViewCell.h; sourceTree = "<group>"; };
 		CB9C21271BA7726D00D0D5DC /* SMGlossaryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMGlossaryTableViewCell.m; sourceTree = "<group>"; };
+		CB9C212E1BA7EBD500D0D5DC /* bridgerRange.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = bridgerRange.mbtiles; path = Tiles/bridgerRange.mbtiles; sourceTree = "<group>"; };
 		CBA338951B8280F0001BA5FF /* SMDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDataManager.h; sourceTree = "<group>"; };
 		CBA338961B8280F0001BA5FF /* SMDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDataManager.m; sourceTree = "<group>"; };
 		CBA338981B8280F0001BA5FF /* SMManagedObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMManagedObjects.h; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 				CB9695271A9A3EF6009757B7 /* Main.storyboard */,
 				CB96952C1A9A3EF6009757B7 /* LaunchScreen.xib */,
 				CB12986E1BA10E6C0046095B /* Images.xcassets */,
+				CB9C212F1BA7EBDB00D0D5DC /* MBTiles */,
 				CB96951D1A9A3EF6009757B7 /* Supporting Files */,
 				CB437C3E1A9C230600315353 /* Frameworks */,
 			);
@@ -393,6 +396,14 @@
 				CB99FF581AB6347F0067E547 /* SMSlideAnimation.m */,
 			);
 			name = "Animation Controllers";
+			sourceTree = "<group>";
+		};
+		CB9C212F1BA7EBDB00D0D5DC /* MBTiles */ = {
+			isa = PBXGroup;
+			children = (
+				CB9C212E1BA7EBD500D0D5DC /* bridgerRange.mbtiles */,
+			);
+			name = MBTiles;
 			sourceTree = "<group>";
 		};
 		CBA338AA1B828105001BA5FF /* Managed Models */ = {
@@ -511,6 +522,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB9C21301BA7ED5400D0D5DC /* bridgerRange.mbtiles in Resources */,
 				CB8694C41B09639B00D4A93F /* Mapbox.bundle in Resources */,
 				CB4208E61AA3FA6C00ADFA97 /* database.sqlite in Resources */,
 				CBF5CA901BA676AC00FDF3E0 /* SMDataLoading.xib in Resources */,

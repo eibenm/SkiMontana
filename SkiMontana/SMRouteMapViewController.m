@@ -10,7 +10,8 @@
 #import "CLLocationHelper.h"
 #import "Mapbox.h"
 
-#define markerTint [UIColor colorWithRed:0.120 green:0.550 blue:0.670 alpha:1.000]
+SMCoordinateBounds const worldBounds = (SMCoordinateBounds){(CLLocationCoordinate2D){-85, -180}, (CLLocationCoordinate2D){85, 180}};
+CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145, -111.046954};
 
 @interface SMRouteMapViewController() <UINavigationBarDelegate, RMMapViewDelegate>
 
@@ -30,7 +31,7 @@
     
     self.navigationBar.delegate = self;
     self.gpsObjects = self.skiRoute.ski_route_gps;
-    
+
     // Setting up Navigation Bar
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissViewController)];
     self.navItem = [[UINavigationItem alloc] initWithTitle:self.skiRoute.name_route];
@@ -39,21 +40,38 @@
     
     // Setting up Mapbox
     [[RMConfiguration sharedInstance] setAccessToken:MAPBOX_ACCESS_TOKEN];
-    RMMapboxSource *tileSource = [[RMMapboxSource alloc] initWithMapID:@"mapbox.streets"];
+    
+    //+ (NSString *)pathForBundleResourceNamed:(NSString *)name ofType:(NSString *)extension;
+    
+    NSURL *tileUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"bridgerRange" ofType:@"mbtiles"]];
+    RMMBTilesSource *tileSource = [[RMMBTilesSource alloc] initWithTileSetURL:tileUrl];
+    //RMMapboxSource *tileSource = [[RMMapboxSource alloc] initWithMapID:@"mapbox.streets"];
     self.mapView = [[RMMapView alloc] initWithFrame:self.mapViewContainer.bounds andTilesource:tileSource];
-    self.mapView.delegate = self;
-    self.mapView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-    self.mapView.adjustTilesForRetinaDisplay = YES;
-    self.mapView.showsUserLocation = YES;
-    self.mapView.zoom = 4;
-    self.mapView.centerCoordinate = CLLocationCoordinate2DMake(38.910003,-77.015533);
+    [self.mapView setDelegate:self];
+    [self.mapView setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
+    [self.mapView setAdjustTilesForRetinaDisplay:YES];
+    [self.mapView setShowsUserLocation:YES];
+    [self.mapView setZoom:4];
+    [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake(38.910003,-77.015533)];
+    [self.mapView setHideAttribution:YES];
     [self.mapViewContainer addSubview:self.mapView];
+        
+    NSLog(@"Native bounds of '%@' tile layer:", tileSource.shortName);
+    NSLog(@"Southwest - Lat: %f, Lon: %f", tileSource.latitudeLongitudeBoundingBox.southWest.latitude, tileSource.latitudeLongitudeBoundingBox.southWest.longitude);
+    NSLog(@"Northeast - Lat: %f, Lon: %f", tileSource.latitudeLongitudeBoundingBox.northEast.latitude, tileSource.latitudeLongitudeBoundingBox.northEast.longitude);
+    NSLog(@"Max zoom: %f, Min zoom: %f", tileSource.maxZoom, tileSource.minZoom);
+    
+    // This temporarily unlocks the tile bounds constraints.
+    [self.mapView setConstraintsSouthWest:worldBounds.southwest
+                                northEast:worldBounds.northeast];
     
     // Setting up marker annotation
     for (Gps *gps in self.gpsObjects) {
+        NSString *title = [NSString stringWithFormat:@"Waypoint: %@", gps.waypoint];
+        NSString *subtitle = [NSString stringWithFormat:@"Lat: %@, Lon: %@", gps.lat_dms, gps.lon_dms];
         CLLocationCoordinate2D coords = CLLocationCoordinate2DMake(gps.lat.floatValue, gps.lon.floatValue);
-        RMAnnotation *annotation = [[RMAnnotation alloc] initWithMapView:self.mapView coordinate:coords andTitle:@"Coordiantes"];
-        [annotation setSubtitle:[NSString stringWithFormat:@"Lat: %@, Lon: %@", gps.lat_dms, gps.lon_dms]];
+        RMAnnotation *annotation = [[RMAnnotation alloc] initWithMapView:self.mapView coordinate:coords andTitle:title];
+        [annotation setSubtitle:subtitle];
         [self.mapView addAnnotation:annotation];
     }
 }
@@ -67,7 +85,7 @@
         case LocationServiceDisabled:
         {
             [self showLocationServicesAlert];
-            [self.mapView setZoom:12.0f atCoordinate:CLLocationCoordinate2DMake(45.682145, -111.046954) animated:YES];
+            [self.mapView setZoom:12.0f atCoordinate:bozemanCoords animated:YES];
             break;
         }
             
@@ -75,7 +93,7 @@
         {
 #if TARGET_IPHONE_SIMULATOR
             // Center on Bozeman
-            [self.mapView setZoom:12.0f atCoordinate:CLLocationCoordinate2DMake(45.682145, -111.046954) animated:YES];
+            [self.mapView setZoom:12.0f atCoordinate:bozemanCoords animated:YES];
             break;
 #else
             float userLat = self.mapView.userLocation.location.coordinate.latitude;
@@ -148,7 +166,7 @@
         return nil;
     }
     
-    RMMarker *marker = [[RMMarker alloc] initWithMapboxMarkerImage:@"skiing" tintColor:markerTint];
+    RMMarker *marker = [[RMMarker alloc] initWithMapboxMarkerImage:@"skiing" tintColor:[UIColor colorWithRed:0.120 green:0.550 blue:0.670 alpha:1.000]];
     marker.canShowCallout = YES;
     return marker;
 }

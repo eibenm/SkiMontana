@@ -235,11 +235,11 @@
     [fetchRequest setFetchBatchSize:20];
     [fetchRequest setSortDescriptors:descriptors];
     
-    NSFetchedResultsController *fetchedResultsController = [[NSFetchedResultsController alloc]
-            initWithFetchRequest:fetchRequest
-            managedObjectContext:self.managedObjectContext
-            sectionNameKeyPath:@"name_area"
-            cacheName:nil];
+    NSFetchedResultsController *fetchedResultsController =
+        [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                            managedObjectContext:self.managedObjectContext
+                                              sectionNameKeyPath:@"name_area"
+                                                       cacheName:nil];
     
     fetchedResultsController.delegate = self;
     self.fetchedResultsController = fetchedResultsController;
@@ -289,6 +289,16 @@
     }
     
     if ([segue.identifier isEqualToString:@"showGlossary"]) {
+        
+        /*
+        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"comgoogleearth://"]]) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"ccomgoogleearth://"]];
+        }
+        else {
+            NSLog(@"Can't use Google Earth");
+        }
+        */
+        
         UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:nil action:nil];
         [self.navigationItem setBackBarButtonItem:newBackButton];
     }
