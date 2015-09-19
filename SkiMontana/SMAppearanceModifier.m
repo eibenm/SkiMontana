@@ -31,6 +31,8 @@
         NSFontAttributeName: [UIFont boldSkiMontanaFontOfSize:20.0f],
     }];
     
+    //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
     /* UIBarButton Item Customizations */
     
     [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSFontAttributeName: [UIFont boldSkiMontanaFontOfSize:16.0]}

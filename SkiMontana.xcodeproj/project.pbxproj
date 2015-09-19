@@ -10,6 +10,9 @@
 		CB12986F1BA10E6C0046095B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB12986E1BA10E6C0046095B /* Images.xcassets */; };
 		CB17F6731AA93F4600048BC5 /* SMSkiAreaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB17F6721AA93F4600048BC5 /* SMSkiAreaTableViewCell.m */; };
 		CB17F6761AA93F5C00048BC5 /* SMSkiRouteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB17F6751AA93F5C00048BC5 /* SMSkiRouteTableViewCell.m */; };
+		CB2B346A1BAE058F007067C3 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2B34691BAE058F007067C3 /* StoreKit.framework */; };
+		CB2B346D1BAE0BB7007067C3 /* SMIAPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2B346C1BAE0BB7007067C3 /* SMIAPViewController.m */; settings = {ASSET_TAGS = (); }; };
+		CB2B346F1BAE0C1D007067C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB2B346E1BAE0C1D007067C3 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
 		CB3FBFC41AB67AFD00D5A037 /* SMAppearanceModifier.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3FBFC31AB67AFD00D5A037 /* SMAppearanceModifier.m */; };
 		CB4208A11AA3B94200ADFA97 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4208A01AA3B94200ADFA97 /* UIImage+ImageEffects.m */; };
 		CB4208A51AA3B98700ADFA97 /* UIFont+SkiMontana.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4208A41AA3B98700ADFA97 /* UIFont+SkiMontana.m */; };
@@ -36,7 +39,6 @@
 		CB8694CE1B0A8B6300D4A93F /* CLLocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8694CD1B0A8B6300D4A93F /* CLLocationHelper.m */; };
 		CB9695201A9A3EF6009757B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB96951F1A9A3EF6009757B7 /* main.m */; };
 		CB9695231A9A3EF6009757B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9695221A9A3EF6009757B7 /* AppDelegate.m */; };
-		CB9695291A9A3EF6009757B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB9695271A9A3EF6009757B7 /* Main.storyboard */; };
 		CB96952E1A9A3EF6009757B7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB96952C1A9A3EF6009757B7 /* LaunchScreen.xib */; };
 		CB96953A1A9A3EF6009757B7 /* SkiMontanaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9695391A9A3EF6009757B7 /* SkiMontanaTests.m */; };
 		CB9695451A9A3FC1009757B7 /* SMIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9695441A9A3FC1009757B7 /* SMIntroViewController.m */; };
@@ -61,7 +63,6 @@
 		CBA338CA1B82A883001BA5FF /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA338C91B82A883001BA5FF /* libsqlite3.dylib */; };
 		CBA338D91B82BACB001BA5FF /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA338D81B82BACB001BA5FF /* Reachability.m */; };
 		CBA338DC1B82BBD1001BA5FF /* SMReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA338DB1B82BBD1001BA5FF /* SMReachabilityManager.m */; };
-		CBB480801AA5703600C2A7E3 /* SMOverviewMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB4807F1AA5703600C2A7E3 /* SMOverviewMapViewController.m */; };
 		CBB480971AA57A8F00C2A7E3 /* UIButton+TintImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB480961AA57A8F00C2A7E3 /* UIButton+TintImage.m */; };
 		CBF5CA901BA676AC00FDF3E0 /* SMDataLoading.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBF5CA8F1BA676AC00FDF3E0 /* SMDataLoading.xib */; };
 		CBF5CA931BA676C800FDF3E0 /* SMDataLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF5CA921BA676C800FDF3E0 /* SMDataLoading.m */; };
@@ -83,6 +84,10 @@
 		CB17F6721AA93F4600048BC5 /* SMSkiAreaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSkiAreaTableViewCell.m; sourceTree = "<group>"; };
 		CB17F6741AA93F5C00048BC5 /* SMSkiRouteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSkiRouteTableViewCell.h; sourceTree = "<group>"; };
 		CB17F6751AA93F5C00048BC5 /* SMSkiRouteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSkiRouteTableViewCell.m; sourceTree = "<group>"; };
+		CB2B34691BAE058F007067C3 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		CB2B346B1BAE0BB7007067C3 /* SMIAPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMIAPViewController.h; sourceTree = "<group>"; };
+		CB2B346C1BAE0BB7007067C3 /* SMIAPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMIAPViewController.m; sourceTree = "<group>"; };
+		CB2B346E1BAE0C1D007067C3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		CB3FBFC21AB67AFD00D5A037 /* SMAppearanceModifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAppearanceModifier.h; sourceTree = "<group>"; };
 		CB3FBFC31AB67AFD00D5A037 /* SMAppearanceModifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAppearanceModifier.m; sourceTree = "<group>"; };
 		CB42089F1AA3B94200ADFA97 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
@@ -129,7 +134,6 @@
 		CB96951F1A9A3EF6009757B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CB9695211A9A3EF6009757B7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CB9695221A9A3EF6009757B7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CB9695281A9A3EF6009757B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CB96952D1A9A3EF6009757B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		CB9695331A9A3EF6009757B7 /* SkiMontanaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkiMontanaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB9695381A9A3EF6009757B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -176,8 +180,6 @@
 		CBA338D81B82BACB001BA5FF /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		CBA338DA1B82BBD1001BA5FF /* SMReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMReachabilityManager.h; sourceTree = "<group>"; };
 		CBA338DB1B82BBD1001BA5FF /* SMReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMReachabilityManager.m; sourceTree = "<group>"; };
-		CBB4807E1AA5703600C2A7E3 /* SMOverviewMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMOverviewMapViewController.h; sourceTree = "<group>"; };
-		CBB4807F1AA5703600C2A7E3 /* SMOverviewMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMOverviewMapViewController.m; sourceTree = "<group>"; };
 		CBB480951AA57A8F00C2A7E3 /* UIButton+TintImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+TintImage.h"; sourceTree = "<group>"; };
 		CBB480961AA57A8F00C2A7E3 /* UIButton+TintImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+TintImage.m"; sourceTree = "<group>"; };
 		CBF5CA8F1BA676AC00FDF3E0 /* SMDataLoading.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMDataLoading.xib; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				CB8694C91B09649D00D4A93F /* QuartzCore.framework in Frameworks */,
 				CB8694C71B09649200D4A93F /* CoreLocation.framework in Frameworks */,
 				CB8694C31B09639B00D4A93F /* libMapbox.a in Frameworks */,
+				CB2B346A1BAE058F007067C3 /* StoreKit.framework in Frameworks */,
 				CBA338CA1B82A883001BA5FF /* libsqlite3.dylib in Frameworks */,
 				CB8694CB1B0964AC00D4A93F /* libz.dylib in Frameworks */,
 			);
@@ -246,6 +249,7 @@
 				CB8694C51B0963A300D4A93F /* Mapbox */,
 				CB8694C81B09649D00D4A93F /* QuartzCore.framework */,
 				CB8694C61B09649200D4A93F /* CoreLocation.framework */,
+				CB2B34691BAE058F007067C3 /* StoreKit.framework */,
 				CBA338C91B82A883001BA5FF /* libsqlite3.dylib */,
 				CB8694CA1B0964AC00D4A93F /* libz.dylib */,
 			);
@@ -298,20 +302,20 @@
 				CB99FF471AB624F10067E547 /* SMAreaOverviewViewController.m */,
 				CB9C21231BA7635100D0D5DC /* SMGlossaryTableViewController.h */,
 				CB9C21241BA7635100D0D5DC /* SMGlossaryTableViewController.m */,
-				CBB4807E1AA5703600C2A7E3 /* SMOverviewMapViewController.h */,
-				CBB4807F1AA5703600C2A7E3 /* SMOverviewMapViewController.m */,
 				CB7446211AEDBE670070B36D /* SMDetailsViewController.h */,
 				CB7446221AEDBE670070B36D /* SMDetailsViewController.m */,
 				CB76D9C41AFC6102005EC2E8 /* SMRouteMapViewController.h */,
 				CB76D9C51AFC6102005EC2E8 /* SMRouteMapViewController.m */,
+				CB2B346B1BAE0BB7007067C3 /* SMIAPViewController.h */,
+				CB2B346C1BAE0BB7007067C3 /* SMIAPViewController.m */,
 				CBB480871AA5774D00C2A7E3 /* TableCells */,
 				CB235EAE1A9A591C0002E482 /* Utility Classes */,
 				CB96955A1A9A46CD009757B7 /* Data Manager */,
 				CB99FF5E1AB634860067E547 /* Animation Controllers */,
 				CB96954D1A9A467B009757B7 /* Base Classes */,
 				CB4208A21AA3B94C00ADFA97 /* Catagories */,
-				CB9695271A9A3EF6009757B7 /* Main.storyboard */,
 				CB96952C1A9A3EF6009757B7 /* LaunchScreen.xib */,
+				CB2B346E1BAE0C1D007067C3 /* Main.storyboard */,
 				CB12986E1BA10E6C0046095B /* Images.xcassets */,
 				CB9C212F1BA7EBDB00D0D5DC /* MBTiles */,
 				CB96951D1A9A3EF6009757B7 /* Supporting Files */,
@@ -491,6 +495,11 @@
 					CB9695191A9A3EF6009757B7 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = T8FKWXWY96;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 					CB9695321A9A3EF6009757B7 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -527,8 +536,8 @@
 				CB4208E61AA3FA6C00ADFA97 /* database.sqlite in Resources */,
 				CBF5CA901BA676AC00FDF3E0 /* SMDataLoading.xib in Resources */,
 				CB12986F1BA10E6C0046095B /* Images.xcassets in Resources */,
-				CB9695291A9A3EF6009757B7 /* Main.storyboard in Resources */,
 				CB96952E1A9A3EF6009757B7 /* LaunchScreen.xib in Resources */,
+				CB2B346F1BAE0C1D007067C3 /* Main.storyboard in Resources */,
 				CB8694C21B09639B00D4A93F /* Headers in Resources */,
 				CBA338AC1B82821F001BA5FF /* skiappdata.json in Resources */,
 			);
@@ -549,8 +558,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB17F6761AA93F5C00048BC5 /* SMSkiRouteTableViewCell.m in Sources */,
+				CB2B346D1BAE0BB7007067C3 /* SMIAPViewController.m in Sources */,
 				CB99FF481AB624F10067E547 /* SMAreaOverviewViewController.m in Sources */,
-				CBB480801AA5703600C2A7E3 /* SMOverviewMapViewController.m in Sources */,
 				CB9695451A9A3FC1009757B7 /* SMIntroViewController.m in Sources */,
 				CBF5CA931BA676C800FDF3E0 /* SMDataLoading.m in Sources */,
 				CB17F6731AA93F4600048BC5 /* SMSkiAreaTableViewCell.m in Sources */,
@@ -613,14 +622,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		CB9695271A9A3EF6009757B7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CB9695281A9A3EF6009757B7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CB96952C1A9A3EF6009757B7 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

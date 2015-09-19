@@ -16,8 +16,27 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
+*.xcworkspace
+
+# Keep the Tiles folder even if it’s empty
+!/SkiMontana/Tiles/.gitkeep
+
+# OS X Finder
 *.DS_Store
-*.mbtiles
+profile
+
+# Build products
+build/
+*.o
+*.LinkFileList
+*.hmap
+
+# Automatic backup files
+*~.nib/
+*.swp
+*~
+*.dat
+*.dep
 
 # CocoaPods
 #

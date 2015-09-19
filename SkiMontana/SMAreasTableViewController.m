@@ -7,8 +7,8 @@
 //
 
 #import "SMAreasTableViewController.h"
-#import "SMOverviewMapViewController.h"
 #import "SMAreaOverviewViewController.h"
+#import "SMIAPViewController.h"
 #import "SMDetailsViewController.h"
 #import "SMDataManager.h"
 
@@ -33,7 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setupMapButton];
+    //[self setupMapButton];
     
     self.managedObjectContext = [SMDataManager sharedInstance].managedObjectContext;
     
@@ -65,6 +65,7 @@
     });
 }
 
+/*
 - (void)setupMapButton
 {
     self.mapButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -78,7 +79,9 @@
     UIBarButtonItem *mapBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.mapButton];
     [self.navigationItem setLeftBarButtonItem:mapBarButtonItem];
 }
+*/
 
+/*
 - (void)presentMapViewController
 {
     void (^presentation)(void) = ^(void) {
@@ -100,6 +103,7 @@
     [CATransaction setCompletionBlock:presentation];
     [self.mapButton.layer addAnimation:pulseAnimation forKey:nil];
 }
+*/
 
 - (void)didReceiveMemoryWarning
 {
@@ -289,16 +293,6 @@
     }
     
     if ([segue.identifier isEqualToString:@"showGlossary"]) {
-        
-        /*
-        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"comgoogleearth://"]]) {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"ccomgoogleearth://"]];
-        }
-        else {
-            NSLog(@"Can't use Google Earth");
-        }
-        */
-        
         UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:nil action:nil];
         [self.navigationItem setBackBarButtonItem:newBackButton];
     }
@@ -313,6 +307,10 @@
         thisViewController.animationController = layerAnimation;
         modalController.transitioningDelegate = self.transitioningDelegate;
         modalController.skiArea = skiArea;
+    }
+    
+    if ([segue.identifier isEqualToString:@"showPurchase"]) {
+        nil;
     }
 }
  
