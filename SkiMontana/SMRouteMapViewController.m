@@ -133,7 +133,7 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
     
     CLLocationCoordinate2D southwest = CLLocationCoordinate2DMake(minLat, minLon);
     CLLocationCoordinate2D northeast = CLLocationCoordinate2DMake(maxLat, maxLon);
-    
+        
     SMCoordinateBounds bounds = SMCoordinateBoundsMake(southwest, northeast);
     
     return bounds;

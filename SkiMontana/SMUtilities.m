@@ -101,10 +101,10 @@
 
 #pragma mark - Private Utility Methods
 
-- (NSURL *)applicationDocumentsDirectory
+- (NSString *)applicationDocumentsDirectory
 {
-    return [[_fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-    //return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    //return [[_fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
 
 - (NSDictionary *)skiAppCurrentJson

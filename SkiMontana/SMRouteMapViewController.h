@@ -22,8 +22,6 @@ static inline SMCoordinateBounds SMCoordinateBoundsMake(CLLocationCoordinate2D s
     return bounds;
 }
 
-// RMSphericalTrapezium
-
 @interface SMRouteMapViewController : UIViewController
 
 @property (strong, nonatomic) SkiRoutes *skiRoute;
