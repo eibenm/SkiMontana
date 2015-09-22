@@ -40,9 +40,6 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
     
     // Setting up Mapbox
     [[RMConfiguration sharedInstance] setAccessToken:MAPBOX_ACCESS_TOKEN];
-    
-    //+ (NSString *)pathForBundleResourceNamed:(NSString *)name ofType:(NSString *)extension;
-    
     NSURL *tileUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"bridgerRange" ofType:@"mbtiles"]];
     RMMBTilesSource *tileSource = [[RMMBTilesSource alloc] initWithTileSetURL:tileUrl];
     //RMMapboxSource *tileSource = [[RMMapboxSource alloc] initWithMapID:@"mapbox.streets"];
@@ -51,8 +48,8 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
     [self.mapView setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
     [self.mapView setAdjustTilesForRetinaDisplay:YES];
     [self.mapView setShowsUserLocation:YES];
-    [self.mapView setZoom:4];
-    [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake(38.910003,-77.015533)];
+    //[self.mapView setZoom:4];
+    //[self.mapView setCenterCoordinate:bozemanCoords];
     [self.mapView setHideAttribution:YES];
     [self.mapViewContainer addSubview:self.mapView];
         
@@ -80,6 +77,7 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
 {
     [super viewDidAppear:YES];
  
+    /*
     LocationServiceStatus status = [CLLocationHelper checkLocationServiceStatus];
     switch (status) {
         case LocationServiceDisabled:
@@ -105,15 +103,16 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
             
         default: break;
     }
-    
-    SMCoordinateBounds bounds = [self getMarkerBoundingBox];
-    
-    [self.mapView zoomWithLatitudeLongitudeBoundsSouthWest:bounds.southwest northEast:bounds.northeast animated:YES];
-    [self.mapView setZoom:self.mapView.zoom - 1.0f];
+    */
     
     [self.navItem setRightBarButtonItem:[[RMUserTrackingBarButtonItem alloc] initWithMapView:self.mapView]];
     [self.navItem.rightBarButtonItem setTintColor:[UIColor colorWithRed:0.120 green:0.550 blue:0.670 alpha:1.000]];
     [self.mapView setUserTrackingMode:RMUserTrackingModeNone];
+    
+    // Setting zoom around markers
+    SMCoordinateBounds bounds = [self getMarkerBoundingBox];
+    [self.mapView zoomWithLatitudeLongitudeBoundsSouthWest:bounds.southwest northEast:bounds.northeast animated:NO];
+    [self.mapView setZoom:self.mapView.zoom - 1.0f];
 }
 
 - (SMCoordinateBounds)getMarkerBoundingBox

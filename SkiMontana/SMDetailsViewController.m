@@ -21,12 +21,11 @@ static CGFloat scalingFactor = 0.3f;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet SMDetailsHeaderView *headerView;
-@property (weak, nonatomic) IBOutlet UIImageView *mapImageView;
+
 
 @property (nonatomic, assign) CGFloat offsetStartingY;
-@property (nonatomic, assign) CGFloat offStartingRouteY;
-@property (nonatomic, assign) CGFloat offStartingAreaY;
 @property (nonatomic, assign) CGFloat maxOffsetY;
+@property (nonatomic, assign) CGFloat routeTopContraintHeight;
 
 @end
 
@@ -44,14 +43,34 @@ static CGFloat scalingFactor = 0.3f;
     
     self.headerView.layer.zPosition = 2;
     self.offsetStartingY = self.headerView.frame.size.height;
-    self.offStartingRouteY = self.headerView.routeTitle.center.y;
-    self.offStartingAreaY = self.headerView.areaTitle.center.y;
     self.maxOffsetY = 70.0f;
+    self.routeTopContraintHeight = self.headerView.routeTitleTopConstaint.constant;
     
     [self.tableView setContentInset:UIEdgeInsetsMake(self.offsetStartingY, 0, 0, 0)];
+    [self.headerView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0.8 alpha:0.65]];
     
-    [self.tableView setBackgroundColor:[UIColor colorWithRed:135.0/255.0 green:206.0/255.0 blue:250.0/255.0 alpha: 1.0]];
-    [self.headerView setBackgroundColor:[UIColor colorWithRed:135.0/255.0 green:206.0/255.0 blue:250.0/255.0 alpha: 1.0]];
+    // View for background color (opaque white mask)
+    UIView *backgroundColorView = [[UIView alloc]initWithFrame:self.view.frame];
+    [backgroundColorView setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.8]];
+    [self.view addSubview:backgroundColorView];
+    [self.view sendSubviewToBack:backgroundColorView];
+
+    // Background imageview
+    UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"RouteInfoBackground"]];
+    [backgroundImageView setContentMode:UIViewContentModeScaleAspectFill];
+    [backgroundImageView setFrame:self.view.frame];
+    [self.view addSubview:backgroundImageView];
+    [self.view sendSubviewToBack:backgroundImageView];
+    
+    // Setting autolayout constraints for background views
+    [backgroundColorView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [backgroundImageView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    NSDictionary *backgroundColorViews = NSDictionaryOfVariableBindings(backgroundColorView);
+    NSDictionary *backgroundImageViews = NSDictionaryOfVariableBindings(backgroundImageView);
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[backgroundColorView]|" options:kNilOptions metrics:nil views:backgroundColorViews]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[backgroundColorView]|" options:kNilOptions metrics:nil views:backgroundColorViews]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[backgroundImageView]|" options:kNilOptions metrics:nil views:backgroundImageViews]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[backgroundImageView]|" options:kNilOptions metrics:nil views:backgroundImageViews]];
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
@@ -83,9 +102,9 @@ static CGFloat scalingFactor = 0.3f;
 {
     switch (indexPath.row) {
         case 0: cellIdentifier = @"map"; break;
-        case 1: cellIdentifier = @"content"; break;
-        case 2: cellIdentifier = @"overview"; break;
-        case 3: cellIdentifier = @"avalanche"; break;
+        case 1: cellIdentifier = @"overview"; break;
+        case 2: cellIdentifier = @"avalanche"; break;
+        case 3: cellIdentifier = @"content"; break;
         case 4: cellIdentifier = @"directions"; break;
     }
     
@@ -97,35 +116,10 @@ static CGFloat scalingFactor = 0.3f;
     
     [cell setBackgroundColor:[UIColor clearColor]];
     
-    // Remove seperator inset
-    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-        [cell setSeparatorInset:UIEdgeInsetsZero];
-    }
-    // Prevent the cell from inheriting the Table View's margin settings
-    if ([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]) {
-        [cell setPreservesSuperviewLayoutMargins:NO];
-    }
-    // Explictly set your cell's layout margins
-    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-        [cell setLayoutMargins:UIEdgeInsetsZero];
-    }
-    
     if ([cellIdentifier isEqualToString:@"map"]) {
-        /*
-        NSString *backgroundImage = [(File *)[self.skiRoute.ski_route_images.allObjects firstObject] avatar];
-        UIImageView *mapImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:backgroundImage]];
-        [mapImage setContentMode:UIViewContentModeScaleAspectFill];
-        [mapImage setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [cell setLayoutMargins:UIEdgeInsetsMake(0, 8, 0, 8)];
-        [cell setClipsToBounds:YES];
-        [cell addSubview:mapImage];
-        NSDictionary *views = NSDictionaryOfVariableBindings(mapImage);
-        [cell addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[mapImage]-|" options:kNilOptions metrics:nil views:views]];
-        [cell addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[mapImage]-|" options:kNilOptions metrics:nil views:views]];
-        */
+        [cell.imageMapBackground setImage:[UIImage imageNamed:@"Cell Bridger Range"]];
     }
-    
-    if ([cellIdentifier isEqualToString:@"content"]) {
+    else if ([cellIdentifier isEqualToString:@"content"]) {
         [cell.labelElevation setText:[NSString stringWithFormat:@"%@ ft", self.skiRoute.elevation_gain]];
         [cell.labelVertical setText:[NSString stringWithFormat:@"%@", self.skiRoute.vertical]];
         [cell.labelSlope setText:self.skiRoute.aspects];
@@ -136,18 +130,12 @@ static CGFloat scalingFactor = 0.3f;
     }
     else if ([cellIdentifier isEqualToString:@"overview"]) {
         [cell.labelOverviewInformation setText:self.skiRoute.overview];
-        [cell setNeedsUpdateConstraints];
-        [cell updateConstraintsIfNeeded];
     }
     else if ([cellIdentifier isEqualToString:@"avalanche"]) {
         [cell.labelAvalancheInformation setText:self.skiRoute.avalanche_info];
-        [cell setNeedsUpdateConstraints];
-        [cell updateConstraintsIfNeeded];
     }
     else if ([cellIdentifier isEqualToString:@"directions"]) {
         [cell.labelDirectionsInformation setText:self.skiRoute.directions];
-        [cell setNeedsUpdateConstraints];
-        [cell updateConstraintsIfNeeded];
     }
     
     return cell;
@@ -175,6 +163,30 @@ static CGFloat scalingFactor = 0.3f;
     return height;
 }
 
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SMDetailsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    
+    if ([cell.reuseIdentifier isEqualToString:@"map"]) {
+        CABasicAnimation *pulseAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+        pulseAnimation.duration = 0.2f;
+        pulseAnimation.toValue = [NSNumber numberWithFloat:1.1f];
+        pulseAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+        pulseAnimation.autoreverses = YES;
+        [CATransaction setCompletionBlock:^{
+            SMDetailsViewController *thisViewController = (SMDetailsViewController *) self;
+            SMRouteMapViewController *modalController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"routeMapViewController"];
+            SMSlideAnimation *layerAnimation = [[SMSlideAnimation alloc] initWithType:SMSlideAnimationFromRight];
+            thisViewController.animationController = layerAnimation;
+            modalController.transitioningDelegate = self.transitioningDelegate;
+            modalController.skiRoute = self.skiRoute;
+            [self presentViewController:modalController animated:YES completion:nil];
+        }];
+        [cell.imageMapBackground.layer addAnimation:pulseAnimation forKey:nil];
+    }
+}
+
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -188,25 +200,25 @@ static CGFloat scalingFactor = 0.3f;
     // Adjusting labels in header
     // Adjuting opacity of area label
     
+    //NSLog(@"%f", offsetDiff);  // 40.0f
+    
     if (offsetDiff < -80) {
         self.tableView.contentInset = UIEdgeInsetsMake(self.maxOffsetY, 0, 0, 0); // 100
         self.headerView.headerViewHeight.constant = self.maxOffsetY;
-        self.headerView.routeTitle.center = CGPointMake(self.headerView.routeTitle.center.x, self.offStartingRouteY - (80 * scalingFactor));
-        self.headerView.areaTitle.center = CGPointMake(self.headerView.areaTitle.center.x, self.offStartingAreaY - (80 * scalingFactor));
+        self.headerView.routeTitleTopConstaint.constant = self.routeTopContraintHeight - (80 * scalingFactor);
         self.headerView.areaTitle.layer.opacity = 0;
     }
     else if (offsetDiff > 0) {
         self.tableView.contentInset = UIEdgeInsetsMake(self.offsetStartingY, 0, 0, 0); // 150
         self.headerView.headerViewHeight.constant = self.offsetStartingY;
-        self.headerView.routeTitle.center = CGPointMake(self.headerView.routeTitle.center.x, self.offStartingRouteY);
-        self.headerView.areaTitle.center = CGPointMake(self.headerView.areaTitle.center.x, self.offStartingAreaY);
+        self.headerView.routeTitleTopConstaint.constant = self.routeTopContraintHeight;
         self.headerView.areaTitle.layer.opacity = 1.0f;
+
     }
     else {
         self.tableView.contentInset = UIEdgeInsetsMake(ABS(offset), 0, 0, 0);
         self.headerView.headerViewHeight.constant = ABS(offset);
-        self.headerView.routeTitle.center = CGPointMake(self.headerView.routeTitle.center.x, self.offStartingRouteY - (ABS(offsetDiff) * scalingFactor));
-        self.headerView.areaTitle.center = CGPointMake(self.headerView.areaTitle.center.x, self.offStartingAreaY - (ABS(offsetDiff) * scalingFactor));
+        self.headerView.routeTitleTopConstaint.constant =self.routeTopContraintHeight - (ABS(offsetDiff) * scalingFactor);
         self.headerView.areaTitle.layer.opacity = 1 - (ABS(offsetDiff) / 50); // Going opaque over the first 50 points
     }
 }
@@ -216,18 +228,33 @@ static CGFloat scalingFactor = 0.3f;
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"showMap"]) {
+        
         SMDetailsViewController *thisViewController = (SMDetailsViewController *) self;
         SMRouteMapViewController *modalController = [segue destinationViewController];
         SMSlideAnimation *layerAnimation = [[SMSlideAnimation alloc] initWithType:SMSlideAnimationFromRight];
         thisViewController.animationController = layerAnimation;
         modalController.transitioningDelegate = self.transitioningDelegate;
         modalController.skiRoute = self.skiRoute;
+        
+        /*
+        CABasicAnimation *pulseAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+        pulseAnimation.duration = 0.3f;
+        pulseAnimation.toValue = [NSNumber numberWithFloat:1.1f];
+        pulseAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+        pulseAnimation.autoreverses = NO;
+        [CATransaction setCompletionBlock:^{
+            SMDetailsViewController *thisViewController = (SMDetailsViewController *) self;
+            SMRouteMapViewController *modalController = [segue destinationViewController];
+            SMSlideAnimation *layerAnimation = [[SMSlideAnimation alloc] initWithType:SMSlideAnimationFromRight];
+            thisViewController.animationController = layerAnimation;
+            modalController.transitioningDelegate = self.transitioningDelegate;
+            modalController.skiRoute = self.skiRoute;
+        }];
+        
+        NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+        SMDetailsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:selectedIndexPath];
+        [cell.imageMapBackground.layer addAnimation:pulseAnimation forKey:nil];*/
     }
-}
-
-- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

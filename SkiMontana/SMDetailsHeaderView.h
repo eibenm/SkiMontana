@@ -11,5 +11,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *routeTitle;
 @property (strong, nonatomic) IBOutlet UILabel *areaTitle;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *headerViewHeight;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *routeTitleTopConstaint;
 
 @end
