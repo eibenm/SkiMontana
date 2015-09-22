@@ -15,7 +15,6 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 
-
 @property (strong, nonatomic) IBOutlet UILabel *labelAreaTitle;
 @property (strong, nonatomic) IBOutlet UIImageView *imageMapView;
 @property (strong, nonatomic) IBOutlet UITextView *textViewDescription;

@@ -120,13 +120,13 @@ static CGFloat scalingFactor = 0.3f;
         [cell.imageMapBackground setImage:[UIImage imageNamed:@"Cell Bridger Range"]];
     }
     else if ([cellIdentifier isEqualToString:@"content"]) {
-        [cell.labelElevation setText:[NSString stringWithFormat:@"%@ ft", self.skiRoute.elevation_gain]];
-        [cell.labelVertical setText:[NSString stringWithFormat:@"%@", self.skiRoute.vertical]];
-        [cell.labelSlope setText:self.skiRoute.aspects];
-        [cell.labelDistance setText:[NSString stringWithFormat:@"~%@ mi", self.skiRoute.distance]];
-        [cell.labelSnowfall setText:[NSString stringWithFormat:@"%@ in", self.skiRoute.snowfall]];
-        [cell.labelAvalanche setText:self.skiRoute.avalanche_danger];
-        [cell.labelSkierTraffic setText:self.skiRoute.skier_traffic];
+        [cell.labelElevation setText:[NSString stringWithFormat:@"Elevation Gain: %@ ft", self.skiRoute.elevation_gain]];
+        [cell.labelVertical setText:[NSString stringWithFormat:@"Vertical: %@", self.skiRoute.vertical]];
+        [cell.labelSlope setText:[NSString stringWithFormat:@"Aspects: %@", self.skiRoute.aspects]];
+        [cell.labelDistance setText:[NSString stringWithFormat:@"Distance: ~%@ mi", self.skiRoute.distance]];
+        [cell.labelSnowfall setText:[NSString stringWithFormat:@"Snowfall: %@", self.skiRoute.snowfall]];
+        [cell.labelAvalanche setText:[NSString stringWithFormat:@"Terrain Danger: %@", self.skiRoute.avalanche_danger]];
+        [cell.labelSkierTraffic setText:[NSString stringWithFormat:@"Skier Traffic: %@", self.skiRoute.skier_traffic]];
     }
     else if ([cellIdentifier isEqualToString:@"overview"]) {
         [cell.labelOverviewInformation setText:self.skiRoute.overview];
@@ -168,6 +168,7 @@ static CGFloat scalingFactor = 0.3f;
 {
     SMDetailsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     
+    // If the map cell is selected, animate and then push to the next view controller
     if ([cell.reuseIdentifier isEqualToString:@"map"]) {
         CABasicAnimation *pulseAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
         pulseAnimation.duration = 0.2f;

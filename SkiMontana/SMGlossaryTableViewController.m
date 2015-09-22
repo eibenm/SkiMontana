@@ -69,14 +69,12 @@ static NSString *cellIdentifier = @"glossaryTerm";
     Glossary *glossary = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     cell.backgroundColor = [UIColor clearColor];
-    cell.selectedBackgroundView = [UIView new];
-    cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:0.0f green:0.0f blue:0.6f alpha:0.2];
     cell.termLabel.text = glossary.term;
 
     if (indexPath.row == self.selectedIndex) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [UIView animateWithDuration:0.15 animations:^{
-                cell.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.5];
+                cell.backgroundColor = [UIColor colorWithRed:0.0f green:0.0f blue:0.6f alpha:0.2];
             }];
         });
         cell.descriptionLabel.text = glossary.desc;
@@ -94,8 +92,8 @@ static NSString *cellIdentifier = @"glossaryTerm";
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
-    //return [[UIView alloc] initWithFrame:CGRectZero];
-    return [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 200)];
+    return [[UIView alloc] initWithFrame:CGRectZero];
+    //return [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 200)];
 }
 
 

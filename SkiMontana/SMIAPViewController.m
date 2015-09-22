@@ -11,7 +11,6 @@
 @interface SMIAPViewController () <UINavigationBarDelegate>
 
 @property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
-@property (strong, nonatomic) UINavigationItem *navItem;
 
 @end
 
@@ -21,10 +20,12 @@
 {
     [super viewDidLoad];
     
+    self.navigationBar.delegate = self;
+    
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissViewController)];
-    self.navItem = [[UINavigationItem alloc] initWithTitle:@"Purchase Ski Bozeman"];
-    [self.navItem setLeftBarButtonItem:backButton];
-    [self.navigationBar setItems:[NSArray arrayWithObject:self.navItem] animated:NO];
+    UINavigationItem *navItem = [[UINavigationItem alloc] initWithTitle:@"Purchase Ski Bozeman"];
+    [navItem setLeftBarButtonItem:backButton];
+    [self.navigationBar setItems:@[navItem] animated:NO];
 }
 
 - (void)didReceiveMemoryWarning
