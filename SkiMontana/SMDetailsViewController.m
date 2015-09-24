@@ -173,7 +173,9 @@ static CGFloat scalingFactor = 0.3f;
         pulseAnimation.duration = 0.2f;
         pulseAnimation.toValue = [NSNumber numberWithFloat:1.1f];
         pulseAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-        pulseAnimation.autoreverses = YES;
+        pulseAnimation.fillMode = kCAFillModeForwards;
+        pulseAnimation.removedOnCompletion = NO;
+        pulseAnimation.autoreverses = NO;
         [CATransaction setCompletionBlock:^{
             SMDetailsViewController *thisViewController = (SMDetailsViewController *) self;
             SMRouteMapViewController *modalController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"routeMapViewController"];
@@ -181,9 +183,11 @@ static CGFloat scalingFactor = 0.3f;
             thisViewController.animationController = layerAnimation;
             modalController.transitioningDelegate = self.transitioningDelegate;
             modalController.skiRoute = self.skiRoute;
-            [self presentViewController:modalController animated:YES completion:nil];
+            [self presentViewController:modalController animated:YES completion:^{
+                [cell.imageMapBackground.layer removeAnimationForKey:@"scale"];
+            }];
         }];
-        [cell.imageMapBackground.layer addAnimation:pulseAnimation forKey:nil];
+        [cell.imageMapBackground.layer addAnimation:pulseAnimation forKey:@"scale"];
     }
 }
 

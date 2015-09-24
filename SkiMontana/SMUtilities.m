@@ -55,9 +55,11 @@
                     [self copyJsonToDataStore:parsedObject];
                     if ([self createCopyOfSkiJsonFromData:parsedObject]) {
                         NSLog(@"Updated Local Data from server");
+                        return;
                     }
                     else {
                         NSLog(@"Problem writing Local json file from server");
+                        return;
                     }
                 }
             }
@@ -224,6 +226,7 @@
             skiRoute.skier_traffic = skiRouteJson[@"skier_traffic"];
             skiRoute.snowfall = skiRouteJson[@"snowfall"];
             skiRoute.vertical = skiRouteJson[@"vertical"];
+            skiRoute.mbtiles = skiRouteJson[@"mbtiles"];
             skiRoute.ski_area = skiArea;
             [skiRouteSet addObject:skiRoute];
             
@@ -270,17 +273,6 @@
     if (![context save:&saveError]) {
         NSLog(@"Whoops, couldn't save: %@", saveError.localizedDescription);
     }
-    
-    /*
-    NSFetchRequest *fetchRequest = [NSFetchRequest new];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:SM_SkiAreas inManagedObjectContext:context];
-    [fetchRequest setEntity:entity];
-    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:nil];
-    
-    for (SkiAreas *skiArea in fetchedObjects) {
-        NSLog(@"%@", skiArea.ski_routes.allObjects);
-    }
-    */
 }
 
 @end

@@ -31,6 +31,8 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
     
     self.navigationBar.delegate = self;
     self.gpsObjects = self.skiRoute.ski_route_gps;
+    
+    NSArray *mbtilesArray = [self.skiRoute.mbtiles componentsSeparatedByString:@"."];
 
     // Setting up Navigation Bar
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissViewController)];
@@ -40,7 +42,7 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
     
     // Setting up Mapbox
     [[RMConfiguration sharedInstance] setAccessToken:MAPBOX_ACCESS_TOKEN];
-    NSURL *tileUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"bridgerRange" ofType:@"mbtiles"]];
+    NSURL *tileUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:mbtilesArray.firstObject ofType:mbtilesArray.lastObject]];
     RMMBTilesSource *tileSource = [[RMMBTilesSource alloc] initWithTileSetURL:tileUrl];
     //RMMapboxSource *tileSource = [[RMMapboxSource alloc] initWithMapID:@"mapbox.streets"];
     self.mapView = [[RMMapView alloc] initWithFrame:self.mapViewContainer.bounds andTilesource:tileSource];
@@ -48,15 +50,13 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
     [self.mapView setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
     [self.mapView setAdjustTilesForRetinaDisplay:YES];
     [self.mapView setShowsUserLocation:YES];
-    //[self.mapView setZoom:4];
-    //[self.mapView setCenterCoordinate:bozemanCoords];
     [self.mapView setHideAttribution:YES];
     [self.mapViewContainer addSubview:self.mapView];
         
-    NSLog(@"Native bounds of '%@' tile layer:", tileSource.shortName);
+    NSLog(@"Native tile bounds of '%@':", tileSource.shortName);
     NSLog(@"Southwest - Lat: %f, Lon: %f", tileSource.latitudeLongitudeBoundingBox.southWest.latitude, tileSource.latitudeLongitudeBoundingBox.southWest.longitude);
     NSLog(@"Northeast - Lat: %f, Lon: %f", tileSource.latitudeLongitudeBoundingBox.northEast.latitude, tileSource.latitudeLongitudeBoundingBox.northEast.longitude);
-    NSLog(@"Max zoom: %f, Min zoom: %f", tileSource.maxZoom, tileSource.minZoom);
+    NSLog(@"Native tile zooms: Max zoom: %f, Min zoom: %f", tileSource.maxZoom, tileSource.minZoom);
     
     // This temporarily unlocks the tile bounds constraints.
     [self.mapView setConstraintsSouthWest:worldBounds.southwest

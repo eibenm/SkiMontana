@@ -22,7 +22,6 @@ static inline BOOL isRetinaDevice()
 }
 
 static NSString * const SKIAPP_JSON =                    @"skiappdata.json";
-static NSString * const SKIAPP_JSON_URL =                @"http://eibenm.com/downloads/skiappdata.json";
 static NSString * const MAPBOX_ACCESS_TOKEN =            @"pk.eyJ1IjoiZWliZW5tIiwiYSI6ImNBMU11WjAifQ.AVf0Ym7u2Rq4F9KQJ5kPQw";
 static NSString * const NS_USER_DEFUALTS_INITAL_LAUNCH = @"initialAppLaunch";
 
@@ -34,11 +33,11 @@ static NSString * const NS_USER_DEFUALTS_INITAL_LAUNCH = @"initialAppLaunch";
 
 #if DEV == 1
 
-static NSString * const HOST_NAME = @"dev.website.com";
+static NSString * const SKIAPP_JSON_URL =                @"http://eibenm.com/devskimontana/skiappdata.json";
 
 #else
 
-static NSString * const SKIAPP_JSON = @"pro.webisite.com";
+static NSString * const SKIAPP_JSON_URL =                @"http://eibenm.com/skimontana/skiappdata.json";
 
 #undef NSLog
 #define NSLog(...)
