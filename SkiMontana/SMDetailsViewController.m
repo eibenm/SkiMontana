@@ -184,10 +184,10 @@ static CGFloat scalingFactor = 0.3f;
             modalController.transitioningDelegate = self.transitioningDelegate;
             modalController.skiRoute = self.skiRoute;
             [self presentViewController:modalController animated:YES completion:^{
-                [cell.imageMapBackground.layer removeAnimationForKey:@"scale"];
+                [cell.imageMapBackground.layer removeAnimationForKey:pulseAnimation.keyPath];
             }];
         }];
-        [cell.imageMapBackground.layer addAnimation:pulseAnimation forKey:@"scale"];
+        [cell.imageMapBackground.layer addAnimation:pulseAnimation forKey:pulseAnimation.keyPath];
     }
 }
 
@@ -204,7 +204,7 @@ static CGFloat scalingFactor = 0.3f;
     // Adjusting labels in header
     // Adjuting opacity of area label
     
-    NSLog(@"%f", offsetDiff);
+    //NSLog(@"%f", offsetDiff);
     
     if (offsetDiff < -80) {
         self.tableView.contentInset = UIEdgeInsetsMake(self.maxOffsetY, 0, 0, 0);
@@ -217,15 +217,12 @@ static CGFloat scalingFactor = 0.3f;
         self.headerView.headerViewHeight.constant = self.offsetStartingY;
         self.headerView.routeTitleTopConstaint.constant = self.routeTopContraintHeight;
         self.headerView.areaTitle.layer.opacity = 1.0f;
-
     }
     else {
         self.tableView.contentInset = UIEdgeInsetsMake(ABS(offset), 0, 0, 0);
         self.headerView.headerViewHeight.constant = ABS(offset);
         self.headerView.routeTitleTopConstaint.constant = self.routeTopContraintHeight - (ABS(offsetDiff) * scalingFactor);
         self.headerView.areaTitle.layer.opacity = 1 - (ABS(offsetDiff) / 50); // Going opaque over the first 50 points
-        
-        NSLog(@"Current Constant %f", self.headerView.headerViewHeight.constant);
     }
 }
 
