@@ -22,7 +22,6 @@ static CGFloat scalingFactor = 0.3f;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet SMDetailsHeaderView *headerView;
 
-
 @property (nonatomic, assign) CGFloat offsetStartingY;
 @property (nonatomic, assign) CGFloat maxOffsetY;
 @property (nonatomic, assign) CGFloat routeTopContraintHeight;
@@ -43,7 +42,7 @@ static CGFloat scalingFactor = 0.3f;
     
     self.headerView.layer.zPosition = 2;
     self.offsetStartingY = self.headerView.frame.size.height;
-    self.maxOffsetY = 70.0f;
+    self.maxOffsetY = 40.0f;
     self.routeTopContraintHeight = self.headerView.routeTitleTopConstaint.constant;
     
     [self.tableView setContentInset:UIEdgeInsetsMake(self.offsetStartingY, 0, 0, 0)];
@@ -154,7 +153,7 @@ static CGFloat scalingFactor = 0.3f;
     
     switch (indexPath.row) {
         case 0: height = 120; break;
-        case 1: height = 160; break;
+        case 1: height = 188; break;
         case 3: height = 350; break;
         case 2: height = 350; break;
         case 4: height = 350; break;
@@ -201,10 +200,10 @@ static CGFloat scalingFactor = 0.3f;
     // Adjusting labels in header
     // Adjuting opacity of area label
     
-    //NSLog(@"%f", offsetDiff);  // 40.0f
+    NSLog(@"%f", offsetDiff);
     
     if (offsetDiff < -80) {
-        self.tableView.contentInset = UIEdgeInsetsMake(self.maxOffsetY, 0, 0, 0); // 100
+        self.tableView.contentInset = UIEdgeInsetsMake(self.maxOffsetY, 0, 0, 0);
         self.headerView.headerViewHeight.constant = self.maxOffsetY;
         self.headerView.routeTitleTopConstaint.constant = self.routeTopContraintHeight - (80 * scalingFactor);
         self.headerView.areaTitle.layer.opacity = 0;
@@ -219,8 +218,10 @@ static CGFloat scalingFactor = 0.3f;
     else {
         self.tableView.contentInset = UIEdgeInsetsMake(ABS(offset), 0, 0, 0);
         self.headerView.headerViewHeight.constant = ABS(offset);
-        self.headerView.routeTitleTopConstaint.constant =self.routeTopContraintHeight - (ABS(offsetDiff) * scalingFactor);
+        self.headerView.routeTitleTopConstaint.constant = self.routeTopContraintHeight - (ABS(offsetDiff) * scalingFactor);
         self.headerView.areaTitle.layer.opacity = 1 - (ABS(offsetDiff) / 50); // Going opaque over the first 50 points
+        
+        NSLog(@"Current Constant %f", self.headerView.headerViewHeight.constant);
     }
 }
 
