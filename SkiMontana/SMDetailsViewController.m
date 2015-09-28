@@ -16,6 +16,7 @@
 static NSString *cellIdentifier;
 
 static CGFloat scalingFactor = 0.3f;
+static CGFloat maxOffsetDiff = 44.0f;
 
 @interface SMDetailsViewController() <UITableViewDelegate, UITableViewDataSource>
 
@@ -42,11 +43,11 @@ static CGFloat scalingFactor = 0.3f;
     
     self.headerView.layer.zPosition = 2;
     self.offsetStartingY = self.headerView.frame.size.height;
-    self.maxOffsetY = 40.0f;
+    self.maxOffsetY = self.headerView.frame.size.height - maxOffsetDiff;
     self.routeTopContraintHeight = self.headerView.routeTitleTopConstaint.constant;
     
     [self.tableView setContentInset:UIEdgeInsetsMake(self.offsetStartingY, 0, 0, 0)];
-    [self.headerView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0.8 alpha:0.65]];
+    [self.headerView setBackgroundColor:[UIColor colorwithHexString:@"#0000ff" alpha:0.5]];
     
     // View for background color (opaque white mask)
     UIView *backgroundColorView = [[UIView alloc]initWithFrame:self.view.frame];
@@ -152,7 +153,7 @@ static CGFloat scalingFactor = 0.3f;
     CGFloat height = UITableViewAutomaticDimension;
     
     switch (indexPath.row) {
-        case 0: height = 120; break;
+        case 0: height = 180; break;
         case 1: height = 188; break;
         case 3: height = 350; break;
         case 2: height = 350; break;
@@ -162,10 +163,9 @@ static CGFloat scalingFactor = 0.3f;
     return height;
 }
 
-
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SMDetailsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    SMDetailsTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
     // If the map cell is selected, animate and then push to the next view controller
     if ([cell.reuseIdentifier isEqualToString:@"map"]) {
@@ -204,16 +204,16 @@ static CGFloat scalingFactor = 0.3f;
     // Adjusting labels in header
     // Adjuting opacity of area label
     
-    //NSLog(@"%f", offsetDiff);
+    NSLog(@"%f", offsetDiff);
     
-    if (offsetDiff < -80) {
+    if (offsetDiff < (-1 * maxOffsetDiff)) {
         self.tableView.contentInset = UIEdgeInsetsMake(self.maxOffsetY, 0, 0, 0);
         self.headerView.headerViewHeight.constant = self.maxOffsetY;
-        self.headerView.routeTitleTopConstaint.constant = self.routeTopContraintHeight - (80 * scalingFactor);
+        self.headerView.routeTitleTopConstaint.constant = self.routeTopContraintHeight - (maxOffsetDiff * scalingFactor);
         self.headerView.areaTitle.layer.opacity = 0;
     }
     else if (offsetDiff > 0) {
-        self.tableView.contentInset = UIEdgeInsetsMake(self.offsetStartingY, 0, 0, 0); // 150
+        self.tableView.contentInset = UIEdgeInsetsMake(self.offsetStartingY, 0, 0, 0);
         self.headerView.headerViewHeight.constant = self.offsetStartingY;
         self.headerView.routeTitleTopConstaint.constant = self.routeTopContraintHeight;
         self.headerView.areaTitle.layer.opacity = 1.0f;
@@ -222,7 +222,7 @@ static CGFloat scalingFactor = 0.3f;
         self.tableView.contentInset = UIEdgeInsetsMake(ABS(offset), 0, 0, 0);
         self.headerView.headerViewHeight.constant = ABS(offset);
         self.headerView.routeTitleTopConstaint.constant = self.routeTopContraintHeight - (ABS(offsetDiff) * scalingFactor);
-        self.headerView.areaTitle.layer.opacity = 1 - (ABS(offsetDiff) / 50); // Going opaque over the first 50 points
+        self.headerView.areaTitle.layer.opacity = 1 - (ABS(offsetDiff) / 20); // Going opaque over the first 20 points
     }
 }
 
@@ -238,25 +238,6 @@ static CGFloat scalingFactor = 0.3f;
         thisViewController.animationController = layerAnimation;
         modalController.transitioningDelegate = self.transitioningDelegate;
         modalController.skiRoute = self.skiRoute;
-        
-        /*
-        CABasicAnimation *pulseAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-        pulseAnimation.duration = 0.3f;
-        pulseAnimation.toValue = [NSNumber numberWithFloat:1.1f];
-        pulseAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-        pulseAnimation.autoreverses = NO;
-        [CATransaction setCompletionBlock:^{
-            SMDetailsViewController *thisViewController = (SMDetailsViewController *) self;
-            SMRouteMapViewController *modalController = [segue destinationViewController];
-            SMSlideAnimation *layerAnimation = [[SMSlideAnimation alloc] initWithType:SMSlideAnimationFromRight];
-            thisViewController.animationController = layerAnimation;
-            modalController.transitioningDelegate = self.transitioningDelegate;
-            modalController.skiRoute = self.skiRoute;
-        }];
-        
-        NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
-        SMDetailsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:selectedIndexPath];
-        [cell.imageMapBackground.layer addAnimation:pulseAnimation forKey:nil];*/
     }
 }
 

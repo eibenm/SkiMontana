@@ -44,7 +44,6 @@
 		CB9695201A9A3EF6009757B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB96951F1A9A3EF6009757B7 /* main.m */; };
 		CB9695231A9A3EF6009757B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9695221A9A3EF6009757B7 /* AppDelegate.m */; };
 		CB96952E1A9A3EF6009757B7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB96952C1A9A3EF6009757B7 /* LaunchScreen.xib */; };
-		CB96953A1A9A3EF6009757B7 /* SkiMontanaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9695391A9A3EF6009757B7 /* SkiMontanaTests.m */; };
 		CB9695451A9A3FC1009757B7 /* SMIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9695441A9A3FC1009757B7 /* SMIntroViewController.m */; };
 		CB96954C1A9A43A7009757B7 /* SMConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = CB96954B1A9A43A7009757B7 /* SMConstants.m */; };
 		CB99FF451AB61F010067E547 /* UIColor+FromHex.m in Sources */ = {isa = PBXBuildFile; fileRef = CB99FF441AB61F010067E547 /* UIColor+FromHex.m */; };
@@ -71,16 +70,6 @@
 		CBF5CA901BA676AC00FDF3E0 /* SMDataLoading.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBF5CA8F1BA676AC00FDF3E0 /* SMDataLoading.xib */; };
 		CBF5CA931BA676C800FDF3E0 /* SMDataLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF5CA921BA676C800FDF3E0 /* SMDataLoading.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		CB9695341A9A3EF6009757B7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CB9695121A9A3EF6009757B7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CB9695191A9A3EF6009757B7;
-			remoteInfo = SkiMontana;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		CB12986E1BA10E6C0046095B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -147,7 +136,6 @@
 		CB9695211A9A3EF6009757B7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CB9695221A9A3EF6009757B7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		CB96952D1A9A3EF6009757B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		CB9695331A9A3EF6009757B7 /* SkiMontanaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkiMontanaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB9695381A9A3EF6009757B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB9695391A9A3EF6009757B7 /* SkiMontanaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SkiMontanaTests.m; sourceTree = "<group>"; };
 		CB9695431A9A3FC1009757B7 /* SMIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMIntroViewController.h; sourceTree = "<group>"; };
@@ -210,13 +198,6 @@
 				CB2B346A1BAE058F007067C3 /* StoreKit.framework in Frameworks */,
 				CBA338CA1B82A883001BA5FF /* libsqlite3.dylib in Frameworks */,
 				CB8694CB1B0964AC00D4A93F /* libz.dylib in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CB9695301A9A3EF6009757B7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,7 +272,6 @@
 			isa = PBXGroup;
 			children = (
 				CB96951A1A9A3EF6009757B7 /* SkiMontana.app */,
-				CB9695331A9A3EF6009757B7 /* SkiMontanaTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -485,24 +465,6 @@
 			productReference = CB96951A1A9A3EF6009757B7 /* SkiMontana.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CB9695321A9A3EF6009757B7 /* SkiMontanaTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CB9695401A9A3EF6009757B7 /* Build configuration list for PBXNativeTarget "SkiMontanaTests" */;
-			buildPhases = (
-				CB96952F1A9A3EF6009757B7 /* Sources */,
-				CB9695301A9A3EF6009757B7 /* Frameworks */,
-				CB9695311A9A3EF6009757B7 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CB9695351A9A3EF6009757B7 /* PBXTargetDependency */,
-			);
-			name = SkiMontanaTests;
-			productName = SkiMontanaTests;
-			productReference = CB9695331A9A3EF6009757B7 /* SkiMontanaTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -521,10 +483,6 @@
 							};
 						};
 					};
-					CB9695321A9A3EF6009757B7 = {
-						CreatedOnToolsVersion = 6.1.1;
-						TestTargetID = CB9695191A9A3EF6009757B7;
-					};
 				};
 			};
 			buildConfigurationList = CB9695151A9A3EF6009757B7 /* Build configuration list for PBXProject "SkiMontana" */;
@@ -541,7 +499,6 @@
 			projectRoot = "";
 			targets = (
 				CB9695191A9A3EF6009757B7 /* SkiMontana */,
-				CB9695321A9A3EF6009757B7 /* SkiMontanaTests */,
 			);
 		};
 /* End PBXProject section */
@@ -560,13 +517,6 @@
 				CB2B346F1BAE0C1D007067C3 /* Main.storyboard in Resources */,
 				CB8694C21B09639B00D4A93F /* Headers in Resources */,
 				CBA338AC1B82821F001BA5FF /* skiappdata.json in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CB9695311A9A3EF6009757B7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,23 +577,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CB96952F1A9A3EF6009757B7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CB96953A1A9A3EF6009757B7 /* SkiMontanaTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		CB9695351A9A3EF6009757B7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CB9695191A9A3EF6009757B7 /* SkiMontana */;
-			targetProxy = CB9695341A9A3EF6009757B7 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		CB96952C1A9A3EF6009757B7 /* LaunchScreen.xib */ = {
@@ -796,36 +730,6 @@
 			};
 			name = Release;
 		};
-		CB9695411A9A3EF6009757B7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = SkiMontanaTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.eibenm.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SkiMontana.app/SkiMontana";
-			};
-			name = Debug;
-		};
-		CB9695421A9A3EF6009757B7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = SkiMontanaTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.eibenm.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SkiMontana.app/SkiMontana";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -843,15 +747,6 @@
 			buildConfigurations = (
 				CB96953E1A9A3EF6009757B7 /* Debug */,
 				CB96953F1A9A3EF6009757B7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CB9695401A9A3EF6009757B7 /* Build configuration list for PBXNativeTarget "SkiMontanaTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CB9695411A9A3EF6009757B7 /* Debug */,
-				CB9695421A9A3EF6009757B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
