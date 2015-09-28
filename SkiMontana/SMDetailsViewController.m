@@ -204,7 +204,7 @@ static CGFloat maxOffsetDiff = 44.0f;
     // Adjusting labels in header
     // Adjuting opacity of area label
     
-    NSLog(@"%f", offsetDiff);
+    //NSLog(@"%f", offsetDiff);
     
     if (offsetDiff < (-1 * maxOffsetDiff)) {
         self.tableView.contentInset = UIEdgeInsetsMake(self.maxOffsetY, 0, 0, 0);
