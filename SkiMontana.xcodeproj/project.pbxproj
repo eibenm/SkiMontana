@@ -14,7 +14,6 @@
 		CB2B346D1BAE0BB7007067C3 /* SMIAPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2B346C1BAE0BB7007067C3 /* SMIAPViewController.m */; settings = {ASSET_TAGS = (); }; };
 		CB2B346F1BAE0C1D007067C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB2B346E1BAE0C1D007067C3 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
 		CB3FBFC41AB67AFD00D5A037 /* SMAppearanceModifier.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3FBFC31AB67AFD00D5A037 /* SMAppearanceModifier.m */; };
-		CB4208A11AA3B94200ADFA97 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4208A01AA3B94200ADFA97 /* UIImage+ImageEffects.m */; };
 		CB4208A51AA3B98700ADFA97 /* UIFont+SkiMontana.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4208A41AA3B98700ADFA97 /* UIFont+SkiMontana.m */; };
 		CB4208A81AA3BB5100ADFA97 /* SMAreasTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4208A71AA3BB5100ADFA97 /* SMAreasTableViewController.m */; };
 		CB4208E61AA3FA6C00ADFA97 /* database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = CB4208E51AA3FA6C00ADFA97 /* database.sqlite */; };
@@ -33,6 +32,11 @@
 		CB7446231AEDBE670070B36D /* SMDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7446221AEDBE670070B36D /* SMDetailsViewController.m */; };
 		CB7446261AEEA36A0070B36D /* SMDetailsInformationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7446251AEEA36A0070B36D /* SMDetailsInformationTableViewCell.m */; };
 		CB7446291AEEA38E0070B36D /* SMDetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7446281AEEA38E0070B36D /* SMDetailsTableViewCell.m */; };
+		CB753ACF1BB9E93E007EAAAD /* StoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CB753ACC1BB9E93E007EAAAD /* StoreManager.m */; settings = {ASSET_TAGS = (); }; };
+		CB753AD01BB9E93E007EAAAD /* StoreObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = CB753ACE1BB9E93E007EAAAD /* StoreObserver.m */; settings = {ASSET_TAGS = (); }; };
+		CB753AD41BB9EE83007EAAAD /* SMModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CB753AD31BB9EE83007EAAAD /* SMModel.m */; settings = {ASSET_TAGS = (); }; };
+		CB753AD71BBA0D12007EAAAD /* SMAreasTableViewControllerParent.m in Sources */ = {isa = PBXBuildFile; fileRef = CB753AD61BBA0D12007EAAAD /* SMAreasTableViewControllerParent.m */; settings = {ASSET_TAGS = (); }; };
+		CB753AE31BBA2CBA007EAAAD /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = CB753AE21BBA2CBA007EAAAD /* UIImage+ImageEffects.m */; settings = {ASSET_TAGS = (); }; };
 		CB76D9C61AFC6102005EC2E8 /* SMRouteMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB76D9C51AFC6102005EC2E8 /* SMRouteMapViewController.m */; };
 		CB8694C21B09639B00D4A93F /* Headers in Resources */ = {isa = PBXBuildFile; fileRef = CB8694BF1B09639B00D4A93F /* Headers */; };
 		CB8694C31B09639B00D4A93F /* libMapbox.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8694C01B09639B00D4A93F /* libMapbox.a */; };
@@ -83,8 +87,6 @@
 		CB2B346E1BAE0C1D007067C3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		CB3FBFC21AB67AFD00D5A037 /* SMAppearanceModifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAppearanceModifier.h; sourceTree = "<group>"; };
 		CB3FBFC31AB67AFD00D5A037 /* SMAppearanceModifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAppearanceModifier.m; sourceTree = "<group>"; };
-		CB42089F1AA3B94200ADFA97 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
-		CB4208A01AA3B94200ADFA97 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		CB4208A31AA3B98700ADFA97 /* UIFont+SkiMontana.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+SkiMontana.h"; sourceTree = "<group>"; };
 		CB4208A41AA3B98700ADFA97 /* UIFont+SkiMontana.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+SkiMontana.m"; sourceTree = "<group>"; };
 		CB4208A61AA3BB5100ADFA97 /* SMAreasTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAreasTableViewController.h; sourceTree = "<group>"; };
@@ -120,6 +122,16 @@
 		CB7446251AEEA36A0070B36D /* SMDetailsInformationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDetailsInformationTableViewCell.m; sourceTree = "<group>"; };
 		CB7446271AEEA38E0070B36D /* SMDetailsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDetailsTableViewCell.h; sourceTree = "<group>"; };
 		CB7446281AEEA38E0070B36D /* SMDetailsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDetailsTableViewCell.m; sourceTree = "<group>"; };
+		CB753ACB1BB9E93E007EAAAD /* StoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreManager.h; sourceTree = "<group>"; };
+		CB753ACC1BB9E93E007EAAAD /* StoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreManager.m; sourceTree = "<group>"; };
+		CB753ACD1BB9E93E007EAAAD /* StoreObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreObserver.h; sourceTree = "<group>"; };
+		CB753ACE1BB9E93E007EAAAD /* StoreObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreObserver.m; sourceTree = "<group>"; };
+		CB753AD21BB9EE83007EAAAD /* SMModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMModel.h; sourceTree = "<group>"; };
+		CB753AD31BB9EE83007EAAAD /* SMModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMModel.m; sourceTree = "<group>"; };
+		CB753AD51BBA0D12007EAAAD /* SMAreasTableViewControllerParent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAreasTableViewControllerParent.h; sourceTree = "<group>"; };
+		CB753AD61BBA0D12007EAAAD /* SMAreasTableViewControllerParent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAreasTableViewControllerParent.m; sourceTree = "<group>"; };
+		CB753AE11BBA2CBA007EAAAD /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		CB753AE21BBA2CBA007EAAAD /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		CB76D9C41AFC6102005EC2E8 /* SMRouteMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRouteMapViewController.h; sourceTree = "<group>"; };
 		CB76D9C51AFC6102005EC2E8 /* SMRouteMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRouteMapViewController.m; sourceTree = "<group>"; };
 		CB8694BF1B09639B00D4A93F /* Headers */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Headers; sourceTree = "<group>"; };
@@ -222,8 +234,8 @@
 		CB4208A21AA3B94C00ADFA97 /* Catagories */ = {
 			isa = PBXGroup;
 			children = (
-				CB42089F1AA3B94200ADFA97 /* UIImage+ImageEffects.h */,
-				CB4208A01AA3B94200ADFA97 /* UIImage+ImageEffects.m */,
+				CB753AE11BBA2CBA007EAAAD /* UIImage+ImageEffects.h */,
+				CB753AE21BBA2CBA007EAAAD /* UIImage+ImageEffects.m */,
 				CB4208A31AA3B98700ADFA97 /* UIFont+SkiMontana.h */,
 				CB4208A41AA3B98700ADFA97 /* UIFont+SkiMontana.m */,
 				CBB480951AA57A8F00C2A7E3 /* UIButton+TintImage.h */,
@@ -246,6 +258,19 @@
 			);
 			name = Frameworks;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		CB753AD11BB9E944007EAAAD /* In App Purchase */ = {
+			isa = PBXGroup;
+			children = (
+				CB753AD21BB9EE83007EAAAD /* SMModel.h */,
+				CB753AD31BB9EE83007EAAAD /* SMModel.m */,
+				CB753ACB1BB9E93E007EAAAD /* StoreManager.h */,
+				CB753ACC1BB9E93E007EAAAD /* StoreManager.m */,
+				CB753ACD1BB9E93E007EAAAD /* StoreObserver.h */,
+				CB753ACE1BB9E93E007EAAAD /* StoreObserver.m */,
+			);
+			name = "In App Purchase";
 			sourceTree = "<group>";
 		};
 		CB8694C51B0963A300D4A93F /* Mapbox */ = {
@@ -286,6 +311,8 @@
 				CBF5CA8F1BA676AC00FDF3E0 /* SMDataLoading.xib */,
 				CBF5CA911BA676C800FDF3E0 /* SMDataLoading.h */,
 				CBF5CA921BA676C800FDF3E0 /* SMDataLoading.m */,
+				CB753AD51BBA0D12007EAAAD /* SMAreasTableViewControllerParent.h */,
+				CB753AD61BBA0D12007EAAAD /* SMAreasTableViewControllerParent.m */,
 				CB4208A61AA3BB5100ADFA97 /* SMAreasTableViewController.h */,
 				CB4208A71AA3BB5100ADFA97 /* SMAreasTableViewController.m */,
 				CB99FF461AB624F10067E547 /* SMAreaOverviewViewController.h */,
@@ -298,6 +325,7 @@
 				CB76D9C51AFC6102005EC2E8 /* SMRouteMapViewController.m */,
 				CB2B346B1BAE0BB7007067C3 /* SMIAPViewController.h */,
 				CB2B346C1BAE0BB7007067C3 /* SMIAPViewController.m */,
+				CB753AD11BB9E944007EAAAD /* In App Purchase */,
 				CBB480871AA5774D00C2A7E3 /* TableCells */,
 				CB235EAE1A9A591C0002E482 /* Utility Classes */,
 				CB96955A1A9A46CD009757B7 /* Data Manager */,
@@ -528,6 +556,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB17F6761AA93F5C00048BC5 /* SMSkiRouteTableViewCell.m in Sources */,
+				CB753AD41BB9EE83007EAAAD /* SMModel.m in Sources */,
 				CB2B346D1BAE0BB7007067C3 /* SMIAPViewController.m in Sources */,
 				CB6BCF3A1BB3B520009B0998 /* Gps+CoreDataProperties.m in Sources */,
 				CB99FF481AB624F10067E547 /* SMAreaOverviewViewController.m in Sources */,
@@ -537,6 +566,7 @@
 				CB17F6731AA93F4600048BC5 /* SMSkiAreaTableViewCell.m in Sources */,
 				CB4208A81AA3BB5100ADFA97 /* SMAreasTableViewController.m in Sources */,
 				CB6BCF3C1BB3B520009B0998 /* SkiAreas+CoreDataProperties.m in Sources */,
+				CB753AD01BB9E93E007EAAAD /* StoreObserver.m in Sources */,
 				CBA338DC1B82BBD1001BA5FF /* SMReachabilityManager.m in Sources */,
 				CB99FF5A1AB6347F0067E547 /* SMFlipAnimation.m in Sources */,
 				CB99FF611AB635940067E547 /* SMTableViewController.m in Sources */,
@@ -559,11 +589,13 @@
 				CB9695231A9A3EF6009757B7 /* AppDelegate.m in Sources */,
 				CBB480971AA57A8F00C2A7E3 /* UIButton+TintImage.m in Sources */,
 				CB7446231AEDBE670070B36D /* SMDetailsViewController.m in Sources */,
-				CB4208A11AA3B94200ADFA97 /* UIImage+ImageEffects.m in Sources */,
+				CB753ACF1BB9E93E007EAAAD /* StoreManager.m in Sources */,
 				CB6BCF381BB3B520009B0998 /* Glossary+CoreDataProperties.m in Sources */,
 				CB8694CE1B0A8B6300D4A93F /* CLLocationHelper.m in Sources */,
 				CB56C2731A9D63530002495F /* SMWebViewController.m in Sources */,
 				CB4208A51AA3B98700ADFA97 /* UIFont+SkiMontana.m in Sources */,
+				CB753AE31BBA2CBA007EAAAD /* UIImage+ImageEffects.m in Sources */,
+				CB753AD71BBA0D12007EAAAD /* SMAreasTableViewControllerParent.m in Sources */,
 				CB9695201A9A3EF6009757B7 /* main.m in Sources */,
 				CB99FF451AB61F010067E547 /* UIColor+FromHex.m in Sources */,
 				CB6BCF3D1BB3B520009B0998 /* SkiAreas.m in Sources */,
@@ -698,7 +730,7 @@
 					"$(PROJECT_DIR)/SkiMontana",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.eibenm.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.eibenm.SkiMontanaTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -725,7 +757,7 @@
 					"$(PROJECT_DIR)/SkiMontana",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.eibenm.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.eibenm.SkiMontanaTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

@@ -309,9 +309,18 @@
         modalController.skiArea = skiArea;
     }
     
+    /*
     if ([segue.identifier isEqualToString:@"showPurchase"]) {
         nil;
     }
+    */
 }
+
+#pragma mark - In App Purchase
  
+- (IBAction)purchaseOneMonth:(id)sender
+{
+    [self addActionSheet];
+}
+
 @end

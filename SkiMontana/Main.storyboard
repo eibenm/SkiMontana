@@ -120,7 +120,7 @@
                     <navigationItem key="navigationItem" id="kJx-fD-AmW">
                         <barButtonItem key="leftBarButtonItem" title="Buy" id="ydl-ae-YfM">
                             <connections>
-                                <segue destination="733-fR-yul" kind="presentation" identifier="showPurchase" modalTransitionStyle="coverVertical" id="Tiv-nm-cOz"/>
+                                <action selector="purchaseOneMonth:" destination="X8G-vr-6gW" id="zOd-jw-omu"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Glossary" id="IZF-N4-BJK">
