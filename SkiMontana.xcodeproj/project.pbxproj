@@ -32,9 +32,6 @@
 		CB7446231AEDBE670070B36D /* SMDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7446221AEDBE670070B36D /* SMDetailsViewController.m */; };
 		CB7446261AEEA36A0070B36D /* SMDetailsInformationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7446251AEEA36A0070B36D /* SMDetailsInformationTableViewCell.m */; };
 		CB7446291AEEA38E0070B36D /* SMDetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7446281AEEA38E0070B36D /* SMDetailsTableViewCell.m */; };
-		CB753ACF1BB9E93E007EAAAD /* StoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CB753ACC1BB9E93E007EAAAD /* StoreManager.m */; settings = {ASSET_TAGS = (); }; };
-		CB753AD01BB9E93E007EAAAD /* StoreObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = CB753ACE1BB9E93E007EAAAD /* StoreObserver.m */; settings = {ASSET_TAGS = (); }; };
-		CB753AD41BB9EE83007EAAAD /* SMModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CB753AD31BB9EE83007EAAAD /* SMModel.m */; settings = {ASSET_TAGS = (); }; };
 		CB753AD71BBA0D12007EAAAD /* SMAreasTableViewControllerParent.m in Sources */ = {isa = PBXBuildFile; fileRef = CB753AD61BBA0D12007EAAAD /* SMAreasTableViewControllerParent.m */; settings = {ASSET_TAGS = (); }; };
 		CB753AE31BBA2CBA007EAAAD /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = CB753AE21BBA2CBA007EAAAD /* UIImage+ImageEffects.m */; settings = {ASSET_TAGS = (); }; };
 		CB76D9C61AFC6102005EC2E8 /* SMRouteMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB76D9C51AFC6102005EC2E8 /* SMRouteMapViewController.m */; };
@@ -43,8 +40,8 @@
 		CB8694C41B09639B00D4A93F /* Mapbox.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CB8694C11B09639B00D4A93F /* Mapbox.bundle */; };
 		CB8694C71B09649200D4A93F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8694C61B09649200D4A93F /* CoreLocation.framework */; };
 		CB8694C91B09649D00D4A93F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8694C81B09649D00D4A93F /* QuartzCore.framework */; };
-		CB8694CB1B0964AC00D4A93F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8694CA1B0964AC00D4A93F /* libz.dylib */; };
 		CB8694CE1B0A8B6300D4A93F /* CLLocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8694CD1B0A8B6300D4A93F /* CLLocationHelper.m */; };
+		CB8ACB221BBB743400C485D8 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8ACB211BBB743400C485D8 /* NSData+Base64.m */; settings = {ASSET_TAGS = (); }; };
 		CB9695201A9A3EF6009757B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB96951F1A9A3EF6009757B7 /* main.m */; };
 		CB9695231A9A3EF6009757B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9695221A9A3EF6009757B7 /* AppDelegate.m */; };
 		CB96952E1A9A3EF6009757B7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB96952C1A9A3EF6009757B7 /* LaunchScreen.xib */; };
@@ -67,10 +64,19 @@
 		CBA338AC1B82821F001BA5FF /* skiappdata.json in Resources */ = {isa = PBXBuildFile; fileRef = CBA338AB1B82821F001BA5FF /* skiappdata.json */; };
 		CBA338AF1B8282AD001BA5FF /* SMUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA338AE1B8282AD001BA5FF /* SMUtilities.m */; };
 		CBA338C31B82A3DD001BA5FF /* SkiDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBA338C11B82A3DD001BA5FF /* SkiDataModel.xcdatamodeld */; };
-		CBA338CA1B82A883001BA5FF /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA338C91B82A883001BA5FF /* libsqlite3.dylib */; };
 		CBA338D91B82BACB001BA5FF /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA338D81B82BACB001BA5FF /* Reachability.m */; };
 		CBA338DC1B82BBD1001BA5FF /* SMReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA338DB1B82BBD1001BA5FF /* SMReachabilityManager.m */; };
 		CBB480971AA57A8F00C2A7E3 /* UIButton+TintImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB480961AA57A8F00C2A7E3 /* UIButton+TintImage.m */; };
+		CBF466201BBE534F00791383 /* SCPStoreKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF4661F1BBE534F00791383 /* SCPStoreKitManager.m */; settings = {ASSET_TAGS = (); }; };
+		CBF466241BBE536500791383 /* NSError+SCPStoreKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF466231BBE536500791383 /* NSError+SCPStoreKitManager.m */; settings = {ASSET_TAGS = (); }; };
+		CBF4662D1BBE537F00791383 /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = CBF466261BBE537F00791383 /* AppleIncRootCertificate.cer */; settings = {ASSET_TAGS = (); }; };
+		CBF4662E1BBE537F00791383 /* SCPStoreKitIAPReceipt.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF466281BBE537F00791383 /* SCPStoreKitIAPReceipt.m */; settings = {ASSET_TAGS = (); }; };
+		CBF4662F1BBE537F00791383 /* SCPStoreKitReceipt.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF4662A1BBE537F00791383 /* SCPStoreKitReceipt.m */; settings = {ASSET_TAGS = (); }; };
+		CBF466301BBE537F00791383 /* SCPStoreKitReceiptValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF4662C1BBE537F00791383 /* SCPStoreKitReceiptValidator.m */; settings = {ASSET_TAGS = (); }; };
+		CBF466341BBE543700791383 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBF466321BBE543700791383 /* libcrypto.a */; };
+		CBF466351BBE543700791383 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBF466331BBE543700791383 /* libssl.a */; };
+		CBF466371BBE545100791383 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CBF466361BBE545100791383 /* libz.tbd */; };
+		CBF466391BBE545800791383 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CBF466381BBE545800791383 /* libsqlite3.tbd */; };
 		CBF5CA901BA676AC00FDF3E0 /* SMDataLoading.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBF5CA8F1BA676AC00FDF3E0 /* SMDataLoading.xib */; };
 		CBF5CA931BA676C800FDF3E0 /* SMDataLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF5CA921BA676C800FDF3E0 /* SMDataLoading.m */; };
 /* End PBXBuildFile section */
@@ -122,12 +128,6 @@
 		CB7446251AEEA36A0070B36D /* SMDetailsInformationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDetailsInformationTableViewCell.m; sourceTree = "<group>"; };
 		CB7446271AEEA38E0070B36D /* SMDetailsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDetailsTableViewCell.h; sourceTree = "<group>"; };
 		CB7446281AEEA38E0070B36D /* SMDetailsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDetailsTableViewCell.m; sourceTree = "<group>"; };
-		CB753ACB1BB9E93E007EAAAD /* StoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreManager.h; sourceTree = "<group>"; };
-		CB753ACC1BB9E93E007EAAAD /* StoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreManager.m; sourceTree = "<group>"; };
-		CB753ACD1BB9E93E007EAAAD /* StoreObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreObserver.h; sourceTree = "<group>"; };
-		CB753ACE1BB9E93E007EAAAD /* StoreObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreObserver.m; sourceTree = "<group>"; };
-		CB753AD21BB9EE83007EAAAD /* SMModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMModel.h; sourceTree = "<group>"; };
-		CB753AD31BB9EE83007EAAAD /* SMModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMModel.m; sourceTree = "<group>"; };
 		CB753AD51BBA0D12007EAAAD /* SMAreasTableViewControllerParent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAreasTableViewControllerParent.h; sourceTree = "<group>"; };
 		CB753AD61BBA0D12007EAAAD /* SMAreasTableViewControllerParent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAreasTableViewControllerParent.m; sourceTree = "<group>"; };
 		CB753AE11BBA2CBA007EAAAD /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
@@ -139,9 +139,10 @@
 		CB8694C11B09639B00D4A93F /* Mapbox.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Mapbox.bundle; sourceTree = "<group>"; };
 		CB8694C61B09649200D4A93F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CB8694C81B09649D00D4A93F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		CB8694CA1B0964AC00D4A93F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		CB8694CC1B0A8B6300D4A93F /* CLLocationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLocationHelper.h; sourceTree = "<group>"; };
 		CB8694CD1B0A8B6300D4A93F /* CLLocationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLocationHelper.m; sourceTree = "<group>"; };
+		CB8ACB201BBB743400C485D8 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		CB8ACB211BBB743400C485D8 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		CB96951A1A9A3EF6009757B7 /* SkiMontana.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkiMontana.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB96951E1A9A3EF6009757B7 /* SkiMontana-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SkiMontana-Info.plist"; sourceTree = "<group>"; };
 		CB96951F1A9A3EF6009757B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -187,13 +188,27 @@
 		CBA338AD1B8282AD001BA5FF /* SMUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMUtilities.h; sourceTree = "<group>"; };
 		CBA338AE1B8282AD001BA5FF /* SMUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMUtilities.m; sourceTree = "<group>"; };
 		CBA338C21B82A3DD001BA5FF /* SkiDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SkiDataModel.xcdatamodel; sourceTree = "<group>"; };
-		CBA338C91B82A883001BA5FF /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		CBA338D71B82BACB001BA5FF /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		CBA338D81B82BACB001BA5FF /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		CBA338DA1B82BBD1001BA5FF /* SMReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMReachabilityManager.h; sourceTree = "<group>"; };
 		CBA338DB1B82BBD1001BA5FF /* SMReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMReachabilityManager.m; sourceTree = "<group>"; };
 		CBB480951AA57A8F00C2A7E3 /* UIButton+TintImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+TintImage.h"; sourceTree = "<group>"; };
 		CBB480961AA57A8F00C2A7E3 /* UIButton+TintImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+TintImage.m"; sourceTree = "<group>"; };
+		CBF4661E1BBE534F00791383 /* SCPStoreKitManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCPStoreKitManager.h; path = SkiMontana/SCPStoreKitManager/SCPStoreKitManager.h; sourceTree = "<group>"; };
+		CBF4661F1BBE534F00791383 /* SCPStoreKitManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SCPStoreKitManager.m; path = SkiMontana/SCPStoreKitManager/SCPStoreKitManager.m; sourceTree = "<group>"; };
+		CBF466221BBE536500791383 /* NSError+SCPStoreKitManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSError+SCPStoreKitManager.h"; path = "SkiMontana/SCPStoreKitManager/Categories/NSError+SCPStoreKitManager.h"; sourceTree = "<group>"; };
+		CBF466231BBE536500791383 /* NSError+SCPStoreKitManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSError+SCPStoreKitManager.m"; path = "SkiMontana/SCPStoreKitManager/Categories/NSError+SCPStoreKitManager.m"; sourceTree = "<group>"; };
+		CBF466261BBE537F00791383 /* AppleIncRootCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; name = AppleIncRootCertificate.cer; path = SkiMontana/SCPStoreKitManager/SCPStoreKitReceiptValidator/AppleIncRootCertificate.cer; sourceTree = "<group>"; };
+		CBF466271BBE537F00791383 /* SCPStoreKitIAPReceipt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCPStoreKitIAPReceipt.h; path = SkiMontana/SCPStoreKitManager/SCPStoreKitReceiptValidator/SCPStoreKitIAPReceipt.h; sourceTree = "<group>"; };
+		CBF466281BBE537F00791383 /* SCPStoreKitIAPReceipt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SCPStoreKitIAPReceipt.m; path = SkiMontana/SCPStoreKitManager/SCPStoreKitReceiptValidator/SCPStoreKitIAPReceipt.m; sourceTree = "<group>"; };
+		CBF466291BBE537F00791383 /* SCPStoreKitReceipt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCPStoreKitReceipt.h; path = SkiMontana/SCPStoreKitManager/SCPStoreKitReceiptValidator/SCPStoreKitReceipt.h; sourceTree = "<group>"; };
+		CBF4662A1BBE537F00791383 /* SCPStoreKitReceipt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SCPStoreKitReceipt.m; path = SkiMontana/SCPStoreKitManager/SCPStoreKitReceiptValidator/SCPStoreKitReceipt.m; sourceTree = "<group>"; };
+		CBF4662B1BBE537F00791383 /* SCPStoreKitReceiptValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCPStoreKitReceiptValidator.h; path = SkiMontana/SCPStoreKitManager/SCPStoreKitReceiptValidator/SCPStoreKitReceiptValidator.h; sourceTree = "<group>"; };
+		CBF4662C1BBE537F00791383 /* SCPStoreKitReceiptValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SCPStoreKitReceiptValidator.m; path = SkiMontana/SCPStoreKitManager/SCPStoreKitReceiptValidator/SCPStoreKitReceiptValidator.m; sourceTree = "<group>"; };
+		CBF466321BBE543700791383 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = SkiMontana/OpenSSL/lib/libcrypto.a; sourceTree = "<group>"; };
+		CBF466331BBE543700791383 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = SkiMontana/OpenSSL/lib/libssl.a; sourceTree = "<group>"; };
+		CBF466361BBE545100791383 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		CBF466381BBE545800791383 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		CBF5CA8F1BA676AC00FDF3E0 /* SMDataLoading.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMDataLoading.xib; sourceTree = "<group>"; };
 		CBF5CA911BA676C800FDF3E0 /* SMDataLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDataLoading.h; sourceTree = "<group>"; };
 		CBF5CA921BA676C800FDF3E0 /* SMDataLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDataLoading.m; sourceTree = "<group>"; };
@@ -206,10 +221,12 @@
 			files = (
 				CB8694C91B09649D00D4A93F /* QuartzCore.framework in Frameworks */,
 				CB8694C71B09649200D4A93F /* CoreLocation.framework in Frameworks */,
-				CB8694C31B09639B00D4A93F /* libMapbox.a in Frameworks */,
 				CB2B346A1BAE058F007067C3 /* StoreKit.framework in Frameworks */,
-				CBA338CA1B82A883001BA5FF /* libsqlite3.dylib in Frameworks */,
-				CB8694CB1B0964AC00D4A93F /* libz.dylib in Frameworks */,
+				CB8694C31B09639B00D4A93F /* libMapbox.a in Frameworks */,
+				CBF466391BBE545800791383 /* libsqlite3.tbd in Frameworks */,
+				CBF466371BBE545100791383 /* libz.tbd in Frameworks */,
+				CBF466341BBE543700791383 /* libcrypto.a in Frameworks */,
+				CBF466351BBE543700791383 /* libssl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +259,8 @@
 				CBB480961AA57A8F00C2A7E3 /* UIButton+TintImage.m */,
 				CB99FF431AB61F010067E547 /* UIColor+FromHex.h */,
 				CB99FF441AB61F010067E547 /* UIColor+FromHex.m */,
+				CB8ACB201BBB743400C485D8 /* NSData+Base64.h */,
+				CB8ACB211BBB743400C485D8 /* NSData+Base64.m */,
 			);
 			name = Catagories;
 			sourceTree = "<group>";
@@ -249,28 +268,18 @@
 		CB437C3E1A9C230600315353 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CBF466211BBE535800791383 /* SCPStoreKitManager */,
 				CB8694C51B0963A300D4A93F /* Mapbox */,
 				CB8694C81B09649D00D4A93F /* QuartzCore.framework */,
 				CB8694C61B09649200D4A93F /* CoreLocation.framework */,
 				CB2B34691BAE058F007067C3 /* StoreKit.framework */,
-				CBA338C91B82A883001BA5FF /* libsqlite3.dylib */,
-				CB8694CA1B0964AC00D4A93F /* libz.dylib */,
+				CBF466381BBE545800791383 /* libsqlite3.tbd */,
+				CBF466361BBE545100791383 /* libz.tbd */,
+				CBF466321BBE543700791383 /* libcrypto.a */,
+				CBF466331BBE543700791383 /* libssl.a */,
 			);
 			name = Frameworks;
 			path = ..;
-			sourceTree = "<group>";
-		};
-		CB753AD11BB9E944007EAAAD /* In App Purchase */ = {
-			isa = PBXGroup;
-			children = (
-				CB753AD21BB9EE83007EAAAD /* SMModel.h */,
-				CB753AD31BB9EE83007EAAAD /* SMModel.m */,
-				CB753ACB1BB9E93E007EAAAD /* StoreManager.h */,
-				CB753ACC1BB9E93E007EAAAD /* StoreManager.m */,
-				CB753ACD1BB9E93E007EAAAD /* StoreObserver.h */,
-				CB753ACE1BB9E93E007EAAAD /* StoreObserver.m */,
-			);
-			name = "In App Purchase";
 			sourceTree = "<group>";
 		};
 		CB8694C51B0963A300D4A93F /* Mapbox */ = {
@@ -325,7 +334,6 @@
 				CB76D9C51AFC6102005EC2E8 /* SMRouteMapViewController.m */,
 				CB2B346B1BAE0BB7007067C3 /* SMIAPViewController.h */,
 				CB2B346C1BAE0BB7007067C3 /* SMIAPViewController.m */,
-				CB753AD11BB9E944007EAAAD /* In App Purchase */,
 				CBB480871AA5774D00C2A7E3 /* TableCells */,
 				CB235EAE1A9A591C0002E482 /* Utility Classes */,
 				CB96955A1A9A46CD009757B7 /* Data Manager */,
@@ -473,6 +481,40 @@
 			name = TableCells;
 			sourceTree = "<group>";
 		};
+		CBF466211BBE535800791383 /* SCPStoreKitManager */ = {
+			isa = PBXGroup;
+			children = (
+				CBF466251BBE536900791383 /* Catagories */,
+				CBF466311BBE538900791383 /* SCPStoreKitReceiptValidator */,
+			);
+			name = SCPStoreKitManager;
+			sourceTree = "<group>";
+		};
+		CBF466251BBE536900791383 /* Catagories */ = {
+			isa = PBXGroup;
+			children = (
+				CBF466221BBE536500791383 /* NSError+SCPStoreKitManager.h */,
+				CBF466231BBE536500791383 /* NSError+SCPStoreKitManager.m */,
+			);
+			name = Catagories;
+			sourceTree = "<group>";
+		};
+		CBF466311BBE538900791383 /* SCPStoreKitReceiptValidator */ = {
+			isa = PBXGroup;
+			children = (
+				CBF466261BBE537F00791383 /* AppleIncRootCertificate.cer */,
+				CBF466271BBE537F00791383 /* SCPStoreKitIAPReceipt.h */,
+				CBF466281BBE537F00791383 /* SCPStoreKitIAPReceipt.m */,
+				CBF466291BBE537F00791383 /* SCPStoreKitReceipt.h */,
+				CBF4662A1BBE537F00791383 /* SCPStoreKitReceipt.m */,
+				CBF4662B1BBE537F00791383 /* SCPStoreKitReceiptValidator.h */,
+				CBF4662C1BBE537F00791383 /* SCPStoreKitReceiptValidator.m */,
+				CBF4661E1BBE534F00791383 /* SCPStoreKitManager.h */,
+				CBF4661F1BBE534F00791383 /* SCPStoreKitManager.m */,
+			);
+			name = SCPStoreKitReceiptValidator;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -544,6 +586,7 @@
 				CB96952E1A9A3EF6009757B7 /* LaunchScreen.xib in Resources */,
 				CB2B346F1BAE0C1D007067C3 /* Main.storyboard in Resources */,
 				CB8694C21B09639B00D4A93F /* Headers in Resources */,
+				CBF4662D1BBE537F00791383 /* AppleIncRootCertificate.cer in Resources */,
 				CBA338AC1B82821F001BA5FF /* skiappdata.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -556,17 +599,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB17F6761AA93F5C00048BC5 /* SMSkiRouteTableViewCell.m in Sources */,
-				CB753AD41BB9EE83007EAAAD /* SMModel.m in Sources */,
 				CB2B346D1BAE0BB7007067C3 /* SMIAPViewController.m in Sources */,
 				CB6BCF3A1BB3B520009B0998 /* Gps+CoreDataProperties.m in Sources */,
 				CB99FF481AB624F10067E547 /* SMAreaOverviewViewController.m in Sources */,
 				CB9695451A9A3FC1009757B7 /* SMIntroViewController.m in Sources */,
 				CBF5CA931BA676C800FDF3E0 /* SMDataLoading.m in Sources */,
 				CB6BCF361BB3B520009B0998 /* SkiRoutes+CoreDataProperties.m in Sources */,
+				CBF4662F1BBE537F00791383 /* SCPStoreKitReceipt.m in Sources */,
 				CB17F6731AA93F4600048BC5 /* SMSkiAreaTableViewCell.m in Sources */,
 				CB4208A81AA3BB5100ADFA97 /* SMAreasTableViewController.m in Sources */,
 				CB6BCF3C1BB3B520009B0998 /* SkiAreas+CoreDataProperties.m in Sources */,
-				CB753AD01BB9E93E007EAAAD /* StoreObserver.m in Sources */,
 				CBA338DC1B82BBD1001BA5FF /* SMReachabilityManager.m in Sources */,
 				CB99FF5A1AB6347F0067E547 /* SMFlipAnimation.m in Sources */,
 				CB99FF611AB635940067E547 /* SMTableViewController.m in Sources */,
@@ -576,6 +618,7 @@
 				CB6BCF3F1BB3B520009B0998 /* File.m in Sources */,
 				CB99FF4E1AB634270067E547 /* SMViewController.m in Sources */,
 				CBA338D91B82BACB001BA5FF /* Reachability.m in Sources */,
+				CBF4662E1BBE537F00791383 /* SCPStoreKitIAPReceipt.m in Sources */,
 				CBA338C31B82A3DD001BA5FF /* SkiDataModel.xcdatamodeld in Sources */,
 				CB96954C1A9A43A7009757B7 /* SMConstants.m in Sources */,
 				CB7446261AEEA36A0070B36D /* SMDetailsInformationTableViewCell.m in Sources */,
@@ -586,12 +629,15 @@
 				CB54F5FB1B9FD93100D93401 /* SMDetailsHeaderView.m in Sources */,
 				CB6BCF371BB3B520009B0998 /* SkiRoutes.m in Sources */,
 				CB3FBFC41AB67AFD00D5A037 /* SMAppearanceModifier.m in Sources */,
+				CBF466201BBE534F00791383 /* SCPStoreKitManager.m in Sources */,
 				CB9695231A9A3EF6009757B7 /* AppDelegate.m in Sources */,
+				CBF466301BBE537F00791383 /* SCPStoreKitReceiptValidator.m in Sources */,
 				CBB480971AA57A8F00C2A7E3 /* UIButton+TintImage.m in Sources */,
 				CB7446231AEDBE670070B36D /* SMDetailsViewController.m in Sources */,
-				CB753ACF1BB9E93E007EAAAD /* StoreManager.m in Sources */,
+				CBF466241BBE536500791383 /* NSError+SCPStoreKitManager.m in Sources */,
 				CB6BCF381BB3B520009B0998 /* Glossary+CoreDataProperties.m in Sources */,
 				CB8694CE1B0A8B6300D4A93F /* CLLocationHelper.m in Sources */,
+				CB8ACB221BBB743400C485D8 /* NSData+Base64.m in Sources */,
 				CB56C2731A9D63530002495F /* SMWebViewController.m in Sources */,
 				CB4208A51AA3B98700ADFA97 /* UIFont+SkiMontana.m in Sources */,
 				CB753AE31BBA2CBA007EAAAD /* UIImage+ImageEffects.m in Sources */,
@@ -721,6 +767,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"\"$(SRCROOT)/SkiMontana/Headers\"",
+					"\"$(SRCROOT)/SkiMontana/OpenSSL\"/**",
 				);
 				INFOPLIST_FILE = "SkiMontana/SkiMontana-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
@@ -728,6 +775,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SkiMontana",
+					"$(PROJECT_DIR)/SkiMontana/OpenSSL/lib",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.eibenm.SkiMontanaTest;
@@ -748,6 +796,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"\"$(SRCROOT)/SkiMontana/Headers\"",
+					"\"$(SRCROOT)/SkiMontana/OpenSSL\"/**",
 				);
 				INFOPLIST_FILE = "SkiMontana/SkiMontana-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
@@ -755,6 +804,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SkiMontana",
+					"$(PROJECT_DIR)/SkiMontana/OpenSSL/lib",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.eibenm.SkiMontanaTest;

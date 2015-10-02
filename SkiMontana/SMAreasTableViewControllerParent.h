@@ -10,7 +10,7 @@
 
 @interface SMAreasTableViewControllerParent : SMTableViewController
 
-- (void)restore;
+- (void)restorePurchases;
 - (void)addActionSheet;
 
 @end

@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import "SMUtilities.h"
 #import "SMAppearanceModifier.h"
-#import "StoreObserver.h"
 
 @interface AppDelegate ()
 
@@ -21,9 +20,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.introController = (UIViewController *)self.window.rootViewController;
-    
-    // Add StoreKit Observer
-    [[SKPaymentQueue defaultQueue] addTransactionObserver:[StoreObserver sharedInstance]];
     
     [SMAppearanceModifier defaultAppearance];
     [SMConstants documentsFolderIfSimulator];
@@ -57,9 +53,6 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    
-    // Remove Storekit Observer
-    [[SKPaymentQueue defaultQueue] removeTransactionObserver: [StoreObserver sharedInstance]];
 }
 
 @end

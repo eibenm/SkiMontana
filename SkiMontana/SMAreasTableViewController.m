@@ -320,6 +320,7 @@
  
 - (IBAction)purchaseOneMonth:(id)sender
 {
+    //[self restorePurchases];
     [self addActionSheet];
 }
 

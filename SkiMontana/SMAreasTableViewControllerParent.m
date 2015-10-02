@@ -6,20 +6,16 @@
 //  Copyright © 2015 Gneiss Software. All rights reserved.
 //
 
-#import "SMModel.h"
-#import "StoreManager.h"
-#import "StoreObserver.h"
 #import "SMAreasTableViewControllerParent.h"
+#import "SCPStoreKitManager.h"
+#import "SCPStoreKitReceiptValidator.h"
+
+static NSString *manageSubscriptions = @"https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions";
+
 
 @interface SMAreasTableViewControllerParent ()
 
-// Indicate that there are restored products
-@property BOOL restoreWasCalled;
-
-// Indicate whether a download is in progress
-@property (nonatomic)BOOL hasDownloadContent;
-
-@property SMModel *iapModel;
+@property (nonatomic, strong) NSArray *products;
 
 @end
 
@@ -29,22 +25,31 @@
 {
     [super viewDidLoad];
     
-    self.hasDownloadContent = NO;
-    self.restoreWasCalled = NO;
-    self.iapModel = nil;
+    [[SCPStoreKitReceiptValidator sharedInstance] validateReceiptWithBundleIdentifier:BUNDLE_IDENTIFIER bundleVersion:@"1.0" tryAgain:YES showReceiptAlert:YES alertViewTitle:nil alertViewMessage:nil success:^(SCPStoreKitReceipt *receipt) {
+        
+        //Here you would do some further checks such as :
+        //Validate that the number of coins/tokens the user has does not exceed the number they have paid for
+        //Unlock any non-consumable items
+        
+        NSLog(@"App receipt : %@", [receipt fullDescription]);
+        
+        //Enumerate through the IAPs and unlock their features
+        [[receipt inAppPurchases] enumerateObjectsUsingBlock:^(SCPStoreKitIAPReceipt *iapReceipt, NSUInteger idx, BOOL *stop) {
+            NSLog(@"IAP receipt :%@", [iapReceipt fullDescription]);
+            //NSString *cancellationDate = iapReceipt.fullDescription[@"cancellationDate"];
+        }];
+        
+    } failure:^(NSError *error) {
+        NSLog(@"%@", [error fullDescription]);
+    }];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(handleProductRequestNotification:)
-                                                 name:IAPProductRequestNotification
-                                               object:[StoreManager sharedInstance]];
+    NSSet *productIdentifiers = [NSSet setWithObjects:
+                                 kIdentifierSubscription1Month,
+                                 kIdentifierSubscription1Year,
+                                 nil
+                                 ];
     
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(handlePurchasesNotification:)
-                                                 name:IAPPurchaseNotification
-                                               object:[StoreObserver sharedInstance]];
-    
-    [self fetchProductInformation];
+    [self requestProductsWithProductIdentifiers:productIdentifiers];
 }
 
 #pragma mark - Display message
@@ -57,98 +62,48 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-#pragma mark - Fetch product information
-
-// Retrieve product information from the App Store
-- (void)fetchProductInformation
+- (void)requestProductsWithProductIdentifiers:(NSSet *)identifiers
 {
-    // Query the App Store for product information if the user is is allowed to make purchases.
-    // Display an alert, otherwise.
-    if([SKPaymentQueue canMakePayments])
-    {
-        [[StoreManager sharedInstance] fetchProductInformation];
-    }
-    else
-    {
-        // Warn the user that they are not allowed to make purchases.
-        [self alertWithTitle:@"Warning" message:@"Purchases are disabled on this device."];
-    }
+    [[SCPStoreKitManager sharedInstance] requestProductsWithIdentifiers:identifiers productsReturnedSuccessfully:^(NSArray *products) {
+        NSLog(@"Success with products: %@", products);
+        self.products = products;
+    } invalidProducts:^(NSArray *invalidProducts) {
+        NSLog(@"Invalid products: %@", invalidProducts);
+    } failure:^(NSError *error) {
+        NSLog(@"Error: %@", error.localizedDescription);
+    }];
 }
 
-
-#pragma mark - Handle product request notification
-
-// Update the UI according to the product request notification result
-- (void)handleProductRequestNotification:(NSNotification *)notification
+- (void)restorePurchases
 {
-    StoreManager *productRequestNotification = (StoreManager*)notification.object;
-    IAPProductRequestStatus result = (IAPProductRequestStatus)productRequestNotification.status;
-    
-    if (result == IAPProductRequestResponse)
-    {
-        self.iapModel = [productRequestNotification.productRequestResponse firstObject];
+    [[SCPStoreKitManager sharedInstance] restorePurchasesPaymentTransactionStateRestored:^(NSArray *transactions) {
+        NSLog(@"Restored transactions : %@", transactions);
         
-        NSLog(@"%@: %@", self.iapModel.name, self.iapModel.elements);
-    }
+        //        for (SKPaymentTransaction *transation in transactions) {
+        //            NSLog(@"%@", transation.)
+        //        }
+        
+    } paymentTransactionStateFailed:^(NSArray *transactions) {
+        NSLog(@"Failed to restore transactions : %@", transactions);
+    } failure:^(NSError *error) {
+        NSLog(@"Failure : %@", [error localizedDescription]);
+    }];
 }
 
-
-#pragma mark - Handle purchase request notification
-
-// Update the UI according to the purchase request notification result
-- (void)handlePurchasesNotification:(NSNotification *)notification
+- (void)purchaseWithProduct:(SKProduct *)product
 {
-    StoreObserver *purchasesNotification = (StoreObserver *)notification.object;
-    IAPPurchaseNotificationStatus status = (IAPPurchaseNotificationStatus)purchasesNotification.status;
-    
-    switch (status)
-    {
-        case IAPPurchaseFailed:
-            [self alertWithTitle:@"Purchase Status" message:purchasesNotification.message];
-            break;
-            // Switch to the iOSPurchasesList view controller when receiving a successful restore notification
-        case IAPRestoredSucceeded:
-        {
-            self.restoreWasCalled = YES;
-            NSLog(@"Restore was successfull.  Now refresh the UI!");
-        }
-            break;
-        case IAPRestoredFailed:
-            [self alertWithTitle:@"Purchase Status" message:purchasesNotification.message];
-            break;
-            // Notify the user that downloading is about to start when receiving a download started notification
-        case IAPDownloadStarted:
-        {
-            self.hasDownloadContent = YES;
-        }
-            break;
-            // Display a status message showing the download progress
-        case IAPDownloadInProgress:
-        {
-            self.hasDownloadContent = YES;
-            NSString *title = [[StoreManager sharedInstance] titleMatchingProductIdentifier:purchasesNotification.purchasedID];
-            NSString *displayedTitle = (title.length > 0) ? title : purchasesNotification.purchasedID;
-            NSLog(@"Downloading %@   %.2f%%", displayedTitle, purchasesNotification.downloadProgress);
-        }
-            break;
-            // Downloading is done, remove the status message
-        case IAPDownloadSucceeded:
-        {
-            self.hasDownloadContent = NO;
-            NSLog(@"IAP download success!");
-        }
-            break;
-        default:
-            break;
-    }
-}
-
-#pragma mark Restore all appropriate transactions
-
-- (void)restore
-{
-    // Call StoreObserver to restore all restorable purchases
-    [[StoreObserver sharedInstance] restore];
+    [[SCPStoreKitManager sharedInstance] requestPaymentForProduct:product paymentTransactionStatePurchasing:^(NSArray *transactions) {
+        NSLog(@"Purchasing products : %@", transactions);
+    } paymentTransactionStatePurchased:^(NSArray *transactions) {
+        NSLog(@"Purchased products : %@", transactions);
+        [self alertWithTitle:@"Purhcase Success" message:@"You have successfully subscribed to Ski Bozeman!"];
+    } paymentTransactionStateFailed:^(NSArray *transactions) {
+        NSLog(@"Failed products : %@", transactions);
+    } paymentTransactionStateRestored:^(NSArray *transactions) {
+        NSLog(@"Restored products : %@", transactions);
+    } failure:^(NSError *error) {
+        NSLog(@"Error: %@", error.localizedDescription);
+    }];
 }
 
 #pragma mark - Memory management
@@ -158,33 +113,18 @@
     [super didReceiveMemoryWarning];
 }
 
-
-- (void)dealloc
-{
-    // Unregister for StoreManager's notifications
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:IAPProductRequestNotification
-                                                  object:[StoreManager sharedInstance]];
-    
-    // Unregister for StoreObserver's notifications
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:IAPPurchaseNotification
-                                                  object:[StoreObserver sharedInstance]];
-}
-
 #pragma mark ActionSheet
 
 - (void)addActionSheet
 {
-    UIAlertController *view= [UIAlertController alertControllerWithTitle:@"Subscribe to Ski Bozeman" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *view = [UIAlertController alertControllerWithTitle:@"Subscribe to Ski Bozeman" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
-    for (SKProduct *product in self.iapModel.elements) {
-        NSLog(@"%@", product.productIdentifier);
+    for (SKProduct *product in self.products) {
         
         if ([product.productIdentifier isEqualToString:kIdentifierSubscription1Month]) {
             SKProduct *oneMonthProduct = product;
             UIAlertAction *oneMonth = [UIAlertAction actionWithTitle:@"One Month" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-                [[StoreObserver sharedInstance] buy:oneMonthProduct];
+                [self purchaseWithProduct:oneMonthProduct];
             }];
             [view addAction:oneMonth];
         }
@@ -192,33 +132,33 @@
         if ([product.productIdentifier isEqualToString:kIdentifierSubscription1Year]) {
             SKProduct *oneYearProduct = product;
             UIAlertAction *oneYear = [UIAlertAction actionWithTitle:@"One Year" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-                [[StoreObserver sharedInstance] buy:oneYearProduct];
+                [self purchaseWithProduct:oneYearProduct];
             }];
             [view addAction:oneYear];
         }
     }
     
+    UIAlertAction *restore = [UIAlertAction actionWithTitle:@"Restore Subscriptions" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [self restorePurchases];
+    }];
+    
+    UIAlertAction *manager = [UIAlertAction actionWithTitle:@"Manage Subscriptions" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
+        NSURL *manageUrl = [NSURL URLWithString:manageSubscriptions];
+        if ([[UIApplication sharedApplication] canOpenURL:manageUrl]) {
+            [[UIApplication sharedApplication] openURL:manageUrl];
+        }
+    }];
+    
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action) {
         [view dismissViewControllerAnimated:YES completion:nil];
     }];
     
+    [view addAction:restore];
+    [view addAction:manager];
     [view addAction:cancel];
-
+    
     [self presentViewController:view animated:YES completion:nil];
 }
 
-/*
-- (UIImage *)blurBackground
-{
-    UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, YES, 1.0f);
-    [self.view drawViewHierarchyInRect:self.view.bounds afterScreenUpdates:YES];
-    UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    UIImage *blurImaged = [snapshotImage applyBlurWithRadius:2.0 tintColor:[UIColor colorWithWhite:0.18 alpha:0.5] saturationDeltaFactor:1.8 maskImage:nil];
-    
-    return blurImaged;
-}
-*/
-
 @end
+
