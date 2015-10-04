@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void(^Success)(BOOL appUpdated, NSString *message);
+typedef void(^Failure)(NSError *error);
+
 @interface SMUtilities : NSObject
 
 + (SMUtilities *)sharedInstance;
 
-typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
-
-- (void)downloadSMJson;
+- (void)downloadSMJsonWithSuccess:(Success)successBlock error:(Failure)failureBlock;
 
 @end

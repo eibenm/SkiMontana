@@ -10,12 +10,12 @@
 #import "SMNavigationController.h"
 #import "SMAreasTableViewController.h"
 
-#import "SMDataLoading.h"
+#import "SMUtilities.h"
 
 @interface SMIntroViewController ()
 
-@property (strong, nonatomic) IBOutlet UIView *backgroundView;
-@property (strong, nonatomic) IBOutlet UIButton *startSkiingBtn;
+@property (weak, nonatomic) IBOutlet UIView *backgroundView;
+@property (weak, nonatomic) IBOutlet UIButton *startSkiingBtn;
 
 - (IBAction)startSkiingAction:(id)sender;
 
@@ -26,6 +26,38 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UIEdgeInsets insets = UIEdgeInsetsMake(0.0f, 10.0f, 0.0f, 10.0f);
+    UIImage *skiButtonEnabled = [UIImage imageNamed:@"start_skiing"];
+    
+    [self.startSkiingBtn setUserInteractionEnabled:NO];
+    [self.startSkiingBtn.layer setOpacity:0.8];
+    [self.startSkiingBtn setTitle:@"Updating ..." forState:UIControlStateNormal];
+    [self.startSkiingBtn setBackgroundImage:[skiButtonEnabled resizableImageWithCapInsets:insets]
+                         forState:UIControlStateNormal];
+    
+    [[SMUtilities sharedInstance] downloadSMJsonWithSuccess:^(BOOL appUpdated, NSString *message) {
+        if (appUpdated == YES) {
+            NSLog(@"Download success: App has been updated");
+            NSLog(@"Message: %@", message);
+        }
+        else {
+            NSLog(@"Download success: App has NOT been updated");
+            NSLog(@"Message: %@", message);
+        }
+        [self.startSkiingBtn setUserInteractionEnabled:YES];
+        [self.startSkiingBtn setTitle:@"Start Skiing" forState:UIControlStateNormal];
+        [UIView animateWithDuration:0.25 animations:^{
+            [self.startSkiingBtn.layer setOpacity:1.0];
+        }];
+    } error:^(NSError *error) {
+        NSLog(@"Download failure: Error: %@", error.localizedDescription);
+        [self.startSkiingBtn setUserInteractionEnabled:YES];
+        [self.startSkiingBtn setTitle:@"Start Skiing" forState:UIControlStateNormal];
+        [UIView animateWithDuration:0.25 animations:^{
+            [self.startSkiingBtn.layer setOpacity:1.0];
+        }];
+    }];
     
     // Setup Background Image
     UIImage *image = [UIImage imageNamed:@"intro_background"];
@@ -57,62 +89,12 @@
     emitterLayer.emitterCells = [NSArray arrayWithObject:emitterCell];
     
     [self.backgroundView.layer addSublayer:emitterLayer];
-    
-    // Setup Start Skiing Button
-    UIEdgeInsets insets = UIEdgeInsetsMake(0.0f, 10.0f, 0.0f, 10.0f);
-    [self.startSkiingBtn setBackgroundImage:[[UIImage imageNamed:@"start_skiing"] resizableImageWithCapInsets:insets]
-                                   forState:UIControlStateNormal];
 }
 
 -(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
     [self.navigationController setNavigationBarHidden:YES];
-    
-    /*
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
-        UIActivityIndicatorView *activity = [[UIActivityIndicatorView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        [activity setBackgroundColor:[UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:0.4]];
-        [activity setCenter:self.view.center];
-        [activity setHidesWhenStopped:YES];
-        [activity setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        [activity setAlpha:0];
-        [activity setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [self.view addSubview:activity];
-        NSDictionary *views1 = NSDictionaryOfVariableBindings(activity);
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[activity]|" options:kNilOptions metrics:nil views:views1]];
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[activity]|" options:kNilOptions metrics:nil views:views1]];
-        
-        UILabel *label = [[UILabel alloc] init];
-        [label setText:@"Loading new Data!"];
-        [label setTextAlignment:NSTextAlignmentCenter];
-        [label setFont:[UIFont boldSkiMontanaFontOfSize:22]];
-        [label setTextColor:[UIColor whiteColor]];
-        [label setTranslatesAutoresizingMaskIntoConstraints:NO];
-        
-        [activity addSubview:label];
-        NSDictionary *views2 = NSDictionaryOfVariableBindings(label);
-        [activity addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[label]-160-|" options:kNilOptions metrics:nil views:views2]];
-        [activity addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[label]|" options:kNilOptions metrics:nil views:views2]];
-        
-        [activity startAnimating];
-        
-        // After 2 seconds, fade the view in
-        // After 2 more seconds, fade the view out
-        [UIView animateWithDuration:0.25 animations:^{
-            [activity setAlpha:1];
-        } completion:^(BOOL finished) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [UIView animateWithDuration:0.25 animations:^{
-                    //[activity setAlpha:0];
-                } completion:^(BOOL finished) {
-                    //[activity stopAnimating];
-                }];
-            });
-        }];
-    });
-    */
 }
 
 - (void)didReceiveMemoryWarning

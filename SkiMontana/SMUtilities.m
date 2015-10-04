@@ -10,6 +10,14 @@
 #import "SMDataManager.h"
 #import "SMReachabilityManager.h"
 
+typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
+
+@interface SMUtilities()
+
+@property (nonatomic, copy) Success successBlock;
+@property (nonatomic, copy) Failure failureBlock;
+
+@end
 
 @implementation SMUtilities
 {
@@ -28,9 +36,10 @@
     return sharedInstance;
 }
 
-- (id)init
+- (instancetype)init
 {
-    if ((self = [super init])) {
+    self = [super init];
+    if (self) {
         _fileManager = [NSFileManager defaultManager];
     }
     return self;
@@ -38,32 +47,59 @@
 
 #pragma mark - Public Utility Methods
 
-- (void)downloadSMJson
+- (void)downloadSMJsonWithSuccess:(Success)successBlock error:(Failure)failureBlock
 {
-    SkiDataCompletionHandler completionHandler = ^(NSURLResponse *response, NSData *data, NSError *error) {
+    self.successBlock = successBlock;
+    self.failureBlock = failureBlock;
+    
+    SkiDataCompletionHandler completionHandler = ^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    
+        if (connectionError != nil) {
+            self.failureBlock(connectionError);
+            return;
+        }
+        
         if (data != nil) {
             NSDictionary *parsedObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
             NSDictionary *internalJson = [self skiAppCurrentJson];
             
-            NSLog(@"Recieved json from cloud");
+            //NSLog(@"Recieved json from cloud");
             
-            if (![internalJson[@"version"] isEqualToString:parsedObject[@"version"]]) {
-                NSLog(@"Cloud json is different, refreshing local data!");
+            NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
+            [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+            
+            float internalVersion = [numberFormatter numberFromString:internalJson[@"version"]].floatValue;
+            float externalVersion = [numberFormatter numberFromString:parsedObject[@"version"]].floatValue;
+            
+            if (externalVersion > internalVersion) {
+                //NSLog(@"Cloud json is different, refreshing local data!");
                 if ([[SMDataManager sharedInstance] clearPersistentStores]) {
-                    NSLog(@"Stores cleared!");
+                    //NSLog(@"Stores cleared!");
                     [self copyJsonToDataStore:parsedObject];
                     if ([self createCopyOfSkiJsonFromData:parsedObject]) {
-                        NSLog(@"Updated Local Data from server");
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            self.successBlock(YES, @"Updated Local Data from server");
+                        });
                         return;
                     }
                     else {
-                        NSLog(@"Problem writing Local json file from server");
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            self.successBlock(NO, @"Problem writing Local json file from server");
+                        });
                         return;
                     }
                 }
+                else {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        self.successBlock(NO, @"Problem clear persistent stores");
+                    });
+                    return;
+                }
             }
-            NSLog(@"Version is the same, no changes needed");
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.successBlock(NO, @"Version is the same, no changes needed");
+            });
         }
     };
     
@@ -74,11 +110,12 @@
     if (![defaults boolForKey:NS_USER_DEFUALTS_INITAL_LAUNCH]) {
         if ([self createCopyOfSkiJsonFromBundle]) {
             [self copyJsonToDataStore:[self skiAppCurrentJson]];
-            NSLog(@"SkidataJSON Successfully copied from bundle to iPhone");
-            NSLog(@"Created Local Data from Bundled JSON");
+            //NSLog(@"SkidataJSON Successfully copied from bundle to iPhone");
+            //NSLog(@"Created Local Data from Bundled JSON");
         }
         [defaults setBool:YES forKey:NS_USER_DEFUALTS_INITAL_LAUNCH];
         [defaults synchronize];
+        self.successBlock(NO, @"First app launch, no updated needed");
     }
     else { // Get data from cloud
         [[SMReachabilityManager sharedManager] checkNetworkStatusWithCompletionHandler:^(BOOL success, CurrentNetworkStatus status) {
@@ -96,6 +133,7 @@
             }
             if (status == NetworkStatusDisabled) {
                 NSLog(@"Network Disabled");
+                self.failureBlock([NSError errorWithDomain:@"ccom.eibenm.SkiMontana.NoResponse" code:404 userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(@"Network is disabled", @"") }]);
             }
         }];
     }
@@ -189,6 +227,7 @@
         skiArea.bounds_northeast = skiAreaJson[@"bounds_northeast"];
         skiArea.bounds_southwest = skiAreaJson[@"bounds_southwest"];
         skiArea.color = skiAreaJson[@"color"];
+        skiArea.short_desc = skiAreaJson[@"short_desc"];
         skiArea.conditions = skiAreaJson[@"conditions"];
         skiArea.name_area = skiAreaJson[@"name_area"];
         skiArea.permissions = skiAreaJson[@"permissions"];

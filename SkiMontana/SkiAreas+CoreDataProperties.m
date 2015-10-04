@@ -2,7 +2,7 @@
 //  SkiAreas+CoreDataProperties.m
 //  SkiMontana
 //
-//  Created by Matt Eiben on 9/23/15.
+//  Created by Matt Eiben on 10/4/15.
 //  Copyright © 2015 Gneiss Software. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -19,6 +19,7 @@
 @dynamic conditions;
 @dynamic name_area;
 @dynamic permissions;
+@dynamic short_desc;
 @dynamic ski_area_image;
 @dynamic ski_routes;
 

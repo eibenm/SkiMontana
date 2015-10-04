@@ -2,7 +2,7 @@
 //  SkiAreas.m
 //  SkiMontana
 //
-//  Created by Matt Eiben on 9/23/15.
+//  Created by Matt Eiben on 10/4/15.
 //  Copyright © 2015 Gneiss Software. All rights reserved.
 //
 

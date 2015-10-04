@@ -26,6 +26,7 @@
         <attribute name="conditions" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name_area" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="permissions" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="short_desc" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="ski_area_image" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="File" inverseName="ski_area" inverseEntity="File" syncable="YES"/>
         <relationship name="ski_routes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SkiRoutes" inverseName="ski_area" inverseEntity="SkiRoutes" syncable="YES"/>
     </entity>
@@ -56,7 +57,7 @@
         <element name="File" positionX="-7155" positionY="-4653" width="128" height="118"/>
         <element name="Glossary" positionX="-7488" positionY="-4617" width="128" height="73"/>
         <element name="Gps" positionX="-7130" positionY="-4867" width="128" height="58"/>
-        <element name="SkiAreas" positionX="-7515" positionY="-4861" width="128" height="163"/>
+        <element name="SkiAreas" positionX="-7515" positionY="-4861" width="128" height="180"/>
         <element name="SkiRoutes" positionX="-7337" positionY="-5086" width="128" height="358"/>
     </elements>
 </model>

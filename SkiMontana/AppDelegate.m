@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "SMUtilities.h"
 #import "SMAppearanceModifier.h"
 
 @interface AppDelegate ()
@@ -23,7 +22,6 @@
     
     [SMAppearanceModifier defaultAppearance];
     [SMConstants documentsFolderIfSimulator];
-    [[SMUtilities sharedInstance] downloadSMJson];
     
     return YES;
 }
