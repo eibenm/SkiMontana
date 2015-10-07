@@ -17,6 +17,8 @@
 #import "SMSkiAreaTableViewCell.h"
 #import "SMSkiRouteTableViewCell.h"
 
+#import "SMArrowView.h"
+
 @interface SMAreasTableViewController ()
 
 @property (weak, nonatomic) UIButton *mapButton;
@@ -53,6 +55,7 @@
     }];
     
     // Asynchronously open table sections after 0.4 sec delay
+    /*
     double delayInSeconds = 0.6f;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
@@ -63,6 +66,7 @@
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, sectionsNumber)]
                       withRowAnimation:UITableViewRowAnimationAutomatic];
     });
+    */
 }
 
 /*
@@ -151,27 +155,35 @@
     selectedCellView.backgroundColor = [UIColor colorWithRed:0.0f green:0.0f blue:0.6f alpha:0.2];
     cell.selectedBackgroundView = selectedCellView;
     
+    cell.backgroundColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:0.6];
+    
     NSArray *skiAreaObjects = [self.fetchedResultsController fetchedObjects];
     SkiAreas *skiArea = [skiAreaObjects objectAtIndex:indexPath.section];
+    
+    BOOL skiAreaAllowed = [skiArea.permissions boolValue];
 
     if (indexPath.row == 0) {
         cell.viewAreaColor.backgroundColor = [UIColor colorwithHexString:skiArea.color alpha:1.0];
         cell.labelAreaName.text = skiArea.name_area;
         
         if (![[_isShowingArray objectAtIndex:[skiAreaObjects indexOfObject:skiArea]] boolValue]) {
-            cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow_up"]];
+            cell.accessoryView = [[SMArrowView alloc] initWithFrame:CGRectMake(0, 0, 30, 30) arrowType:SMArrowUp];
         }
         else {
-            cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow_down"]];
+            cell.accessoryView = [[SMArrowView alloc] initWithFrame:CGRectMake(0, 0, 30, 30) arrowType:SMArrowDown];
         }
+        
+        if (skiAreaAllowed == NO) {
+            UIImageView *lockedView = [[UIImageView alloc] initWithFrame:cell.viewAreaColor.bounds];
+            [lockedView setImage:[UIImage imageNamed:@"lock"]];
+            [lockedView setContentMode:UIViewContentModeCenter];
+            [cell.viewAreaColor addSubview:lockedView];
+        }
+        
     }
     else {
         SkiRoutes *skiRoute = [skiArea.ski_routes.allObjects objectAtIndex:indexPath.row - 1];
         NSSet *skiRouteImages = skiRoute.ski_route_images;
-        
-        if ([skiArea.permissions  isEqual:[NSNumber numberWithBool:NO]]) {
-            cell.backgroundColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:0.2];
-        }
         
         cell.labelRouteName.text = skiRoute.name_route;
         cell.textViewShortDescription.text = skiRoute.short_desc;
@@ -184,10 +196,17 @@
         else {
             cell.imageViewAreaImage.backgroundColor = [UIColor blackColor];
         }
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.accessoryView = nil;
-    }
         
+        cell.accessoryView = [[SMArrowView alloc] initWithFrame:CGRectMake(0, 0, 20, 25) arrowType:SMArrowRight];
+        
+        if (skiAreaAllowed == NO) {
+            UIImageView *lockedView = [[UIImageView alloc] initWithFrame:cell.imageViewAreaImage.bounds];
+            [lockedView setImage:[UIImage imageNamed:@"lock"]];
+            [lockedView setContentMode:UIViewContentModeCenter];
+            [cell.imageViewAreaImage addSubview:lockedView];
+        }
+    }
+    
     return cell;
 }
 
@@ -250,18 +269,6 @@
     
     return _fetchedResultsController;
 }
-
-/*
-- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
-{
-    return [self.fetchedResultsController sectionIndexTitles];
-}
-
-- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
-{
-    return [self.fetchedResultsController sectionForSectionIndexTitle:title atIndex:index];
-}
-*/
 
 #pragma mark - NSFetchedResultsControllerDelegate
 

@@ -16,7 +16,7 @@
 static NSString *cellIdentifier;
 
 static CGFloat scalingFactor = 0.3f;
-static CGFloat maxOffsetDiff = 44.0f;
+static CGFloat maxOffsetDiff = 46.0f;
 
 @interface SMDetailsViewController() <UITableViewDelegate, UITableViewDataSource>
 

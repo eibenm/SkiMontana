@@ -25,7 +25,7 @@ static NSString *manageSubscriptions = @"https://buy.itunes.apple.com/WebObjects
 {
     [super viewDidLoad];
     
-    [[SCPStoreKitReceiptValidator sharedInstance] validateReceiptWithBundleIdentifier:BUNDLE_IDENTIFIER bundleVersion:@"1.0" tryAgain:YES showReceiptAlert:YES alertViewTitle:nil alertViewMessage:nil success:^(SCPStoreKitReceipt *receipt) {
+    [[SCPStoreKitReceiptValidator sharedInstance] validateReceiptWithBundleIdentifier:BUNDLE_IDENTIFIER bundleVersion:@"1.0" tryAgain:YES showReceiptAlert:YES alertPresentingViewController:self alertViewTitle:nil alertViewMessage:nil success:^(SCPStoreKitReceipt *receipt) {
         
         //Here you would do some further checks such as :
         //Validate that the number of coins/tokens the user has does not exceed the number they have paid for
@@ -40,7 +40,7 @@ static NSString *manageSubscriptions = @"https://buy.itunes.apple.com/WebObjects
         }];
         
     } failure:^(NSError *error) {
-        NSLog(@"%@", [error fullDescription]);
+        NSLog(@"Failure: %@", [error fullDescription]);
     }];
     
     NSSet *productIdentifiers = [NSSet setWithObjects:
@@ -123,7 +123,8 @@ static NSString *manageSubscriptions = @"https://buy.itunes.apple.com/WebObjects
         
         if ([product.productIdentifier isEqualToString:kIdentifierSubscription1Month]) {
             SKProduct *oneMonthProduct = product;
-            UIAlertAction *oneMonth = [UIAlertAction actionWithTitle:@"One Month" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+            NSString *title = [NSString stringWithFormat:@"One Month - %@", oneMonthProduct.price];
+            UIAlertAction *oneMonth = [UIAlertAction actionWithTitle:title style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 [self purchaseWithProduct:oneMonthProduct];
             }];
             [view addAction:oneMonth];
@@ -131,7 +132,8 @@ static NSString *manageSubscriptions = @"https://buy.itunes.apple.com/WebObjects
         
         if ([product.productIdentifier isEqualToString:kIdentifierSubscription1Year]) {
             SKProduct *oneYearProduct = product;
-            UIAlertAction *oneYear = [UIAlertAction actionWithTitle:@"One Year" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+            NSString *title = [NSString stringWithFormat:@"One Month - %@", oneYearProduct.price];
+            UIAlertAction *oneYear = [UIAlertAction actionWithTitle:title style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 [self purchaseWithProduct:oneYearProduct];
             }];
             [view addAction:oneYear];

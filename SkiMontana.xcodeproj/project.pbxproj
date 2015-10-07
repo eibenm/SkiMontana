@@ -39,7 +39,7 @@
 		CB8694C71B09649200D4A93F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8694C61B09649200D4A93F /* CoreLocation.framework */; };
 		CB8694C91B09649D00D4A93F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8694C81B09649D00D4A93F /* QuartzCore.framework */; };
 		CB8694CE1B0A8B6300D4A93F /* CLLocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8694CD1B0A8B6300D4A93F /* CLLocationHelper.m */; };
-		CB8ACB221BBB743400C485D8 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8ACB211BBB743400C485D8 /* NSData+Base64.m */; settings = {ASSET_TAGS = (); }; };
+		CB8F30A21BC4D3D600F4FA2C /* SMArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8F30A11BC4D3D600F4FA2C /* SMArrowView.m */; settings = {ASSET_TAGS = (); }; };
 		CB9695201A9A3EF6009757B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB96951F1A9A3EF6009757B7 /* main.m */; };
 		CB9695231A9A3EF6009757B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9695221A9A3EF6009757B7 /* AppDelegate.m */; };
 		CB96952E1A9A3EF6009757B7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB96952C1A9A3EF6009757B7 /* LaunchScreen.xib */; };
@@ -135,8 +135,8 @@
 		CB8694C81B09649D00D4A93F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CB8694CC1B0A8B6300D4A93F /* CLLocationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLocationHelper.h; sourceTree = "<group>"; };
 		CB8694CD1B0A8B6300D4A93F /* CLLocationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLocationHelper.m; sourceTree = "<group>"; };
-		CB8ACB201BBB743400C485D8 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
-		CB8ACB211BBB743400C485D8 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		CB8F30A01BC4D3D600F4FA2C /* SMArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMArrowView.h; sourceTree = "<group>"; };
+		CB8F30A11BC4D3D600F4FA2C /* SMArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMArrowView.m; sourceTree = "<group>"; };
 		CB96951A1A9A3EF6009757B7 /* SkiMontana.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkiMontana.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB96951E1A9A3EF6009757B7 /* SkiMontana-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SkiMontana-Info.plist"; sourceTree = "<group>"; };
 		CB96951F1A9A3EF6009757B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -239,6 +239,8 @@
 				CBA338D81B82BACB001BA5FF /* Reachability.m */,
 				CBA338DA1B82BBD1001BA5FF /* SMReachabilityManager.h */,
 				CBA338DB1B82BBD1001BA5FF /* SMReachabilityManager.m */,
+				CB8F30A01BC4D3D600F4FA2C /* SMArrowView.h */,
+				CB8F30A11BC4D3D600F4FA2C /* SMArrowView.m */,
 			);
 			name = "Utility Classes";
 			sourceTree = "<group>";
@@ -254,8 +256,6 @@
 				CBB480961AA57A8F00C2A7E3 /* UIButton+TintImage.m */,
 				CB99FF431AB61F010067E547 /* UIColor+FromHex.h */,
 				CB99FF441AB61F010067E547 /* UIColor+FromHex.m */,
-				CB8ACB201BBB743400C485D8 /* NSData+Base64.h */,
-				CB8ACB211BBB743400C485D8 /* NSData+Base64.m */,
 			);
 			name = Catagories;
 			sourceTree = "<group>";
@@ -615,6 +615,7 @@
 				CB6BCF3E1BB3B520009B0998 /* File+CoreDataProperties.m in Sources */,
 				CB6BCF3B1BB3B520009B0998 /* Gps.m in Sources */,
 				CB99FF4D1AB634270067E547 /* SMNavigationController.m in Sources */,
+				CB8F30A21BC4D3D600F4FA2C /* SMArrowView.m in Sources */,
 				CB54F5FB1B9FD93100D93401 /* SMDetailsHeaderView.m in Sources */,
 				CB6BCF371BB3B520009B0998 /* SkiRoutes.m in Sources */,
 				CB3FBFC41AB67AFD00D5A037 /* SMAppearanceModifier.m in Sources */,
@@ -627,7 +628,6 @@
 				CB6BCF381BB3B520009B0998 /* Glossary+CoreDataProperties.m in Sources */,
 				CB8694CE1B0A8B6300D4A93F /* CLLocationHelper.m in Sources */,
 				CBF466441BC1CC8400791383 /* SkiAreas+CoreDataProperties.m in Sources */,
-				CB8ACB221BBB743400C485D8 /* NSData+Base64.m in Sources */,
 				CB56C2731A9D63530002495F /* SMWebViewController.m in Sources */,
 				CB4208A51AA3B98700ADFA97 /* UIFont+SkiMontana.m in Sources */,
 				CB753AE31BBA2CBA007EAAAD /* UIImage+ImageEffects.m in Sources */,

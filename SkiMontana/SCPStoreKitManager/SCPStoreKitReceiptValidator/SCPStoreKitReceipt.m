@@ -255,7 +255,7 @@ typedef NS_ENUM(NSInteger, SCPAppReceiptASN1Type)
 
 - (NSData *)appleIncRootCertificate
 {
-    return [NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"SCPStoreKitReceiptValidatorResources.bundle/AppleIncRootCertificate" withExtension:@"cer"]];
+    return [NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AppleIncRootCertificate" withExtension:@"cer"]];
 }
 
 - (NSDictionary *)fullDescription

@@ -24,6 +24,8 @@
 @property (nonatomic, strong) NSString *customAlertViewTitle;
 @property (nonatomic, strong) NSString *customAlertViewMessage;
 
+@property (nonatomic, strong) UIViewController *presentingViewController;
+
 @end
 
 @implementation SCPStoreKitReceiptValidator
@@ -41,7 +43,7 @@
     return sharedInstance;
 }
 
-- (void)validateReceiptWithBundleIdentifier:(NSString *)bundleIdentifier bundleVersion:(NSString *)bundleVersion tryAgain:(BOOL)tryAgain showReceiptAlert:(BOOL)showReceiptAlert alertViewTitle:(NSString *)alertViewTitle alertViewMessage:(NSString *)alertViewMessage success:(Success)successBlock failure:(Failure)failureBlock
+- (void)validateReceiptWithBundleIdentifier:(NSString *)bundleIdentifier bundleVersion:(NSString *)bundleVersion tryAgain:(BOOL)tryAgain showReceiptAlert:(BOOL)showReceiptAlert alertPresentingViewController:(UIViewController *)alertPresentingViewController alertViewTitle:(NSString *)alertViewTitle alertViewMessage:(NSString *)alertViewMessage success:(Success)successBlock failure:(Failure)failureBlock
 {
 	self.successBlock = successBlock;
 	self.failureBlock = failureBlock;
@@ -50,6 +52,8 @@
 	self.bundleIdentifier = bundleIdentifier;
     
     self.shouldShowReceiptAlert = showReceiptAlert;
+    
+    self.presentingViewController = alertPresentingViewController;
     
     if(alertViewTitle && ![alertViewTitle isEqualToString:@""])
     {
@@ -99,13 +103,27 @@
         NSString *title = (_customAlertViewTitle) ? _customAlertViewTitle : @"In App purchase receipt";
         NSString *message = (_customAlertViewMessage) ? _customAlertViewMessage : @"We need to request a purchase receipt from Apple. To do this you will be asked to enter your Apple ID details.\n\nDo you want to request the receipt \nto restore purchases?";
         
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
+        
+        UIAlertController *alertView = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *yes = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self requestNewReceipt];
+        }];
+        
+        UIAlertAction *no = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) { }];
+        
+        [alertView addAction:no];
+        [alertView addAction:yes];
+        
+        [self.presentingViewController presentViewController:alertView animated:YES completion:^{ }];
+        
+        /*UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
                                                             message:message
                                                            delegate:self
                                                   cancelButtonTitle:@"No"
                                                   otherButtonTitles:@"Yes", nil];
         
-        [alertView show];
+        [alertView show];*/
     }
     else
     {
@@ -198,7 +216,7 @@
 	
     if([[NSFileManager defaultManager] fileExistsAtPath:appReceiptPath])
 	{
-        [self validateReceiptWithBundleIdentifier:_bundleIdentifier bundleVersion:_bundleVersion tryAgain:NO showReceiptAlert:_shouldShowReceiptAlert alertViewTitle:_customAlertViewTitle alertViewMessage:_customAlertViewMessage success:_successBlock failure:_failureBlock];
+        [self validateReceiptWithBundleIdentifier:_bundleIdentifier bundleVersion:_bundleVersion tryAgain:NO showReceiptAlert:_shouldShowReceiptAlert alertPresentingViewController:_presentingViewController alertViewTitle:_customAlertViewTitle alertViewMessage:_customAlertViewMessage success:_successBlock failure:_failureBlock];
     }
 	else
 	{
