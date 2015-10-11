@@ -60,13 +60,13 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
     NSCharacterSet *whitespaceCharSet = [NSCharacterSet whitespaceAndNewlineCharacterSet];
     
     CLLocationCoordinate2D southwest = CLLocationCoordinate2DMake(
-        [[[boundsSouthwest firstObject] stringByTrimmingCharactersInSet:whitespaceCharSet] floatValue],
-        [[[boundsSouthwest lastObject] stringByTrimmingCharactersInSet:whitespaceCharSet] floatValue]
+        [[boundsSouthwest.firstObject stringByTrimmingCharactersInSet:whitespaceCharSet] floatValue],
+        [[boundsSouthwest.lastObject stringByTrimmingCharactersInSet:whitespaceCharSet] floatValue]
     );
     
     CLLocationCoordinate2D northeast = CLLocationCoordinate2DMake(
-        [[[boundsNortheast firstObject] stringByTrimmingCharactersInSet:whitespaceCharSet] floatValue],
-        [[[boundsNortheast lastObject] stringByTrimmingCharactersInSet:whitespaceCharSet] floatValue]
+        [[boundsNortheast.firstObject stringByTrimmingCharactersInSet:whitespaceCharSet] floatValue],
+        [[boundsNortheast.lastObject stringByTrimmingCharactersInSet:whitespaceCharSet] floatValue]
     );
     
     self.areaBounds = SMCoordinateBoundsMake(southwest, northeast);
@@ -191,10 +191,10 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
     return marker;
 }
 
-- (void)mapView:(RMMapView *)mapView didUpdateUserLocation:(RMUserLocation *)userLocation
-{
-    //NSLog(@"Lat: %f, Lon: %f", userLocation.location.coordinate.latitude, userLocation.location.coordinate.longitude);
-}
+//- (void)mapView:(RMMapView *)mapView didUpdateUserLocation:(RMUserLocation *)userLocation
+//{
+//    NSLog(@"Lat: %f, Lon: %f", userLocation.location.coordinate.latitude, userLocation.location.coordinate.longitude);
+//}
 
 - (void)mapView:(RMMapView *)mapView didFailToLocateUserWithError:(NSError *)error
 {
