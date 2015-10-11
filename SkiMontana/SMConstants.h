@@ -36,14 +36,15 @@ static NSString * const ICLOUD_SMAPP_RECEIPTS =          @"ski_montana_app_recei
 
 #if DEV == 1
 
-static NSString * const SKIAPP_JSON_URL =                @"http://eibenm.com/devskimontana/skiappdata.json";
+static NSString * const SKIAPP_JSON_URL =                @"http://eibenm.com/backcountryskiapp/skimontanadata/skiappdata.json";
+//static NSString * const SKIAPP_JSON_URL =                @"http://eibenm.com/devbackcountryskiapp/skimontanadata/skiappdata.json";
 static NSString * const BUNDLE_IDENTIFIER =              @"com.eibenm.SkiMontanaTest";
 static NSString *kIdentifierSubscription1Month =         @"com.eibenm.SkiMontana.1Month.Dev";
 static NSString *kIdentifierSubscription1Year =          @"com.eibenm.SkiMontana.1Year.Dev";
 
 #else
 
-static NSString * const SKIAPP_JSON_URL =                @"http://eibenm.com/skimontana/skiappdata.json";
+static NSString * const SKIAPP_JSON_URL =                @"http://eibenm.com/backcountryskiapp/skimontanadata/skiappdata.json";
 static NSString * const BUNDLE_IDENTIFIER =              @"com.eibenm.SkiMontana";
 static NSString *kIdentifierSubscription1Month =         @"com.eibenm.SkiMontana.1Month.Pro";
 static NSString *kIdentifierSubscription1Year =          @"com.eibenm.SkiMontana.1Year.Pro";

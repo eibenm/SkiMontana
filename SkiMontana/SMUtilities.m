@@ -71,7 +71,7 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
             
             float internalVersion = [numberFormatter numberFromString:internalJson[@"version"]].floatValue;
             float externalVersion = [numberFormatter numberFromString:parsedObject[@"version"]].floatValue;
-            
+                        
             if (externalVersion > internalVersion) {
                 //NSLog(@"Cloud json is different, refreshing local data!");
                 if ([[SMDataManager sharedInstance] clearPersistentStores]) {
@@ -110,8 +110,6 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
     if (![defaults boolForKey:NS_USER_DEFUALTS_INITAL_LAUNCH]) {
         if ([self createCopyOfSkiJsonFromBundle]) {
             [self copyJsonToDataStore:[self skiAppCurrentJson]];
-            //NSLog(@"SkidataJSON Successfully copied from bundle to iPhone");
-            //NSLog(@"Created Local Data from Bundled JSON");
         }
         [defaults setBool:YES forKey:NS_USER_DEFUALTS_INITAL_LAUNCH];
         [defaults synchronize];

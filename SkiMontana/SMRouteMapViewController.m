@@ -17,6 +17,7 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
 
 @property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (strong, nonatomic) IBOutlet UIView *mapViewContainer;
+@property (strong, nonatomic) RMMBTilesSource *tileSource;
 @property (strong, nonatomic) RMMapView *mapView;
 @property (strong, nonatomic) UINavigationItem *navItem;
 @property (strong, nonatomic) NSSet *gpsObjects;
@@ -45,9 +46,8 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
     // Setting up Mapbox
     [[RMConfiguration sharedInstance] setAccessToken:MAPBOX_ACCESS_TOKEN];
     NSURL *tileUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:mbtilesArray.firstObject ofType:mbtilesArray.lastObject]];
-    RMMBTilesSource *tileSource = [[RMMBTilesSource alloc] initWithTileSetURL:tileUrl];
-    //RMMapboxSource *tileSource = [[RMMapboxSource alloc] initWithMapID:@"mapbox.streets"];
-    self.mapView = [[RMMapView alloc] initWithFrame:self.mapViewContainer.bounds andTilesource:tileSource];
+    self.tileSource = [[RMMBTilesSource alloc] initWithTileSetURL:tileUrl];
+    self.mapView = [[RMMapView alloc] initWithFrame:self.mapViewContainer.bounds andTilesource:self.tileSource];
     [self.mapView setDelegate:self];
     [self.mapView setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
     [self.mapView setAdjustTilesForRetinaDisplay:YES];
@@ -55,6 +55,7 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
     [self.mapView setHideAttribution:YES];
     [self.mapViewContainer addSubview:self.mapView];
     
+    // Parsing bounds out of route bounds strings
     NSArray *boundsNortheast = [self.skiRoute.bounds_northeast componentsSeparatedByString:@","];
     NSArray *boundsSouthwest = [self.skiRoute.bounds_southwest componentsSeparatedByString:@","];
     NSCharacterSet *whitespaceCharSet = [NSCharacterSet whitespaceAndNewlineCharacterSet];
@@ -71,6 +72,8 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
     
     self.areaBounds = SMCoordinateBoundsMake(southwest, northeast);
     
+    [self.mapView zoomWithLatitudeLongitudeBoundsSouthWest:self.areaBounds.southwest northEast:self.areaBounds.northeast animated:NO];
+    
     // Setting up marker annotation
     for (Gps *gps in self.gpsObjects) {
         NSString *title = [NSString stringWithFormat:@"Waypoint: %@", gps.waypoint];
@@ -84,20 +87,24 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
     // NSLogging
     
     NSLog(@"Native tile bounds of '%@':\n\tSouthwest - Lat: %f, Lon: %f,\n\tNortheast - Lat: %f, Lon: %f",
-          tileSource.shortName,
-          tileSource.latitudeLongitudeBoundingBox.southWest.latitude,
-          tileSource.latitudeLongitudeBoundingBox.southWest.longitude,
-          tileSource.latitudeLongitudeBoundingBox.northEast.latitude,
-          tileSource.latitudeLongitudeBoundingBox.northEast.longitude
+        self.tileSource.shortName,
+        self.tileSource.latitudeLongitudeBoundingBox.southWest.latitude,
+        self.tileSource.latitudeLongitudeBoundingBox.southWest.longitude,
+        self.tileSource.latitudeLongitudeBoundingBox.northEast.latitude,
+        self.tileSource.latitudeLongitudeBoundingBox.northEast.longitude
     );
     
-    NSLog(@"Native tile zooms: Max zoom: %f, Min zoom: %f", tileSource.maxZoom, tileSource.minZoom);
+    NSLog(@"Native tile zooms: Max zoom: %f, Min zoom: %f",
+        self.tileSource.maxZoom,
+        self.tileSource.minZoom
+    );
     
-    NSLog(@"Bounds of ski area:\n\tSouthwest - Lat: %f, Lon: %f,\n\tNortheast - Lat: %f, Lon: %f",
-          self.areaBounds.southwest.latitude,
-          self.areaBounds.southwest.longitude,
-          self.areaBounds.northeast.latitude,
-          self.areaBounds.northeast.longitude
+    NSLog(@"Bounds of ski area %@:\n\tSouthwest - Lat: %f, Lon: %f,\n\tNortheast - Lat: %f, Lon: %f",
+        self.skiRoute.name_route,
+        self.areaBounds.southwest.latitude,
+        self.areaBounds.southwest.longitude,
+        self.areaBounds.northeast.latitude,
+        self.areaBounds.northeast.longitude
     );
 }
 
@@ -117,10 +124,11 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
     [self.navItem.rightBarButtonItem setTintColor:[UIColor colorWithRed:0.120 green:0.550 blue:0.670 alpha:1.000]];
     [self.mapView setUserTrackingMode:RMUserTrackingModeNone];
     
-    // Setting zoom around markers
+    // Setting zoom around markers ... setting to max zoom of tileset if overzoomed
     SMCoordinateBounds bounds = [self getMarkerBoundingBox];
-    [self.mapView zoomWithLatitudeLongitudeBoundsSouthWest:bounds.southwest northEast:bounds.northeast animated:NO];
-    [self.mapView setZoom:self.mapView.zoom - 0.5f];
+    [self.mapView zoomWithLatitudeLongitudeBoundsSouthWest:bounds.southwest northEast:bounds.northeast animated:YES];
+    float newZoom = self.mapView.zoom - 0.5f;
+    [self.mapView setZoom:(newZoom < self.tileSource.maxZoom ? newZoom : self.tileSource.maxZoom)];
     [self.mapView setConstraintsSouthWest:self.areaBounds.southwest northEast:self.areaBounds.northeast];
 }
 
