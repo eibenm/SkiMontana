@@ -21,6 +21,8 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
 @property (strong, nonatomic) UINavigationItem *navItem;
 @property (strong, nonatomic) NSSet *gpsObjects;
 
+@property (assign, nonatomic) SMCoordinateBounds areaBounds;
+
 @end
 
 @implementation SMRouteMapViewController
@@ -52,15 +54,22 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
     [self.mapView setShowsUserLocation:YES];
     [self.mapView setHideAttribution:YES];
     [self.mapViewContainer addSubview:self.mapView];
-        
-    NSLog(@"Native tile bounds of '%@':", tileSource.shortName);
-    NSLog(@"Southwest - Lat: %f, Lon: %f", tileSource.latitudeLongitudeBoundingBox.southWest.latitude, tileSource.latitudeLongitudeBoundingBox.southWest.longitude);
-    NSLog(@"Northeast - Lat: %f, Lon: %f", tileSource.latitudeLongitudeBoundingBox.northEast.latitude, tileSource.latitudeLongitudeBoundingBox.northEast.longitude);
-    NSLog(@"Native tile zooms: Max zoom: %f, Min zoom: %f", tileSource.maxZoom, tileSource.minZoom);
     
-    // This temporarily unlocks the tile bounds constraints.
-    [self.mapView setConstraintsSouthWest:worldBounds.southwest
-                                northEast:worldBounds.northeast];
+    NSArray *boundsNortheast = [self.skiRoute.bounds_northeast componentsSeparatedByString:@","];
+    NSArray *boundsSouthwest = [self.skiRoute.bounds_southwest componentsSeparatedByString:@","];
+    NSCharacterSet *whitespaceCharSet = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+    
+    CLLocationCoordinate2D southwest = CLLocationCoordinate2DMake(
+        [[[boundsSouthwest firstObject] stringByTrimmingCharactersInSet:whitespaceCharSet] floatValue],
+        [[[boundsSouthwest lastObject] stringByTrimmingCharactersInSet:whitespaceCharSet] floatValue]
+    );
+    
+    CLLocationCoordinate2D northeast = CLLocationCoordinate2DMake(
+        [[[boundsNortheast firstObject] stringByTrimmingCharactersInSet:whitespaceCharSet] floatValue],
+        [[[boundsNortheast lastObject] stringByTrimmingCharactersInSet:whitespaceCharSet] floatValue]
+    );
+    
+    self.areaBounds = SMCoordinateBoundsMake(southwest, northeast);
     
     // Setting up marker annotation
     for (Gps *gps in self.gpsObjects) {
@@ -71,39 +80,38 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
         [annotation setSubtitle:subtitle];
         [self.mapView addAnnotation:annotation];
     }
+    
+    // NSLogging
+    
+    NSLog(@"Native tile bounds of '%@':\n\tSouthwest - Lat: %f, Lon: %f,\n\tNortheast - Lat: %f, Lon: %f",
+          tileSource.shortName,
+          tileSource.latitudeLongitudeBoundingBox.southWest.latitude,
+          tileSource.latitudeLongitudeBoundingBox.southWest.longitude,
+          tileSource.latitudeLongitudeBoundingBox.northEast.latitude,
+          tileSource.latitudeLongitudeBoundingBox.northEast.longitude
+    );
+    
+    NSLog(@"Native tile zooms: Max zoom: %f, Min zoom: %f", tileSource.maxZoom, tileSource.minZoom);
+    
+    NSLog(@"Bounds of ski area:\n\tSouthwest - Lat: %f, Lon: %f,\n\tNortheast - Lat: %f, Lon: %f",
+          self.areaBounds.southwest.latitude,
+          self.areaBounds.southwest.longitude,
+          self.areaBounds.northeast.latitude,
+          self.areaBounds.northeast.longitude
+    );
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:YES];
- 
-    /*
+    
     LocationServiceStatus status = [CLLocationHelper checkLocationServiceStatus];
+    
     switch (status) {
-        case LocationServiceDisabled:
-        {
-            [self showLocationServicesAlert];
-            [self.mapView setZoom:12.0f atCoordinate:bozemanCoords animated:YES];
-            break;
-        }
-            
-        case LocationServiceEnabled:
-        {
-#if TARGET_IPHONE_SIMULATOR
-            // Center on Bozeman
-            [self.mapView setZoom:12.0f atCoordinate:bozemanCoords animated:YES];
-            break;
-#else
-            float userLat = self.mapView.userLocation.location.coordinate.latitude;
-            float userLon = self.mapView.userLocation.location.coordinate.longitude;
-            [self.mapView setZoom:12.0f atCoordinate:CLLocationCoordinate2DMake(userLat, userLon) animated:YES];
-            break;
-#endif
-        }
-            
+        case LocationServiceDisabled: [self showLocationServicesAlert]; break;
+        case LocationServiceEnabled: break;
         default: break;
     }
-    */
     
     [self.navItem setRightBarButtonItem:[[RMUserTrackingBarButtonItem alloc] initWithMapView:self.mapView]];
     [self.navItem.rightBarButtonItem setTintColor:[UIColor colorWithRed:0.120 green:0.550 blue:0.670 alpha:1.000]];
@@ -112,7 +120,8 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
     // Setting zoom around markers
     SMCoordinateBounds bounds = [self getMarkerBoundingBox];
     [self.mapView zoomWithLatitudeLongitudeBoundsSouthWest:bounds.southwest northEast:bounds.northeast animated:NO];
-    [self.mapView setZoom:self.mapView.zoom - 1.0f];
+    [self.mapView setZoom:self.mapView.zoom - 0.5f];
+    [self.mapView setConstraintsSouthWest:self.areaBounds.southwest northEast:self.areaBounds.northeast];
 }
 
 - (SMCoordinateBounds)getMarkerBoundingBox
@@ -150,11 +159,23 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
 
 - (void)showLocationServicesAlert
 {
-    [[[UIAlertView alloc] initWithTitle:@"Location Service Disabled"
-                                message:@"To re-enable, please go to Settings and turn on Location Service for Ski Montana."
-                               delegate:nil
-                      cancelButtonTitle:@"OK"
-                      otherButtonTitles:nil] show];
+    NSString *message = [NSString stringWithFormat:@"To re-enable, please go to Settings and turn on Location Service for %@.", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"]];
+    
+    UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"Location Service Disabled" message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *settingsAction = [UIAlertAction actionWithTitle:@"Settings" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        NSURL *settingsUrl = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+        if ([[UIApplication sharedApplication] canOpenURL:settingsUrl]) {
+            [[UIApplication sharedApplication] openURL:settingsUrl];
+        }
+    }];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) { }];
+    
+    [alertView addAction:settingsAction];
+    [alertView addAction:okAction];
+    
+    [self presentViewController:alertView animated:YES completion:nil];
 }
 
 #pragma mark - RMMapViewDelegate

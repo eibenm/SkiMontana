@@ -45,7 +45,7 @@
         abort();
     }
     
-    self.title = @"Ski Guide";
+    self.title = @"Ski Bozeman";
     
     NSArray *fetchedObjects = [self.fetchedResultsController fetchedObjects];
     
