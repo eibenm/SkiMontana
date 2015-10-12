@@ -10,8 +10,9 @@
 
 @interface SMSkiRouteTableViewCell : SMSkiAreaTableViewCell
 
-@property (strong, nonatomic) IBOutlet UILabel *labelRouteName;
-@property (strong, nonatomic) IBOutlet UITextView *textViewShortDescription;
-@property (strong, nonatomic) IBOutlet UIImageView *imageViewAreaImage;
+@property (strong, nonatomic) IBOutlet UILabel *routeTitle;
+@property (strong, nonatomic) IBOutlet UILabel *routeVertical;
+@property (strong, nonatomic) IBOutlet UILabel *routeElevationGain;
+@property (strong, nonatomic) IBOutlet UILabel *routeDistance;
 
 @end
