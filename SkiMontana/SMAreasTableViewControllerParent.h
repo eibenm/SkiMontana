@@ -6,9 +6,9 @@
 //  Copyright © 2015 Gneiss Software. All rights reserved.
 //
 
-#import "SMTableViewController.h"
+#import "SMViewController.h"
 
-@interface SMAreasTableViewControllerParent : SMTableViewController
+@interface SMAreasTableViewControllerParent : SMViewController
 
 - (void)restorePurchases;
 - (void)addActionSheet;

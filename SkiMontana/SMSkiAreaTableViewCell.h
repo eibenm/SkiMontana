@@ -8,7 +8,9 @@
 
 @interface SMSkiAreaTableViewCell : UITableViewCell
 
-@property (strong, nonatomic) IBOutlet UIView *viewAreaColor;
-@property (strong, nonatomic) IBOutlet UILabel *labelAreaName;
+@property (strong, nonatomic) IBOutlet UIImageView *areaImage;
+@property (strong, nonatomic) IBOutlet UILabel *areaName;
+@property (strong, nonatomic) IBOutlet UILabel *areaShortDesc;
+@property (strong, nonatomic) IBOutlet UILabel *areaConditions;
 
 @end

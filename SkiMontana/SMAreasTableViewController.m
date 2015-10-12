@@ -7,23 +7,17 @@
 //
 
 #import "SMAreasTableViewController.h"
-#import "SMAreaOverviewViewController.h"
-#import "SMIAPViewController.h"
 #import "SMDetailsViewController.h"
 #import "SMDataManager.h"
-
-#import "SMLayerAnimation.h"
 
 #import "SMSkiAreaTableViewCell.h"
 #import "SMSkiRouteTableViewCell.h"
 
 #import "SMArrowView.h"
 
-@interface SMAreasTableViewController ()
+@interface SMAreasTableViewController () <UITableViewDelegate, UITableViewDataSource>
 
-@property (weak, nonatomic) UIButton *mapButton;
-@property (strong, nonatomic) UIImage *mapButtonBlackBackground;
-@property (weak, nonatomic) UIImage *mapButtonBlueBackground;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -35,7 +29,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //[self setupMapButton];
+
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     
     self.managedObjectContext = [SMDataManager sharedInstance].managedObjectContext;
     
@@ -54,60 +50,30 @@
         [_isShowingArray addObject:[NSNumber numberWithBool:NO]];
     }];
     
-    // Asynchronously open table sections after 0.4 sec delay
-    /*
-    double delayInSeconds = 0.6f;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        for (int i = 0; i < _isShowingArray.count; i++) {
-            [_isShowingArray replaceObjectAtIndex:i withObject:[NSNumber numberWithBool:YES]];
-        }
-        NSInteger sectionsNumber = [self.tableView numberOfSections];
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, sectionsNumber)]
-                      withRowAnimation:UITableViewRowAnimationAutomatic];
-    });
-    */
-}
-
-/*
-- (void)setupMapButton
-{
-    self.mapButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.mapButtonBlackBackground = [UIImage imageNamed:@"globe_icon"];
-    self.mapButtonBlueBackground = [self.mapButton tintedImageWithColor:[UIColor blueColor] image:self.mapButtonBlackBackground];
-    [self.mapButton setImage:self.mapButtonBlackBackground forState:UIControlStateNormal];
-    [self.mapButton setImage:self.mapButtonBlueBackground forState:UIControlStateSelected];
-    [self.mapButton setImage:self.mapButtonBlueBackground forState:UIControlStateHighlighted];
-    [self.mapButton addTarget:self action:@selector(presentMapViewController) forControlEvents:UIControlEventTouchUpInside];
-    [self.mapButton sizeToFit];
-    UIBarButtonItem *mapBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.mapButton];
-    [self.navigationItem setLeftBarButtonItem:mapBarButtonItem];
-}
-*/
-
-/*
-- (void)presentMapViewController
-{
-    void (^presentation)(void) = ^(void) {
-        [self.mapButton setImage:self.mapButtonBlackBackground forState:UIControlStateNormal];
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        SMOverviewMapViewController *overivewMapViewController = (SMOverviewMapViewController *)[storyboard instantiateViewControllerWithIdentifier:@"overviewMap"];
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:overivewMapViewController];
-        navController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-        navController.navigationBarHidden = NO;
-        [self presentViewController:navController animated:YES completion:nil];
-    };
+    // View for background color (opaque white mask)
+    UIView *backgroundColorView = [[UIView alloc]initWithFrame:self.view.frame];
+    [backgroundColorView setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.8]];
+    [self.view addSubview:backgroundColorView];
+    [self.view sendSubviewToBack:backgroundColorView];
     
-    [self.mapButton setImage:self.mapButtonBlueBackground forState:UIControlStateNormal];
-    CABasicAnimation *pulseAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-    pulseAnimation.duration = 0.15f;
-    pulseAnimation.toValue = [NSNumber numberWithFloat:1.4f];
-    pulseAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    pulseAnimation.autoreverses = YES;
-    [CATransaction setCompletionBlock:presentation];
-    [self.mapButton.layer addAnimation:pulseAnimation forKey:nil];
+    // Background imageview
+    UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"RouteInfoBackground"]];
+    [backgroundImageView setContentMode:UIViewContentModeScaleAspectFill];
+    [backgroundImageView setFrame:self.view.frame];
+    [self.view addSubview:backgroundImageView];
+    [self.view sendSubviewToBack:backgroundImageView];
+    
+    // Setting autolayout constraints for background views
+    [backgroundColorView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [backgroundImageView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    NSDictionary *backgroundColorViews = NSDictionaryOfVariableBindings(backgroundColorView);
+    NSDictionary *backgroundImageViews = NSDictionaryOfVariableBindings(backgroundImageView);
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[backgroundColorView]|" options:kNilOptions metrics:nil views:backgroundColorViews]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[backgroundColorView]|" options:kNilOptions metrics:nil views:backgroundColorViews]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[backgroundImageView]|" options:kNilOptions metrics:nil views:backgroundImageViews]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[backgroundImageView]|" options:kNilOptions metrics:nil views:backgroundImageViews]];
+    
 }
-*/
 
 - (void)didReceiveMemoryWarning
 {
@@ -134,6 +100,7 @@
         NSUInteger countRoutes = [skiArea.ski_routes.allObjects count];
         return countArea + countRoutes;
     }
+    
     return 0;
 }
 
@@ -155,34 +122,41 @@
     selectedCellView.backgroundColor = [UIColor colorWithRed:0.0f green:0.0f blue:0.6f alpha:0.2];
     cell.selectedBackgroundView = selectedCellView;
     
-    cell.backgroundColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:0.6];
-    
     NSArray *skiAreaObjects = [self.fetchedResultsController fetchedObjects];
-    SkiAreas *skiArea = [skiAreaObjects objectAtIndex:indexPath.section];
+    SkiAreas *skiArea = skiAreaObjects[indexPath.section];
     
     BOOL skiAreaAllowed = [skiArea.permissions boolValue];
 
     if (indexPath.row == 0) {
-        cell.viewAreaColor.backgroundColor = [UIColor colorwithHexString:skiArea.color alpha:1.0];
-        cell.labelAreaName.text = skiArea.name_area;
         
-        if (![[_isShowingArray objectAtIndex:[skiAreaObjects indexOfObject:skiArea]] boolValue]) {
-            cell.accessoryView = [[SMArrowView alloc] initWithFrame:CGRectMake(0, 0, 30, 30) arrowType:SMArrowUp];
+        // Temporary workaround until all areas have images associated 
+        NSString *areaImageString = skiArea.ski_area_image.avatar ? skiArea.ski_area_image.avatar : @"_7jvo5amB_exxkbLLSQLPaQsV6OSclOd";
+        
+        cell.areaImage.image = [UIImage imageNamed:areaImageString];
+        cell.areaName.text = skiArea.name_area;
+        cell.areaShortDesc.text = skiArea.short_desc;
+        
+        if (![_isShowingArray[[skiAreaObjects indexOfObject:skiArea]] boolValue]) {
+            cell.accessoryView = [[SMArrowView alloc] initWithFrame:CGRectMake(0, 0, 30, 30) arrowType:SMArrowDown color:[UIColor blueColor]];
+            cell.areaConditions.text = @"";
+            cell.areaConditions.hidden = YES;
         }
         else {
-            cell.accessoryView = [[SMArrowView alloc] initWithFrame:CGRectMake(0, 0, 30, 30) arrowType:SMArrowDown];
+            cell.accessoryView = [[SMArrowView alloc] initWithFrame:CGRectMake(0, 0, 30, 30) arrowType:SMArrowUp color:[UIColor redColor]];
+            cell.areaConditions.text = skiArea.conditions;
+            cell.areaConditions.hidden = NO;
         }
         
         if (skiAreaAllowed == NO) {
-            UIImageView *lockedView = [[UIImageView alloc] initWithFrame:cell.viewAreaColor.bounds];
+            UIImageView *lockedView = [[UIImageView alloc] initWithFrame:cell.areaImage.bounds];
             [lockedView setImage:[UIImage imageNamed:@"lock"]];
             [lockedView setContentMode:UIViewContentModeCenter];
-            [cell.viewAreaColor addSubview:lockedView];
+            [cell.areaImage addSubview:lockedView];
         }
         
     }
     else {
-        SkiRoutes *skiRoute = [skiArea.ski_routes.allObjects objectAtIndex:indexPath.row - 1];
+        SkiRoutes *skiRoute = skiArea.ski_routes.allObjects[indexPath.row - 1];
         NSSet *skiRouteImages = skiRoute.ski_route_images;
         
         cell.labelRouteName.text = skiRoute.name_route;
@@ -197,7 +171,7 @@
             cell.imageViewAreaImage.backgroundColor = [UIColor blackColor];
         }
         
-        cell.accessoryView = [[SMArrowView alloc] initWithFrame:CGRectMake(0, 0, 20, 25) arrowType:SMArrowRight];
+        cell.accessoryView = [[SMArrowView alloc] initWithFrame:CGRectMake(0, 0, 20, 25) arrowType:SMArrowRight color:[UIColor redColor]];
         
         if (skiAreaAllowed == NO) {
             UIImageView *lockedView = [[UIImageView alloc] initWithFrame:cell.imageViewAreaImage.bounds];
@@ -207,17 +181,38 @@
         }
     }
     
+    NSLog(@"%f", cell.contentView.frame.size.height);
+    
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
-    CGFloat height = UITableViewAutomaticDimension;
+    return [[UIView alloc] initWithFrame:CGRectZero];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray *skiAreaObjects = [self.fetchedResultsController fetchedObjects];
     
-    if (indexPath.row == 0) { height = 80.0f;  }
-    if (indexPath.row >  0) { height = 140.0f; }
+    CGFloat height = 140.0f;
+    
+    if (indexPath.row == 0) {
+        SkiAreas *skiArea = skiAreaObjects[indexPath.section];
+        
+        if ([_isShowingArray[[skiAreaObjects indexOfObject:skiArea]] boolValue]) {
+            height = 85.0f + 80.0f;
+        }
+        else {
+            height = 85.0f;
+        }
+    }
+    
+    if (indexPath.row > 0) {
+        height = 140.0f;
+    }
     
     return height;
 }
@@ -304,17 +299,11 @@
         [self.navigationItem setBackBarButtonItem:newBackButton];
     }
     
+    /*
     if ([segue.identifier isEqualToString:@"showAreaOverview"]) {
-        CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tableView];
-        NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
-        SkiAreas *skiArea = [skiAreaObjects objectAtIndex:indexPath.section];
-        SMAreasTableViewController *thisViewController = (SMAreasTableViewController *) self;
-        SMAreaOverviewViewController *modalController = [segue destinationViewController];
-        SMLayerAnimation *layerAnimation = [[SMLayerAnimation alloc] initWithType:SMLayerAnimationCover];
-        thisViewController.animationController = layerAnimation;
-        modalController.transitioningDelegate = self.transitioningDelegate;
-        modalController.skiArea = skiArea;
+        nil;
     }
+    */
     
     /*
     if ([segue.identifier isEqualToString:@"showPurchase"]) {

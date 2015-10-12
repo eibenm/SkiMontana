@@ -15,6 +15,6 @@ typedef NS_ENUM(NSInteger, SMArrowType) {
 
 @interface SMArrowView : UIView
 
-- (instancetype)initWithFrame:(CGRect)frame arrowType:(SMArrowType)arrowType;
+- (instancetype)initWithFrame:(CGRect)frame arrowType:(SMArrowType)arrowType color:(UIColor *)color;
 
 @end

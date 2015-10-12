@@ -12,16 +12,18 @@
 
 @property (nonatomic, assign) SMArrowType arrowType;
 @property (nonatomic, assign) NSInteger stroke;
+@property (nonatomic, strong) UIColor *color;
 
 @end
 
 @implementation SMArrowView
 
-- (instancetype)initWithFrame:(CGRect)frame arrowType:(SMArrowType)arrowType
+- (instancetype)initWithFrame:(CGRect)frame arrowType:(SMArrowType)arrowType color:(UIColor *)color
 {
     self = [super initWithFrame:frame];
     if (self) {
         self.arrowType = arrowType;
+        self.color = color;
         self.stroke = 2;
         self.backgroundColor = [UIColor clearColor];
 //        self.layer.masksToBounds = NO;
@@ -65,7 +67,7 @@
         CGContextAddLineToPoint(context, CGRectGetMaxX(rect) - self.stroke, CGRectGetMaxY(rect) - self.stroke);
     }
     
-    CGContextSetStrokeColorWithColor(context, [[UIColor whiteColor] CGColor]);
+    CGContextSetStrokeColorWithColor(context, self.color.CGColor);
     CGContextSetLineWidth(context, (CGFloat)self.stroke);
     CGContextSetLineCap(context, kCGLineCapRound);
     CGContextSetLineJoin(context, kCGLineJoinRound);

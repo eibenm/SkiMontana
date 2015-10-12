@@ -11,7 +11,6 @@
 		CB17F6731AA93F4600048BC5 /* SMSkiAreaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB17F6721AA93F4600048BC5 /* SMSkiAreaTableViewCell.m */; };
 		CB17F6761AA93F5C00048BC5 /* SMSkiRouteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB17F6751AA93F5C00048BC5 /* SMSkiRouteTableViewCell.m */; };
 		CB2B346A1BAE058F007067C3 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2B34691BAE058F007067C3 /* StoreKit.framework */; };
-		CB2B346D1BAE0BB7007067C3 /* SMIAPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2B346C1BAE0BB7007067C3 /* SMIAPViewController.m */; settings = {ASSET_TAGS = (); }; };
 		CB2B346F1BAE0C1D007067C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB2B346E1BAE0C1D007067C3 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
 		CB3FBFC41AB67AFD00D5A037 /* SMAppearanceModifier.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3FBFC31AB67AFD00D5A037 /* SMAppearanceModifier.m */; };
 		CB4208A51AA3B98700ADFA97 /* UIFont+SkiMontana.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4208A41AA3B98700ADFA97 /* UIFont+SkiMontana.m */; };
@@ -97,8 +96,6 @@
 		CB17F6741AA93F5C00048BC5 /* SMSkiRouteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSkiRouteTableViewCell.h; sourceTree = "<group>"; };
 		CB17F6751AA93F5C00048BC5 /* SMSkiRouteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSkiRouteTableViewCell.m; sourceTree = "<group>"; };
 		CB2B34691BAE058F007067C3 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		CB2B346B1BAE0BB7007067C3 /* SMIAPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMIAPViewController.h; sourceTree = "<group>"; };
-		CB2B346C1BAE0BB7007067C3 /* SMIAPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMIAPViewController.m; sourceTree = "<group>"; };
 		CB2B346E1BAE0C1D007067C3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		CB3FBFC21AB67AFD00D5A037 /* SMAppearanceModifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAppearanceModifier.h; sourceTree = "<group>"; };
 		CB3FBFC31AB67AFD00D5A037 /* SMAppearanceModifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAppearanceModifier.m; sourceTree = "<group>"; };
@@ -346,8 +343,6 @@
 				CB7446221AEDBE670070B36D /* SMDetailsViewController.m */,
 				CB76D9C41AFC6102005EC2E8 /* SMRouteMapViewController.h */,
 				CB76D9C51AFC6102005EC2E8 /* SMRouteMapViewController.m */,
-				CB2B346B1BAE0BB7007067C3 /* SMIAPViewController.h */,
-				CB2B346C1BAE0BB7007067C3 /* SMIAPViewController.m */,
 				CBB480871AA5774D00C2A7E3 /* TableCells */,
 				CB235EAE1A9A591C0002E482 /* Utility Classes */,
 				CB96955A1A9A46CD009757B7 /* Data Manager */,
@@ -634,7 +629,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB17F6761AA93F5C00048BC5 /* SMSkiRouteTableViewCell.m in Sources */,
-				CB2B346D1BAE0BB7007067C3 /* SMIAPViewController.m in Sources */,
 				CB6BCF3A1BB3B520009B0998 /* Gps+CoreDataProperties.m in Sources */,
 				CB99FF481AB624F10067E547 /* SMAreaOverviewViewController.m in Sources */,
 				CB9695451A9A3FC1009757B7 /* SMIntroViewController.m in Sources */,

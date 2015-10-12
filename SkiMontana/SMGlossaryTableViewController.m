@@ -96,7 +96,6 @@ static NSString *cellIdentifier = @"glossaryTerm";
     //return [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 200)];
 }
 
-
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == self.selectedIndex) {
