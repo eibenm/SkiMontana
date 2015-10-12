@@ -41,8 +41,8 @@
         _backgroundLayer.cornerRadius = 4.5f;
         _backgroundLayer.backgroundColor = [[UIColor blackColor] CGColor];
         _backgroundLayer.opacity = 0.4;
-        
-        [self.layer insertSublayer:_backgroundLayer above:self.layer];
+        _backgroundLayer.zPosition = -1;
+        [self.layer insertSublayer:_backgroundLayer below:self.layer];
     }
 }
 
@@ -52,10 +52,16 @@
     [super layoutSubviews];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
 {
-    _backgroundLayer.opacity = 0.8;
-    [super setSelected:selected animated:animated];
+    if (highlighted) {
+        _backgroundLayer.opacity = 0.6;
+    }
+    else {
+        _backgroundLayer.opacity = 0.4;
+    }
+    
+    [super setHighlighted:highlighted animated:animated];
 }
     
 @end

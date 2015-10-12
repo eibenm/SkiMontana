@@ -56,7 +56,6 @@
 		CB9695451A9A3FC1009757B7 /* SMIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9695441A9A3FC1009757B7 /* SMIntroViewController.m */; };
 		CB96954C1A9A43A7009757B7 /* SMConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = CB96954B1A9A43A7009757B7 /* SMConstants.m */; };
 		CB99FF451AB61F010067E547 /* UIColor+FromHex.m in Sources */ = {isa = PBXBuildFile; fileRef = CB99FF441AB61F010067E547 /* UIColor+FromHex.m */; };
-		CB99FF481AB624F10067E547 /* SMAreaOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB99FF471AB624F10067E547 /* SMAreaOverviewViewController.m */; };
 		CB99FF4D1AB634270067E547 /* SMNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB99FF4A1AB634270067E547 /* SMNavigationController.m */; };
 		CB99FF4E1AB634270067E547 /* SMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB99FF4C1AB634270067E547 /* SMViewController.m */; };
 		CB99FF591AB6347F0067E547 /* SMBaseAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = CB99FF501AB6347F0067E547 /* SMBaseAnimation.m */; };
@@ -171,8 +170,6 @@
 		CB96954B1A9A43A7009757B7 /* SMConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMConstants.m; sourceTree = "<group>"; };
 		CB99FF431AB61F010067E547 /* UIColor+FromHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FromHex.h"; sourceTree = "<group>"; };
 		CB99FF441AB61F010067E547 /* UIColor+FromHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FromHex.m"; sourceTree = "<group>"; };
-		CB99FF461AB624F10067E547 /* SMAreaOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAreaOverviewViewController.h; sourceTree = "<group>"; };
-		CB99FF471AB624F10067E547 /* SMAreaOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAreaOverviewViewController.m; sourceTree = "<group>"; };
 		CB99FF491AB634270067E547 /* SMNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMNavigationController.h; sourceTree = "<group>"; };
 		CB99FF4A1AB634270067E547 /* SMNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMNavigationController.m; sourceTree = "<group>"; };
 		CB99FF4B1AB634270067E547 /* SMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMViewController.h; sourceTree = "<group>"; };
@@ -335,8 +332,6 @@
 				CB753AD61BBA0D12007EAAAD /* SMAreasTableViewControllerParent.m */,
 				CB4208A61AA3BB5100ADFA97 /* SMAreasTableViewController.h */,
 				CB4208A71AA3BB5100ADFA97 /* SMAreasTableViewController.m */,
-				CB99FF461AB624F10067E547 /* SMAreaOverviewViewController.h */,
-				CB99FF471AB624F10067E547 /* SMAreaOverviewViewController.m */,
 				CB9C21231BA7635100D0D5DC /* SMGlossaryTableViewController.h */,
 				CB9C21241BA7635100D0D5DC /* SMGlossaryTableViewController.m */,
 				CB7446211AEDBE670070B36D /* SMDetailsViewController.h */,
@@ -630,7 +625,6 @@
 			files = (
 				CB17F6761AA93F5C00048BC5 /* SMSkiRouteTableViewCell.m in Sources */,
 				CB6BCF3A1BB3B520009B0998 /* Gps+CoreDataProperties.m in Sources */,
-				CB99FF481AB624F10067E547 /* SMAreaOverviewViewController.m in Sources */,
 				CB9695451A9A3FC1009757B7 /* SMIntroViewController.m in Sources */,
 				CB6BCF361BB3B520009B0998 /* SkiRoutes+CoreDataProperties.m in Sources */,
 				CBF4662F1BBE537F00791383 /* SCPStoreKitReceipt.m in Sources */,

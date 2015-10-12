@@ -117,10 +117,7 @@
     }
     
     cell.backgroundColor = [UIColor clearColor];
-    
-//    UIView *selectedCellView = [UIView new];
-//    selectedCellView.backgroundColor = [UIColor colorWithRed:0.0f green:0.0f blue:0.6f alpha:0.2];
-//    cell.selectedBackgroundView = selectedCellView;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     NSArray *skiAreaObjects = [self.fetchedResultsController fetchedObjects];
     SkiAreas *skiArea = skiAreaObjects[indexPath.section];
@@ -137,8 +134,6 @@
         [cell.areaName setAdjustsFontSizeToFitWidth:YES];
         [cell.areaName setMinimumScaleFactor:10.0/[UIFont labelFontSize]];
         [cell.areaShortDesc setText:skiArea.short_desc];
-        
-        //[cell.areaName setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.4]];
         
         if (![_isShowingArray[[skiAreaObjects indexOfObject:skiArea]] boolValue]) {
             [cell setAccessoryView:[[SMArrowView alloc] initWithFrame:CGRectMake(0, 0, 30, 30) arrowType:SMArrowDown color:[UIColor blueColor]]];
@@ -162,47 +157,38 @@
     else {
         SkiRoutes *skiRoute = skiArea.ski_routes.allObjects[indexPath.row - 1];
         [cell.routeTitle setText:skiRoute.name_route];
+        //[cell.routeTitle setTextColor:[UIColor whiteColor]];
         [cell.routeVertical setText:[NSString stringWithFormat:@"Vertical: %@", skiRoute.vertical]];
+        [cell.routeVertical setTextColor:[UIColor whiteColor]];
         [cell.routeElevationGain setText:[NSString stringWithFormat:@"Elevation Gain: %@ ft", skiRoute.elevation_gain]];
+        [cell.routeElevationGain setTextColor:[UIColor whiteColor]];
         [cell.routeDistance setText:[NSString stringWithFormat:@"Distance: ~%@ mi", skiRoute.distance]];
+        [cell.routeDistance setTextColor:[UIColor whiteColor]];
         [cell setAccessoryView:[[SMArrowView alloc] initWithFrame:CGRectMake(0, 0, 20, 25) arrowType:SMArrowRight color:[UIColor redColor]]];
     }
-    
-    //NSLog(@"Actual Cell contentview height: %f", cell.contentView.frame.size.height);
     
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
 
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
-    return [[UIView alloc] initWithFrame:CGRectZero];
-}
+
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSArray *skiAreaObjects = [self.fetchedResultsController fetchedObjects];
     
-    CGFloat height = 140.0f;
-    
     if (indexPath.row == 0) {
         SkiAreas *skiArea = skiAreaObjects[indexPath.section];
         if ([_isShowingArray[[skiAreaObjects indexOfObject:skiArea]] boolValue]) {
-            height = 85.0f + 80.0f;
+            return 85.0f + 80.0f;
         }
         else {
-            height = 85.0f;
+            return 85.0f;
         }
     }
     
-    if (indexPath.row > 0) {
-        height = 126.0f;
-    }
-    
-    //NSLog(@"Height for section %i, row %i, height: %f", indexPath.section, indexPath.row, height);
-    
-    return height;
+    return 126.0f;
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -286,18 +272,6 @@
         UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:nil action:nil];
         [self.navigationItem setBackBarButtonItem:newBackButton];
     }
-    
-    /*
-    if ([segue.identifier isEqualToString:@"showAreaOverview"]) {
-        nil;
-    }
-    */
-    
-    /*
-    if ([segue.identifier isEqualToString:@"showPurchase"]) {
-        nil;
-    }
-    */
 }
 
 #pragma mark - In App Purchase
