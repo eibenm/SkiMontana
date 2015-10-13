@@ -10,7 +10,6 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *areaImage;
 @property (strong, nonatomic) IBOutlet UILabel *areaName;
-@property (strong, nonatomic) IBOutlet UILabel *areaShortDesc;
-@property (strong, nonatomic) IBOutlet UILabel *areaConditions;
+@property (strong, nonatomic) IBOutlet UITextView *areaShortDesc;
 
 @end

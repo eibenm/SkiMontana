@@ -78,43 +78,77 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CjX-rc-ptT">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CjX-rc-ptT">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SkiArea" rowHeight="123" id="aq7-Ou-EBo" customClass="SMSkiAreaTableViewCell">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="123"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SkiArea" rowHeight="150" id="aq7-Ou-EBo" customClass="SMSkiAreaTableViewCell">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aq7-Ou-EBo" id="dZZ-Ih-V8M">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="123"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Area Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QSo-98-6ip">
-                                                    <rect key="frame" x="106" y="8" width="486" height="25"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Area Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="QSo-98-6ip">
+                                                    <rect key="frame" x="12" y="12" width="576" height="28"/>
                                                     <animations/>
-                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" verticalCompressionResistancePriority="755" text="Short Desc" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSS-UJ-ota">
-                                                    <rect key="frame" x="106" y="33" width="486" height="17"/>
-                                                    <animations/>
-                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="28" id="wRa-0I-5Gl"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OtC-EQ-hmF">
-                                                    <rect key="frame" x="8" y="8" width="90" height="70"/>
+                                                    <rect key="frame" x="12" y="44" width="92" height="84"/>
                                                     <animations/>
-                                                    <color key="backgroundColor" red="0.53468573009999998" green="0.73452690639999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="70" id="EGm-Wk-FnP"/>
-                                                        <constraint firstAttribute="width" constant="90" id="iju-1y-Tkz"/>
+                                                        <constraint firstAttribute="width" constant="92" id="EIU-Am-Hy4"/>
+                                                        <constraint firstAttribute="height" constant="84" id="ie1-7t-Ubk"/>
                                                     </constraints>
                                                 </imageView>
+                                                <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="Short Desc" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eke-Xi-LmH">
+                                                    <rect key="frame" x="112" y="44" width="476" height="94"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="94" id="uG6-dX-B5g"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstItem="QSo-98-6ip" firstAttribute="leading" secondItem="dZZ-Ih-V8M" secondAttribute="leadingMargin" constant="4" id="1Rc-z2-y66"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="QSo-98-6ip" secondAttribute="trailing" constant="4" id="38b-fw-SgB"/>
+                                                <constraint firstItem="OtC-EQ-hmF" firstAttribute="leading" secondItem="dZZ-Ih-V8M" secondAttribute="leadingMargin" constant="4" id="A3V-In-dkB"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Eke-Xi-LmH" secondAttribute="trailing" constant="4" id="AFw-Jc-AUO"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Eke-Xi-LmH" secondAttribute="bottom" constant="4" id="Ibl-jD-CZT"/>
+                                                <constraint firstItem="QSo-98-6ip" firstAttribute="top" secondItem="dZZ-Ih-V8M" secondAttribute="topMargin" constant="4" id="WsM-Bw-iPK"/>
+                                                <constraint firstItem="Eke-Xi-LmH" firstAttribute="leading" secondItem="OtC-EQ-hmF" secondAttribute="trailing" constant="8" id="Zgq-Nu-muV"/>
+                                                <constraint firstItem="Eke-Xi-LmH" firstAttribute="leading" secondItem="OtC-EQ-hmF" secondAttribute="trailing" constant="8" id="c4m-ia-tUB"/>
+                                                <constraint firstItem="Eke-Xi-LmH" firstAttribute="top" secondItem="QSo-98-6ip" secondAttribute="bottom" constant="4" id="lnk-Qo-JbL"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="OtC-EQ-hmF" secondAttribute="bottom" constant="14" id="sd0-2V-uuI"/>
+                                                <constraint firstItem="OtC-EQ-hmF" firstAttribute="top" secondItem="QSo-98-6ip" secondAttribute="bottom" constant="4" id="w3p-fx-YpX"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <connections>
+                                            <outlet property="areaImage" destination="OtC-EQ-hmF" id="bp1-bM-fZF"/>
+                                            <outlet property="areaName" destination="QSo-98-6ip" id="udN-nJ-2zn"/>
+                                            <outlet property="areaShortDesc" destination="Eke-Xi-LmH" id="MCB-hs-IuM"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SkiAreaConditions" rowHeight="45" id="H2w-EL-EZo" customClass="SMSkiAreaConditionsTableViewCell">
+                                        <rect key="frame" x="0.0" y="242" width="600" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="H2w-EL-EZo" id="sDw-6d-Elx">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" verticalCompressionResistancePriority="755" text="Conditions" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i0E-mh-iLh">
-                                                    <rect key="frame" x="8" y="86" width="584" height="21"/>
+                                                    <rect key="frame" x="16" y="12" width="576" height="21"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -123,30 +157,19 @@
                                             </subviews>
                                             <animations/>
                                             <constraints>
-                                                <constraint firstItem="QSo-98-6ip" firstAttribute="top" secondItem="dZZ-Ih-V8M" secondAttribute="topMargin" id="03P-5t-Gsf"/>
-                                                <constraint firstItem="i0E-mh-iLh" firstAttribute="leading" secondItem="dZZ-Ih-V8M" secondAttribute="leadingMargin" id="Ao2-QL-OVw"/>
-                                                <constraint firstItem="i0E-mh-iLh" firstAttribute="trailing" secondItem="dZZ-Ih-V8M" secondAttribute="trailingMargin" id="H8W-sP-qe3"/>
-                                                <constraint firstItem="JSS-UJ-ota" firstAttribute="trailing" secondItem="dZZ-Ih-V8M" secondAttribute="trailingMargin" id="HyM-qm-dPt"/>
-                                                <constraint firstItem="OtC-EQ-hmF" firstAttribute="leading" secondItem="dZZ-Ih-V8M" secondAttribute="leadingMargin" id="J1C-Mx-v5l"/>
-                                                <constraint firstItem="QSo-98-6ip" firstAttribute="trailing" secondItem="dZZ-Ih-V8M" secondAttribute="trailingMargin" id="JJt-XA-N0K"/>
-                                                <constraint firstItem="OtC-EQ-hmF" firstAttribute="top" secondItem="dZZ-Ih-V8M" secondAttribute="topMargin" id="Pfc-ov-st3"/>
-                                                <constraint firstItem="QSo-98-6ip" firstAttribute="leading" secondItem="OtC-EQ-hmF" secondAttribute="trailing" constant="8" id="Q2W-KS-L4j"/>
-                                                <constraint firstItem="i0E-mh-iLh" firstAttribute="top" secondItem="OtC-EQ-hmF" secondAttribute="bottom" constant="8" id="YHC-eO-ES3"/>
-                                                <constraint firstItem="JSS-UJ-ota" firstAttribute="top" secondItem="QSo-98-6ip" secondAttribute="bottom" id="ssN-Ri-1yk"/>
-                                                <constraint firstItem="JSS-UJ-ota" firstAttribute="leading" secondItem="OtC-EQ-hmF" secondAttribute="trailing" constant="8" id="uGV-cu-EOp"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="i0E-mh-iLh" secondAttribute="bottom" constant="8" id="ytN-KM-ayN"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="i0E-mh-iLh" secondAttribute="bottom" constant="4" id="FJk-zB-9az"/>
+                                                <constraint firstItem="i0E-mh-iLh" firstAttribute="top" secondItem="sDw-6d-Elx" secondAttribute="topMargin" constant="4" id="aGK-4O-iCn"/>
+                                                <constraint firstItem="i0E-mh-iLh" firstAttribute="leading" secondItem="sDw-6d-Elx" secondAttribute="leadingMargin" constant="8" id="oNd-ZM-fab"/>
+                                                <constraint firstItem="i0E-mh-iLh" firstAttribute="trailing" secondItem="sDw-6d-Elx" secondAttribute="trailingMargin" id="zhx-LM-jMG"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
                                         <connections>
-                                            <outlet property="areaConditions" destination="i0E-mh-iLh" id="f8b-yD-epV"/>
-                                            <outlet property="areaImage" destination="OtC-EQ-hmF" id="bp1-bM-fZF"/>
-                                            <outlet property="areaName" destination="QSo-98-6ip" id="udN-nJ-2zn"/>
-                                            <outlet property="areaShortDesc" destination="JSS-UJ-ota" id="G6j-ww-T0T"/>
+                                            <outlet property="areaConditions" destination="i0E-mh-iLh" id="SEZ-Ey-Gnq"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SkiRoute" rowHeight="126" id="NJu-VN-nha" customClass="SMSkiRouteTableViewCell">
-                                        <rect key="frame" x="0.0" y="215" width="600" height="126"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SkiRoute" rowHeight="126" id="NJu-VN-nha" customClass="SMSkiRouteTableViewCell">
+                                        <rect key="frame" x="0.0" y="287" width="600" height="126"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NJu-VN-nha" id="6YL-5Q-GwW">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="126"/>
@@ -156,7 +179,6 @@
                                                     <rect key="frame" x="8" y="12" width="584" height="26"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" verticalCompressionResistancePriority="755" text="Vertical" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzM-ry-0PL">

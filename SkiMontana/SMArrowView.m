@@ -26,11 +26,6 @@
         self.color = color;
         self.stroke = 2;
         self.backgroundColor = [UIColor clearColor];
-//        self.layer.masksToBounds = NO;
-//        self.layer.shadowOffset = CGSizeMake(0, 0);
-//        self.layer.shadowRadius = self.stroke;
-//        self.layer.shadowOpacity = 0.5;
-//        self.layer.shadowColor = [[UIColor lightGrayColor] CGColor];
     }
     return self;
 }
@@ -71,7 +66,7 @@
     CGContextSetLineWidth(context, (CGFloat)self.stroke);
     CGContextSetLineCap(context, kCGLineCapRound);
     CGContextSetLineJoin(context, kCGLineJoinRound);
-    CGContextSetShadowWithColor(context, CGSizeMake(0, 0), 4, [[UIColor colorWithWhite:0.8 alpha:0.8] CGColor]);
+    CGContextSetShadowWithColor(context, CGSizeMake(0, 0), 4, [[UIColor colorWithWhite:0.8 alpha:0.6] CGColor]);
     CGContextStrokePath(context);
     CGContextRestoreGState(context);
 }

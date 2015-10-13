@@ -15,9 +15,12 @@
 
 #import "SMArrowView.h"
 
+static NSString *cellIdentifier;
+
 @interface SMAreasTableViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSSortDescriptor *routeSortDescriptor;
 
 @end
 
@@ -30,18 +33,20 @@
 {
     [super viewDidLoad];
 
+    self.title = @"Ski Bozeman";
+    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
     self.managedObjectContext = [SMDataManager sharedInstance].managedObjectContext;
+    
+    self.routeSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name_route" ascending:YES];
     
     NSError *error;
     if (![[self fetchedResultsController] performFetch:&error]) {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
-    
-    self.title = @"Ski Bozeman";
     
     NSArray *fetchedObjects = [self.fetchedResultsController fetchedObjects];
     
@@ -96,9 +101,8 @@
         if ([[_isShowingArray objectAtIndex:indexofCurrentObject] boolValue] == NO) {
             return 1;
         }
-        NSUInteger countArea = [sectionInfo numberOfObjects];
-        NSUInteger countRoutes = [skiArea.ski_routes.allObjects count];
-        return countArea + countRoutes;
+        NSUInteger countRoutes = [skiArea.ski_routes count];
+        return countRoutes + 2;
     }
     
     return 0;
@@ -106,12 +110,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier;
-    
-    if (indexPath.row == 0) { cellIdentifier = @"SkiArea";  }
-    if (indexPath.row >  0) { cellIdentifier = @"SkiRoute"; }
+    switch (indexPath.row) {
+        case 0: cellIdentifier = @"SkiArea"; break;
+        case 1: cellIdentifier = @"SkiAreaConditions"; break;
+        default: cellIdentifier = @"SkiRoute"; break;
+    }
     
     SMSkiRouteTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    
     if (cell == nil) {
         cell = [[SMSkiRouteTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
@@ -121,32 +127,37 @@
     
     NSArray *skiAreaObjects = [self.fetchedResultsController fetchedObjects];
     SkiAreas *skiArea = skiAreaObjects[indexPath.section];
-    
-    BOOL skiAreaAllowed = [skiArea.permissions boolValue];
 
     if (indexPath.row == 0) {
         
         // Temporary workaround until all areas have images associated 
         NSString *areaImageString = skiArea.ski_area_image.avatar ? skiArea.ski_area_image.avatar : @"_7jvo5amB_exxkbLLSQLPaQsV6OSclOd";
         
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+        //paragraphStyle.maximumLineHeight = 13.0f;
+        paragraphStyle.lineSpacing = 1.0f;
+        NSDictionary *attrsDictionary = @{
+            NSParagraphStyleAttributeName: paragraphStyle,
+            NSForegroundColorAttributeName: [UIColor whiteColor]
+        };
+        
         [cell.areaImage setImage:[UIImage imageNamed:areaImageString]];
         [cell.areaName setText:skiArea.name_area];
-        [cell.areaName setAdjustsFontSizeToFitWidth:YES];
-        [cell.areaName setMinimumScaleFactor:10.0/[UIFont labelFontSize]];
-        [cell.areaShortDesc setText:skiArea.short_desc];
+        [cell.areaName setTextColor:[UIColor whiteColor]];
+        [cell.areaShortDesc setTextContainerInset:UIEdgeInsetsZero];
+        [cell.areaShortDesc.textContainer setLineFragmentPadding:0];
+        [cell.areaShortDesc.textContainer setLineBreakMode:NSLineBreakByTruncatingTail];
+        [cell.areaShortDesc setAttributedText:[[NSAttributedString alloc] initWithString:skiArea.short_desc attributes:attrsDictionary]];
         
         if (![_isShowingArray[[skiAreaObjects indexOfObject:skiArea]] boolValue]) {
             [cell setAccessoryView:[[SMArrowView alloc] initWithFrame:CGRectMake(0, 0, 30, 30) arrowType:SMArrowDown color:[UIColor blueColor]]];
-            [cell.areaConditions setText:@""];
-            [cell.areaConditions setHidden:YES];
         }
         else {
             [cell setAccessoryView:[[SMArrowView alloc] initWithFrame:CGRectMake(0, 0, 30, 30) arrowType:SMArrowUp color:[UIColor redColor]]];
-            [cell.areaConditions setText:skiArea.conditions];
-            [cell.areaConditions setHidden:NO];
         }
         
-        if (skiAreaAllowed == NO) {
+        // Setting lock on image if appropriate
+        if ([skiArea.permissions boolValue] == NO) {
             UIImageView *lockedView = [[UIImageView alloc] initWithFrame:cell.areaImage.bounds];
             [lockedView setImage:[UIImage imageNamed:@"lock"]];
             [lockedView setContentMode:UIViewContentModeCenter];
@@ -154,10 +165,18 @@
         }
         
     }
+    
+    else if (indexPath.row == 1) {
+        [cell.areaConditions setText:skiArea.conditions];
+        [cell.areaConditions setTextColor:[UIColor whiteColor]];
+        [cell setAccessoryType:UITableViewCellAccessoryNone];
+    }
+    
     else {
-        SkiRoutes *skiRoute = skiArea.ski_routes.allObjects[indexPath.row - 1];
+        NSArray *skiRoutesArray = [skiArea.ski_routes sortedArrayUsingDescriptors:@[self.routeSortDescriptor]];
+        SkiRoutes *skiRoute = skiRoutesArray[indexPath.row - 2];
         [cell.routeTitle setText:skiRoute.name_route];
-        //[cell.routeTitle setTextColor:[UIColor whiteColor]];
+        [cell.routeTitle setTextColor:[UIColor whiteColor]];
         [cell.routeVertical setText:[NSString stringWithFormat:@"Vertical: %@", skiRoute.vertical]];
         [cell.routeVertical setTextColor:[UIColor whiteColor]];
         [cell.routeElevationGain setText:[NSString stringWithFormat:@"Elevation Gain: %@ ft", skiRoute.elevation_gain]];
@@ -173,35 +192,29 @@
 #pragma mark - UITableViewDelegate
 
 
-
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSArray *skiAreaObjects = [self.fetchedResultsController fetchedObjects];
+    CGFloat height = UITableViewAutomaticDimension;
     
-    if (indexPath.row == 0) {
-        SkiAreas *skiArea = skiAreaObjects[indexPath.section];
-        if ([_isShowingArray[[skiAreaObjects indexOfObject:skiArea]] boolValue]) {
-            return 85.0f + 80.0f;
-        }
-        else {
-            return 85.0f;
-        }
+    switch (indexPath.row) {
+        case 0: height = 150.0f; break;
+        case 1: height = 160.0f; break;
+        default: height = 126.0f; break;
     }
     
-    return 126.0f;
+    return height;
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Collapse or expand section when the skiArea cell is selected
+    // Collapse or expand section when skiArea cells are selected
     NSArray *skiAreaObjects = [self.fetchedResultsController fetchedObjects];
     [skiAreaObjects enumerateObjectsUsingBlock:^(id skiArea, NSUInteger index, BOOL *stop) {
         if (indexPath.section == index) {
-            if (indexPath.row == 0) {
+            if (indexPath.row == 0 || indexPath.row == 1) {
                 BOOL isShowing = [_isShowingArray[index] boolValue];
                 [_isShowingArray replaceObjectAtIndex:index withObject:[NSNumber numberWithBool:!isShowing]];
-                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:index]
-                              withRowAnimation:UITableViewRowAnimationAutomatic];
+                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationAutomatic];
             }
         }
     }];
@@ -260,7 +273,8 @@
     if ([segue.identifier isEqualToString:@"showRoute"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         SkiAreas *skiArea = [skiAreaObjects objectAtIndex:indexPath.section];
-        SkiRoutes *skiRoute = [skiArea.ski_routes.allObjects objectAtIndex:indexPath.row - 1];
+        NSArray *skiRoutesArray = [skiArea.ski_routes sortedArrayUsingDescriptors:@[self.routeSortDescriptor]];
+        SkiRoutes *skiRoute = skiRoutesArray[indexPath.row - 2];
         SMDetailsViewController *viewController = [segue destinationViewController];
         viewController.nameArea = skiArea.name_area;
         viewController.skiRoute = skiRoute;

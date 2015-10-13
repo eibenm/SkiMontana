@@ -67,6 +67,7 @@
 		CB9C21251BA7635100D0D5DC /* SMGlossaryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9C21241BA7635100D0D5DC /* SMGlossaryTableViewController.m */; };
 		CB9C21281BA7726D00D0D5DC /* SMGlossaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9C21271BA7726D00D0D5DC /* SMGlossaryTableViewCell.m */; };
 		CB9C21301BA7ED5400D0D5DC /* bridgerRange.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CB9C212E1BA7EBD500D0D5DC /* bridgerRange.mbtiles */; };
+		CBA2B5E71BCCB79900B7C129 /* SMSkiAreaConditionsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA2B5E61BCCB79900B7C129 /* SMSkiAreaConditionsTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		CBA338A31B8280F0001BA5FF /* SMDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA338961B8280F0001BA5FF /* SMDataManager.m */; };
 		CBA338AC1B82821F001BA5FF /* skiappdata.json in Resources */ = {isa = PBXBuildFile; fileRef = CBA338AB1B82821F001BA5FF /* skiappdata.json */; };
 		CBA338AF1B8282AD001BA5FF /* SMUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA338AE1B8282AD001BA5FF /* SMUtilities.m */; };
@@ -191,6 +192,8 @@
 		CB9C21261BA7726D00D0D5DC /* SMGlossaryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMGlossaryTableViewCell.h; sourceTree = "<group>"; };
 		CB9C21271BA7726D00D0D5DC /* SMGlossaryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMGlossaryTableViewCell.m; sourceTree = "<group>"; };
 		CB9C212E1BA7EBD500D0D5DC /* bridgerRange.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = bridgerRange.mbtiles; path = Tiles/bridgerRange.mbtiles; sourceTree = "<group>"; };
+		CBA2B5E51BCCB79900B7C129 /* SMSkiAreaConditionsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSkiAreaConditionsTableViewCell.h; sourceTree = "<group>"; };
+		CBA2B5E61BCCB79900B7C129 /* SMSkiAreaConditionsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSkiAreaConditionsTableViewCell.m; sourceTree = "<group>"; };
 		CBA338951B8280F0001BA5FF /* SMDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDataManager.h; sourceTree = "<group>"; };
 		CBA338961B8280F0001BA5FF /* SMDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDataManager.m; sourceTree = "<group>"; };
 		CBA338981B8280F0001BA5FF /* SMManagedObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMManagedObjects.h; sourceTree = "<group>"; };
@@ -484,6 +487,8 @@
 			children = (
 				CB17F6711AA93F4600048BC5 /* SMSkiAreaTableViewCell.h */,
 				CB17F6721AA93F4600048BC5 /* SMSkiAreaTableViewCell.m */,
+				CBA2B5E51BCCB79900B7C129 /* SMSkiAreaConditionsTableViewCell.h */,
+				CBA2B5E61BCCB79900B7C129 /* SMSkiAreaConditionsTableViewCell.m */,
 				CB17F6741AA93F5C00048BC5 /* SMSkiRouteTableViewCell.h */,
 				CB17F6751AA93F5C00048BC5 /* SMSkiRouteTableViewCell.m */,
 				CB7446241AEEA36A0070B36D /* SMDetailsInformationTableViewCell.h */,
@@ -629,6 +634,7 @@
 				CB6BCF361BB3B520009B0998 /* SkiRoutes+CoreDataProperties.m in Sources */,
 				CBF4662F1BBE537F00791383 /* SCPStoreKitReceipt.m in Sources */,
 				CB17F6731AA93F4600048BC5 /* SMSkiAreaTableViewCell.m in Sources */,
+				CBA2B5E71BCCB79900B7C129 /* SMSkiAreaConditionsTableViewCell.m in Sources */,
 				CB4208A81AA3BB5100ADFA97 /* SMAreasTableViewController.m in Sources */,
 				CBA338DC1B82BBD1001BA5FF /* SMReachabilityManager.m in Sources */,
 				CB99FF5A1AB6347F0067E547 /* SMFlipAnimation.m in Sources */,
