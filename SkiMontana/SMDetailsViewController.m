@@ -117,7 +117,7 @@ static CGFloat maxOffsetDiff = 46.0f;
     [cell setBackgroundColor:[UIColor clearColor]];
     
     if ([cellIdentifier isEqualToString:@"map"]) {
-        [cell.imageMapBackground setImage:[UIImage imageNamed:@"Cell Bridger Range"]];
+        [cell.imageMapBackground setImage:[UIImage imageNamed:self.skiRoute.name_route]];
     }
     else if ([cellIdentifier isEqualToString:@"content"]) {
         [cell.labelElevation setText:[NSString stringWithFormat:@"Elevation Gain: %@ ft", self.skiRoute.elevation_gain]];

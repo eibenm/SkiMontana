@@ -150,12 +150,12 @@ static NSString *cellIdentifier;
         [cell.areaShortDesc setAttributedText:[[NSAttributedString alloc] initWithString:skiArea.short_desc attributes:attrsDictionary]];
         
         if (![_isShowingArray[[skiAreaObjects indexOfObject:skiArea]] boolValue]) {
-            [cell setAccessoryView:[[SMArrowView alloc] initWithFrame:CGRectMake(0, 0, 30, 30) arrowType:SMArrowDown color:[UIColor blueColor]]];
+            [cell setAccessoryView:[[SMArrowView alloc] initWithFrame:CGRectMake(0, 0, 30, 22) arrowType:SMArrowDown color:[UIColor blueColor]]];
         }
         else {
-            [cell setAccessoryView:[[SMArrowView alloc] initWithFrame:CGRectMake(0, 0, 30, 30) arrowType:SMArrowUp color:[UIColor redColor]]];
+            [cell setAccessoryView:[[SMArrowView alloc] initWithFrame:CGRectMake(0, 0, 30, 22) arrowType:SMArrowUp color:[UIColor redColor]]];
         }
-        
+
         // Setting lock on image if appropriate
         /*
         if ([skiArea.permissions boolValue] == NO) {
@@ -184,7 +184,7 @@ static NSString *cellIdentifier;
         [cell.routeElevationGain setTextColor:[UIColor whiteColor]];
         [cell.routeDistance setText:[NSString stringWithFormat:@"Distance: ~%@ mi", skiRoute.distance]];
         [cell.routeDistance setTextColor:[UIColor whiteColor]];
-        [cell setAccessoryView:[[SMArrowView alloc] initWithFrame:CGRectMake(0, 0, 20, 25) arrowType:SMArrowRight color:[UIColor redColor]]];
+        [cell setAccessoryView:[[SMArrowView alloc] initWithFrame:CGRectMake(0, 0, 22, 30) arrowType:SMArrowRight color:[UIColor redColor]]];
     }
     
     return cell;

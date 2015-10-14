@@ -25,6 +25,7 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
 @property (strong, nonatomic) NSSet *gpsObjects;
 
 @property (assign, nonatomic) SMCoordinateBounds areaBounds;
+@property (assign, nonatomic) SMCoordinateBounds coordinateBounds;
 
 @end
 
@@ -59,6 +60,7 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
     [self.mapView setShowLogoBug:NO];
     [self.mapView setHideAttribution:YES];
     [self.mapViewContainer addSubview:self.mapView];
+    [self.mapView.layer setOpacity:0];
     
     // Parsing bounds out of route bounds strings
     NSArray *boundsNortheast = [self.skiRoute.bounds_northeast componentsSeparatedByString:@","];
@@ -76,6 +78,7 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
     );
     
     self.areaBounds = SMCoordinateBoundsMake(southwest, northeast);
+    self.coordinateBounds = [self getMarkerBoundingBox];
     
     [self.mapView zoomWithLatitudeLongitudeBoundsSouthWest:self.areaBounds.southwest northEast:self.areaBounds.northeast animated:NO];
     
@@ -91,6 +94,7 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
     
     // NSLogging
     
+    /*
     NSLog(@"Native tile bounds of '%@':\n\tSouthwest - Lat: %f, Lon: %f,\n\tNortheast - Lat: %f, Lon: %f",
         self.tileSource.shortName,
         self.tileSource.latitudeLongitudeBoundingBox.southWest.latitude,
@@ -111,6 +115,7 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
         self.areaBounds.northeast.latitude,
         self.areaBounds.northeast.longitude
     );
+    */
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -130,11 +135,14 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
     [self.mapView setUserTrackingMode:RMUserTrackingModeNone];
     
     // Setting zoom around markers ... setting to max zoom of tileset if overzoomed
-    SMCoordinateBounds bounds = [self getMarkerBoundingBox];
-    [self.mapView zoomWithLatitudeLongitudeBoundsSouthWest:bounds.southwest northEast:bounds.northeast animated:YES];
+    [self.mapView zoomWithLatitudeLongitudeBoundsSouthWest:self.coordinateBounds.southwest northEast:self.coordinateBounds.northeast animated:NO];
     float newZoom = self.mapView.zoom - 0.5f;
     [self.mapView setZoom:(newZoom < self.tileSource.maxZoom ? newZoom : self.tileSource.maxZoom)];
     [self.mapView setConstraintsSouthWest:self.areaBounds.southwest northEast:self.areaBounds.northeast];
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        [self.mapView.layer setOpacity:1.0f];
+    }];
 }
 
 - (SMCoordinateBounds)getMarkerBoundingBox
@@ -144,8 +152,7 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
     float maxLat = -900.0;
     float maxLon = -900.0;
     
-    for (Gps *gps in self.gpsObjects)
-    {
+    for (Gps *gps in self.gpsObjects) {
         minLat = MIN(minLat, gps.lat.floatValue);
         minLon = MIN(minLon, gps.lon.floatValue);
         maxLat = MAX(maxLat, gps.lat.floatValue);
@@ -204,10 +211,12 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
     return marker;
 }
 
-//- (void)mapView:(RMMapView *)mapView didUpdateUserLocation:(RMUserLocation *)userLocation
-//{
-//    NSLog(@"Lat: %f, Lon: %f", userLocation.location.coordinate.latitude, userLocation.location.coordinate.longitude);
-//}
+/*
+- (void)mapView:(RMMapView *)mapView didUpdateUserLocation:(RMUserLocation *)userLocation
+{
+    NSLog(@"Lat: %f, Lon: %f", userLocation.location.coordinate.latitude, userLocation.location.coordinate.longitude);
+}
+*/
 
 - (void)mapView:(RMMapView *)mapView didFailToLocateUserWithError:(NSError *)error
 {
@@ -243,43 +252,31 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
     
     [self.view addSubview:attributionButton];
     
-    NSString *formatString = @"V:[attributionButton]-bottomSpacing-[bottomLayoutGuide]";
+    NSString *bottomFormatString = @"V:[attributionButton]-bottomSpacing-[bottomLayoutGuide]";
+    NSString *rightFormatString = @"H:[attributionButton]-rightSpacing-|";
+    
     NSDictionary *views = @{
         @"attributionButton" : attributionButton,
         @"bottomLayoutGuide" : self.bottomLayoutGuide
     };
     
-    [self.view addConstraints:
-        [NSLayoutConstraint constraintsWithVisualFormat:formatString
-                                                options:0
-                                                metrics:@{ @"bottomSpacing" : @(8) }
-                                                  views:views]];
-    
-    [self.view addConstraints:
-        [NSLayoutConstraint constraintsWithVisualFormat:@"H:[attributionButton]-rightSpacing-|"
-                                                options:0
-                                                metrics:@{ @"rightSpacing" : @(8) }
-                                                  views:views]];
+    [self.view addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:bottomFormatString options:kNilOptions metrics:@{ @"bottomSpacing" : @(8) } views:views]];
+    [self.view addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:rightFormatString options:kNilOptions metrics:@{ @"rightSpacing" : @(8) } views:views]];
 }
 
 - (void)showAttribution:(id)sender
 {
     SMMapAttributionViewController *attributionViewController = [[SMMapAttributionViewController alloc] initWithMapView:self.mapView];
 
-    self.view.tintColor = [UIColor colorWithRed:0.120 green:0.550 blue:0.670 alpha:1.000];
     attributionViewController.edgesForExtendedLayout = UIRectEdgeNone;
-    
     attributionViewController.navigationItem.rightBarButtonItem =
         [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                       target:self
                                                       action:@selector(dismissAttribution:)];
     
     UINavigationController *wrapper = [[UINavigationController alloc] initWithRootViewController:attributionViewController];
-    wrapper.navigationBar.tintColor = [UIColor colorWithRed:0.120 green:0.550 blue:0.670 alpha:1.000];
     wrapper.modalPresentationStyle = UIModalPresentationCustom;
-    //wrapper.transitioningDelegate = self;
     [self presentViewController:wrapper animated:YES completion:nil];
-    
 }
 
 - (void)dismissAttribution:(id)sender
