@@ -60,7 +60,7 @@
     }];
     
     // Setup Background Image
-    UIImage *image = [UIImage imageNamed:@"intro_background"];
+    UIImage *image = [UIImage imageNamed:@"jTs0egYAIBs4ShqKnF5w1YEhzyPcnvYV"];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
     [imageView setContentMode:UIViewContentModeScaleAspectFill];
     [imageView setFrame:self.view.frame];

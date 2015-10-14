@@ -157,13 +157,14 @@ static NSString *cellIdentifier;
         }
         
         // Setting lock on image if appropriate
+        /*
         if ([skiArea.permissions boolValue] == NO) {
             UIImageView *lockedView = [[UIImageView alloc] initWithFrame:cell.areaImage.bounds];
             [lockedView setImage:[UIImage imageNamed:@"lock"]];
             [lockedView setContentMode:UIViewContentModeCenter];
             [cell.areaImage addSubview:lockedView];
         }
-        
+        */
     }
     
     else if (indexPath.row == 1) {

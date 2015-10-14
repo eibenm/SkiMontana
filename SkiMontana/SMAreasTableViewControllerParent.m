@@ -25,6 +25,7 @@ static NSString *manageSubscriptions = @"https://buy.itunes.apple.com/WebObjects
 {
     [super viewDidLoad];
     
+    /*
     [[SCPStoreKitReceiptValidator sharedInstance] validateReceiptWithBundleIdentifier:BUNDLE_IDENTIFIER bundleVersion:@"1.0" tryAgain:YES showReceiptAlert:YES alertPresentingViewController:self alertViewTitle:nil alertViewMessage:nil success:^(SCPStoreKitReceipt *receipt) {
         
         //Here you would do some further checks such as :
@@ -42,12 +43,13 @@ static NSString *manageSubscriptions = @"https://buy.itunes.apple.com/WebObjects
     } failure:^(NSError *error) {
         NSLog(@"Failure: %@", [error fullDescription]);
     }];
+    */
     
     NSSet *productIdentifiers = [NSSet setWithObjects:
-                                 kIdentifierSubscription1Month,
-                                 kIdentifierSubscription1Year,
-                                 nil
-                                 ];
+        kIdentifierSubscription1Month,
+        kIdentifierSubscription1Year,
+        nil
+    ];
     
     [self requestProductsWithProductIdentifiers:productIdentifiers];
 }

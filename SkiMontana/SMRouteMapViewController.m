@@ -10,6 +10,8 @@
 #import "CLLocationHelper.h"
 #import "Mapbox.h"
 
+#import "SMMapAttributionViewController.h"
+
 SMCoordinateBounds const worldBounds = (SMCoordinateBounds){(CLLocationCoordinate2D){-85, -180}, (CLLocationCoordinate2D){85, 180}};
 CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145, -111.046954};
 
@@ -32,6 +34,8 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
 {
     [super viewDidLoad];
     
+    [self setAttributionButton];
+    
     self.navigationBar.delegate = self;
     self.gpsObjects = self.skiRoute.ski_route_gps;
     
@@ -52,6 +56,7 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
     [self.mapView setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
     [self.mapView setAdjustTilesForRetinaDisplay:YES];
     [self.mapView setShowsUserLocation:YES];
+    [self.mapView setShowLogoBug:NO];
     [self.mapView setHideAttribution:YES];
     [self.mapViewContainer addSubview:self.mapView];
     
@@ -217,6 +222,69 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
         return UIBarPositionTopAttached;
     }
     return UIBarPositionAny;
+}
+
+#pragma mark - Attribution
+
+- (void)setAttributionButton
+{
+    UIButton *attributionButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+    attributionButton.tintColor = [UIColor whiteColor];
+    attributionButton.transform = CGAffineTransformMakeScale(1.2, 1.2);
+    attributionButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin;
+    attributionButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [attributionButton addTarget:self action:@selector(showAttribution:) forControlEvents:UIControlEventTouchUpInside];
+    attributionButton.frame = CGRectMake(
+        self.view.bounds.size.width - attributionButton.bounds.size.width - 8,
+        self.view.bounds.size.height - attributionButton.bounds.size.height - 8,
+        attributionButton.bounds.size.width,
+        attributionButton.bounds.size.height
+    );
+    
+    [self.view addSubview:attributionButton];
+    
+    NSString *formatString = @"V:[attributionButton]-bottomSpacing-[bottomLayoutGuide]";
+    NSDictionary *views = @{
+        @"attributionButton" : attributionButton,
+        @"bottomLayoutGuide" : self.bottomLayoutGuide
+    };
+    
+    [self.view addConstraints:
+        [NSLayoutConstraint constraintsWithVisualFormat:formatString
+                                                options:0
+                                                metrics:@{ @"bottomSpacing" : @(8) }
+                                                  views:views]];
+    
+    [self.view addConstraints:
+        [NSLayoutConstraint constraintsWithVisualFormat:@"H:[attributionButton]-rightSpacing-|"
+                                                options:0
+                                                metrics:@{ @"rightSpacing" : @(8) }
+                                                  views:views]];
+}
+
+- (void)showAttribution:(id)sender
+{
+    SMMapAttributionViewController *attributionViewController = [[SMMapAttributionViewController alloc] initWithMapView:self.mapView];
+
+    self.view.tintColor = [UIColor colorWithRed:0.120 green:0.550 blue:0.670 alpha:1.000];
+    attributionViewController.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    attributionViewController.navigationItem.rightBarButtonItem =
+        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                      target:self
+                                                      action:@selector(dismissAttribution:)];
+    
+    UINavigationController *wrapper = [[UINavigationController alloc] initWithRootViewController:attributionViewController];
+    wrapper.navigationBar.tintColor = [UIColor colorWithRed:0.120 green:0.550 blue:0.670 alpha:1.000];
+    wrapper.modalPresentationStyle = UIModalPresentationCustom;
+    //wrapper.transitioningDelegate = self;
+    [self presentViewController:wrapper animated:YES completion:nil];
+    
+}
+
+- (void)dismissAttribution:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
