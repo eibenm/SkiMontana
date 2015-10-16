@@ -21,6 +21,7 @@ static NSString *cellIdentifier;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSSortDescriptor *routeSortDescriptor;
+@property (assign, nonatomic) BOOL deviceIsIPhone;
 
 @end
 
@@ -39,8 +40,8 @@ static NSString *cellIdentifier;
     self.tableView.dataSource = self;
     
     self.managedObjectContext = [SMDataManager sharedInstance].managedObjectContext;
-    
     self.routeSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name_route" ascending:YES];
+    self.deviceIsIPhone = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone);
     
     NSError *error;
     if (![[self fetchedResultsController] performFetch:&error]) {
@@ -130,24 +131,28 @@ static NSString *cellIdentifier;
 
     if (indexPath.row == 0) {
         
-        // Temporary workaround until all areas have images associated 
-        NSString *areaImageString = skiArea.ski_area_image.avatar ? skiArea.ski_area_image.avatar : @"_7jvo5amB_exxkbLLSQLPaQsV6OSclOd";
-        
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-        //paragraphStyle.maximumLineHeight = 13.0f;
-        paragraphStyle.lineSpacing = 1.0f;
+        paragraphStyle.maximumLineHeight = 16.0f;
         NSDictionary *attrsDictionary = @{
             NSParagraphStyleAttributeName: paragraphStyle,
+            NSFontAttributeName: [UIFont skiMontanaFontOfSize:14.0f],
             NSForegroundColorAttributeName: [UIColor whiteColor]
         };
         
-        [cell.areaImage setImage:[UIImage imageNamed:areaImageString]];
+        [cell.areaImage setImage:[UIImage imageNamed:skiArea.ski_area_image.avatar]];
+        [cell.areaImage.layer setBorderColor: [[UIColor blackColor] CGColor]];
+        [cell.areaImage.layer setBorderWidth: 1.0];
         [cell.areaName setText:skiArea.name_area];
         [cell.areaName setTextColor:[UIColor whiteColor]];
         [cell.areaShortDesc setTextContainerInset:UIEdgeInsetsZero];
         [cell.areaShortDesc.textContainer setLineFragmentPadding:0];
         [cell.areaShortDesc.textContainer setLineBreakMode:NSLineBreakByTruncatingTail];
         [cell.areaShortDesc setAttributedText:[[NSAttributedString alloc] initWithString:skiArea.short_desc attributes:attrsDictionary]];
+        
+        if (self.deviceIsIPhone) {
+            UIBezierPath *imgRect = [UIBezierPath bezierPathWithRect:CGRectInset(cell.areaImage.bounds, -8.0f, 0)];
+            [cell.areaShortDesc.textContainer setExclusionPaths:@[imgRect]];
+        }
         
         if (![_isShowingArray[[skiAreaObjects indexOfObject:skiArea]] boolValue]) {
             [cell setAccessoryView:[[SMArrowView alloc] initWithFrame:CGRectMake(0, 0, 30, 22) arrowType:SMArrowDown color:[UIColor blueColor]]];
@@ -176,8 +181,12 @@ static NSString *cellIdentifier;
     else {
         NSArray *skiRoutesArray = [skiArea.ski_routes sortedArrayUsingDescriptors:@[self.routeSortDescriptor]];
         SkiRoutes *skiRoute = skiRoutesArray[indexPath.row - 2];
-        [cell.routeTitle setText:skiRoute.name_route];
-        [cell.routeTitle setTextColor:[UIColor whiteColor]];
+        NSDictionary *underlineAttribute = @{
+            NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle),
+            NSForegroundColorAttributeName: [UIColor whiteColor]
+        };
+        
+        [cell.routeTitle setAttributedText:[[NSAttributedString alloc] initWithString:skiRoute.name_route attributes:underlineAttribute]];
         [cell.routeVertical setText:[NSString stringWithFormat:@"Vertical: %@", skiRoute.vertical]];
         [cell.routeVertical setTextColor:[UIColor whiteColor]];
         [cell.routeElevationGain setText:[NSString stringWithFormat:@"Elevation Gain: %@ ft", skiRoute.elevation_gain]];
@@ -198,7 +207,7 @@ static NSString *cellIdentifier;
     CGFloat height = UITableViewAutomaticDimension;
     
     switch (indexPath.row) {
-        case 0: height = 150.0f; break;
+        case 0: height = 200.0f; break;
         case 1: height = 160.0f; break;
         default: height = 126.0f; break;
     }

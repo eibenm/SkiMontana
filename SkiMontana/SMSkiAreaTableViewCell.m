@@ -12,8 +12,6 @@
     UIView *_headerBackgroundLayer;
 }
 
-//@property (strong, nonatomic) UIView *headerBackgroundLayer;
-
 @end
 
 @implementation SMSkiAreaTableViewCell
@@ -22,7 +20,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        //[self drawHeaderBackground];
+        [self drawHeaderBackground];
     }
     return self;
 }
