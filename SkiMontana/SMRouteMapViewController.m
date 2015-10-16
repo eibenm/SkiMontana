@@ -267,21 +267,8 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
 - (void)showAttribution:(id)sender
 {
     SMMapAttributionViewController *attributionViewController = [[SMMapAttributionViewController alloc] initWithMapView:self.mapView];
-
-    attributionViewController.edgesForExtendedLayout = UIRectEdgeNone;
-    attributionViewController.navigationItem.rightBarButtonItem =
-        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                      target:self
-                                                      action:@selector(dismissAttribution:)];
-    
-    UINavigationController *wrapper = [[UINavigationController alloc] initWithRootViewController:attributionViewController];
-    wrapper.modalPresentationStyle = UIModalPresentationCustom;
-    [self presentViewController:wrapper animated:YES completion:nil];
-}
-
-- (void)dismissAttribution:(id)sender
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [attributionViewController setModalPresentationStyle:UIModalPresentationOverCurrentContext];
+    [self presentViewController:attributionViewController animated:YES completion:nil];
 }
 
 @end

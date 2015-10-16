@@ -206,9 +206,21 @@ static NSString *cellIdentifier;
 {
     CGFloat height = UITableViewAutomaticDimension;
     
+    CGRect conditionsRect = CGRectNull;
+    
+    // If conditions cell, calculating a rough cell height
+    if (indexPath.row == 1) {
+        NSArray *skiAreaObjects = [self.fetchedResultsController fetchedObjects];
+        SkiAreas *skiArea = skiAreaObjects[indexPath.section];
+        NSAttributedString * attributedString = [[NSAttributedString alloc] initWithString:skiArea.conditions attributes:@{ NSFontAttributeName:[UIFont mediumSkiMontanaFontOfSize:14]}];
+        CGSize constraintSize = CGSizeMake(tableView.frame.size.width - 15, MAXFLOAT);
+        conditionsRect = [attributedString boundingRectWithSize:constraintSize options:(NSStringDrawingUsesLineFragmentOrigin |NSStringDrawingUsesFontLeading) context:nil];
+    }
+    
     switch (indexPath.row) {
-        case 0: height = 200.0f; break;
-        case 1: height = 160.0f; break;
+        case 0: height = 230.0f; break;
+        case 1: height = conditionsRect.size.height; break;
+        //case 1: height = 160.0f; break;
         default: height = 126.0f; break;
     }
     

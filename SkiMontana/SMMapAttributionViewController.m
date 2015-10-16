@@ -51,66 +51,53 @@
     
     UIImageView *legendView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"legend"]];
     
-    NSLog(@"%@", NSStringFromCGRect(legendView.frame));
-    NSLog(@"%@", NSStringFromCGRect(self.view.bounds));
-    
     [legendView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [legendView setContentMode:UIViewContentModeScaleAspectFit];
+    [legendView setFrame:self.view.bounds];
     
-    CGFloat spacing;
-    
-    if (CGRectGetWidth(legendView.frame) < CGRectGetWidth(self.view.bounds) ||
-        CGRectGetHeight(legendView.frame) < CGRectGetHeight(self.view.bounds))
-    {
-        CGFloat widthDiff = CGRectGetWidth(self.view.bounds) - CGRectGetWidth(legendView.frame);
-        CGFloat heightDiff = CGRectGetHeight(self.view.bounds) - CGRectGetHeight(legendView.frame);
-        spacing = MIN(ABS(widthDiff), ABS(heightDiff));
-        
-        NSLog(@"%f", widthDiff);
-        NSLog(@"%f", heightDiff);
-    }
-    else
-    {
-        spacing = 30.0f;
-    }
-    
-    NSLog(@"%f", spacing);
-    
-    [legendView setFrame:CGRectInset(self.view.bounds, spacing, spacing)];
     [self.view addSubview:legendView];
+    
     NSDictionary *views = @{ @"legendView" : legendView };
-    NSDictionary *metrics = @{ @"spacing": [NSNumber numberWithFloat:spacing] };
+    NSDictionary *metrics = @{ @"spacing": [NSNumber numberWithFloat:0] };
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-spacing-[legendView]-spacing-|" options:kNilOptions metrics:metrics views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-spacing-[legendView]-spacing-|" options:kNilOptions metrics:metrics views:views]];
+    
+    [self setDoneButton];
 };
 
+- (void)setDoneButton
+{
+    UIButton *attributionButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [attributionButton setTitle:@"Done" forState:UIControlStateNormal];
+    [attributionButton.titleLabel setFont:[UIFont boldSkiMontanaFontOfSize:20.0f]];
+    [attributionButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [attributionButton setAutoresizingMask:(UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin)];
+    [attributionButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [attributionButton addTarget:self action:@selector(legendDismiss:) forControlEvents:UIControlEventTouchUpInside];
+    [attributionButton setFrame:CGRectMake(
+        self.view.bounds.size.width - attributionButton.bounds.size.width - 8,
+        self.view.bounds.size.height - attributionButton.bounds.size.height - 8,
+        attributionButton.bounds.size.width,
+        attributionButton.bounds.size.height
+    )];
+    
+    [self.view addSubview:attributionButton];
+    
+    NSString *bottomFormatString = @"V:[attributionButton]-bottomSpacing-[bottomLayoutGuide]";
+    NSString *rightFormatString = @"H:[attributionButton]-rightSpacing-|";
+    
+    NSDictionary *views = @{
+        @"attributionButton" : attributionButton,
+        @"bottomLayoutGuide" : self.bottomLayoutGuide
+    };
+    
+    [self.view addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:bottomFormatString options:kNilOptions metrics:@{ @"bottomSpacing" : @(8) } views:views]];
+    [self.view addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:rightFormatString options:kNilOptions metrics:@{ @"rightSpacing" : @(8) } views:views]];
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- (void)legendDismiss:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end
