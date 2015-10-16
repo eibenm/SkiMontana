@@ -132,7 +132,7 @@ static NSString *cellIdentifier;
     if (indexPath.row == 0) {
         
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-        paragraphStyle.maximumLineHeight = 16.0f;
+        paragraphStyle.maximumLineHeight = 17.0f;
         NSDictionary *attrsDictionary = @{
             NSParagraphStyleAttributeName: paragraphStyle,
             NSFontAttributeName: [UIFont skiMontanaFontOfSize:14.0f],
