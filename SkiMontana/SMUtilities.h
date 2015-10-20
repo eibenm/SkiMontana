@@ -6,15 +6,17 @@
 //  Copyright (c) 2015 Gneiss Software. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "SMIAPHelper.h"
 
-typedef void(^Success)(BOOL appUpdated, NSString *message);
-typedef void(^Failure)(NSError *error);
+typedef void(^SMSuccess)(BOOL appUpdated, NSString *message);
+typedef void(^SMFailure)(NSError *error);
 
 @interface SMUtilities : NSObject
 
 + (SMUtilities *)sharedInstance;
 
-- (void)downloadSMJsonWithSuccess:(Success)successBlock error:(Failure)failureBlock;
+- (void)downloadSMJsonWithSuccess:(SMSuccess)successBlock error:(SMFailure)failureBlock;
+
+- (void)setAppLockedStateIsUnlocked:(BOOL)unlocked;
 
 @end

@@ -185,9 +185,11 @@ static CGFloat maxOffsetDiff = 46.0f;
             modalController.skiRoute = self.skiRoute;
             [self presentViewController:modalController animated:YES completion:^{
                 [cell.imageMapBackground.layer removeAnimationForKey:pulseAnimation.keyPath];
+                [cell.mapTapLabel.layer removeAnimationForKey:pulseAnimation.keyPath];
             }];
         }];
         [cell.imageMapBackground.layer addAnimation:pulseAnimation forKey:pulseAnimation.keyPath];
+        [cell.mapTapLabel.layer addAnimation:pulseAnimation forKey:pulseAnimation.keyPath];
     }
 }
 

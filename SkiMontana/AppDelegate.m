@@ -18,8 +18,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.introController = (UIViewController *)self.window.rootViewController;
-    
     [SMAppearanceModifier defaultAppearance];
     [SMConstants documentsFolderIfSimulator];
     

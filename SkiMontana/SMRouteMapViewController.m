@@ -237,18 +237,23 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
 
 - (void)setAttributionButton
 {
-    UIButton *attributionButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
-    attributionButton.tintColor = [UIColor whiteColor];
-    attributionButton.transform = CGAffineTransformMakeScale(1.2, 1.2);
-    attributionButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin;
-    attributionButton.translatesAutoresizingMaskIntoConstraints = NO;
+    UIButton *attributionButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [attributionButton setTitle:@"Legend" forState:UIControlStateNormal];
+    [attributionButton.titleLabel setFont:[UIFont boldSkiMontanaFontOfSize:20.0f]];
+    [attributionButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [attributionButton.layer setShadowColor:[UIColor blackColor].CGColor];
+    [attributionButton.layer setShadowOffset:CGSizeMake(0, 0)];
+    [attributionButton.layer setShadowRadius:3.0f];
+    [attributionButton.layer setShadowOpacity:0.8f];
+    [attributionButton setAutoresizingMask:(UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin)];
+    [attributionButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [attributionButton addTarget:self action:@selector(showAttribution:) forControlEvents:UIControlEventTouchUpInside];
-    attributionButton.frame = CGRectMake(
+    [attributionButton setFrame:CGRectMake(
         self.view.bounds.size.width - attributionButton.bounds.size.width - 8,
         self.view.bounds.size.height - attributionButton.bounds.size.height - 8,
         attributionButton.bounds.size.width,
         attributionButton.bounds.size.height
-    );
+    )];
     
     [self.view addSubview:attributionButton];
     

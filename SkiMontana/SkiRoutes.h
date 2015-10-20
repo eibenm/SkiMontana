@@ -2,10 +2,11 @@
 //  SkiRoutes.h
 //  SkiMontana
 //
-//  Created by Matt Eiben on 9/23/15.
+//  Created by Matt Eiben on 10/17/15.
 //  Copyright © 2015 Gneiss Software. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
 @class File, Gps, SkiAreas;

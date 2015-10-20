@@ -10,7 +10,8 @@
 
 @interface SMAreasTableViewControllerParent : SMViewController
 
-- (void)restorePurchases;
-- (void)addActionSheet;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+
+- (void)presentIAPActionSheet;
 
 @end

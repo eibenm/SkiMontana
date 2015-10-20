@@ -103,7 +103,6 @@
         NSString *title = (_customAlertViewTitle) ? _customAlertViewTitle : @"In App purchase receipt";
         NSString *message = (_customAlertViewMessage) ? _customAlertViewMessage : @"We need to request a purchase receipt from Apple. To do this you will be asked to enter your Apple ID details.\n\nDo you want to request the receipt \nto restore purchases?";
         
-        
         UIAlertController *alertView = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *yes = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -116,14 +115,6 @@
         [alertView addAction:yes];
         
         [self.presentingViewController presentViewController:alertView animated:YES completion:^{ }];
-        
-        /*UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
-                                                            message:message
-                                                           delegate:self
-                                                  cancelButtonTitle:@"No"
-                                                  otherButtonTitles:@"Yes", nil];
-        
-        [alertView show];*/
     }
     else
     {

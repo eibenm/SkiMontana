@@ -14,8 +14,8 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
 
 @interface SMUtilities()
 
-@property (nonatomic, copy) Success successBlock;
-@property (nonatomic, copy) Failure failureBlock;
+@property (nonatomic, copy) SMSuccess successBlock;
+@property (nonatomic, copy) SMFailure failureBlock;
 
 @end
 
@@ -47,7 +47,7 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
 
 #pragma mark - Public Utility Methods
 
-- (void)downloadSMJsonWithSuccess:(Success)successBlock error:(Failure)failureBlock
+- (void)downloadSMJsonWithSuccess:(SMSuccess)successBlock error:(SMFailure)failureBlock
 {
     self.successBlock = successBlock;
     self.failureBlock = failureBlock;
@@ -112,10 +112,17 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
             [self copyJsonToDataStore:[self skiAppCurrentJson]];
         }
         [defaults setBool:YES forKey:NS_USER_DEFUALTS_INITAL_LAUNCH];
+        
+        // Set on device memory to false purchased state
+        [defaults setBool:NO forKey:NS_USER_DEFUALTS_PURCHASED];
+        
         [defaults synchronize];
         self.successBlock(NO, @"First app launch, no updated needed");
     }
-    else { // Get data from cloud
+    
+    // Not initial launch, get data from cloud
+    
+    else {
         [[SMReachabilityManager sharedManager] checkNetworkStatusWithCompletionHandler:^(BOOL success, CurrentNetworkStatus status) {
             if (status == NetworkStatusEnabled) {
                 NSLog(@"Network Enabled");
@@ -135,6 +142,37 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
             }
         }];
     }
+}
+
+- (void)setAppLockedStateIsUnlocked:(BOOL)unlocked
+{
+    // Set all applicable areas to locked/unlocked
+    
+    NSManagedObjectContext *context = [SMDataManager sharedInstance].managedObjectContext;
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:SM_SkiAreas];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name_area != %@", @"Greater Gallatins"];
+    [fetchRequest setPredicate:predicate];
+    NSError *error;
+    NSArray *skiAreasArray = [context executeFetchRequest:fetchRequest error:&error];
+    
+    if (error) {
+        NSLog(@"Error: %@", error.localizedDescription);
+        return;
+    }
+    
+    for (SkiAreas *skiArea in skiAreasArray) {
+        skiArea.permissions = [NSNumber numberWithBool:unlocked];
+    }
+    
+    NSError *saveError;
+    if (![context save:&saveError]) {
+        NSLog(@"Whoops, couldn't save: %@", saveError.localizedDescription);
+        return;
+    }
+    
+    // Set on device memory to true/false purchased state
+    
+    [SMIAPHelper setInAppMemoryPurchasedStatePurchased:unlocked];
 }
 
 #pragma mark - Private Utility Methods
@@ -228,7 +266,7 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
         skiArea.short_desc = skiAreaJson[@"short_desc"];
         skiArea.conditions = skiAreaJson[@"conditions"];
         skiArea.name_area = skiAreaJson[@"name_area"];
-        skiArea.permissions = skiAreaJson[@"permissions"];
+        //skiArea.permissions = skiAreaJson[@"permissions"];
         
         NSDictionary *skiAreaImage = skiAreaJson[@"skiarea_image"];
         
@@ -259,6 +297,7 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
             skiRoute.name_route = skiRouteJson[@"name_route"];
             skiRoute.notes = skiRouteJson[@"notes"];
             skiRoute.overview = skiRouteJson[@"overview"];
+            skiRoute.quip = skiRouteJson[@"quip"];
             skiRoute.short_desc = skiRouteJson[@"short_desc"];
             skiRoute.skier_traffic = skiRouteJson[@"skier_traffic"];
             skiRoute.snowfall = skiRouteJson[@"snowfall"];

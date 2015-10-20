@@ -13,8 +13,5 @@
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *buyBarItem;
-
-- (IBAction)purchaseOneMonth:(id)sender;
 
 @end

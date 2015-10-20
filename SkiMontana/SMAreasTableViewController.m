@@ -19,7 +19,6 @@ static NSString *cellIdentifier;
 
 @interface SMAreasTableViewController () <UITableViewDelegate, UITableViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSSortDescriptor *routeSortDescriptor;
 @property (assign, nonatomic) BOOL deviceIsIPhone;
 
@@ -28,6 +27,11 @@ static NSString *cellIdentifier;
 @implementation SMAreasTableViewController
 {
     NSMutableArray *_isShowingArray;
+}
+
+- (void)reloadTable
+{
+    [self.tableView reloadData];
 }
 
 - (void)viewDidLoad
@@ -122,6 +126,9 @@ static NSString *cellIdentifier;
     if (cell == nil) {
         cell = [[SMSkiRouteTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
+    else {
+        [[cell.contentView viewWithTag:500] removeFromSuperview];
+    }
     
     cell.backgroundColor = [UIColor clearColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -160,16 +167,15 @@ static NSString *cellIdentifier;
         else {
             [cell setAccessoryView:[[SMArrowView alloc] initWithFrame:CGRectMake(0, 0, 30, 22) arrowType:SMArrowUp color:[UIColor redColor]]];
         }
-
+        
         // Setting lock on image if appropriate
-        /*
         if ([skiArea.permissions boolValue] == NO) {
             UIImageView *lockedView = [[UIImageView alloc] initWithFrame:cell.areaImage.bounds];
             [lockedView setImage:[UIImage imageNamed:@"lock"]];
             [lockedView setContentMode:UIViewContentModeCenter];
+            [lockedView setTag:500];
             [cell.areaImage addSubview:lockedView];
         }
-        */
     }
     
     else if (indexPath.row == 1) {
@@ -186,7 +192,9 @@ static NSString *cellIdentifier;
             NSForegroundColorAttributeName: [UIColor whiteColor]
         };
         
-        [cell.routeTitle setAttributedText:[[NSAttributedString alloc] initWithString:skiRoute.name_route attributes:underlineAttribute]];
+        [cell.routeTitle setAttributedText:[[NSAttributedString alloc] initWithString:[skiRoute.name_route uppercaseString] attributes:underlineAttribute]];
+        [cell.routeQuip setText:skiRoute.quip];
+        [cell.routeQuip setTextColor:[UIColor whiteColor]];
         [cell.routeVertical setText:[NSString stringWithFormat:@"Vertical: %@", skiRoute.vertical]];
         [cell.routeVertical setTextColor:[UIColor whiteColor]];
         [cell.routeElevationGain setText:[NSString stringWithFormat:@"Elevation Gain: %@ ft", skiRoute.elevation_gain]];
@@ -220,8 +228,7 @@ static NSString *cellIdentifier;
     switch (indexPath.row) {
         case 0: height = 230.0f; break;
         case 1: height = conditionsRect.size.height; break;
-        //case 1: height = 160.0f; break;
-        default: height = 126.0f; break;
+        default: height = 150.0f; break;
     }
     
     return height;
@@ -237,6 +244,14 @@ static NSString *cellIdentifier;
                 BOOL isShowing = [_isShowingArray[index] boolValue];
                 [_isShowingArray replaceObjectAtIndex:index withObject:[NSNumber numberWithBool:!isShowing]];
                 [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationAutomatic];
+            }
+            else {
+                // Present IAP options if needed
+                NSArray *skiAreaObjects = [self.fetchedResultsController fetchedObjects];
+                SkiAreas *skiArea = skiAreaObjects[indexPath.section];
+                if (skiArea.permissions.boolValue == NO) {
+                    [self presentIAPActionSheet];
+                }
             }
         }
     }];
@@ -288,6 +303,17 @@ static NSString *cellIdentifier;
 
 #pragma mark - Navigation
 
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    NSArray *skiAreaObjects = [self.fetchedResultsController fetchedObjects];
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    SkiAreas *skiArea = skiAreaObjects[indexPath.section];
+    if (skiArea.permissions.boolValue == NO) {
+        return NO;
+    }
+    return YES;
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSArray *skiAreaObjects = [self.fetchedResultsController fetchedObjects];
@@ -308,14 +334,6 @@ static NSString *cellIdentifier;
         UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:nil action:nil];
         [self.navigationItem setBackBarButtonItem:newBackButton];
     }
-}
-
-#pragma mark - In App Purchase
- 
-- (IBAction)purchaseOneMonth:(id)sender
-{
-    //[self restorePurchases];
-    [self addActionSheet];
 }
 
 @end

@@ -12,5 +12,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *labelAvalancheInformation;
 @property (strong, nonatomic) IBOutlet UILabel *labelDirectionsInformation;
 @property (strong, nonatomic) IBOutlet UIImageView *imageMapBackground;
+@property (strong, nonatomic) IBOutlet UILabel *mapTapLabel;
 
 @end

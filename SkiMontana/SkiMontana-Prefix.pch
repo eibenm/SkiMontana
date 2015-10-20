@@ -19,8 +19,8 @@
 #import "SMConstants.h"
 
 // Importing Catagories
+#import "NSDate+Utilities.h"
 #import "UIImage+ImageEffects.h"
 #import "UIFont+SkiMontana.h"
-#import "UIButton+TintImage.h"
 #import "UIColor+FromHex.h"
 #endif

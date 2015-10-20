@@ -11,6 +11,7 @@
 @interface SMSkiRouteTableViewCell : SMSkiAreaConditionsTableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *routeTitle;
+@property (strong, nonatomic) IBOutlet UILabel *routeQuip;
 @property (strong, nonatomic) IBOutlet UILabel *routeVertical;
 @property (strong, nonatomic) IBOutlet UILabel *routeElevationGain;
 @property (strong, nonatomic) IBOutlet UILabel *routeDistance;

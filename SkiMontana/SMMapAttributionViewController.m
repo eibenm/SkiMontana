@@ -71,6 +71,10 @@
     [attributionButton setTitle:@"Done" forState:UIControlStateNormal];
     [attributionButton.titleLabel setFont:[UIFont boldSkiMontanaFontOfSize:20.0f]];
     [attributionButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [attributionButton.layer setShadowColor:[UIColor blackColor].CGColor];
+    [attributionButton.layer setShadowOffset:CGSizeMake(0, 0)];
+    [attributionButton.layer setShadowRadius:3.0f];
+    [attributionButton.layer setShadowOpacity:0.5f];
     [attributionButton setAutoresizingMask:(UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin)];
     [attributionButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [attributionButton addTarget:self action:@selector(legendDismiss:) forControlEvents:UIControlEventTouchUpInside];

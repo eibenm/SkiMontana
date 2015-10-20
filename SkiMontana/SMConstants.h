@@ -24,6 +24,7 @@ static inline BOOL isRetinaDevice()
 static NSString * const SKIAPP_JSON =                    @"skiappdata.json";
 static NSString * const MAPBOX_ACCESS_TOKEN =            @"pk.eyJ1IjoiZWliZW5tIiwiYSI6ImNBMU11WjAifQ.AVf0Ym7u2Rq4F9KQJ5kPQw";
 static NSString * const NS_USER_DEFUALTS_INITAL_LAUNCH = @"initialAppLaunch";
+static NSString * const NS_USER_DEFUALTS_PURCHASED =     @"purchasedState";
 static NSString * const ICLOUD_SMONEMONTH_SUB =          @"ski_montana_one_month_subscription";
 static NSString * const ICLOUD_SMONEYEAR_SUB =           @"ski_montana_one_month_subscription";
 static NSString * const ICLOUD_SMAPP_RECEIPTS =          @"ski_montana_app_receipts";
