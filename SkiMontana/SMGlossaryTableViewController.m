@@ -26,8 +26,8 @@ static NSString *cellIdentifier = @"glossaryTerm";
     self.managedObjectContext = [SMDataManager sharedInstance].managedObjectContext;
     
     NSError *error;
-    if (![[self fetchedResultsController] performFetch:&error]) {
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+    if (![self.fetchedResultsController performFetch:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, error.userInfo);
         abort();
     }
     
@@ -51,8 +51,8 @@ static NSString *cellIdentifier = @"glossaryTerm";
 - (NSInteger)tableView:(UITableView *)table numberOfRowsInSection:(NSInteger)section
 {
     if (self.fetchedResultsController.sections.count > 0) {
-        id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController.sections objectAtIndex:section];
-        return [sectionInfo numberOfObjects];
+        id <NSFetchedResultsSectionInfo> sectionInfo = (self.fetchedResultsController.sections)[section];
+        return sectionInfo.numberOfObjects;
     }
     
     return 0;
@@ -156,9 +156,9 @@ static NSString *cellIdentifier = @"glossaryTerm";
     NSSortDescriptor *sortDescriptor1 = [[NSSortDescriptor alloc] initWithKey:@"term" ascending:YES];
     NSArray *descriptors = @[sortDescriptor1];
     
-    [fetchRequest setEntity:entity];
-    [fetchRequest setFetchBatchSize:20];
-    [fetchRequest setSortDescriptors:descriptors];
+    fetchRequest.entity = entity;
+    fetchRequest.fetchBatchSize = 20;
+    fetchRequest.sortDescriptors = descriptors;
     
     NSFetchedResultsController *fetchedResultsController =
         [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest

@@ -71,6 +71,6 @@
 /** Initializes and returns a newly allocated RMCircle for the specified map view.
 *   @param aMapView The map view the shape should be drawn on.
 *   @param newRadiusInMeters The radius of the circle object in projected meters. Regardless of map zoom, the circle will change visible size to continously represent this radius on the map. */
-- (id)initWithView:(RMMapView *)aMapView radiusInMeters:(CGFloat)newRadiusInMeters;
+- (instancetype)initWithView:(RMMapView *)aMapView radiusInMeters:(CGFloat)newRadiusInMeters;
 
 @end

@@ -14,6 +14,7 @@ static NSString *manageSubscriptionsUrl = @"https://buy.itunes.apple.com/WebObje
 @interface SMIAPHelper : NSObject
 
 + (BOOL)checkInAppMemoryPurchasedState;
+
 + (void)setInAppMemoryPurchasedStatePurchased:(BOOL)purchased;
 
 + (BOOL)subscriptionIsActiveWithReceipt:(SCPStoreKitIAPReceipt *)transaction date:(NSDate *)date;

@@ -37,10 +37,10 @@
 #import "RMMBTilesSource.h"
 #import "RMMapboxSource.h"
 
-typedef enum : NSUInteger {
+typedef NS_ENUM(NSUInteger, RMInteractiveSourceOutputType) {
     RMInteractiveSourceOutputTypeTeaser = 0,
     RMInteractiveSourceOutputTypeFull   = 1,
-} RMInteractiveSourceOutputType;
+};
 
 /** Developers can import RMInteractiveSource in order to enable embedded interactivity in their RMMapView, RMMBTilesSource, and RMMapboxSource objects. Interactivity is based on the UTFGrid specification, which is a space-efficient way to encode many arbitrary values for pixel coordinates at every zoom level, allowing later retrieval based on user events on those coordinates. For example, the user touching a pixel in Spain could trigger retrieval of Spain's flag image for display. 
 *
@@ -54,7 +54,7 @@ typedef enum : NSUInteger {
 /** @name Querying Interactivity */
 
 /** Returns YES if a map view supports interactivity features given its current tile sources. */
-- (BOOL)supportsInteractivity;
+@property (NS_NONATOMIC_IOSONLY, readonly) BOOL supportsInteractivity;
 
 /** Returns the HTML-formatted output for a given point on a given map view.
 *   @param outputType The type of feature info desired.
@@ -68,7 +68,7 @@ typedef enum : NSUInteger {
 
 @interface RMMapView (RMInteractiveSource) <RMInteractiveMapView>
 
-- (BOOL)supportsInteractivity;
+@property (NS_NONATOMIC_IOSONLY, readonly) BOOL supportsInteractivity;
 - (NSString *)formattedOutputOfType:(RMInteractiveSourceOutputType)outputType forPoint:(CGPoint)point;
 
 @end
@@ -87,7 +87,7 @@ typedef enum : NSUInteger {
 /** @name Querying Interactivity */
 
 /** Returns YES if a tile source supports interactivity features. */
-- (BOOL)supportsInteractivity;
+@property (NS_NONATOMIC_IOSONLY, readonly) BOOL supportsInteractivity;
 
 /** Returns the HTML-formatted output for a given point on a given map view, considering the currently active interactive tile source.
 *   @param outputType The type of feature info desired.
@@ -102,7 +102,7 @@ typedef enum : NSUInteger {
 
 @interface RMMBTilesSource (RMInteractiveSource) <RMInteractiveSource>
 
-- (BOOL)supportsInteractivity;
+@property (NS_NONATOMIC_IOSONLY, readonly) BOOL supportsInteractivity;
 - (NSString *)formattedOutputOfType:(RMInteractiveSourceOutputType)outputType forPoint:(CGPoint)point inMapView:(RMMapView *)mapView;
 
 @end
@@ -111,7 +111,7 @@ typedef enum : NSUInteger {
 
 @interface RMMapboxSource (RMInteractiveSource) <RMInteractiveSource>
 
-- (BOOL)supportsInteractivity;
+@property (NS_NONATOMIC_IOSONLY, readonly) BOOL supportsInteractivity;
 - (NSString *)formattedOutputOfType:(RMInteractiveSourceOutputType)outputType forPoint:(CGPoint)point inMapView:(RMMapView *)mapView;
 
 @end

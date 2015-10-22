@@ -24,8 +24,8 @@
 - (NSString *)fullDescription
 {
     return [NSString stringWithFormat:@"\nFailure reason : %@\n   Description : %@\n    Suggestion : %@",
-            ![[self localizedFailureReason] isEqualToString:@""]  ? [self localizedFailureReason] : @"N/A",
-            ![[self localizedDescription] isEqualToString:@""] ? [self localizedDescription] : @"N/A",
-            ![[self localizedRecoverySuggestion] isEqualToString:@""] ? [self localizedRecoverySuggestion] : @"N/A"];
+            ![self.localizedFailureReason isEqualToString:@""]  ? self.localizedFailureReason : @"N/A",
+            ![self.localizedDescription isEqualToString:@""] ? self.localizedDescription : @"N/A",
+            ![self.localizedRecoverySuggestion isEqualToString:@""] ? self.localizedRecoverySuggestion : @"N/A"];
 }
 @end

@@ -40,7 +40,7 @@
 *   @param points An array of CLLocation points defining the polygon. The data in this array is copied to the new object.
 *   @param interiorPolygons An array of RMPolygonAnnotation objects that define one or more cutout regions for the receiver’s polygon.
 *   @return An initialized polygon annotation object, or `nil` if an annotation was unable to be initialized. */
-- (id)initWithMapView:(RMMapView *)aMapView points:(NSArray *)points interiorPolygons:(NSArray *)interiorPolygons;
+- (instancetype)initWithMapView:(RMMapView *)aMapView points:(NSArray *)points interiorPolygons:(NSArray *)interiorPolygons;
 
 /** The array of polygons nested inside the receiver. (read-only)
 *

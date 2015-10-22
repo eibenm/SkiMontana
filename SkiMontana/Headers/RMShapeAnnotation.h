@@ -37,7 +37,7 @@
 *   @param aMapView The map view on which to place the annotation.
 *   @param points An array of CLLocation points defining the shape. The data in this array is copied to the new object.
 *   @return An initialized shape annotation object, or `nil` if an annotation was unable to be initialized. */
-- (id)initWithMapView:(RMMapView *)aMapView points:(NSArray *)points;
+- (instancetype)initWithMapView:(RMMapView *)aMapView points:(NSArray *)points;
 
 /** The array of points associated with the shape. (read-only) */
 @property (nonatomic, readonly, strong) NSArray *points;

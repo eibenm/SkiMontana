@@ -38,7 +38,7 @@
 /** Initializes a newly created bar button item with the specified map view.
 *   @param mapView The map view used by this bar button item.
 *   @return The initialized bar button item. */
-- (id)initWithMapView:(RMMapView *)mapView;
+- (instancetype)initWithMapView:(RMMapView *)mapView;
 
 /** @name Accessing Properties */
 

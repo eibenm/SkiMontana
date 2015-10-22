@@ -29,6 +29,6 @@
 
 @interface RMGenericMapSource : RMAbstractWebMapSource
 
-- (id)initWithHost:(NSString *)host tileCacheKey:(NSString *)tileCacheKey minZoom:(float)minZoom maxZoom:(float)maxZoom;
+- (instancetype)initWithHost:(NSString *)host tileCacheKey:(NSString *)tileCacheKey minZoom:(float)minZoom maxZoom:(float)maxZoom;
 
 @end

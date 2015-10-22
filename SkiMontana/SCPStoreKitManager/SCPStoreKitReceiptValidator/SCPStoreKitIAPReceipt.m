@@ -49,16 +49,16 @@ typedef NS_ENUM(NSInteger, SCPAppReceiptASN1TypeIAP)
 	int xclass = 0;
 	long length = 0;
     
-	NSUInteger dataLenght = [inAppPurchasesData length];
-	const uint8_t *p = [inAppPurchasesData bytes];
+	NSUInteger dataLenght = inAppPurchasesData.length;
+	const uint8_t *p = inAppPurchasesData.bytes;
     
 	const uint8_t *end = p + dataLenght;
     
 	SCPStoreKitIAPReceipt *iapReceipt = [[SCPStoreKitIAPReceipt alloc] init];
 	
     self.dateFormatter = [[NSDateFormatter alloc] init];
-	[_dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
-	[_dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"]];
+	_dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZ";
+	_dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
 	
 	while (p < end)
 	{
@@ -151,15 +151,15 @@ typedef NS_ENUM(NSInteger, SCPAppReceiptASN1TypeIAP)
 								}
 							}
                             
-							NSNumber *number = [[NSNumber alloc] initWithUnsignedInteger:quantity];
+							NSNumber *number = @(quantity);
 							
                             if(attr_type == SCPAppReceiptASN1TypeIAPQuantity)
 							{
-								[iapReceipt setQuantity:number];
+								iapReceipt.quantity = number;
                             }
 							else if(attr_type == SCPAppReceiptASN1TypeIAPWebOrderLineItemID)
 							{
-								[iapReceipt setWebItemId:number];
+								iapReceipt.webItemId = number;
                             }
 						}
 					}
@@ -182,13 +182,13 @@ typedef NS_ENUM(NSInteger, SCPAppReceiptASN1TypeIAP)
 							switch (attr_type)
 							{
 								case SCPAppReceiptASN1TypeIAPProductIdentifier:
-									[iapReceipt setProductIdentifier:string];
+									iapReceipt.productIdentifier = string;
 									break;
 								case SCPAppReceiptASN1TypeIAPTransactionIdentifier:
-									[iapReceipt setTransactionIdentifier:string];
+									iapReceipt.transactionIdentifier = string;
 									break;
 								case SCPAppReceiptASN1TypeIAPOriginalTransactionIdentifier:
-									[iapReceipt setOriginalTransactionIdentifier:string];
+									iapReceipt.originalTransactionIdentifier = string;
 									break;
 							}
 						}
@@ -204,16 +204,16 @@ typedef NS_ENUM(NSInteger, SCPAppReceiptASN1TypeIAP)
 							switch (attr_type)
 							{
 								case SCPAppReceiptASN1TypeIAPPurchaseDate:
-									[iapReceipt setPurchaseDate:date];
+									iapReceipt.purchaseDate = date;
 									break;
 								case SCPAppReceiptASN1TypeIAPOriginalPurchaseDate:
-									[iapReceipt setOriginalPurchaseDate:date];
+									iapReceipt.originalPurchaseDate = date;
 									break;
 								case SCPAppReceiptASN1TypeIAPSubscriptionExpirationDate:
-									[iapReceipt setSubscriptionExpiryDate:date];
+									iapReceipt.subscriptionExpiryDate = date;
 									break;
 								case SCPAppReceiptASN1TypeIAPCancellationDate:
-									[iapReceipt setCancellationDate:date];
+									iapReceipt.cancellationDate = date;
 									break;
 							}
 						}
@@ -246,15 +246,15 @@ typedef NS_ENUM(NSInteger, SCPAppReceiptASN1TypeIAP)
 {
 	NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
 	
-	[dictionary setObject:([self productIdentifier]) ? [self productIdentifier] : @"" forKey:@"productIdentifier"];
-	[dictionary setObject:([self quantity]) ? [self quantity] : @"" forKey:@"quantity"];
-	[dictionary setObject:([self cancellationDate]) ? [self cancellationDate] : @"" forKey:@"cancellationDate"];
-	[dictionary setObject:([self originalPurchaseDate]) ? [self originalPurchaseDate] : @"" forKey:@"originalPurchaseDate"];
-	[dictionary setObject:([self purchaseDate]) ? [self purchaseDate] : @"" forKey:@"purchaseDate"];
-	[dictionary setObject:([self transactionIdentifier]) ? [self transactionIdentifier] : @"" forKey:@"transactionIdentifier"];
-	[dictionary setObject:([self originalTransactionIdentifier]) ? [self originalTransactionIdentifier] : @"" forKey:@"originalTransactionIdentifier"];
-	[dictionary setObject:([self subscriptionExpiryDate]) ? [self subscriptionExpiryDate] : @"" forKey:@"subscriptionExpiryDate"];
-	[dictionary setObject:([self webItemId]) ? [self webItemId] : @"" forKey:@"webItemId"];
+	dictionary[@"productIdentifier"] = (self.productIdentifier) ? self.productIdentifier : @"";
+	dictionary[@"quantity"] = (self.quantity) ? self.quantity : @"";
+	dictionary[@"cancellationDate"] = (self.cancellationDate) ? self.cancellationDate : @"";
+	dictionary[@"originalPurchaseDate"] = (self.originalPurchaseDate) ? self.originalPurchaseDate : @"";
+	dictionary[@"purchaseDate"] = (self.purchaseDate) ? self.purchaseDate : @"";
+	dictionary[@"transactionIdentifier"] = (self.transactionIdentifier) ? self.transactionIdentifier : @"";
+	dictionary[@"originalTransactionIdentifier"] = (self.originalTransactionIdentifier) ? self.originalTransactionIdentifier : @"";
+	dictionary[@"subscriptionExpiryDate"] = (self.subscriptionExpiryDate) ? self.subscriptionExpiryDate : @"";
+	dictionary[@"webItemId"] = (self.webItemId) ? self.webItemId : @"";
 	
 	return dictionary;
 }

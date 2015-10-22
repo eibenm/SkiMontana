@@ -45,14 +45,14 @@
     [super viewDidLoad];
     
     NSShadow *shadow = [NSShadow new];
-    [shadow setShadowColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8]];
-    [shadow setShadowOffset:CGSizeMake(0, 1)];
+    shadow.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8];
+    shadow.shadowOffset = CGSizeMake(0, 1);
     [[UINavigationBar appearance] setTranslucent:YES];
-    [[UINavigationBar appearance] setTitleTextAttributes: @{
+    [UINavigationBar appearance].titleTextAttributes = @{
         //NSForegroundColorAttributeName: [UIColor darkGrayColor],
         //NSShadowAttributeName: shadow,
         NSFontAttributeName: [UIFont boldSkiMontanaFontOfSize:20.0f]
-    }];
+    };
 }
 
 

@@ -67,7 +67,7 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
             //NSLog(@"Recieved json from cloud");
             
             NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
-            [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+            numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
             
             float internalVersion = [numberFormatter numberFromString:internalJson[@"version"]].floatValue;
             float externalVersion = [numberFormatter numberFromString:parsedObject[@"version"]].floatValue;
@@ -151,7 +151,7 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
     NSManagedObjectContext *context = [SMDataManager sharedInstance].managedObjectContext;
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:SM_SkiAreas];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name_area != %@", @"Greater Gallatins"];
-    [fetchRequest setPredicate:predicate];
+    fetchRequest.predicate = predicate;
     NSError *error;
     NSArray *skiAreasArray = [context executeFetchRequest:fetchRequest error:&error];
     
@@ -161,7 +161,7 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
     }
     
     for (SkiAreas *skiArea in skiAreasArray) {
-        skiArea.permissions = [NSNumber numberWithBool:unlocked];
+        skiArea.permissions = @(unlocked);
     }
     
     NSError *saveError;
@@ -180,7 +180,7 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
 - (NSString *)applicationDocumentsDirectory
 {
     //return [[_fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    return NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject;
 }
 
 - (NSDictionary *)skiAppCurrentJson
@@ -202,7 +202,7 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
                                  error:&error];
     }
     
-    NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:SKIAPP_JSON];
+    NSString *defaultDBPath = [[NSBundle mainBundle].resourcePath stringByAppendingPathComponent:SKIAPP_JSON];
     BOOL success = [_fileManager copyItemAtPath:defaultDBPath
                                          toPath:skidataJson.path
                                           error:&error];
@@ -242,7 +242,7 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
     assert([[NSFileManager defaultManager] fileExistsAtPath:[URL path]]);
     
     NSError *error = nil;
-    BOOL success = [URL setResourceValue:[NSNumber numberWithBool:YES]
+    BOOL success = [URL setResourceValue:@YES
                                   forKey:NSURLIsExcludedFromBackupKey
                                    error:&error];
     if(!success) {
@@ -266,7 +266,7 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
         skiArea.short_desc = skiAreaJson[@"short_desc"];
         skiArea.conditions = skiAreaJson[@"conditions"];
         skiArea.name_area = skiAreaJson[@"name_area"];
-        //skiArea.permissions = skiAreaJson[@"permissions"];
+        skiArea.permissions = skiAreaJson[@"permissions"];
         
         NSDictionary *skiAreaImage = skiAreaJson[@"skiarea_image"];
         

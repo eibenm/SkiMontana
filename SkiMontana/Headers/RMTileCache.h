@@ -32,10 +32,10 @@
 
 @class RMTileImage, RMMemoryCache;
 
-typedef enum : short {
+typedef NS_ENUM(short, RMCachePurgeStrategy) {
 	RMCachePurgeStrategyLRU,
 	RMCachePurgeStrategyFIFO,
-} RMCachePurgeStrategy;
+};
 
 #pragma mark -
 
@@ -140,7 +140,7 @@ typedef enum : short {
 *
 *   @param period A period of time after which tiles should be expunged from the cache.
 *   @return An initialized cache object or `nil` if the object couldn't be created. */
-- (id)initWithExpiryPeriod:(NSTimeInterval)period;
+- (instancetype)initWithExpiryPeriod:(NSTimeInterval)period;
 
 /** @name Identifying Cache Objects */
 

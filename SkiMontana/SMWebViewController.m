@@ -26,9 +26,9 @@
     NSURL *html_doc = [[NSBundle mainBundle] URLForResource:htmlName withExtension:@"html"];
     
     [self.webView loadRequest:[NSURLRequest requestWithURL:html_doc]];
-    [self.webView setBackgroundColor:[UIColor clearColor]];
+    (self.webView).backgroundColor = [UIColor clearColor];
     [self.webView setOpaque:NO];
-    [self.view setBackgroundColor:[UIColor clearColor]];
+    (self.view).backgroundColor = [UIColor clearColor];
     [self.view addSubview:self.webView];
 }
 
@@ -37,7 +37,7 @@
 - (BOOL)webView:(UIWebView *)inWeb shouldStartLoadWithRequest:(NSURLRequest *)inRequest navigationType:(UIWebViewNavigationType)inType
 {
     if ( inType == UIWebViewNavigationTypeLinkClicked ) {
-        [[UIApplication sharedApplication] openURL:[inRequest URL]];
+        [[UIApplication sharedApplication] openURL:inRequest.URL];
         return NO;
     }
     

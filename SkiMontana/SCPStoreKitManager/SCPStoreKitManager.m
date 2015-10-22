@@ -48,7 +48,7 @@
 	{
 		self.numberFormatter = [[NSNumberFormatter alloc] init];
 		
-		[_numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+		_numberFormatter.numberStyle = NSNumberFormatterCurrencyStyle;
 	}
 	
 	return self;
@@ -62,7 +62,7 @@
 	
 	SKProductsRequest *productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:productsSet];
 	
-	[productsRequest setDelegate:self];
+	productsRequest.delegate = self;
 	
     [productsRequest start];
 }
@@ -76,9 +76,9 @@
 		_productsReturnedSuccessfullyBlock(response.products);
 	}
 	
-	if([[response invalidProductIdentifiers] count] > 0 && _invalidProductsBlock)
+	if(response.invalidProductIdentifiers.count > 0 && _invalidProductsBlock)
 	{
-		_invalidProductsBlock([response invalidProductIdentifiers]);
+		_invalidProductsBlock(response.invalidProductIdentifiers);
 	}
 }
 
@@ -130,11 +130,11 @@
 
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions
 {
-	if([transactions count] > 0)
+	if(transactions.count > 0)
 	{
 		[transactions enumerateObjectsUsingBlock:^(SKPaymentTransaction *transaction, NSUInteger idx, BOOL *stop) {
 			
-			switch([transaction transactionState])
+			switch(transaction.transactionState)
 			{
 				case SKPaymentTransactionStatePurchased:
 				case SKPaymentTransactionStateFailed:
@@ -156,7 +156,7 @@
 	{
 		NSArray *purchasingTransactions = [transactions filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"transactionState == %i", SKPaymentTransactionStatePurchasing]];
 		
-		if([purchasingTransactions count] > 0)
+		if(purchasingTransactions.count > 0)
 		{
 			_paymentTransactionStatePurchasingBlock(purchasingTransactions);
 		}
@@ -166,7 +166,7 @@
 	{
 		NSArray *purchasedTransactions = [transactions filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"transactionState == %i", SKPaymentTransactionStatePurchased]];
 		
-		if([purchasedTransactions count] > 0)
+		if(purchasedTransactions.count > 0)
 		{
 			_paymentTransactionStatePurchasedBlock(purchasedTransactions);
 		}
@@ -176,7 +176,7 @@
 	{
 		NSArray *failedTransactions = [transactions filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"transactionState == %i", SKPaymentTransactionStateFailed]];
 		
-		if([failedTransactions count] > 0)
+		if(failedTransactions.count > 0)
 		{
 			_paymentTransactionStateFailedBlock(failedTransactions);
 		}
@@ -186,7 +186,7 @@
 	{
 		NSArray *restoredTransactions = [transactions filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"transactionState == %i", SKPaymentTransactionStateRestored]];
 		
-		if([restoredTransactions count] > 0)
+		if(restoredTransactions.count > 0)
 		{
 			_paymentTransactionStateRestoredBlock(restoredTransactions);
 		}
@@ -211,7 +211,7 @@
 
 - (NSString *)localizedPriceForProduct:(SKProduct *)product
 {
-	[_numberFormatter setLocale:product.priceLocale];
+	_numberFormatter.locale = product.priceLocale;
 	NSString *formattedPrice = [_numberFormatter stringFromNumber:product.price];
 	
 	return formattedPrice;

@@ -50,11 +50,11 @@
 @class RMUserLocation;
 
 // constants for the scrollview deceleration mode
-typedef enum : NSUInteger {
+typedef NS_ENUM(NSUInteger, RMMapDecelerationMode) {
     RMMapDecelerationNormal = 0,
     RMMapDecelerationFast   = 1, // default
     RMMapDecelerationOff    = 2
-} RMMapDecelerationMode;
+};
 
 /** An RMMapView object provides an embeddable map interface, similar to the one provided by Apple's MapKit. You use this class to display map information and to manipulate the map contents from your application. You can center the map on a given coordinate, specify the size of the area you want to display, and annotate the map with custom information.
 *
@@ -144,13 +144,13 @@ typedef enum : NSUInteger {
 *
 *   @param frame The frame with which to initialize the map view. 
 *   @return An initialized map view, or `nil` if the map view was unable to be initialized. */
-- (id)initWithFrame:(CGRect)frame;
+- (instancetype)initWithFrame:(CGRect)frame;
 
 /** Initialize a map view with a given frame and tile source. 
 *   @param frame The frame with which to initialize the map view. 
 *   @param newTilesource The tile source to use for the map tiles. 
 *   @return An initialized map view, or `nil` if the map view was unable to be initialized. */
-- (id)initWithFrame:(CGRect)frame andTilesource:(id <RMTileSource>)newTilesource;
+- (instancetype)initWithFrame:(CGRect)frame andTilesource:(id <RMTileSource>)newTilesource;
 
 /** Designated initializer. Initialize a map view. 
 *   @param frame The map view's frame. 
@@ -161,7 +161,7 @@ typedef enum : NSUInteger {
 *   @param initialTileSourceMinZoomLevel The minimum zoom level allowed by the map view, clamped to the zoom levels supported by the tile source(s).
 *   @param backgroundImage A custom background image to use behind the map instead of the default gridded tile background that moves with the map. 
 *   @return An initialized map view, or `nil` if a map view was unable to be initialized. */
-- (id)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame
       andTilesource:(id <RMTileSource>)newTilesource
    centerCoordinate:(CLLocationCoordinate2D)initialCenterCoordinate
           zoomLevel:(float)initialTileSourceZoomLevel
@@ -257,8 +257,8 @@ typedef enum : NSUInteger {
 *   @param animated Whether to animate the zoom. */
 - (void)zoomWithLatitudeLongitudeBoundsSouthWest:(CLLocationCoordinate2D)southWest northEast:(CLLocationCoordinate2D)northEast animated:(BOOL)animated;
 
-- (float)nextNativeZoomFactor;
-- (float)previousNativeZoomFactor;
+@property (NS_NONATOMIC_IOSONLY, readonly) float nextNativeZoomFactor;
+@property (NS_NONATOMIC_IOSONLY, readonly) float previousNativeZoomFactor;
 
 - (void)setMetersPerPixel:(double)newMetersPerPixel animated:(BOOL)animated;
 
@@ -267,7 +267,7 @@ typedef enum : NSUInteger {
 /** @name Querying the Map Bounds */
 
 /** The smallest bounding box containing the entire map view. */
-- (RMSphericalTrapezium)latitudeLongitudeBoundingBox;
+@property (NS_NONATOMIC_IOSONLY, readonly) RMSphericalTrapezium latitudeLongitudeBoundingBox;
 
 /** The smallest bounding box containing a rectangular region of the map view. 
 *   @param rect A rectangular region. */
@@ -292,7 +292,7 @@ typedef enum : NSUInteger {
 *
 *   By default, the overlay containing any visible annotations is also captured.
 *   @return An image depicting the map view. */
-- (UIImage *)takeSnapshot;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) UIImage *takeSnapshot;
 
 /** Take a snapshot of the map view. 
 *   @param includeOverlay Whether to include the overlay containing any visible annotations. 

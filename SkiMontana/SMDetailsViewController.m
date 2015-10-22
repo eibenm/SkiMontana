@@ -38,27 +38,27 @@ static CGFloat maxOffsetDiff = 46.0f;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    [self.headerView.areaTitle setText:self.nameArea];
-    [self.headerView.routeTitle setText:self.skiRoute.name_route];
+    (self.headerView.areaTitle).text = self.nameArea;
+    (self.headerView.routeTitle).text = self.skiRoute.name_route;
     
     self.headerView.layer.zPosition = 2;
     self.offsetStartingY = self.headerView.frame.size.height;
     self.maxOffsetY = self.headerView.frame.size.height - maxOffsetDiff;
     self.routeTopContraintHeight = self.headerView.routeTitleTopConstaint.constant;
     
-    [self.tableView setContentInset:UIEdgeInsetsMake(self.offsetStartingY, 0, 0, 0)];
-    [self.headerView setBackgroundColor:[UIColor colorwithHexString:@"#0000ff" alpha:0.5]];
+    (self.tableView).contentInset = UIEdgeInsetsMake(self.offsetStartingY, 0, 0, 0);
+    (self.headerView).backgroundColor = [UIColor colorwithHexString:@"#0000ff" alpha:0.5];
     
     // View for background color (opaque white mask)
     UIView *backgroundColorView = [[UIView alloc]initWithFrame:self.view.frame];
-    [backgroundColorView setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.8]];
+    backgroundColorView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.8];
     [self.view addSubview:backgroundColorView];
     [self.view sendSubviewToBack:backgroundColorView];
 
     // Background imageview
     UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"RouteInfoBackground"]];
-    [backgroundImageView setContentMode:UIViewContentModeScaleAspectFill];
-    [backgroundImageView setFrame:self.view.frame];
+    backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
+    backgroundImageView.frame = self.view.frame;
     [self.view addSubview:backgroundImageView];
     [self.view sendSubviewToBack:backgroundImageView];
     
@@ -114,28 +114,28 @@ static CGFloat maxOffsetDiff = 46.0f;
         cell = [[SMDetailsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
-    [cell setBackgroundColor:[UIColor clearColor]];
+    cell.backgroundColor = [UIColor clearColor];
     
     if ([cellIdentifier isEqualToString:@"map"]) {
-        [cell.imageMapBackground setImage:[UIImage imageNamed:self.skiRoute.name_route]];
+        (cell.imageMapBackground).image = [UIImage imageNamed:self.skiRoute.name_route];
     }
     else if ([cellIdentifier isEqualToString:@"content"]) {
-        [cell.labelElevation setText:[NSString stringWithFormat:@"Elevation Gain: %@ ft", self.skiRoute.elevation_gain]];
-        [cell.labelVertical setText:[NSString stringWithFormat:@"Vertical: %@", self.skiRoute.vertical]];
-        [cell.labelSlope setText:[NSString stringWithFormat:@"Aspects: %@", self.skiRoute.aspects]];
-        [cell.labelDistance setText:[NSString stringWithFormat:@"Distance: ~%@ mi", self.skiRoute.distance]];
-        [cell.labelSnowfall setText:[NSString stringWithFormat:@"Snowfall: %@", self.skiRoute.snowfall]];
-        [cell.labelAvalanche setText:[NSString stringWithFormat:@"Terrain Danger: %@", self.skiRoute.avalanche_danger]];
-        [cell.labelSkierTraffic setText:[NSString stringWithFormat:@"Skier Traffic: %@", self.skiRoute.skier_traffic]];
+        (cell.labelElevation).text = [NSString stringWithFormat:@"Elevation Gain: %@ ft", self.skiRoute.elevation_gain];
+        (cell.labelVertical).text = [NSString stringWithFormat:@"Vertical: %@", self.skiRoute.vertical];
+        (cell.labelSlope).text = [NSString stringWithFormat:@"Aspects: %@", self.skiRoute.aspects];
+        (cell.labelDistance).text = [NSString stringWithFormat:@"Distance: ~%@ mi", self.skiRoute.distance];
+        (cell.labelSnowfall).text = [NSString stringWithFormat:@"Snowfall: %@", self.skiRoute.snowfall];
+        (cell.labelAvalanche).text = [NSString stringWithFormat:@"Terrain Danger: %@", self.skiRoute.avalanche_danger];
+        (cell.labelSkierTraffic).text = [NSString stringWithFormat:@"Skier Traffic: %@", self.skiRoute.skier_traffic];
     }
     else if ([cellIdentifier isEqualToString:@"overview"]) {
-        [cell.labelOverviewInformation setText:self.skiRoute.overview];
+        (cell.labelOverviewInformation).text = self.skiRoute.overview;
     }
     else if ([cellIdentifier isEqualToString:@"avalanche"]) {
-        [cell.labelAvalancheInformation setText:self.skiRoute.avalanche_info];
+        (cell.labelAvalancheInformation).text = self.skiRoute.avalanche_info;
     }
     else if ([cellIdentifier isEqualToString:@"directions"]) {
-        [cell.labelDirectionsInformation setText:self.skiRoute.directions];
+        (cell.labelDirectionsInformation).text = self.skiRoute.directions;
     }
     
     return cell;
@@ -171,7 +171,7 @@ static CGFloat maxOffsetDiff = 46.0f;
     if ([cell.reuseIdentifier isEqualToString:@"map"]) {
         CABasicAnimation *pulseAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
         pulseAnimation.duration = 0.2f;
-        pulseAnimation.toValue = [NSNumber numberWithFloat:1.1f];
+        pulseAnimation.toValue = @1.1f;
         pulseAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
         pulseAnimation.fillMode = kCAFillModeForwards;
         pulseAnimation.removedOnCompletion = NO;
@@ -235,7 +235,7 @@ static CGFloat maxOffsetDiff = 46.0f;
     if ([segue.identifier isEqualToString:@"showMap"]) {
         
         SMDetailsViewController *thisViewController = (SMDetailsViewController *) self;
-        SMRouteMapViewController *modalController = [segue destinationViewController];
+        SMRouteMapViewController *modalController = segue.destinationViewController;
         SMSlideAnimation *layerAnimation = [[SMSlideAnimation alloc] initWithType:SMSlideAnimationFromRight];
         thisViewController.animationController = layerAnimation;
         modalController.transitioningDelegate = self.transitioningDelegate;

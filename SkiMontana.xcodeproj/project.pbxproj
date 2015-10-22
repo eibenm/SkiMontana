@@ -22,6 +22,9 @@
 		CB57FA3F1BD2ED05009C3B3E /* SkiRoutes.m in Sources */ = {isa = PBXBuildFile; fileRef = CB57FA3D1BD2ED05009C3B3E /* SkiRoutes.m */; settings = {ASSET_TAGS = (); }; };
 		CB57FA421BD54C04009C3B3E /* SMIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CB57FA411BD54C04009C3B3E /* SMIAPHelper.m */; settings = {ASSET_TAGS = (); }; };
 		CB57FA451BD5FD6A009C3B3E /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CB57FA441BD5FD6A009C3B3E /* NSDate+Utilities.m */; settings = {ASSET_TAGS = (); }; };
+		CB57FA481BD74BEB009C3B3E /* SMRSSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB57FA471BD74BEB009C3B3E /* SMRSSViewController.m */; settings = {ASSET_TAGS = (); }; };
+		CB57FA4B1BD754B4009C3B3E /* SMRSSEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = CB57FA4A1BD754B4009C3B3E /* SMRSSEntry.m */; settings = {ASSET_TAGS = (); }; };
+		CB57FA4E1BD75F60009C3B3E /* SMRSSParseOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = CB57FA4D1BD75F60009C3B3E /* SMRSSParseOperation.m */; settings = {ASSET_TAGS = (); }; };
 		CB6BCF381BB3B520009B0998 /* Glossary+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6BCF271BB3B520009B0998 /* Glossary+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
 		CB6BCF391BB3B520009B0998 /* Glossary.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6BCF291BB3B520009B0998 /* Glossary.m */; settings = {ASSET_TAGS = (); }; };
 		CB6BCF3A1BB3B520009B0998 /* Gps+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6BCF2B1BB3B520009B0998 /* Gps+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
@@ -118,6 +121,12 @@
 		CB57FA411BD54C04009C3B3E /* SMIAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMIAPHelper.m; sourceTree = "<group>"; };
 		CB57FA431BD5FD6A009C3B3E /* NSDate+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Utilities.h"; sourceTree = "<group>"; };
 		CB57FA441BD5FD6A009C3B3E /* NSDate+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Utilities.m"; sourceTree = "<group>"; };
+		CB57FA461BD74BEB009C3B3E /* SMRSSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRSSViewController.h; sourceTree = "<group>"; };
+		CB57FA471BD74BEB009C3B3E /* SMRSSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRSSViewController.m; sourceTree = "<group>"; };
+		CB57FA491BD754B4009C3B3E /* SMRSSEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRSSEntry.h; sourceTree = "<group>"; };
+		CB57FA4A1BD754B4009C3B3E /* SMRSSEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRSSEntry.m; sourceTree = "<group>"; };
+		CB57FA4C1BD75F60009C3B3E /* SMRSSParseOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRSSParseOperation.h; sourceTree = "<group>"; };
+		CB57FA4D1BD75F60009C3B3E /* SMRSSParseOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRSSParseOperation.m; sourceTree = "<group>"; };
 		CB6BCF261BB3B520009B0998 /* Glossary+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Glossary+CoreDataProperties.h"; sourceTree = "<group>"; };
 		CB6BCF271BB3B520009B0998 /* Glossary+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Glossary+CoreDataProperties.m"; sourceTree = "<group>"; };
 		CB6BCF281BB3B520009B0998 /* Glossary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Glossary.h; sourceTree = "<group>"; };
@@ -351,6 +360,8 @@
 				CB76D9C51AFC6102005EC2E8 /* SMRouteMapViewController.m */,
 				CBA2B5E81BCDE1C300B7C129 /* SMMapAttributionViewController.h */,
 				CBA2B5E91BCDE1C300B7C129 /* SMMapAttributionViewController.m */,
+				CB57FA461BD74BEB009C3B3E /* SMRSSViewController.h */,
+				CB57FA471BD74BEB009C3B3E /* SMRSSViewController.m */,
 				CBB480871AA5774D00C2A7E3 /* TableCells */,
 				CB235EAE1A9A591C0002E482 /* Utility Classes */,
 				CB96955A1A9A46CD009757B7 /* Data Manager */,
@@ -399,6 +410,10 @@
 		CB96954D1A9A467B009757B7 /* Base Classes */ = {
 			isa = PBXGroup;
 			children = (
+				CB57FA4C1BD75F60009C3B3E /* SMRSSParseOperation.h */,
+				CB57FA4D1BD75F60009C3B3E /* SMRSSParseOperation.m */,
+				CB57FA491BD754B4009C3B3E /* SMRSSEntry.h */,
+				CB57FA4A1BD754B4009C3B3E /* SMRSSEntry.m */,
 				CB96954A1A9A43A7009757B7 /* SMConstants.h */,
 				CB96954B1A9A43A7009757B7 /* SMConstants.m */,
 				CB3FBFC21AB67AFD00D5A037 /* SMAppearanceModifier.h */,
@@ -646,6 +661,7 @@
 				CB57FA3E1BD2ED05009C3B3E /* SkiRoutes+CoreDataProperties.m in Sources */,
 				CB17F6731AA93F4600048BC5 /* SMSkiAreaTableViewCell.m in Sources */,
 				CBA2B5E71BCCB79900B7C129 /* SMSkiAreaConditionsTableViewCell.m in Sources */,
+				CB57FA4E1BD75F60009C3B3E /* SMRSSParseOperation.m in Sources */,
 				CB4208A81AA3BB5100ADFA97 /* SMAreasTableViewController.m in Sources */,
 				CBA338DC1B82BBD1001BA5FF /* SMReachabilityManager.m in Sources */,
 				CB99FF5A1AB6347F0067E547 /* SMFlipAnimation.m in Sources */,
@@ -687,11 +703,13 @@
 				CB9C21251BA7635100D0D5DC /* SMGlossaryTableViewController.m in Sources */,
 				CB99FF5B1AB6347F0067E547 /* SMLayerAnimation.m in Sources */,
 				CBF466451BC1CC8400791383 /* SkiAreas.m in Sources */,
+				CB57FA4B1BD754B4009C3B3E /* SMRSSEntry.m in Sources */,
 				CB99FF5C1AB6347F0067E547 /* SMScaleAnimation.m in Sources */,
 				CB99FF5D1AB6347F0067E547 /* SMSlideAnimation.m in Sources */,
 				CB6BCF391BB3B520009B0998 /* Glossary.m in Sources */,
 				CB99FF591AB6347F0067E547 /* SMBaseAnimation.m in Sources */,
 				CBA338A31B8280F0001BA5FF /* SMDataManager.m in Sources */,
+				CB57FA481BD74BEB009C3B3E /* SMRSSViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

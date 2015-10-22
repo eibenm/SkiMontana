@@ -52,13 +52,13 @@
     UIImageView *legendView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"legend"]];
     
     [legendView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [legendView setContentMode:UIViewContentModeScaleAspectFit];
-    [legendView setFrame:self.view.bounds];
+    legendView.contentMode = UIViewContentModeScaleAspectFit;
+    legendView.frame = self.view.bounds;
     
     [self.view addSubview:legendView];
     
     NSDictionary *views = @{ @"legendView" : legendView };
-    NSDictionary *metrics = @{ @"spacing": [NSNumber numberWithFloat:0] };
+    NSDictionary *metrics = @{ @"spacing": @0.0f };
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-spacing-[legendView]-spacing-|" options:kNilOptions metrics:metrics views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-spacing-[legendView]-spacing-|" options:kNilOptions metrics:metrics views:views]];
     
@@ -69,21 +69,21 @@
 {
     UIButton *attributionButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [attributionButton setTitle:@"Done" forState:UIControlStateNormal];
-    [attributionButton.titleLabel setFont:[UIFont boldSkiMontanaFontOfSize:20.0f]];
+    (attributionButton.titleLabel).font = [UIFont boldSkiMontanaFontOfSize:20.0f];
     [attributionButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [attributionButton.layer setShadowColor:[UIColor blackColor].CGColor];
-    [attributionButton.layer setShadowOffset:CGSizeMake(0, 0)];
-    [attributionButton.layer setShadowRadius:3.0f];
-    [attributionButton.layer setShadowOpacity:0.5f];
-    [attributionButton setAutoresizingMask:(UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin)];
+    (attributionButton.layer).shadowColor = [UIColor blackColor].CGColor;
+    (attributionButton.layer).shadowOffset = CGSizeMake(0, 0);
+    (attributionButton.layer).shadowRadius = 3.0f;
+    (attributionButton.layer).shadowOpacity = 0.5f;
+    attributionButton.autoresizingMask = (UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin);
     [attributionButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [attributionButton addTarget:self action:@selector(legendDismiss:) forControlEvents:UIControlEventTouchUpInside];
-    [attributionButton setFrame:CGRectMake(
+    attributionButton.frame = CGRectMake(
         self.view.bounds.size.width - attributionButton.bounds.size.width - 8,
         self.view.bounds.size.height - attributionButton.bounds.size.height - 8,
         attributionButton.bounds.size.width,
         attributionButton.bounds.size.height
-    )];
+    );
     
     [self.view addSubview:attributionButton];
     

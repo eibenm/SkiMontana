@@ -8,9 +8,9 @@
 
 #import "SMSkiAreaTableViewCell.h"
 
-@interface SMSkiAreaTableViewCell() {
-    UIView *_headerBackgroundLayer;
-}
+@interface SMSkiAreaTableViewCell()
+
+@property (nonatomic, strong) UIView *headerBackgroundLayer;
 
 @end
 
@@ -38,9 +38,9 @@
 {
     if (!_headerBackgroundLayer) {
         _headerBackgroundLayer = [[UIView alloc] initWithFrame:CGRectInset(self.bounds, 5, 5)];
-        [_headerBackgroundLayer setBackgroundColor:[UIColor blackColor]];
-        [_headerBackgroundLayer.layer setCornerRadius:4.5f];
-        [_headerBackgroundLayer.layer setOpacity:0.5f];
+        _headerBackgroundLayer.backgroundColor = [UIColor blackColor];
+        (_headerBackgroundLayer.layer).cornerRadius = 4.5f;
+        (_headerBackgroundLayer.layer).opacity = 0.5f;
         [self addSubview:_headerBackgroundLayer];
         [self sendSubviewToBack:_headerBackgroundLayer];
     }
@@ -48,14 +48,14 @@
 
 - (void)layoutSubviews
 {
-    [_headerBackgroundLayer setFrame:CGRectInset(self.bounds, 5, 5)];
+    _headerBackgroundLayer.frame = CGRectInset(self.bounds, 5, 5);
     [super layoutSubviews];
 }
 
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
 {
     [UIView animateWithDuration:0.2 animations:^{
-        [_headerBackgroundLayer.layer setOpacity:(highlighted ? 0.65f : 0.5f)];
+        (_headerBackgroundLayer.layer).opacity = (highlighted ? 0.65f : 0.5f);
     }];
     [super setHighlighted:highlighted animated:animated];
 }

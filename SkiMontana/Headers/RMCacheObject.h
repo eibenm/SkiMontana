@@ -56,7 +56,7 @@
 *   @param tile The tile key for the object.
 *   @param aCacheKey The unique identifier for the cache.
 *   @return An initialized cache object. */
-- (id)initWithObject:(id)anObject forTile:(RMTile)tile withCacheKey:(NSString *)aCacheKey;
+- (instancetype)initWithObject:(id)anObject forTile:(RMTile)tile withCacheKey:(NSString *)aCacheKey;
 
 /** Updates the timestamp on a cache object to indicate freshness. Objects with older timestamps get deleted first when space is needed. */
 - (void)touch;

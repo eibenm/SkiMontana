@@ -38,7 +38,7 @@
 *   @param centerCoordinate The center of the annotation. 
 *   @param radiusInMeters The radius of the circle in projected meters.
 *   @return An initialized circle annotation object, or `nil` if an annotation was unable to be initialized. */
-- (id)initWithMapView:(RMMapView *)aMapView centerCoordinate:(CLLocationCoordinate2D)centerCoordinate radiusInMeters:(CGFloat)radiusInMeters;
+- (instancetype)initWithMapView:(RMMapView *)aMapView centerCoordinate:(CLLocationCoordinate2D)centerCoordinate radiusInMeters:(CGFloat)radiusInMeters;
 
 /** The circle annotation's center coordinate. */
 @property (nonatomic, assign) CLLocationCoordinate2D centerCoordinate;

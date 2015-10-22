@@ -65,7 +65,7 @@
         self.customAlertViewMessage = alertViewMessage;
     }
 	
-	NSString *appReceiptPath = [[[NSBundle mainBundle] appStoreReceiptURL] path];
+	NSString *appReceiptPath = [NSBundle mainBundle].appStoreReceiptURL.path;
 	
 	if(![[NSFileManager defaultManager] fileExistsAtPath:appReceiptPath])
 	{
@@ -127,7 +127,7 @@
 {
     //Begin a request for a receipt from Apple
     SKReceiptRefreshRequest *receiptRefreshRequest = [[SKReceiptRefreshRequest alloc] initWithReceiptProperties:nil];
-    [receiptRefreshRequest setDelegate:self];
+    receiptRefreshRequest.delegate = self;
     [receiptRefreshRequest start];
 }
 
@@ -143,7 +143,7 @@
 		return;
 	}
 	
-	if(![_bundleIdentifier isEqualToString:[[NSBundle mainBundle] bundleIdentifier]])
+	if(![_bundleIdentifier isEqualToString:[NSBundle mainBundle].bundleIdentifier])
 	{
 		if(failureBlock)
 		{
@@ -168,21 +168,21 @@
     
 	//To further validate get the UUID of the current device
     unsigned char uuidBytes[16];
-    NSUUID *vendorUUID = [[UIDevice currentDevice] identifierForVendor];
+    NSUUID *vendorUUID = [UIDevice currentDevice].identifierForVendor;
     [vendorUUID getUUIDBytes:uuidBytes];
     
 	//Build up the data in order appending the data from the receipt
 	NSMutableData *input = [NSMutableData data];
 	[input appendBytes:uuidBytes length:sizeof(uuidBytes)];
-	[input appendData:[receipt opaqueValue]];
-	[input appendData:[receipt bundleIdentifierData]];
+	[input appendData:receipt.opaqueValue];
+	[input appendData:receipt.bundleIdentifierData];
     
 	//Hash the data
 	NSMutableData *hash = [NSMutableData dataWithLength:SHA_DIGEST_LENGTH];
-	SHA1([input bytes], [input length], [hash mutableBytes]);
+	SHA1(input.bytes, input.length, hash.mutableBytes);
     
 	//Check that the current bundleID, bundleVersion and the Hash is equal to that of the receipt
-	if([_bundleIdentifier isEqualToString:[receipt bundleIdentifier]] && [_bundleVersion isEqualToString:[receipt version]] && [hash isEqualToData:[receipt receiptHash]])
+	if([_bundleIdentifier isEqualToString:receipt.bundleIdentifier] && [_bundleVersion isEqualToString:receipt.version] && [hash isEqualToData:receipt.receiptHash])
 	{
 		if(successBlock)
 		{
@@ -203,7 +203,7 @@
 
 - (void)requestDidFinish:(SKRequest *)request
 {
-    NSString  *appReceiptPath = [[[NSBundle mainBundle] appStoreReceiptURL] path];
+    NSString  *appReceiptPath = [NSBundle mainBundle].appStoreReceiptURL.path;
 	
     if([[NSFileManager defaultManager] fileExistsAtPath:appReceiptPath])
 	{
@@ -226,7 +226,7 @@
 
 - (void)request:(SKRequest *)request didFailWithError:(NSError *)error
 {
-    NSString *appRecPath = [[[NSBundle mainBundle] appStoreReceiptURL] path];
+    NSString *appRecPath = [NSBundle mainBundle].appStoreReceiptURL.path;
 	
     if([[NSFileManager defaultManager] fileExistsAtPath:appRecPath])
 	{
@@ -250,7 +250,7 @@
 
 - (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    if(buttonIndex != [alertView cancelButtonIndex])
+    if(buttonIndex != alertView.cancelButtonIndex)
     {
         [self requestNewReceipt];
     }

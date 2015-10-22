@@ -54,7 +54,7 @@
 
 - (void) reachabilityChanged: (NSNotification* )note
 {
-    Reachability* curReach = [note object];
+    Reachability* curReach = note.object;
     NSParameterAssert([curReach isKindOfClass:[Reachability class]]);
     [self updateWithReachability:curReach];
 }

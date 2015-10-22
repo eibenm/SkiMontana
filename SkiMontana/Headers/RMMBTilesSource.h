@@ -54,31 +54,31 @@
 *
 *   @param name The name of the resource file. If name is an empty string or `nil`, uses the first file encountered with the extension `.mbtiles`. 
 *   @return An initialized MBTiles tile source. */
-- (id)initWithTileSetResource:(NSString *)name;
+- (instancetype)initWithTileSetResource:(NSString *)name;
 
 /** Initialize and return a newly allocated MBTiles tile source based on a given bundle resource.
 *   @param name The name of the resource file. If name is an empty string or `nil`, uses the first file encountered of the supplied type.
 *   @param extension If extension is an empty string or `nil`, the extension is assumed not to exist and the file is the first file encountered that exactly matches name. 
 *   @return An initialized MBTiles tile source. */
-- (id)initWithTileSetResource:(NSString *)name ofType:(NSString *)extension;
+- (instancetype)initWithTileSetResource:(NSString *)name ofType:(NSString *)extension;
 
 /** Initialize and return a newly allocated MBTiles tile source based on a given local database URL.
 *   @param tileSetURL Local file path URL to an MBTiles file.
 *   @return An initialized MBTiles tile source. */
-- (id)initWithTileSetURL:(NSURL *)tileSetURL;
+- (instancetype)initWithTileSetURL:(NSURL *)tileSetURL;
 
 /** @name Querying Tile Source Information */
 
 /** Any available HTML-formatted map legend data for the tile source, suitable for display in a `UIWebView`. */
-- (NSString *)legend;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSString *legend;
 
 /** A suggested starting center coordinate for the map layer. */
-- (CLLocationCoordinate2D)centerCoordinate;
+@property (NS_NONATOMIC_IOSONLY, readonly) CLLocationCoordinate2D centerCoordinate;
 
 /** A suggested starting center zoom level for the map layer. */
-- (float)centerZoom;
+@property (NS_NONATOMIC_IOSONLY, readonly) float centerZoom;
 
 /** Returns YES if the tile source provides full-world coverage; otherwise, returns NO. */
-- (BOOL)coversFullWorld;
+@property (NS_NONATOMIC_IOSONLY, readonly) BOOL coversFullWorld;
 
 @end

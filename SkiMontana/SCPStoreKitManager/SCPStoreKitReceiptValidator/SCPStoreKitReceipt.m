@@ -48,7 +48,7 @@ typedef NS_ENUM(NSInteger, SCPAppReceiptASN1Type)
 	ERR_load_X509_strings();
 	OpenSSL_add_all_digests();
 	
-	const char * path = [[receiptPath stringByStandardizingPath] fileSystemRepresentation];
+	const char * path = receiptPath.stringByStandardizingPath.fileSystemRepresentation;
 	FILE *fp = fopen(path, "rb");
 	
 	//Is there a receipt
@@ -182,13 +182,13 @@ typedef NS_ENUM(NSInteger, SCPAppReceiptASN1Type)
 					{
 						case SCPAppReceiptASN1TypeBundleIdentifier:
 							//This is needed for hash generation
-							[receipt setBundleIdentifierData:data];
+							receipt.bundleIdentifierData = data;
 							break;
 						case SCPAppReceiptASN1TypeOpaqueValue:
-							[receipt setOpaqueValue:data];
+							receipt.opaqueValue = data;
 							break;
 						case SCPAppReceiptASN1TypeHash:
-                            [receipt setReceiptHash:data];
+                            receipt.receiptHash = data;
 							break;
 					}
 				}
@@ -210,13 +210,13 @@ typedef NS_ENUM(NSInteger, SCPAppReceiptASN1Type)
 						switch (attr_type)
 						{
 							case SCPAppReceiptASN1TypeBundleIdentifier:
-								[receipt setBundleIdentifier:string];
+								receipt.bundleIdentifier = string;
 								break;
 							case SCPAppReceiptASN1TypeAppVersion:
-								[receipt setVersion:string];
+								receipt.version = string;
 								break;
 							case SCPAppReceiptASN1TypeOriginalAppVersion:
-								[receipt setOriginalVersion:string];
+								receipt.originalVersion = string;
 								break;
 						}
 					}
@@ -227,13 +227,13 @@ typedef NS_ENUM(NSInteger, SCPAppReceiptASN1Type)
 				{
 					SCPStoreKitIAPReceipt *iapReceipt = [[SCPStoreKitIAPReceipt alloc] initWithData:data];
 					
-					if(![receipt inAppPurchases])
+					if(!receipt.inAppPurchases)
 					{
-						[receipt setInAppPurchases:[NSMutableArray arrayWithObject:iapReceipt]];
+						receipt.inAppPurchases = [NSMutableArray arrayWithObject:iapReceipt];
 					}
 					else
 					{
-						[[receipt inAppPurchases] addObject:iapReceipt];
+						[receipt.inAppPurchases addObject:iapReceipt];
 					}
 				}
 			}
@@ -262,13 +262,13 @@ typedef NS_ENUM(NSInteger, SCPAppReceiptASN1Type)
 {
 	NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
 	
-	[dictionary setObject:([self bundleIdentifier]) ? [self bundleIdentifier] : @"" forKey:@"bundleIdentifier"];
-	[dictionary setObject:([self bundleIdentifierData]) ? [self bundleIdentifierData] : @"" forKey:@"bundleIdentifierData"];
-	[dictionary setObject:([self receiptHash]) ? [self receiptHash] : @"" forKey:@"hash"];
-	[dictionary setObject:([self opaqueValue]) ? [self opaqueValue] : @"" forKey:@"opaqueValue"];
-	[dictionary setObject:([self originalVersion]) ? [self originalVersion] : @"" forKey:@"originalVersion"];
-	[dictionary setObject:([self version]) ? [self version] : @"" forKey:@"version"];
-	[dictionary setObject:([self inAppPurchases]) ? [self inAppPurchases] : @"" forKey:@"inAppPurchases"];
+	dictionary[@"bundleIdentifier"] = (self.bundleIdentifier) ? self.bundleIdentifier : @"";
+	dictionary[@"bundleIdentifierData"] = (self.bundleIdentifierData) ? self.bundleIdentifierData : @"";
+	dictionary[@"hash"] = (self.receiptHash) ? self.receiptHash : @"";
+	dictionary[@"opaqueValue"] = (self.opaqueValue) ? self.opaqueValue : @"";
+	dictionary[@"originalVersion"] = (self.originalVersion) ? self.originalVersion : @"";
+	dictionary[@"version"] = (self.version) ? self.version : @"";
+	dictionary[@"inAppPurchases"] = (self.inAppPurchases) ? self.inAppPurchases : @"";
 	
 	return dictionary;
 }

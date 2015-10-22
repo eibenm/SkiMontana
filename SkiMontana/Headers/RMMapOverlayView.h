@@ -32,7 +32,7 @@
 
 @interface RMMapOverlayView : UIView
 
-- (NSUInteger)sublayersCount;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSUInteger sublayersCount;
 
 - (void)addSublayer:(CALayer *)aLayer;
 - (void)insertSublayer:(CALayer *)aLayer atIndex:(unsigned)index;

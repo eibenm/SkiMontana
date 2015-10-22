@@ -40,7 +40,7 @@
 *   @param tileSources An array of tile sources to be composited.
 *   @param tileCacheKey A tile cache key for storage of composited result tiles. 
 *   @return An initialized compositing tile source. */
-- (id)initWithTileSources:(NSArray *)tileSources tileCacheKey:(NSString *)tileCacheKey;
+- (instancetype)initWithTileSources:(NSArray *)tileSources tileCacheKey:(NSString *)tileCacheKey;
 
 /** @name Querying Tile Source Information */
 

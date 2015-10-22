@@ -21,7 +21,7 @@
     NSScanner *scanner = [NSScanner scannerWithString:hexStr];
     
     // Tell scanner to skip the # character
-    [scanner setCharactersToBeSkipped:[NSCharacterSet characterSetWithCharactersInString:@"#"]];
+    scanner.charactersToBeSkipped = [NSCharacterSet characterSetWithCharactersInString:@"#"];
     [scanner scanHexInt:&hexint];
     
     //-----------------------------------------

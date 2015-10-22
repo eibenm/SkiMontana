@@ -51,7 +51,7 @@
 
 /** Access the disk- and memory-based cache configuration. 
 *   @return A dictionary containing the cache configuration. */
-- (NSDictionary *)cacheConfiguration;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSDictionary *cacheConfiguration;
 
 /** @name Using a Custom User Agent */
 

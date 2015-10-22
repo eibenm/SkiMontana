@@ -137,7 +137,7 @@
 *   @param aCoordinate The location for the annotation.
 *   @param aTitle The annotation's title. 
 *   @return An initialized annotation object, or `nil` if an annotation was unable to be initialized. */
-- (id)initWithMapView:(RMMapView *)aMapView coordinate:(CLLocationCoordinate2D)aCoordinate andTitle:(NSString *)aTitle;
+- (instancetype)initWithMapView:(RMMapView *)aMapView coordinate:(CLLocationCoordinate2D)aCoordinate andTitle:(NSString *)aTitle;
 
 - (void)setBoundingBoxCoordinatesSouthWest:(CLLocationCoordinate2D)southWest northEast:(CLLocationCoordinate2D)northEast;
 - (void)setBoundingBoxFromLocations:(NSArray *)locations;

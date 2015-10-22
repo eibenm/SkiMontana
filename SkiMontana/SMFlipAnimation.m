@@ -66,7 +66,7 @@
     // Add a perspective transform
     CATransform3D transform = CATransform3DIdentity;
     transform.m34 = -0.002;
-    [containerView.layer setSublayerTransform:transform];
+    (containerView.layer).sublayerTransform = transform;
     
     // Give both VCs the same start frame
     CGRect initialFrame;

@@ -42,7 +42,7 @@
 *   @param frame The frame with which to initialize the map view.
 *   @param mapID The Mapbox map ID string, typically in the format `<username>.map-<mapname>`.
 *   @return An initialized map view, or `nil` if the map view was unable to be initialized. */
-- (id)initWithFrame:(CGRect)frame mapID:(NSString *)mapID;
+- (instancetype)initWithFrame:(CGRect)frame mapID:(NSString *)mapID;
 
 /** Initialize a static map view with a given frame and mapID, performing a block upon completion of the map load. 
 *
@@ -51,7 +51,7 @@
 *   @param mapID The Mapbox map ID string, typically in the format `<username>.map-<mapname>`.
 *   @param handler A block to be performed upon map and marker load completion. An image of the map, including markers, is passed as an argument to the block in the event that you wish to use it elsewhere. The handler will be called on the main dispatch queue.
 *   @return An initialized map view, or `nil` if the map view was unable to be initialized. */
-- (id)initWithFrame:(CGRect)frame mapID:(NSString *)mapID completionHandler:(void (^)(UIImage *))handler;
+- (instancetype)initWithFrame:(CGRect)frame mapID:(NSString *)mapID completionHandler:(void (^)(UIImage *))handler;
 
 /** Initialize a static map view with a given frame, mapID, center coordinate, and zoom level.
 *
@@ -61,7 +61,7 @@
 *   @param centerCoordinate The map center coordinate.
 *   @param zoomLevel The map zoom level.
 *   @return An initialized map view, or `nil` if the map view was unable to be initialized. */
-- (id)initWithFrame:(CGRect)frame mapID:(NSString *)mapID centerCoordinate:(CLLocationCoordinate2D)centerCoordinate zoomLevel:(CGFloat)zoomLevel;
+- (instancetype)initWithFrame:(CGRect)frame mapID:(NSString *)mapID centerCoordinate:(CLLocationCoordinate2D)centerCoordinate zoomLevel:(CGFloat)zoomLevel;
 
 /** Designated initializer. Initialize a static map view with a given frame, mapID, center coordinate, and zoom level, performing a block upon completion of the map load.
 *
@@ -72,6 +72,6 @@
 *   @param zoomLevel The map zoom level.
 *   @param handler A block to be performed upon map load completion. An image of the map, including markers, is passed as an argument to the block in the event that you wish to use it elsewhere. The handler will be called on the main dispatch queue.
 *   @return An initialized map view, or `nil` if the map view was unable to be initialized. */
-- (id)initWithFrame:(CGRect)frame mapID:(NSString *)mapID centerCoordinate:(CLLocationCoordinate2D)centerCoordinate zoomLevel:(CGFloat)zoomLevel completionHandler:(void (^)(UIImage *))handler;
+- (instancetype)initWithFrame:(CGRect)frame mapID:(NSString *)mapID centerCoordinate:(CLLocationCoordinate2D)centerCoordinate zoomLevel:(CGFloat)zoomLevel completionHandler:(void (^)(UIImage *))handler;
 
 @end

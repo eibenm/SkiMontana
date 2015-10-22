@@ -66,7 +66,7 @@
     CGContextSetLineWidth(context, (CGFloat)self.stroke);
     CGContextSetLineCap(context, kCGLineCapRound);
     CGContextSetLineJoin(context, kCGLineJoinRound);
-    CGContextSetShadowWithColor(context, CGSizeMake(0, 0), 4, [[UIColor colorWithWhite:0.8 alpha:0.6] CGColor]);
+    CGContextSetShadowWithColor(context, CGSizeMake(0, 0), 4, [UIColor colorWithWhite:0.8 alpha:0.6].CGColor);
     CGContextStrokePath(context);
     CGContextRestoreGState(context);
 }

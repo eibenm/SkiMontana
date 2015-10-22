@@ -46,7 +46,7 @@
 // Tile side length in pixels
 @property (nonatomic, readonly) NSUInteger tileSideLength;
 
-- (id)initFromProjection:(RMProjection *)projection tileSideLength:(NSUInteger)tileSideLength maxZoom:(NSUInteger)aMaxZoom minZoom:(NSUInteger)aMinZoom;
+- (instancetype)initFromProjection:(RMProjection *)projection tileSideLength:(NSUInteger)tileSideLength maxZoom:(NSUInteger)aMaxZoom minZoom:(NSUInteger)aMinZoom;
 
 - (void)setTileSideLength:(NSUInteger)aTileSideLength;
 - (void)setMinZoom:(NSUInteger)aMinZoom;

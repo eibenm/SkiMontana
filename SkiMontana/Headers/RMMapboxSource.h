@@ -42,7 +42,7 @@
 #define kMapboxPlaceholderMapID @"examples.map-z2effxa8"
 
 // constants for the image quality API (see https://www.mapbox.com/developers/api/maps/#format)
-typedef enum : NSUInteger {
+typedef NS_ENUM(NSUInteger, RMMapboxSourceQuality) {
     RMMapboxSourceQualityFull   = 0, // default
     RMMapboxSourceQualityPNG32  = 1, // 32 color indexed PNG
     RMMapboxSourceQualityPNG64  = 2, // 64 color indexed PNG
@@ -51,7 +51,7 @@ typedef enum : NSUInteger {
     RMMapboxSourceQualityJPEG70 = 5, // 70% quality JPEG
     RMMapboxSourceQualityJPEG80 = 6, // 80% quality JPEG
     RMMapboxSourceQualityJPEG90 = 7  // 90% quality JPEG
-} RMMapboxSourceQuality;
+};
 
 @class RMMapView;
 
@@ -68,7 +68,7 @@ typedef enum : NSUInteger {
 *
 *   @param mapID The Mapbox map ID string, typically in the format `<username>.map-<random characters>`.
 *   @return An initialized Mapbox tile source. */
-- (id)initWithMapID:(NSString *)mapID;
+- (instancetype)initWithMapID:(NSString *)mapID;
 
 /** Initialize a tile source with either a remote or local TileJSON structure.
 *
@@ -78,12 +78,12 @@ typedef enum : NSUInteger {
 *
 *   @param referenceURL A remote or file path URL pointing to a TileJSON structure.
 *   @return An initialized Mapbox tile source. */
-- (id)initWithReferenceURL:(NSURL *)referenceURL;
+- (instancetype)initWithReferenceURL:(NSURL *)referenceURL;
 
 /** Initialize a tile source with TileJSON.
 *   @param tileJSON A string containing TileJSON. 
 *   @return An initialized Mapbox tile source. */
-- (id)initWithTileJSON:(NSString *)tileJSON;
+- (instancetype)initWithTileJSON:(NSString *)tileJSON;
 
 /** For TileJSON 2.1.0+ layers, initialize a tile source and automatically find and add point annotations from [simplestyle](https://www.mapbox.com/foundations/an-open-platform/#simplestyle) data.
 *
@@ -92,13 +92,13 @@ typedef enum : NSUInteger {
 *   @param mapID The Mapbox map ID string, typically in the format `<username>.map-<random characters>`.
 *   @param mapView A map view on which to display the annotations.
 *   @return An initialized Mapbox tile source. */
-- (id)initWithMapID:(NSString *)mapID enablingDataOnMapView:(RMMapView *)mapView;
+- (instancetype)initWithMapID:(NSString *)mapID enablingDataOnMapView:(RMMapView *)mapView;
 
 /** For TileJSON 2.1.0+ layers, initialize a tile source and automatically find and add point annotations from [simplestyle](https://www.mapbox.com/foundations/an-open-platform/#simplestyle) data.
 *   @param tileJSON A string containing TileJSON.
 *   @param mapView A map view on which to display the annotations. 
 *   @return An initialized Mapbox tile source. */
-- (id)initWithTileJSON:(NSString *)tileJSON enablingDataOnMapView:(RMMapView *)mapView;
+- (instancetype)initWithTileJSON:(NSString *)tileJSON enablingDataOnMapView:(RMMapView *)mapView;
 
 /** For TileJSON 2.1.0+ layers, initialize a tile source and automatically find and add point annotations from [simplestyle](https://www.mapbox.com/foundations/an-open-platform/#simplestyle) data.
 *
@@ -109,21 +109,21 @@ typedef enum : NSUInteger {
 *   @param referenceURL A remote or file path URL pointing to a TileJSON structure.
 *   @param mapView A map view on which to display the annotations.
 *   @return An initialized Mapbox tile source. */
-- (id)initWithReferenceURL:(NSURL *)referenceURL enablingDataOnMapView:(RMMapView *)mapView;
+- (instancetype)initWithReferenceURL:(NSURL *)referenceURL enablingDataOnMapView:(RMMapView *)mapView;
 
 /** @name Querying Tile Source Information */
 
 /** Any available HTML-formatted map legend data for the tile source, suitable for display in a `UIWebView`. */
-- (NSString *)legend;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSString *legend;
 
 /** A suggested starting center coordinate for the map layer. */
-- (CLLocationCoordinate2D)centerCoordinate;
+@property (NS_NONATOMIC_IOSONLY, readonly) CLLocationCoordinate2D centerCoordinate;
 
 /** A suggested starting center zoom level for the map layer. */
-- (float)centerZoom;
+@property (NS_NONATOMIC_IOSONLY, readonly) float centerZoom;
 
 /** Returns `YES` if the tile source provides full-world coverage; otherwise, returns `NO`. */
-- (BOOL)coversFullWorld;
+@property (NS_NONATOMIC_IOSONLY, readonly) BOOL coversFullWorld;
 
 /** The TileJSON for the map layer. Useful for saving locally to use in instantiating a tile source while offline. */
 @property (nonatomic, readonly, strong) NSString *tileJSON;

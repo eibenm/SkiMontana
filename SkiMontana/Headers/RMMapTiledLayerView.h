@@ -36,6 +36,6 @@
 
 @property (nonatomic, readonly) id <RMTileSource> tileSource;
 
-- (id)initWithFrame:(CGRect)frame mapView:(RMMapView *)aMapView forTileSource:(id <RMTileSource>)aTileSource;
+- (instancetype)initWithFrame:(CGRect)frame mapView:(RMMapView *)aMapView forTileSource:(id <RMTileSource>)aTileSource;
 
 @end

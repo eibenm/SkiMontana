@@ -58,9 +58,7 @@
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
     [alert addAction:defaultAction];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self presentViewController:alert animated:YES completion:nil];
-    });
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)requestProductsWithProductIdentifiers:(NSSet *)identifiers
@@ -78,20 +76,8 @@
 - (void)checkReceiptsAfterPurchase
 {
     [[SCPStoreKitReceiptValidator sharedInstance] validateReceiptWithBundleIdentifier:BUNDLE_IDENTIFIER bundleVersion:@"1.0" tryAgain:YES showReceiptAlert:YES alertPresentingViewController:self alertViewTitle:nil alertViewMessage:nil success:^(SCPStoreKitReceipt *receipt) {
-        // Unlock App and reload view
-        [[SMUtilities sharedInstance] setAppLockedStateIsUnlocked:YES];
-        NSIndexSet *sections = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, self.tableView.numberOfSections)];
-        [self.tableView reloadSections:sections withRowAnimation:UITableViewRowAnimationAutomatic];
-        [self alertWithTitle:@"Purhcase Success" message:@"You have successfully subscribed to Ski Bozeman!"];
-    } failure:^(NSError *error) {
-        NSLog(@"Failure: %@", [error fullDescription]);
-        NSLog(@"App not being unlocked");
-    }];
-}
-
-- (void)checkReceiptsForSubscriptionChange
-{
-    [[SCPStoreKitReceiptValidator sharedInstance] validateReceiptWithBundleIdentifier:BUNDLE_IDENTIFIER bundleVersion:@"1.0" tryAgain:YES showReceiptAlert:YES alertPresentingViewController:self alertViewTitle:nil alertViewMessage:nil success:^(SCPStoreKitReceipt *receipt) {
+        
+        NSLog(@"Receipt: %@", receipt.fullDescription);
         
         // Getting latest transaction
         __block SCPStoreKitIAPReceipt *lastTransaction;
@@ -102,14 +88,68 @@
                 }
             }
         }];
-
+        
+        NSLog(@"Latest receipt: %@", lastTransaction);
+        
         BOOL active = [SMIAPHelper subscriptionIsActiveWithReceipt:lastTransaction date:[NSDate date]];
         
+        // Unlock App and reload view
+        if (active) {
+            [[SMUtilities sharedInstance] setAppLockedStateIsUnlocked:YES];
+            NSIndexSet *sections = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, self.tableView.numberOfSections)];
+            [self.tableView reloadSections:sections withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self alertWithTitle:@"Purhcase Success" message:@"You have successfully subscribed to Ski Bozeman!"];
+        }
+        
+    } failure:^(NSError *error) {
+        NSLog(@"Failure: %@", [error fullDescription]);
+        NSLog(@"App not being unlocked");
+    }];
+}
+
+- (void)checkReceiptsForSubscriptionChange
+{
+    [[SCPStoreKitReceiptValidator sharedInstance] validateReceiptWithBundleIdentifier:BUNDLE_IDENTIFIER bundleVersion:@"1.0" tryAgain:YES showReceiptAlert:YES alertPresentingViewController:self alertViewTitle:nil alertViewMessage:nil success:^(SCPStoreKitReceipt *receipt) {
+        
+        NSLog(@"Receipt: %@", receipt.fullDescription);
+        
+        // Getting latest transaction
+        __block SCPStoreKitIAPReceipt *lastTransaction;
+        [receipt.inAppPurchases enumerateObjectsUsingBlock:^(SCPStoreKitIAPReceipt *iapReceipt, NSUInteger idx, BOOL *stop) {
+            if ([self.productIdentifiers containsObject:iapReceipt.productIdentifier]) {
+                if (!lastTransaction || [iapReceipt.subscriptionExpiryDate compare:lastTransaction.subscriptionExpiryDate] == NSOrderedDescending) {
+                    lastTransaction = iapReceipt;
+                }
+            }
+        }];
+        
+        NSLog(@"Latest receipt cancellation date: %@", lastTransaction.cancellationDate);
+        
+        // Today's date should be between the purchase date and expiration date
+        NSLog(@"Latest receipt expiratory date: %@", lastTransaction.subscriptionExpiryDate);
+        NSLog(@"Today's date: %@", [NSDate date]);
+        NSLog(@"Latest receipt purchase date: %@", lastTransaction.purchaseDate);
+        
+        
+        BOOL currentlyPurchased = [SMIAPHelper checkInAppMemoryPurchasedState];
+        BOOL active = [SMIAPHelper subscriptionIsActiveWithReceipt:lastTransaction date:[NSDate date]];
+        
+        NSLog(@"%@", (active ? @"active" : @"not active"));
+        
+        // Subscription is no longer active ... lock the app!
         if (!active) {
             [[SMUtilities sharedInstance] setAppLockedStateIsUnlocked:NO];
             NSIndexSet *sections = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, self.tableView.numberOfSections)];
             [self.tableView reloadSections:sections withRowAnimation:UITableViewRowAnimationAutomatic];
             [self alertWithTitle:@"Subscription Status" message:@"Your subscription has expired!"];
+        }
+        
+        // In the case of restored subscription
+        if (currentlyPurchased == NO && active == YES) {
+            [[SMUtilities sharedInstance] setAppLockedStateIsUnlocked:YES];
+            NSIndexSet *sections = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, self.tableView.numberOfSections)];
+            [self.tableView reloadSections:sections withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self alertWithTitle:@"Subscription Status" message:@"Your subscription has been restored!"];
         }
         
     } failure:^(NSError *error) {
@@ -120,15 +160,18 @@
 - (void)restorePurchases
 {
     [[SCPStoreKitManager sharedInstance] restorePurchasesPaymentTransactionStateRestored:^(NSArray *transactions) {
+        // Check if transaction is one of ours and verify receipt before unlocking
         [transactions enumerateObjectsUsingBlock:^(SKPaymentTransaction *transation, NSUInteger idx, BOOL *stop) {
             if ([self.productIdentifiers containsObject:transation.payment.productIdentifier]) {
                 [self checkReceiptsForSubscriptionChange];
+                *stop = YES;
             }
         }];
     } paymentTransactionStateFailed:^(NSArray *transactions) {
         NSLog(@"Failed to restore transactions : %@", transactions);
+        [self alertWithTitle:@"Subscription Restore" message:@"Your subscription restoration failed"];
     } failure:^(NSError *error) {
-        NSLog(@"Failure : %@", [error localizedDescription]);
+        NSLog(@"Failure : %@", error.localizedDescription);
     }];
 }
 
@@ -163,11 +206,11 @@
     self.actionSheetViewController = [UIAlertController alertControllerWithTitle:@"Subscribe to Ski Bozeman\nGet all the skiing shenanigans you can!" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
     NSNumberFormatter *formatter = [NSNumberFormatter new];
-    [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    formatter.numberStyle = NSNumberFormatterCurrencyStyle;
     
     for (SKProduct *product in self.products) {
         
-        [formatter setLocale:product.priceLocale];
+        formatter.locale = product.priceLocale;
         
         if ([product.productIdentifier isEqualToString:kIdentifierSubscription1Month]) {
             SKProduct *oneMonthProduct = product;
@@ -207,9 +250,7 @@
     [self.actionSheetViewController addAction:manager];
     [self.actionSheetViewController addAction:cancel];
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self presentViewController:self.actionSheetViewController animated:YES completion:nil];
-    });
+    [self presentViewController:self.actionSheetViewController animated:YES completion:nil];
 }
 
 - (void)didEnterBackground:(NSNotification *)notification

@@ -45,12 +45,12 @@
 /** Initializes and returns a newly allocated database cache object at the given disk path.
 *   @param path The path to use for the database backing.
 *   @return An initialized cache object or `nil` if the object couldn't be created. */
-- (id)initWithDatabase:(NSString *)path;
+- (instancetype)initWithDatabase:(NSString *)path;
 
 /** Initializes and returns a newly allocated database cache object.
 *   @param useCacheDir If YES, use the temporary cache space for the application, meaning that the cache files can be removed when the system deems it necessary to free up space. If NO, use the application's document storage space, meaning that the cache will not be automatically removed and will be backed up during device backups. The default value is NO.
 *   @return An initialized cache object or `nil` if the object couldn't be created. */
-- (id)initUsingCacheDir:(BOOL)useCacheDir;
+- (instancetype)initUsingCacheDir:(BOOL)useCacheDir;
 
 /** @name Configuring Cache Behavior */
 
@@ -74,6 +74,6 @@
 - (void)setExpiryPeriod:(NSTimeInterval)theExpiryPeriod;
 
 /** The current file size of the database cache on disk. */
-- (unsigned long long)fileSize;
+@property (NS_NONATOMIC_IOSONLY, readonly) unsigned long long fileSize;
 
 @end

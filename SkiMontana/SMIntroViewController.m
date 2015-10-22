@@ -16,6 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *backgroundView;
 @property (weak, nonatomic) IBOutlet UIButton *startSkiingBtn;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 - (IBAction)startSkiingAction:(id)sender;
 
@@ -27,11 +28,14 @@
 {
     [super viewDidLoad];
     
+    NSDictionary *attrsDictionary = @{ NSKernAttributeName: @1 };
+    (self.titleLabel).attributedText = [[NSAttributedString alloc] initWithString:@"Ski Bozeman" attributes:attrsDictionary];
+    
     UIEdgeInsets insets = UIEdgeInsetsMake(0.0f, 10.0f, 0.0f, 10.0f);
     UIImage *skiButtonEnabled = [UIImage imageNamed:@"start_skiing"];
     
     [self.startSkiingBtn setUserInteractionEnabled:NO];
-    [self.startSkiingBtn.layer setOpacity:0.8];
+    (self.startSkiingBtn.layer).opacity = 0.8;
     [self.startSkiingBtn setTitle:@"Updating ..." forState:UIControlStateNormal];
     [self.startSkiingBtn setBackgroundImage:[skiButtonEnabled resizableImageWithCapInsets:insets]
                          forState:UIControlStateNormal];
@@ -48,23 +52,24 @@
         [self.startSkiingBtn setUserInteractionEnabled:YES];
         [self.startSkiingBtn setTitle:@"Start Skiing" forState:UIControlStateNormal];
         [UIView animateWithDuration:0.25 animations:^{
-            [self.startSkiingBtn.layer setOpacity:1.0];
+            (self.startSkiingBtn.layer).opacity = 1.0;
         }];
     } error:^(NSError *error) {
         NSLog(@"Download failure: Error: %@", error.localizedDescription);
         [self.startSkiingBtn setUserInteractionEnabled:YES];
         [self.startSkiingBtn setTitle:@"Start Skiing" forState:UIControlStateNormal];
         [UIView animateWithDuration:0.25 animations:^{
-            [self.startSkiingBtn.layer setOpacity:1.0];
+            (self.startSkiingBtn.layer).opacity = 1.0;
         }];
     }];
     
     // Setup Background Image
     UIImage *image = [UIImage imageNamed:@"landing_image"];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-    [imageView setContentMode:UIViewContentModeScaleAspectFill];
-    [imageView setFrame:self.view.frame];
+    imageView.contentMode = UIViewContentModeScaleAspectFill;
+    imageView.frame = self.view.frame;
     [self.backgroundView addSubview:imageView];
+    [self.backgroundView sendSubviewToBack:imageView];
     
     // Set up Snow Particle Layer
     CAEmitterLayer *emitterLayer = [CAEmitterLayer layer];
@@ -84,9 +89,9 @@
     emitterCell.yAcceleration = 80;
     emitterCell.xAcceleration = -40;
     
-    emitterCell.contents = (id)[[UIImage imageNamed:@"snow_particle"] CGImage];
+    emitterCell.contents = (id)[UIImage imageNamed:@"snow_particle"].CGImage;
     
-    emitterLayer.emitterCells = [NSArray arrayWithObject:emitterCell];
+    emitterLayer.emitterCells = @[emitterCell];
     
     [self.backgroundView.layer addSublayer:emitterLayer];
 }

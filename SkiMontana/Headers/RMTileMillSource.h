@@ -38,7 +38,7 @@
 *   @param minZoom The minimum zoom level supported by the map.
 *   @param maxZoom The maximum zoom level supported by the map.
 *   @return An initialized TileMill tile source. */
-- (id)initWithMapName:(NSString *)mapName tileCacheKey:(NSString *)tileCacheKey minZoom:(float)minZoom maxZoom:(float)maxZoom;
+- (instancetype)initWithMapName:(NSString *)mapName tileCacheKey:(NSString *)tileCacheKey minZoom:(float)minZoom maxZoom:(float)maxZoom;
 
 /** Initialize and return a newly allocated TileMill tile source based on a given host and map name. This is ideal for testing on an actual iOS device if the network name or address of the computer running TileMill is passed as the `host` parameter. 
 *   @param host The hostname or IP address of the computer running TileMill. 
@@ -47,6 +47,6 @@
 *   @param minZoom The minimum zoom level supported by the map.
 *   @param maxZoom The maximum zoom level supported by the map.
 *   @return An initialized TileMill tile source. */
-- (id)initWithHost:(NSString *)host mapName:(NSString *)mapName tileCacheKey:(NSString *)tileCacheKey minZoom:(float)minZoom maxZoom:(float)maxZoom;
+- (instancetype)initWithHost:(NSString *)host mapName:(NSString *)mapName tileCacheKey:(NSString *)tileCacheKey minZoom:(float)minZoom maxZoom:(float)maxZoom;
 
 @end

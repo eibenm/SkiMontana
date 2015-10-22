@@ -45,7 +45,7 @@ NSString *const SM_Glossary = @"Glossary";
 
 - (NSURL *)applicationDocumentsDirectory
 {
-    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    return [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask].lastObject;
 }
 
 - (NSManagedObjectModel *)managedObjectModel
@@ -69,12 +69,12 @@ NSString *const SM_Glossary = @"Glossary";
     }
     
     // Create the coordinator and store
-    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.managedObjectModel];
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:kDataManagerSQLiteName];
     
     NSDictionary *options = @{
-        NSMigratePersistentStoresAutomaticallyOption: [NSNumber numberWithBool:YES],
-        NSInferMappingModelAutomaticallyOption: [NSNumber numberWithBool:YES]
+        NSMigratePersistentStoresAutomaticallyOption: @YES,
+        NSInferMappingModelAutomaticallyOption: @YES
     };
     
     NSError *error = nil;
@@ -88,7 +88,7 @@ NSString *const SM_Glossary = @"Glossary";
         error = [NSError errorWithDomain:@"YOUR_ERROR_DOMAIN" code:9999 userInfo:dict];
         // Replace this with code to handle the error appropriately.
         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        NSLog(@"Unresolved error %@, %@", error, error.userInfo);
         abort();
     }
     
@@ -105,12 +105,12 @@ NSString *const SM_Glossary = @"Glossary";
         return _managedObjectContext;
     }
     
-    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
+    NSPersistentStoreCoordinator *coordinator = self.persistentStoreCoordinator;
     if (!coordinator) {
         return nil;
     }
     _managedObjectContext = [[NSManagedObjectContext alloc] init];
-    [_managedObjectContext setPersistentStoreCoordinator:coordinator];
+    _managedObjectContext.persistentStoreCoordinator = coordinator;
     return _managedObjectContext;
 }
 
@@ -119,7 +119,7 @@ NSString *const SM_Glossary = @"Glossary";
     assert([[NSFileManager defaultManager] fileExistsAtPath:URL.path]);
     
     NSError *error = nil;
-    BOOL success = [URL setResourceValue:[NSNumber numberWithBool: YES]
+    BOOL success = [URL setResourceValue:@YES
                                   forKey:NSURLIsExcludedFromBackupKey
                                    error:&error];
     
@@ -137,7 +137,7 @@ NSString *const SM_Glossary = @"Glossary";
     NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
     if (managedObjectContext != nil) {
         NSError *error = nil;
-        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
+        if (managedObjectContext.hasChanges && ![managedObjectContext save:&error]) {
             // Replace this implementation with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             NSLog(@"Unable to save context %@, %@", error.localizedDescription, error.userInfo);
@@ -150,13 +150,13 @@ NSString *const SM_Glossary = @"Glossary";
 
 - (BOOL)clearPersistentStores
 {
-    _persistentStoreCoordinator = [self persistentStoreCoordinator];
+    _persistentStoreCoordinator = self.persistentStoreCoordinator;
         
     if (!_persistentStoreCoordinator) {
         return NO;
     }
     
-    NSArray *stores = [_persistentStoreCoordinator persistentStores];
+    NSArray *stores = _persistentStoreCoordinator.persistentStores;
     NSError *storeError = nil;
     NSError *fileError = nil;
     

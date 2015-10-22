@@ -52,7 +52,7 @@
 
 /** Initializes and returns a newly allocated shape object for the specified map view.
 *   @param aMapView The map view the shape should be drawn on. */
-- (id)initWithView:(RMMapView *)aMapView;
+- (instancetype)initWithView:(RMMapView *)aMapView;
 
 /** @name Accessing the Drawing Properties */
 

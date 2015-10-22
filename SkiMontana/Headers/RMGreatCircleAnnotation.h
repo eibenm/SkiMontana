@@ -36,7 +36,7 @@
 *   @param coordinate1 The starting coordinate.
 *   @param coordinate2 The ending coordinate. 
 *   @return An initialized great circle annotation object, or `nil` if an annotation was unable to be initialized. */
-- (id)initWithMapView:(RMMapView *)aMapView coordinate1:(CLLocationCoordinate2D)coordinate1 coordinate2:(CLLocationCoordinate2D)coordinate2;
+- (instancetype)initWithMapView:(RMMapView *)aMapView coordinate1:(CLLocationCoordinate2D)coordinate1 coordinate2:(CLLocationCoordinate2D)coordinate2;
 
 /** The starting coordinate of the annotation. */
 @property (nonatomic, readonly, assign) CLLocationCoordinate2D coordinate1;

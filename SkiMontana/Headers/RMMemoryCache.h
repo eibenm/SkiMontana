@@ -37,7 +37,7 @@
 /** Initializes and returns a newly allocated memory cache object with the specified tile count capacity.
 *   @param aCapacity The maximum number of tiles to be held in the cache.
 *   @return An initialized memory cache object or `nil` if the object couldn't be created. */
-- (id)initWithCapacity:(NSUInteger)aCapacity;
+- (instancetype)initWithCapacity:(NSUInteger)aCapacity;
 
 /** @name Cache Capacity */
 

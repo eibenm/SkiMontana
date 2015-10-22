@@ -46,7 +46,7 @@
 + (instancetype)googleProjection;
 + (instancetype)EPSGLatLong;
 
-- (id)initWithString:(NSString *)proj4String inBounds:(RMProjectedRect)projectedBounds;
+- (instancetype)initWithString:(NSString *)proj4String inBounds:(RMProjectedRect)projectedBounds;
 
 // inverse project meters, return latitude/longitude
 - (CLLocationCoordinate2D)projectedPointToCoordinate:(RMProjectedPoint)aPoint;
