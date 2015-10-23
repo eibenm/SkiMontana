@@ -6,19 +6,15 @@
 //  Copyright (c) 2014 Gneiss Software. All rights reserved.
 //
 
-static inline BOOL isIOS7OrLater()
-{
-    return [[[UIDevice currentDevice] systemVersion] floatValue] >= 7;
-}
 
 static inline BOOL isIOS8OrLater()
 {
     return [[[UIDevice currentDevice] systemVersion] floatValue] >= 8;
 }
 
-static inline BOOL isRetinaDevice()
+static inline BOOL isIOS9OrLater()
 {
-    return [[UIScreen mainScreen] respondsToSelector:@selector(scale)] && [[UIScreen mainScreen] scale] >= 2;
+    return [[[UIDevice currentDevice] systemVersion] floatValue] >= 9;
 }
 
 static NSString * const SKIAPP_JSON =                    @"skiappdata.json";
@@ -47,11 +43,21 @@ static NSString * const kIdentifierSubscription1Year =   @"com.eibenm.SkiMontana
 
 static NSString * const SKIAPP_JSON_URL =                @"http://eibenm.com/backcountryskiapp/skimontanadata/skiappdata.json";
 static NSString * const BUNDLE_IDENTIFIER =              @"com.eibenm.SkiMontana";
-static NSString *const kIdentifierSubscription1Month =   @"com.eibenm.SkiMontana.1Month.Pro";
-static NSString *const kIdentifierSubscription1Year =    @"com.eibenm.SkiMontana.1Year.Pro";
+static NSString * const kIdentifierSubscription1Month =   @"com.eibenm.SkiMontana.1Month.Pro";
+static NSString * const kIdentifierSubscription1Year =    @"com.eibenm.SkiMontana.1Year.Pro";
 
 #undef NSLog
 #define NSLog(...)
+
+#endif
+
+#if TRIAL == 1
+
+static BOOL const IS_TRIAL = YES;
+
+#else
+
+static BOOL const IS_TRIAL = NO;
 
 #endif
 

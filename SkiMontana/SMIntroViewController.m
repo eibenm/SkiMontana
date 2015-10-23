@@ -34,11 +34,11 @@
     UIEdgeInsets insets = UIEdgeInsetsMake(0.0f, 10.0f, 0.0f, 10.0f);
     UIImage *skiButtonEnabled = [UIImage imageNamed:@"start_skiing"];
     
-    [self.startSkiingBtn setUserInteractionEnabled:NO];
+    (self.startSkiingBtn).userInteractionEnabled = NO;
     (self.startSkiingBtn.layer).opacity = 0.8;
     [self.startSkiingBtn setTitle:@"Updating ..." forState:UIControlStateNormal];
     [self.startSkiingBtn setBackgroundImage:[skiButtonEnabled resizableImageWithCapInsets:insets]
-                         forState:UIControlStateNormal];
+                                   forState:UIControlStateNormal];
     
     [[SMUtilities sharedInstance] downloadSMJsonWithSuccess:^(BOOL appUpdated, NSString *message) {
         if (appUpdated == YES) {
@@ -62,7 +62,7 @@
             (self.startSkiingBtn.layer).opacity = 1.0;
         }];
     }];
-    
+        
     // Setup Background Image
     UIImage *image = [UIImage imageNamed:@"landing_image"];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];

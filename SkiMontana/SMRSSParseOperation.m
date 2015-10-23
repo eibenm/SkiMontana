@@ -103,13 +103,9 @@ static NSString * const kUpdatedElementName = @"pubDate";
         SMRSSEntry *rssEntry = [[SMRSSEntry alloc] init];
         self.currentAvyFeedObject = rssEntry;
     }
-    else if ([elementName isEqualToString:kLinkElementName]) {
-        NSString *relAttribute = attributeDict[@"rel"];
-        if ([relAttribute isEqualToString:@"alternate"]) {
-            (self.currentAvyFeedObject).link = [NSURL URLWithString:attributeDict[@"href"]];
-        }
-    }
-    else if ([elementName isEqualToString:kTitleElementName] || [elementName isEqualToString:kUpdatedElementName]) {
+    else if ([elementName isEqualToString:kTitleElementName] ||
+             [elementName isEqualToString:kUpdatedElementName] ||
+             [elementName isEqualToString:kLinkElementName]) {
         _accumulatingParsedCharacterData = YES;
         [self.currentParsedCharacterData setString:@""];
     }
@@ -128,6 +124,11 @@ static NSString * const kUpdatedElementName = @"pubDate";
     else if ([elementName isEqualToString:kTitleElementName]) {
         if (self.currentAvyFeedObject != nil) {
             (self.currentAvyFeedObject).title = self.currentParsedCharacterData;
+        }
+    }
+    else if ([elementName isEqualToString:kLinkElementName]) {
+        if (self.currentAvyFeedObject != nil) {
+            (self.currentAvyFeedObject).link = [NSURL URLWithString:[self.currentParsedCharacterData stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         }
     }
     else if ([elementName isEqualToString:kUpdatedElementName]) {

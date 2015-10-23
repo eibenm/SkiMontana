@@ -1,19 +1,19 @@
 //
-//  SkiAreas.h
+//  File.h
 //  SkiMontana
 //
-//  Created by Matt Eiben on 10/4/15.
+//  Created by Matt Eiben on 10/22/15.
 //  Copyright © 2015 Gneiss Software. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class File, SkiRoutes;
+@class SkiAreas, SkiRoutes;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SkiAreas : NSManagedObject
+@interface File : NSManagedObject
 
 // Insert code here to declare functionality of your managed object subclass
 
@@ -21,4 +21,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 NS_ASSUME_NONNULL_END
 
-#import "SkiAreas+CoreDataProperties.h"
+#import "File+CoreDataProperties.h"

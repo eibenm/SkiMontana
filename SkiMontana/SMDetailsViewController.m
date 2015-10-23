@@ -73,6 +73,11 @@ static CGFloat maxOffsetDiff = 46.0f;
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[backgroundImageView]|" options:kNilOptions metrics:nil views:backgroundImageViews]];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
@@ -95,7 +100,7 @@ static CGFloat maxOffsetDiff = 46.0f;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return 6;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -105,7 +110,8 @@ static CGFloat maxOffsetDiff = 46.0f;
         case 1: cellIdentifier = @"overview"; break;
         case 2: cellIdentifier = @"avalanche"; break;
         case 3: cellIdentifier = @"content"; break;
-        case 4: cellIdentifier = @"directions"; break;
+        case 4: cellIdentifier = @"getting_there"; break;
+        case 5: cellIdentifier = @"directions"; break;
     }
     
     SMDetailsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
@@ -134,14 +140,22 @@ static CGFloat maxOffsetDiff = 46.0f;
     else if ([cellIdentifier isEqualToString:@"avalanche"]) {
         (cell.labelAvalancheInformation).text = self.skiRoute.avalanche_info;
     }
-    else if ([cellIdentifier isEqualToString:@"directions"]) {
+    else if ([cellIdentifier isEqualToString:@"getting_there"]) {
         (cell.labelDirectionsInformation).text = self.skiRoute.directions;
+    }
+    else if ([cellIdentifier isEqualToString:@"directions"]) {
+        nil;
     }
     
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [cell layoutIfNeeded];
+}
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
@@ -158,6 +172,7 @@ static CGFloat maxOffsetDiff = 46.0f;
         case 3: height = 350; break;
         case 2: height = 350; break;
         case 4: height = 350; break;
+        case 5: height = 44; break;
     }
     
     return height;
@@ -190,6 +205,36 @@ static CGFloat maxOffsetDiff = 46.0f;
         }];
         [cell.imageMapBackground.layer addAnimation:pulseAnimation forKey:pulseAnimation.keyPath];
         [cell.mapTapLabel.layer addAnimation:pulseAnimation forKey:pulseAnimation.keyPath];
+    }
+    
+    // Open up appropriate mapping App for directions to parking lot
+    if ([cell.reuseIdentifier isEqualToString:@"directions"]) {
+        NSSet *gpsPoints = (self.skiRoute).ski_route_gps;
+        
+        double latitude = 40.0f;
+        double longitude = -180.0f;
+        
+        for (Gps *gps in gpsPoints) {
+            if ([gps.waypoint isEqualToString:@"Parking"]) {
+                latitude = gps.lat.doubleValue;
+                longitude = gps.lon.doubleValue;
+            }
+        }
+        
+        // Google Maps: https://developers.google.com/maps/documentation/ios-sdk/urlscheme?hl=en
+        // Apple Maps: https://developer.apple.com/library/ios/featuredarticles/iPhoneURLScheme_Reference/MapLinks/MapLinks.html
+        
+        NSURL *googleUrl = [NSURL URLWithString:[NSString stringWithFormat:@"comgooglemaps://?saddr=&daddr=%f,%f&directionsmode=driving&views=satellite", latitude, longitude]];
+        NSURL *appleMapsUrl = [NSURL URLWithString:[NSString stringWithFormat:@"http://maps.apple.com/?daddr=%f,%f&dirflg=d&t=h", latitude, longitude]];
+        
+        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"comgooglemaps://"]]) {
+            [[UIApplication sharedApplication] openURL:googleUrl];
+        }
+        else {
+            [[UIApplication sharedApplication] openURL:appleMapsUrl];
+        }
+        
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
 }
 

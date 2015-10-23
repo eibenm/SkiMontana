@@ -1,15 +1,14 @@
 //
-//  Gps.m
+//  Glossary.m
 //  SkiMontana
 //
-//  Created by Matt Eiben on 9/23/15.
+//  Created by Matt Eiben on 10/22/15.
 //  Copyright © 2015 Gneiss Software. All rights reserved.
 //
 
-#import "Gps.h"
-#import "SkiRoutes.h"
+#import "Glossary.h"
 
-@implementation Gps
+@implementation Glossary
 
 // Insert code here to add functionality to your managed object subclass
 

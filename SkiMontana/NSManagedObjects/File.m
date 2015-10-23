@@ -1,17 +1,16 @@
 //
-//  SkiRoutes.m
+//  File.m
 //  SkiMontana
 //
-//  Created by Matt Eiben on 10/17/15.
+//  Created by Matt Eiben on 10/22/15.
 //  Copyright © 2015 Gneiss Software. All rights reserved.
 //
 
-#import "SkiRoutes.h"
 #import "File.h"
-#import "Gps.h"
 #import "SkiAreas.h"
+#import "SkiRoutes.h"
 
-@implementation SkiRoutes
+@implementation File
 
 // Insert code here to add functionality to your managed object subclass
 

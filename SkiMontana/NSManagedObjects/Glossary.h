@@ -1,18 +1,17 @@
 //
-//  Gps.h
+//  Glossary.h
 //  SkiMontana
 //
-//  Created by Matt Eiben on 9/23/15.
+//  Created by Matt Eiben on 10/22/15.
 //  Copyright © 2015 Gneiss Software. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-
-@class SkiRoutes;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Gps : NSManagedObject
+@interface Glossary : NSManagedObject
 
 // Insert code here to declare functionality of your managed object subclass
 
@@ -20,4 +19,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 NS_ASSUME_NONNULL_END
 
-#import "Gps+CoreDataProperties.h"
+#import "Glossary+CoreDataProperties.h"

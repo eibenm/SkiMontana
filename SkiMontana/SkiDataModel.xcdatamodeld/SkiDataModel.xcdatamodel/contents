@@ -6,6 +6,7 @@
         <attribute name="filename" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="ski_area" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SkiAreas" inverseName="ski_area_image" inverseEntity="SkiAreas" syncable="YES"/>
         <relationship name="ski_route" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SkiRoutes" inverseName="ski_route_images" inverseEntity="SkiRoutes" syncable="YES"/>
+        <relationship name="ski_route_kml" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SkiRoutes" inverseName="kml_image" inverseEntity="SkiRoutes" syncable="YES"/>
     </entity>
     <entity name="Glossary" representedClassName="Glossary" syncable="YES">
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
@@ -50,15 +51,16 @@
         <attribute name="skier_traffic" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="snowfall" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="vertical" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="kml_image" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="File" inverseName="ski_route_kml" inverseEntity="File" syncable="YES"/>
         <relationship name="ski_area" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SkiAreas" inverseName="ski_routes" inverseEntity="SkiAreas" syncable="YES"/>
         <relationship name="ski_route_gps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Gps" inverseName="ski_route" inverseEntity="Gps" syncable="YES"/>
         <relationship name="ski_route_images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="File" inverseName="ski_route" inverseEntity="File" syncable="YES"/>
     </entity>
     <elements>
-        <element name="File" positionX="-7155" positionY="-4653" width="128" height="118"/>
-        <element name="Glossary" positionX="-7488" positionY="-4617" width="128" height="73"/>
-        <element name="Gps" positionX="-7130" positionY="-4867" width="128" height="58"/>
-        <element name="SkiAreas" positionX="-7515" positionY="-4861" width="128" height="180"/>
-        <element name="SkiRoutes" positionX="-7337" positionY="-5086" width="128" height="373"/>
+        <element name="File" positionX="-7049" positionY="-4572" width="128" height="133"/>
+        <element name="Glossary" positionX="-7146" positionY="-4888" width="128" height="73"/>
+        <element name="Gps" positionX="-7076" positionY="-4761" width="128" height="133"/>
+        <element name="SkiAreas" positionX="-7533" positionY="-4680" width="128" height="180"/>
+        <element name="SkiRoutes" positionX="-7335" positionY="-4968" width="128" height="388"/>
     </elements>
 </model>

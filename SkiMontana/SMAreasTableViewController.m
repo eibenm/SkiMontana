@@ -298,8 +298,7 @@ static NSString *cellIdentifier;
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
-    NSArray *segues = @[@"showRoute", @"showGlossary", @"showRSS"];
-    
+    NSSet *segues = [[NSSet alloc] initWithObjects:@"showGlossary", @"showRSS", nil];
     if ([segues containsObject:identifier]) {
         return YES;
     }
@@ -310,6 +309,7 @@ static NSString *cellIdentifier;
     if (skiArea.permissions.boolValue == NO) {
         return NO;
     }
+    
     return YES;
 }
 

@@ -123,24 +123,29 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
     // Not initial launch, get data from cloud
     
     else {
-        [[SMReachabilityManager sharedManager] checkNetworkStatusWithCompletionHandler:^(BOOL success, CurrentNetworkStatus status) {
-            if (status == NetworkStatusEnabled) {
-                NSLog(@"Network Enabled");
-                NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:SKIAPP_JSON_URL]
-                                                         cachePolicy:NSURLRequestReloadIgnoringCacheData
-                                                     timeoutInterval:10.0];
-                
-                [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-                
-                [NSURLConnection sendAsynchronousRequest:request
-                                                   queue:[[NSOperationQueue alloc] init]
-                                       completionHandler:completionHandler];
-            }
-            if (status == NetworkStatusDisabled) {
-                NSLog(@"Network Disabled");
-                self.failureBlock([NSError errorWithDomain:@"ccom.eibenm.SkiMontana.NoResponse" code:404 userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(@"Network is disabled", @"") }]);
-            }
-        }];
+        if (IS_TRIAL == NO) {
+            [[SMReachabilityManager sharedManager] checkNetworkStatusWithCompletionHandler:^(BOOL success, CurrentNetworkStatus status) {
+                if (status == NetworkStatusEnabled) {
+                    NSLog(@"Network Enabled");
+                    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:SKIAPP_JSON_URL]
+                                                             cachePolicy:NSURLRequestReloadIgnoringCacheData
+                                                         timeoutInterval:10.0];
+                    
+                    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+                    
+                    [NSURLConnection sendAsynchronousRequest:request
+                                                       queue:[[NSOperationQueue alloc] init]
+                                           completionHandler:completionHandler];
+                }
+                if (status == NetworkStatusDisabled) {
+                    NSLog(@"Network Disabled");
+                    self.failureBlock([NSError errorWithDomain:@"com.eibenm.SkiMontana.NoResponse" code:404 userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(@"Network is disabled", @"") }]);
+                }
+            }];
+        }
+        else {
+            self.successBlock(NO, @"App is Trial version, no updating will occur");
+        }
     }
 }
 
@@ -266,7 +271,7 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
         skiArea.short_desc = skiAreaJson[@"short_desc"];
         skiArea.conditions = skiAreaJson[@"conditions"];
         skiArea.name_area = skiAreaJson[@"name_area"];
-        skiArea.permissions = skiAreaJson[@"permissions"];
+        skiArea.permissions = (IS_TRIAL ? @YES : skiAreaJson[@"permissions"]);
         
         NSDictionary *skiAreaImage = skiAreaJson[@"skiarea_image"];
         
@@ -304,6 +309,17 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
             skiRoute.vertical = skiRouteJson[@"vertical"];
             skiRoute.mbtiles = skiRouteJson[@"mbtiles"];
             skiRoute.ski_area = skiArea;
+            
+            NSDictionary *kmlImage = skiRouteJson[@"kml_image"];
+            
+            if (kmlImage != (NSDictionary *)[NSNull null]) {
+                File *fileKmlImage = [NSEntityDescription insertNewObjectForEntityForName:SM_File inManagedObjectContext:context];
+                fileKmlImage.filename = skiAreaImage[@"filename"];
+                fileKmlImage.avatar = skiAreaImage[@"avatar"];
+                fileKmlImage.ski_route_kml = skiRoute;
+                skiRoute.kml_image = fileKmlImage;
+            }
+            
             [skiRouteSet addObject:skiRoute];
             
             NSMutableSet *skiRouteImageSet = [NSMutableSet new];
