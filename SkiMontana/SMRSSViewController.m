@@ -16,6 +16,8 @@
 // this framework is imported so we can use the kCFURLErrorNotConnectedToInternet error code
 #import <CFNetwork/CFNetwork.h>
 
+#import "RSSHeaderView.h"
+
 @interface SMRSSViewController () <UITableViewDelegate, UITableViewDataSource, SFSafariViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -195,7 +197,7 @@
     
     cell.textLabel.numberOfLines = 1;
     cell.textLabel.adjustsFontSizeToFitWidth = YES;
-    cell.textLabel.minimumScaleFactor = 12.0/[UIFont labelFontSize];
+    cell.textLabel.minimumScaleFactor = 10.0/[UIFont labelFontSize];
     
     return cell;
 }
@@ -204,9 +206,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *view = [[[NSBundle mainBundle] loadNibNamed:@"RSSHeaderView" owner:self options:nil] lastObject];
-    
-    return view;
+    return [[RSSHeaderView alloc] init];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

@@ -40,6 +40,7 @@
 		CB753AD71BBA0D12007EAAAD /* SMAreasTableViewControllerParent.m in Sources */ = {isa = PBXBuildFile; fileRef = CB753AD61BBA0D12007EAAAD /* SMAreasTableViewControllerParent.m */; settings = {ASSET_TAGS = (); }; };
 		CB753AE31BBA2CBA007EAAAD /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = CB753AE21BBA2CBA007EAAAD /* UIImage+ImageEffects.m */; settings = {ASSET_TAGS = (); }; };
 		CB76D9C61AFC6102005EC2E8 /* SMRouteMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB76D9C51AFC6102005EC2E8 /* SMRouteMapViewController.m */; };
+		CB7E02CA1BDACF4400F19328 /* RSSHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7E02C91BDACF4400F19328 /* RSSHeaderView.m */; settings = {ASSET_TAGS = (); }; };
 		CB8694C21B09639B00D4A93F /* Headers in Resources */ = {isa = PBXBuildFile; fileRef = CB8694BF1B09639B00D4A93F /* Headers */; };
 		CB8694C31B09639B00D4A93F /* libMapbox.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8694C01B09639B00D4A93F /* libMapbox.a */; };
 		CB8694C41B09639B00D4A93F /* Mapbox.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CB8694C11B09639B00D4A93F /* Mapbox.bundle */; };
@@ -157,6 +158,8 @@
 		CB753AE21BBA2CBA007EAAAD /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		CB76D9C41AFC6102005EC2E8 /* SMRouteMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRouteMapViewController.h; sourceTree = "<group>"; };
 		CB76D9C51AFC6102005EC2E8 /* SMRouteMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRouteMapViewController.m; sourceTree = "<group>"; };
+		CB7E02C81BDACF4400F19328 /* RSSHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSHeaderView.h; sourceTree = "<group>"; };
+		CB7E02C91BDACF4400F19328 /* RSSHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSHeaderView.m; sourceTree = "<group>"; };
 		CB8694BF1B09639B00D4A93F /* Headers */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Headers; sourceTree = "<group>"; };
 		CB8694C01B09639B00D4A93F /* libMapbox.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMapbox.a; sourceTree = "<group>"; };
 		CB8694C11B09639B00D4A93F /* Mapbox.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Mapbox.bundle; sourceTree = "<group>"; };
@@ -272,6 +275,8 @@
 				CB57FA491BD754B4009C3B3E /* SMRSSEntry.h */,
 				CB57FA4A1BD754B4009C3B3E /* SMRSSEntry.m */,
 				CB1112001BDA8B5C00B41862 /* RSSHeaderView.xib */,
+				CB7E02C81BDACF4400F19328 /* RSSHeaderView.h */,
+				CB7E02C91BDACF4400F19328 /* RSSHeaderView.m */,
 			);
 			name = "RSS Feed";
 			sourceTree = "<group>";
@@ -667,6 +672,7 @@
 			files = (
 				CB17F6761AA93F5C00048BC5 /* SMSkiRouteTableViewCell.m in Sources */,
 				CBA2B5EA1BCDE1C300B7C129 /* SMMapAttributionViewController.m in Sources */,
+				CB7E02CA1BDACF4400F19328 /* RSSHeaderView.m in Sources */,
 				CB9695451A9A3FC1009757B7 /* SMIntroViewController.m in Sources */,
 				CBF4662F1BBE537F00791383 /* SCPStoreKitReceipt.m in Sources */,
 				CB17F6731AA93F4600048BC5 /* SMSkiAreaTableViewCell.m in Sources */,
