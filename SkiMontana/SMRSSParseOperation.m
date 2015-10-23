@@ -41,7 +41,7 @@ NSString *kAvyFeedMessageErrorKey = @"AvyFeedMsgErrorKey";
         _dateFormatter = [[NSDateFormatter alloc] init];
         [_dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
         [_dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
-        [_dateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"];
+        [_dateFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss Z"];
         
         _currentParseBatch = [[NSMutableArray alloc] init];
         _currentParsedCharacterData = [[NSMutableString alloc] init];
@@ -83,15 +83,13 @@ static NSUInteger const kSizeOfBatch = 10;
 static NSString * const kEntryElementName = @"item";
 static NSString * const kTitleElementName = @"title";
 static NSString * const kLinkElementName = @"link";
+static NSString * const kDescriptionElementName = @"description";
 static NSString * const kUpdatedElementName = @"pubDate";
 
 #pragma mark - NSXMLParserDelegate
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
 {
-    /*
-     If the number of parsed earthquakes is greater than kMaximumNumberOfEarthquakesToParse, abort the parse.
-     */
     if (_parsedAvyFeedCounter >= kMaximumNumberToParse) {
         /*
          Use the flag didAbortParsing to distinguish between this deliberate stop and other parser errors.
@@ -105,6 +103,7 @@ static NSString * const kUpdatedElementName = @"pubDate";
     }
     else if ([elementName isEqualToString:kTitleElementName] ||
              [elementName isEqualToString:kUpdatedElementName] ||
+             [elementName isEqualToString:kDescriptionElementName] ||
              [elementName isEqualToString:kLinkElementName]) {
         _accumulatingParsedCharacterData = YES;
         [self.currentParsedCharacterData setString:@""];
@@ -122,8 +121,9 @@ static NSString * const kUpdatedElementName = @"pubDate";
         }
     }
     else if ([elementName isEqualToString:kTitleElementName]) {
+        (self.currentAvyFeedObject).title = self.currentParsedCharacterData;
         if (self.currentAvyFeedObject != nil) {
-            (self.currentAvyFeedObject).title = self.currentParsedCharacterData;
+            (self.currentAvyFeedObject).title = [self.currentParsedCharacterData copy];
         }
     }
     else if ([elementName isEqualToString:kLinkElementName]) {
@@ -131,10 +131,13 @@ static NSString * const kUpdatedElementName = @"pubDate";
             (self.currentAvyFeedObject).link = [NSURL URLWithString:[self.currentParsedCharacterData stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         }
     }
-    else if ([elementName isEqualToString:kUpdatedElementName]) {
+    else if ([elementName isEqualToString:kDescriptionElementName]) {
         if (self.currentAvyFeedObject != nil) {
-            (self.currentAvyFeedObject.pubDate) = [_dateFormatter dateFromString:self.currentParsedCharacterData];
+            (self.currentAvyFeedObject).desc = [self.currentParsedCharacterData copy];
         }
+    }
+    else if ([elementName isEqualToString:kUpdatedElementName]) {
+        (self.currentAvyFeedObject).pubDate = [_dateFormatter dateFromString:self.currentParsedCharacterData];
     }
     _accumulatingParsedCharacterData = NO;
 }

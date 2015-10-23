@@ -31,7 +31,7 @@
 {
     [super viewDidLoad];
     
-    self.title = @"RSS Feed";
+    self.title = @"GNFAC Advisory";
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -190,15 +190,29 @@
     cell.textLabel.text = rssFeed.title;
     cell.detailTextLabel.text = rssFeed.link.absoluteString;
     
-//    NSLog(@"Title: %@", rssFeed.title);
-//    NSLog(@"Link: %@", rssFeed.link);
-//    NSLog(@"Desc: %@", rssFeed.desc);
-//    NSLog(@"Pubdate: %@", rssFeed.pubDate);
+    cell.textLabel.font = [UIFont skiMontanaFontOfSize:18.0];
+    cell.detailTextLabel.font = [UIFont skiMontanaFontOfSize:10.0];
+    
+    cell.textLabel.numberOfLines = 1;
+    cell.textLabel.adjustsFontSizeToFitWidth = YES;
+    cell.textLabel.minimumScaleFactor = 12.0/[UIFont labelFontSize];
     
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *view = [[[NSBundle mainBundle] loadNibNamed:@"RSSHeaderView" owner:self options:nil] lastObject];
+    
+    return view;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 60.0f;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -217,7 +231,8 @@
         (self.navigationItem).backBarButtonItem = newBackButton;
         [self.navigationController pushViewController:webViewController animated:YES];
     }
-
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - SFSafariViewControllerDelegate

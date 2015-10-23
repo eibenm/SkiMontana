@@ -152,11 +152,6 @@ static CGFloat maxOffsetDiff = 46.0f;
 
 #pragma mark - UITableViewDelegate
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [cell layoutIfNeeded];
-}
-
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     return [[UIView alloc] initWithFrame:CGRectZero];
@@ -236,6 +231,12 @@ static CGFloat maxOffsetDiff = 46.0f;
         
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
+}
+
+// This is needed on ios8
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [cell layoutIfNeeded];
 }
 
 #pragma mark - UIScrollViewDelegate

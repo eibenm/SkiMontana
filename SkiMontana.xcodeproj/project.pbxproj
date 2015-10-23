@@ -18,6 +18,7 @@
 		CB1111F91BD9D92E00B41862 /* Gps.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111ED1BD9D92E00B41862 /* Gps.m */; settings = {ASSET_TAGS = (); }; };
 		CB1111FA1BD9D92E00B41862 /* SkiRoutes+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111EF1BD9D92E00B41862 /* SkiRoutes+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
 		CB1111FB1BD9D92E00B41862 /* SkiRoutes.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111F11BD9D92E00B41862 /* SkiRoutes.m */; settings = {ASSET_TAGS = (); }; };
+		CB1112011BDA8B5C00B41862 /* RSSHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB1112001BDA8B5C00B41862 /* RSSHeaderView.xib */; settings = {ASSET_TAGS = (); }; };
 		CB12986F1BA10E6C0046095B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB12986E1BA10E6C0046095B /* Images.xcassets */; };
 		CB17F6731AA93F4600048BC5 /* SMSkiAreaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB17F6721AA93F4600048BC5 /* SMSkiAreaTableViewCell.m */; };
 		CB17F6761AA93F5C00048BC5 /* SMSkiRouteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB17F6751AA93F5C00048BC5 /* SMSkiRouteTableViewCell.m */; };
@@ -117,6 +118,7 @@
 		CB1111EF1BD9D92E00B41862 /* SkiRoutes+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SkiRoutes+CoreDataProperties.m"; path = "NSManagedObjects/SkiRoutes+CoreDataProperties.m"; sourceTree = "<group>"; };
 		CB1111F01BD9D92E00B41862 /* SkiRoutes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SkiRoutes.h; path = NSManagedObjects/SkiRoutes.h; sourceTree = "<group>"; };
 		CB1111F11BD9D92E00B41862 /* SkiRoutes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SkiRoutes.m; path = NSManagedObjects/SkiRoutes.m; sourceTree = "<group>"; };
+		CB1112001BDA8B5C00B41862 /* RSSHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RSSHeaderView.xib; sourceTree = "<group>"; };
 		CB12986E1BA10E6C0046095B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CB17F6711AA93F4600048BC5 /* SMSkiAreaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSkiAreaTableViewCell.h; sourceTree = "<group>"; };
 		CB17F6721AA93F4600048BC5 /* SMSkiAreaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSkiAreaTableViewCell.m; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				CB57FA4D1BD75F60009C3B3E /* SMRSSParseOperation.m */,
 				CB57FA491BD754B4009C3B3E /* SMRSSEntry.h */,
 				CB57FA4A1BD754B4009C3B3E /* SMRSSEntry.m */,
+				CB1112001BDA8B5C00B41862 /* RSSHeaderView.xib */,
 			);
 			name = "RSS Feed";
 			sourceTree = "<group>";
@@ -648,6 +651,7 @@
 				CB12986F1BA10E6C0046095B /* Images.xcassets in Resources */,
 				CB96952E1A9A3EF6009757B7 /* LaunchScreen.xib in Resources */,
 				CB2B346F1BAE0C1D007067C3 /* Main.storyboard in Resources */,
+				CB1112011BDA8B5C00B41862 /* RSSHeaderView.xib in Resources */,
 				CB8694C21B09639B00D4A93F /* Headers in Resources */,
 				CBF4662D1BBE537F00791383 /* AppleIncRootCertificate.cer in Resources */,
 				CBA338AC1B82821F001BA5FF /* skiappdata.json in Resources */,
