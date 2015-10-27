@@ -11,9 +11,12 @@
 
 static NSString *cellIdentifier = @"glossaryTerm";
 
-@interface SMGlossaryTableViewController ()
+@interface SMGlossaryTableViewController() <UISearchResultsUpdating>
 
 @property (nonatomic, assign) NSInteger selectedIndex;
+@property (nonatomic, strong) NSArray *filteredResults;
+@property (strong, nonatomic) UISearchController *searchController;
+@property (strong, nonatomic) NSFetchRequest *searchFetchRequest;
 
 @end
 
@@ -33,6 +36,15 @@ static NSString *cellIdentifier = @"glossaryTerm";
     
     self.title = @"Glossary";
     self.selectedIndex = -1.0f;
+    
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    (self.searchController).searchResultsUpdater = self;
+    (self.searchController).dimsBackgroundDuringPresentation = NO;
+    self.tableView.tableHeaderView = (self.searchController).searchBar;
+    self.definesPresentationContext = YES;
+    [self.searchController.searchBar sizeToFit];
+    
+    //[self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,17 +57,19 @@ static NSString *cellIdentifier = @"glossaryTerm";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return self.fetchedResultsController.sections.count;
+    return 1;
+    
+    //return self.fetchedResultsController.sections.count;
 }
 
 - (NSInteger)tableView:(UITableView *)table numberOfRowsInSection:(NSInteger)section
 {
-    if (self.fetchedResultsController.sections.count > 0) {
-        id <NSFetchedResultsSectionInfo> sectionInfo = (self.fetchedResultsController.sections)[section];
-        return sectionInfo.numberOfObjects;
+    if ((self.searchController).active) {
+        return (self.filteredResults).count;
     }
     
-    return 0;
+    id <NSFetchedResultsSectionInfo> sectionInfo = (self.fetchedResultsController.sections)[section];
+    return sectionInfo.numberOfObjects;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -66,7 +80,14 @@ static NSString *cellIdentifier = @"glossaryTerm";
         cell = [[SMGlossaryTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
-    Glossary *glossary = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    Glossary *glossary = nil;
+    
+    if ((self.searchController).active) {
+        glossary = self.filteredResults[indexPath.row];
+    }
+    else {
+        glossary = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    }
     
     cell.backgroundColor = [UIColor clearColor];
     cell.termLabel.text = glossary.term;
@@ -93,7 +114,6 @@ static NSString *cellIdentifier = @"glossaryTerm";
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     return [[UIView alloc] initWithFrame:CGRectZero];
-    //return [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 200)];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -182,6 +202,44 @@ static NSString *cellIdentifier = @"glossaryTerm";
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
     [self.tableView endUpdates];
+}
+
+#pragma mark - UISearchResultsUpdating
+
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController
+{
+    NSString *searchString = searchController.searchBar.text;
+    
+    if (self.managedObjectContext) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"term BEGINSWITH[cd] %@", searchString];
+        (self.searchFetchRequest).predicate = predicate;
+        
+        NSError *error = nil;
+        self.filteredResults = [self.managedObjectContext executeFetchRequest:self.searchFetchRequest error:&error];
+        if (error) {
+            NSLog(@"searchFetchRequest failed: %@",[error localizedDescription]);
+        }
+    }
+    [self.tableView reloadData];
+}
+
+- (NSFetchRequest *)searchFetchRequest
+{
+    if (_searchFetchRequest != nil) {
+        return _searchFetchRequest;
+    }
+    
+    _searchFetchRequest = [NSFetchRequest new];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:SM_Glossary inManagedObjectContext:self.managedObjectContext];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"term" ascending:YES];
+    NSArray *descriptors = @[sortDescriptor];
+    
+    _searchFetchRequest.entity = entity;
+    _searchFetchRequest.fetchBatchSize = 20;
+    _searchFetchRequest.sortDescriptors = descriptors;
+    
+    return _searchFetchRequest;
 }
 
 @end
