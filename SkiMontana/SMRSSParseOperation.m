@@ -128,7 +128,8 @@ static NSString * const kUpdatedElementName = @"pubDate";
     }
     else if ([elementName isEqualToString:kLinkElementName]) {
         if (self.currentAvyFeedObject != nil) {
-            (self.currentAvyFeedObject).link = [NSURL URLWithString:[self.currentParsedCharacterData stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+            NSString *urlString = [self.currentParsedCharacterData stringByAppendingString:@"?theme=mobile_simple"];
+            (self.currentAvyFeedObject).link = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         }
     }
     else if ([elementName isEqualToString:kDescriptionElementName]) {

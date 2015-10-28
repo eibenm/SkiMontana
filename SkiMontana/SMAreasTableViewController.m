@@ -298,7 +298,7 @@ static NSString *cellIdentifier;
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
-    NSSet *segues = [[NSSet alloc] initWithObjects:@"showGlossary", @"showRSS", nil];
+    NSSet *segues = [[NSSet alloc] initWithObjects:@"showGlossary", @"showAdvisory", nil];
     if ([segues containsObject:identifier]) {
         return YES;
     }
@@ -334,7 +334,7 @@ static NSString *cellIdentifier;
         (self.navigationItem).backBarButtonItem = newBackButton;
     }
     
-    if ([segue.identifier isEqualToString:@"showRSS"]) {
+    if ([segue.identifier isEqualToString:@"showAdvisory"]) {
         UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:nil action:nil];
         (self.navigationItem).backBarButtonItem = newBackButton;
     }

@@ -7,47 +7,47 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CB1111DD1BD870B600B41862 /* SMRSSWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111DC1BD870B600B41862 /* SMRSSWebViewController.m */; settings = {ASSET_TAGS = (); }; };
-		CB1111F21BD9D92E00B41862 /* SkiAreas+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111DF1BD9D92E00B41862 /* SkiAreas+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
-		CB1111F31BD9D92E00B41862 /* SkiAreas.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111E11BD9D92E00B41862 /* SkiAreas.m */; settings = {ASSET_TAGS = (); }; };
-		CB1111F41BD9D92E00B41862 /* File+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111E31BD9D92E00B41862 /* File+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
-		CB1111F51BD9D92E00B41862 /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111E51BD9D92E00B41862 /* File.m */; settings = {ASSET_TAGS = (); }; };
-		CB1111F61BD9D92E00B41862 /* Glossary+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111E71BD9D92E00B41862 /* Glossary+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
-		CB1111F71BD9D92E00B41862 /* Glossary.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111E91BD9D92E00B41862 /* Glossary.m */; settings = {ASSET_TAGS = (); }; };
-		CB1111F81BD9D92E00B41862 /* Gps+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111EB1BD9D92E00B41862 /* Gps+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
-		CB1111F91BD9D92E00B41862 /* Gps.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111ED1BD9D92E00B41862 /* Gps.m */; settings = {ASSET_TAGS = (); }; };
-		CB1111FA1BD9D92E00B41862 /* SkiRoutes+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111EF1BD9D92E00B41862 /* SkiRoutes+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
-		CB1111FB1BD9D92E00B41862 /* SkiRoutes.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111F11BD9D92E00B41862 /* SkiRoutes.m */; settings = {ASSET_TAGS = (); }; };
-		CB1112011BDA8B5C00B41862 /* RSSHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB1112001BDA8B5C00B41862 /* RSSHeaderView.xib */; settings = {ASSET_TAGS = (); }; };
+		CB1111DD1BD870B600B41862 /* SMRSSWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111DC1BD870B600B41862 /* SMRSSWebViewController.m */; };
+		CB1111F21BD9D92E00B41862 /* SkiAreas+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111DF1BD9D92E00B41862 /* SkiAreas+CoreDataProperties.m */; };
+		CB1111F31BD9D92E00B41862 /* SkiAreas.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111E11BD9D92E00B41862 /* SkiAreas.m */; };
+		CB1111F41BD9D92E00B41862 /* File+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111E31BD9D92E00B41862 /* File+CoreDataProperties.m */; };
+		CB1111F51BD9D92E00B41862 /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111E51BD9D92E00B41862 /* File.m */; };
+		CB1111F61BD9D92E00B41862 /* Glossary+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111E71BD9D92E00B41862 /* Glossary+CoreDataProperties.m */; };
+		CB1111F71BD9D92E00B41862 /* Glossary.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111E91BD9D92E00B41862 /* Glossary.m */; };
+		CB1111F81BD9D92E00B41862 /* Gps+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111EB1BD9D92E00B41862 /* Gps+CoreDataProperties.m */; };
+		CB1111F91BD9D92E00B41862 /* Gps.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111ED1BD9D92E00B41862 /* Gps.m */; };
+		CB1111FA1BD9D92E00B41862 /* SkiRoutes+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111EF1BD9D92E00B41862 /* SkiRoutes+CoreDataProperties.m */; };
+		CB1111FB1BD9D92E00B41862 /* SkiRoutes.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111F11BD9D92E00B41862 /* SkiRoutes.m */; };
+		CB1112011BDA8B5C00B41862 /* RSSHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB1112001BDA8B5C00B41862 /* RSSHeaderView.xib */; };
 		CB12986F1BA10E6C0046095B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB12986E1BA10E6C0046095B /* Images.xcassets */; };
 		CB17F6731AA93F4600048BC5 /* SMSkiAreaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB17F6721AA93F4600048BC5 /* SMSkiAreaTableViewCell.m */; };
 		CB17F6761AA93F5C00048BC5 /* SMSkiRouteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB17F6751AA93F5C00048BC5 /* SMSkiRouteTableViewCell.m */; };
 		CB2B346A1BAE058F007067C3 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2B34691BAE058F007067C3 /* StoreKit.framework */; };
-		CB2B346F1BAE0C1D007067C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB2B346E1BAE0C1D007067C3 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
+		CB2B346F1BAE0C1D007067C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB2B346E1BAE0C1D007067C3 /* Main.storyboard */; };
 		CB3FBFC41AB67AFD00D5A037 /* SMAppearanceModifier.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3FBFC31AB67AFD00D5A037 /* SMAppearanceModifier.m */; };
 		CB4208A51AA3B98700ADFA97 /* UIFont+SkiMontana.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4208A41AA3B98700ADFA97 /* UIFont+SkiMontana.m */; };
 		CB4208A81AA3BB5100ADFA97 /* SMAreasTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4208A71AA3BB5100ADFA97 /* SMAreasTableViewController.m */; };
 		CB4208E61AA3FA6C00ADFA97 /* database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = CB4208E51AA3FA6C00ADFA97 /* database.sqlite */; };
 		CB54F5FB1B9FD93100D93401 /* SMDetailsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB54F5FA1B9FD93100D93401 /* SMDetailsHeaderView.m */; };
-		CB57FA421BD54C04009C3B3E /* SMIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CB57FA411BD54C04009C3B3E /* SMIAPHelper.m */; settings = {ASSET_TAGS = (); }; };
-		CB57FA451BD5FD6A009C3B3E /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CB57FA441BD5FD6A009C3B3E /* NSDate+Utilities.m */; settings = {ASSET_TAGS = (); }; };
-		CB57FA481BD74BEB009C3B3E /* SMRSSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB57FA471BD74BEB009C3B3E /* SMRSSViewController.m */; settings = {ASSET_TAGS = (); }; };
-		CB57FA4B1BD754B4009C3B3E /* SMRSSEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = CB57FA4A1BD754B4009C3B3E /* SMRSSEntry.m */; settings = {ASSET_TAGS = (); }; };
-		CB57FA4E1BD75F60009C3B3E /* SMRSSParseOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = CB57FA4D1BD75F60009C3B3E /* SMRSSParseOperation.m */; settings = {ASSET_TAGS = (); }; };
+		CB57FA421BD54C04009C3B3E /* SMIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CB57FA411BD54C04009C3B3E /* SMIAPHelper.m */; };
+		CB57FA451BD5FD6A009C3B3E /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CB57FA441BD5FD6A009C3B3E /* NSDate+Utilities.m */; };
+		CB57FA481BD74BEB009C3B3E /* SMRSSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB57FA471BD74BEB009C3B3E /* SMRSSViewController.m */; };
+		CB57FA4B1BD754B4009C3B3E /* SMRSSEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = CB57FA4A1BD754B4009C3B3E /* SMRSSEntry.m */; };
+		CB57FA4E1BD75F60009C3B3E /* SMRSSParseOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = CB57FA4D1BD75F60009C3B3E /* SMRSSParseOperation.m */; };
 		CB7446231AEDBE670070B36D /* SMDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7446221AEDBE670070B36D /* SMDetailsViewController.m */; };
 		CB7446261AEEA36A0070B36D /* SMDetailsInformationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7446251AEEA36A0070B36D /* SMDetailsInformationTableViewCell.m */; };
 		CB7446291AEEA38E0070B36D /* SMDetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7446281AEEA38E0070B36D /* SMDetailsTableViewCell.m */; };
-		CB753AD71BBA0D12007EAAAD /* SMAreasTableViewControllerParent.m in Sources */ = {isa = PBXBuildFile; fileRef = CB753AD61BBA0D12007EAAAD /* SMAreasTableViewControllerParent.m */; settings = {ASSET_TAGS = (); }; };
-		CB753AE31BBA2CBA007EAAAD /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = CB753AE21BBA2CBA007EAAAD /* UIImage+ImageEffects.m */; settings = {ASSET_TAGS = (); }; };
+		CB753AD71BBA0D12007EAAAD /* SMAreasTableViewControllerParent.m in Sources */ = {isa = PBXBuildFile; fileRef = CB753AD61BBA0D12007EAAAD /* SMAreasTableViewControllerParent.m */; };
+		CB753AE31BBA2CBA007EAAAD /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = CB753AE21BBA2CBA007EAAAD /* UIImage+ImageEffects.m */; };
 		CB76D9C61AFC6102005EC2E8 /* SMRouteMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB76D9C51AFC6102005EC2E8 /* SMRouteMapViewController.m */; };
-		CB7E02CA1BDACF4400F19328 /* RSSHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7E02C91BDACF4400F19328 /* RSSHeaderView.m */; settings = {ASSET_TAGS = (); }; };
+		CB7E02CA1BDACF4400F19328 /* RSSHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7E02C91BDACF4400F19328 /* RSSHeaderView.m */; };
 		CB8694C21B09639B00D4A93F /* Headers in Resources */ = {isa = PBXBuildFile; fileRef = CB8694BF1B09639B00D4A93F /* Headers */; };
 		CB8694C31B09639B00D4A93F /* libMapbox.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8694C01B09639B00D4A93F /* libMapbox.a */; };
 		CB8694C41B09639B00D4A93F /* Mapbox.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CB8694C11B09639B00D4A93F /* Mapbox.bundle */; };
 		CB8694C71B09649200D4A93F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8694C61B09649200D4A93F /* CoreLocation.framework */; };
 		CB8694C91B09649D00D4A93F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8694C81B09649D00D4A93F /* QuartzCore.framework */; };
 		CB8694CE1B0A8B6300D4A93F /* CLLocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8694CD1B0A8B6300D4A93F /* CLLocationHelper.m */; };
-		CB8F30A21BC4D3D600F4FA2C /* SMArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8F30A11BC4D3D600F4FA2C /* SMArrowView.m */; settings = {ASSET_TAGS = (); }; };
+		CB8F30A21BC4D3D600F4FA2C /* SMArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8F30A11BC4D3D600F4FA2C /* SMArrowView.m */; };
 		CB8F30AE1BCB021400F4FA2C /* beartoothPass.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CB8F30A31BCAFF0500F4FA2C /* beartoothPass.mbtiles */; };
 		CB8F30AF1BCB021400F4FA2C /* blackMountain.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CB8F30A41BCAFF0500F4FA2C /* blackMountain.mbtiles */; };
 		CB8F30B01BCB021400F4FA2C /* elephantheadMountain.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CB8F30A51BCAFF0500F4FA2C /* elephantheadMountain.mbtiles */; };
@@ -76,20 +76,21 @@
 		CB9C21251BA7635100D0D5DC /* SMGlossaryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9C21241BA7635100D0D5DC /* SMGlossaryTableViewController.m */; };
 		CB9C21281BA7726D00D0D5DC /* SMGlossaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9C21271BA7726D00D0D5DC /* SMGlossaryTableViewCell.m */; };
 		CB9C21301BA7ED5400D0D5DC /* bridgerRange.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CB9C212E1BA7EBD500D0D5DC /* bridgerRange.mbtiles */; };
-		CBA2B5E71BCCB79900B7C129 /* SMSkiAreaConditionsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA2B5E61BCCB79900B7C129 /* SMSkiAreaConditionsTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		CBA2B5EA1BCDE1C300B7C129 /* SMMapAttributionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA2B5E91BCDE1C300B7C129 /* SMMapAttributionViewController.m */; settings = {ASSET_TAGS = (); }; };
+		CBA2B5E71BCCB79900B7C129 /* SMSkiAreaConditionsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA2B5E61BCCB79900B7C129 /* SMSkiAreaConditionsTableViewCell.m */; };
+		CBA2B5EA1BCDE1C300B7C129 /* SMMapAttributionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA2B5E91BCDE1C300B7C129 /* SMMapAttributionViewController.m */; };
 		CBA338A31B8280F0001BA5FF /* SMDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA338961B8280F0001BA5FF /* SMDataManager.m */; };
 		CBA338AC1B82821F001BA5FF /* skiappdata.json in Resources */ = {isa = PBXBuildFile; fileRef = CBA338AB1B82821F001BA5FF /* skiappdata.json */; };
 		CBA338AF1B8282AD001BA5FF /* SMUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA338AE1B8282AD001BA5FF /* SMUtilities.m */; };
 		CBA338C31B82A3DD001BA5FF /* SkiDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBA338C11B82A3DD001BA5FF /* SkiDataModel.xcdatamodeld */; };
 		CBA338D91B82BACB001BA5FF /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA338D81B82BACB001BA5FF /* Reachability.m */; };
 		CBA338DC1B82BBD1001BA5FF /* SMReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA338DB1B82BBD1001BA5FF /* SMReachabilityManager.m */; };
-		CBF466201BBE534F00791383 /* SCPStoreKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF4661F1BBE534F00791383 /* SCPStoreKitManager.m */; settings = {ASSET_TAGS = (); }; };
-		CBF466241BBE536500791383 /* NSError+SCPStoreKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF466231BBE536500791383 /* NSError+SCPStoreKitManager.m */; settings = {ASSET_TAGS = (); }; };
-		CBF4662D1BBE537F00791383 /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = CBF466261BBE537F00791383 /* AppleIncRootCertificate.cer */; settings = {ASSET_TAGS = (); }; };
-		CBF4662E1BBE537F00791383 /* SCPStoreKitIAPReceipt.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF466281BBE537F00791383 /* SCPStoreKitIAPReceipt.m */; settings = {ASSET_TAGS = (); }; };
-		CBF4662F1BBE537F00791383 /* SCPStoreKitReceipt.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF4662A1BBE537F00791383 /* SCPStoreKitReceipt.m */; settings = {ASSET_TAGS = (); }; };
-		CBF466301BBE537F00791383 /* SCPStoreKitReceiptValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF4662C1BBE537F00791383 /* SCPStoreKitReceiptValidator.m */; settings = {ASSET_TAGS = (); }; };
+		CBF160A31BE0626700B29232 /* SMRSSCurrentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF160A21BE0626700B29232 /* SMRSSCurrentViewController.m */; };
+		CBF466201BBE534F00791383 /* SCPStoreKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF4661F1BBE534F00791383 /* SCPStoreKitManager.m */; };
+		CBF466241BBE536500791383 /* NSError+SCPStoreKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF466231BBE536500791383 /* NSError+SCPStoreKitManager.m */; };
+		CBF4662D1BBE537F00791383 /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = CBF466261BBE537F00791383 /* AppleIncRootCertificate.cer */; };
+		CBF4662E1BBE537F00791383 /* SCPStoreKitIAPReceipt.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF466281BBE537F00791383 /* SCPStoreKitIAPReceipt.m */; };
+		CBF4662F1BBE537F00791383 /* SCPStoreKitReceipt.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF4662A1BBE537F00791383 /* SCPStoreKitReceipt.m */; };
+		CBF466301BBE537F00791383 /* SCPStoreKitReceiptValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF4662C1BBE537F00791383 /* SCPStoreKitReceiptValidator.m */; };
 		CBF466341BBE543700791383 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBF466321BBE543700791383 /* libcrypto.a */; };
 		CBF466351BBE543700791383 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBF466331BBE543700791383 /* libssl.a */; };
 		CBF466371BBE545100791383 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CBF466361BBE545100791383 /* libz.tbd */; };
@@ -231,6 +232,8 @@
 		CBA338D81B82BACB001BA5FF /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		CBA338DA1B82BBD1001BA5FF /* SMReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMReachabilityManager.h; sourceTree = "<group>"; };
 		CBA338DB1B82BBD1001BA5FF /* SMReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMReachabilityManager.m; sourceTree = "<group>"; };
+		CBF160A11BE0626700B29232 /* SMRSSCurrentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRSSCurrentViewController.h; sourceTree = "<group>"; };
+		CBF160A21BE0626700B29232 /* SMRSSCurrentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRSSCurrentViewController.m; sourceTree = "<group>"; };
 		CBF4661E1BBE534F00791383 /* SCPStoreKitManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCPStoreKitManager.h; path = SkiMontana/SCPStoreKitManager/SCPStoreKitManager.h; sourceTree = "<group>"; };
 		CBF4661F1BBE534F00791383 /* SCPStoreKitManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SCPStoreKitManager.m; path = SkiMontana/SCPStoreKitManager/SCPStoreKitManager.m; sourceTree = "<group>"; };
 		CBF466221BBE536500791383 /* NSError+SCPStoreKitManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSError+SCPStoreKitManager.h"; path = "SkiMontana/SCPStoreKitManager/Categories/NSError+SCPStoreKitManager.h"; sourceTree = "<group>"; };
@@ -270,6 +273,12 @@
 		CB1111FC1BD9DD0000B41862 /* RSS Feed */ = {
 			isa = PBXGroup;
 			children = (
+				CBF160A11BE0626700B29232 /* SMRSSCurrentViewController.h */,
+				CBF160A21BE0626700B29232 /* SMRSSCurrentViewController.m */,
+				CB57FA461BD74BEB009C3B3E /* SMRSSViewController.h */,
+				CB57FA471BD74BEB009C3B3E /* SMRSSViewController.m */,
+				CB1111DB1BD870B600B41862 /* SMRSSWebViewController.h */,
+				CB1111DC1BD870B600B41862 /* SMRSSWebViewController.m */,
 				CB57FA4C1BD75F60009C3B3E /* SMRSSParseOperation.h */,
 				CB57FA4D1BD75F60009C3B3E /* SMRSSParseOperation.m */,
 				CB57FA491BD754B4009C3B3E /* SMRSSEntry.h */,
@@ -379,10 +388,6 @@
 				CB76D9C51AFC6102005EC2E8 /* SMRouteMapViewController.m */,
 				CBA2B5E81BCDE1C300B7C129 /* SMMapAttributionViewController.h */,
 				CBA2B5E91BCDE1C300B7C129 /* SMMapAttributionViewController.m */,
-				CB57FA461BD74BEB009C3B3E /* SMRSSViewController.h */,
-				CB57FA471BD74BEB009C3B3E /* SMRSSViewController.m */,
-				CB1111DB1BD870B600B41862 /* SMRSSWebViewController.h */,
-				CB1111DC1BD870B600B41862 /* SMRSSWebViewController.m */,
 				CBB480871AA5774D00C2A7E3 /* TableCells */,
 				CB1111FC1BD9DD0000B41862 /* RSS Feed */,
 				CB235EAE1A9A591C0002E482 /* Utility Classes */,
@@ -691,6 +696,7 @@
 				CB1111F71BD9D92E00B41862 /* Glossary.m in Sources */,
 				CB76D9C61AFC6102005EC2E8 /* SMRouteMapViewController.m in Sources */,
 				CB99FF4E1AB634270067E547 /* SMViewController.m in Sources */,
+				CBF160A31BE0626700B29232 /* SMRSSCurrentViewController.m in Sources */,
 				CB1111F21BD9D92E00B41862 /* SkiAreas+CoreDataProperties.m in Sources */,
 				CBA338D91B82BACB001BA5FF /* Reachability.m in Sources */,
 				CBF4662E1BBE537F00791383 /* SCPStoreKitIAPReceipt.m in Sources */,

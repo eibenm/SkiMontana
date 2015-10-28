@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="amG-dg-XFq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="amG-dg-XFq">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -348,9 +348,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Vp1-7E-Ndl">
-                        <barButtonItem key="leftBarButtonItem" title="RSS" id="d9m-aE-7ni">
+                        <barButtonItem key="leftBarButtonItem" title="Advisory" id="d9m-aE-7ni">
                             <connections>
-                                <segue destination="nEb-6D-Cy9" kind="show" identifier="showRSS" id="CIv-Ty-whb"/>
+                                <segue destination="ZTw-sO-m5z" kind="show" identifier="showAdvisory" id="B4n-8h-rni"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Glossary" id="b56-XZ-fmB">
@@ -795,7 +795,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Directions" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6x-o0-dHD">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get Driving Directions" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6x-o0-dHD">
                                                     <rect key="frame" x="300" y="8" width="292" height="28"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
@@ -841,7 +841,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tFf-UY-69w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4081" y="-420"/>
+            <point key="canvasLocation" x="4081" y="-418"/>
         </scene>
         <!--Route Map View Controller-->
         <scene sceneID="SJ2-tk-N5j">
@@ -1051,6 +1051,87 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GJh-tM-ilb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2515" y="-418"/>
+        </scene>
+        <!--Current Advisory-->
+        <scene sceneID="vq0-BJ-paU">
+            <objects>
+                <viewController title="Current Advisory" id="ZTw-sO-m5z" customClass="SMRSSCurrentViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SrI-k7-y7L"/>
+                        <viewControllerLayoutGuide type="bottom" id="vhq-qO-ZhO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="brR-6u-06l">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GcW-hP-vR5">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SeD-zW-fRh">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="orP-Vl-pjA"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem systemItem="rewind" id="lIv-rl-nGH">
+                                        <connections>
+                                            <action selector="goBack" destination="GcW-hP-vR5" id="heH-sK-TMW"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="9XJ-Ia-5ig"/>
+                                    <barButtonItem systemItem="stop" id="IX5-nw-aaS">
+                                        <connections>
+                                            <action selector="stopLoading" destination="GcW-hP-vR5" id="idS-Ft-fBV"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="D4p-85-12X"/>
+                                    <barButtonItem systemItem="refresh" id="Hyh-7a-5GY">
+                                        <connections>
+                                            <action selector="reload" destination="GcW-hP-vR5" id="BsC-cI-UBM"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="P4k-kF-I8V"/>
+                                    <barButtonItem systemItem="fastForward" id="ecb-ex-smj">
+                                        <connections>
+                                            <action selector="goForward" destination="GcW-hP-vR5" id="oK8-A7-qaz"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SeD-zW-fRh" firstAttribute="leading" secondItem="brR-6u-06l" secondAttribute="leading" id="Oc0-Ba-xd7"/>
+                            <constraint firstAttribute="trailing" secondItem="GcW-hP-vR5" secondAttribute="trailing" id="aJi-Kg-syc"/>
+                            <constraint firstItem="vhq-qO-ZhO" firstAttribute="top" secondItem="GcW-hP-vR5" secondAttribute="bottom" id="cIa-sQ-n39"/>
+                            <constraint firstItem="GcW-hP-vR5" firstAttribute="leading" secondItem="brR-6u-06l" secondAttribute="leading" id="duh-Yv-STU"/>
+                            <constraint firstItem="vhq-qO-ZhO" firstAttribute="top" secondItem="SeD-zW-fRh" secondAttribute="bottom" id="hBA-qy-uIy"/>
+                            <constraint firstAttribute="trailing" secondItem="SeD-zW-fRh" secondAttribute="trailing" id="rnr-LE-BVs"/>
+                            <constraint firstItem="GcW-hP-vR5" firstAttribute="top" secondItem="brR-6u-06l" secondAttribute="top" id="ukb-Xb-jGC"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Advisory" id="ofW-X5-GYf">
+                        <barButtonItem key="rightBarButtonItem" title="RSS" id="xvi-tb-atT">
+                            <connections>
+                                <segue destination="nEb-6D-Cy9" kind="show" identifier="showRSS" id="hbK-Pd-Zek"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="back" destination="lIv-rl-nGH" id="4AM-Mf-w4k"/>
+                        <outlet property="forward" destination="ecb-ex-smj" id="Jna-g7-gsb"/>
+                        <outlet property="refresh" destination="Hyh-7a-5GY" id="ftd-hP-udS"/>
+                        <outlet property="stop" destination="IX5-nw-aaS" id="1FL-Sw-f37"/>
+                        <outlet property="webView" destination="GcW-hP-vR5" id="5J0-Pw-BzK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9ZO-rc-exI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3309" y="328"/>
         </scene>
     </scenes>
     <resources>
