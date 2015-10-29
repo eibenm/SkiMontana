@@ -15,22 +15,13 @@
                     <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                     <animations/>
                 </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SkiMontana" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
-                    <rect key="frame" x="20" y="140" width="440" height="42"/>
-                    <animations/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="36"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="rqq-gf-sFr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="7p1-h1-5Iu"/>
                 <constraint firstItem="rqq-gf-sFr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="8s8-fi-6Fh"/>
-                <constraint firstItem="kId-c2-rCX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="EAL-DB-zpn"/>
-                <constraint firstItem="kId-c2-rCX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="140" id="PJZ-nQ-JTH"/>
                 <constraint firstAttribute="trailing" secondItem="rqq-gf-sFr" secondAttribute="trailing" id="n3A-fJ-XMP"/>
-                <constraint firstAttribute="trailing" secondItem="kId-c2-rCX" secondAttribute="trailing" constant="20" id="tBN-U5-QAY"/>
                 <constraint firstAttribute="bottom" secondItem="rqq-gf-sFr" secondAttribute="bottom" id="uzQ-us-CpC"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>

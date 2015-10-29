@@ -66,6 +66,41 @@
             </objects>
             <point key="canvasLocation" x="4081" y="-1180"/>
         </scene>
+        <!--Overview Map View Controller-->
+        <scene sceneID="68j-L3-dvD">
+            <objects>
+                <viewController storyboardIdentifier="overviewMapViewController" id="Mkm-Of-upK" customClass="SMOverviewMapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Qge-pN-Gig"/>
+                        <viewControllerLayoutGuide type="bottom" id="5X5-Md-Sj5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8h4-Aq-4Ry">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XGz-8D-zE9">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="XGz-8D-zE9" secondAttribute="trailing" id="5T9-DT-2Pe"/>
+                            <constraint firstItem="5X5-Md-Sj5" firstAttribute="top" secondItem="XGz-8D-zE9" secondAttribute="bottom" id="BW1-7L-56D"/>
+                            <constraint firstItem="XGz-8D-zE9" firstAttribute="top" secondItem="8h4-Aq-4Ry" secondAttribute="top" id="MXV-Eo-Wht"/>
+                            <constraint firstItem="XGz-8D-zE9" firstAttribute="leading" secondItem="8h4-Aq-4Ry" secondAttribute="leading" id="v53-rS-zWt"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapViewContainer" destination="XGz-8D-zE9" id="cmE-rH-k00"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8nY-vJ-Cuz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3309" y="-1180"/>
+        </scene>
         <!--Ski Bozeman-->
         <scene sceneID="F6L-M3-XRt">
             <objects>
@@ -82,36 +117,44 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <view key="tableHeaderView" clipsSubviews="YES" contentMode="scaleToFill" id="FUm-JV-fGS" userLabel="Overview Map">
+                                    <rect key="frame" x="0.0" y="64" width="600" height="120"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tap for overview map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQR-U9-3VM">
+                                            <rect key="frame" x="459" y="8" width="133" height="20"/>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20" id="adJ-4J-EtI"/>
+                                                <constraint firstAttribute="width" constant="133" id="tio-9B-b6k"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TNV-vt-fUG">
+                                            <rect key="frame" x="-495" y="-190" width="1590" height="500"/>
+                                            <animations/>
+                                            <connections>
+                                                <action selector="didSelectOverviewMap:" destination="A15-bb-RHp" eventType="touchUpInside" id="CV1-Hh-Q5M"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <animations/>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="WQR-U9-3VM" firstAttribute="top" secondItem="FUm-JV-fGS" secondAttribute="top" constant="8" id="24p-AX-dje"/>
+                                        <constraint firstAttribute="trailing" secondItem="WQR-U9-3VM" secondAttribute="trailing" constant="8" id="Kh3-n8-tbg"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SkiArea" rowHeight="230" id="aq7-Ou-EBo" customClass="SMSkiAreaTableViewCell">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="230"/>
+                                        <rect key="frame" x="0.0" y="212" width="600" height="230"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aq7-Ou-EBo" id="dZZ-Ih-V8M">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="230"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Area Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="QSo-98-6ip">
-                                                    <rect key="frame" x="12" y="12" width="576" height="28"/>
-                                                    <animations/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="28" id="2wn-0I-bWH"/>
-                                                        <constraint firstAttribute="height" constant="28" id="tSe-aV-RxN"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="2wn-0I-bWH"/>
-                                                        </mask>
-                                                    </variation>
-                                                    <variation key="heightClass=regular-widthClass=regular">
-                                                        <mask key="constraints">
-                                                            <include reference="2wn-0I-bWH"/>
-                                                            <exclude reference="tSe-aV-RxN"/>
-                                                        </mask>
-                                                    </variation>
-                                                </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OtC-EQ-hmF">
                                                     <rect key="frame" x="12" y="48" width="120" height="114"/>
                                                     <animations/>
@@ -160,6 +203,28 @@
                                                         </mask>
                                                     </variation>
                                                 </textView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Area Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="QSo-98-6ip">
+                                                    <rect key="frame" x="12" y="12" width="576" height="28"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="28" id="2wn-0I-bWH"/>
+                                                        <constraint firstAttribute="height" constant="28" id="tSe-aV-RxN"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="2wn-0I-bWH"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="heightClass=regular-widthClass=regular">
+                                                        <mask key="constraints">
+                                                            <include reference="2wn-0I-bWH"/>
+                                                            <exclude reference="tSe-aV-RxN"/>
+                                                        </mask>
+                                                    </variation>
+                                                </label>
                                             </subviews>
                                             <animations/>
                                             <constraints>
@@ -235,7 +300,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SkiAreaConditions" rowHeight="45" id="H2w-EL-EZo" customClass="SMSkiAreaConditionsTableViewCell">
-                                        <rect key="frame" x="0.0" y="322" width="600" height="45"/>
+                                        <rect key="frame" x="0.0" y="442" width="600" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="H2w-EL-EZo" id="sDw-6d-Elx">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
@@ -263,7 +328,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SkiRoute" rowHeight="150" id="NJu-VN-nha" customClass="SMSkiRouteTableViewCell">
-                                        <rect key="frame" x="0.0" y="367" width="600" height="150"/>
+                                        <rect key="frame" x="0.0" y="487" width="600" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NJu-VN-nha" id="6YL-5Q-GwW">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
@@ -359,6 +424,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="overviewMapButton" destination="TNV-vt-fUG" id="T3n-cM-7V0"/>
+                        <outlet property="overviewMapLabel" destination="WQR-U9-3VM" id="HAr-qD-HM9"/>
                         <outlet property="tableView" destination="CjX-rc-ptT" id="crl-ir-2Cu"/>
                     </connections>
                 </viewController>
@@ -1051,7 +1118,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wr7-eI-6Xr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3311" y="-1180"/>
+            <point key="canvasLocation" x="2515" y="-1180"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="H99-4H-Pk6">

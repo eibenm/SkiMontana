@@ -11,6 +11,7 @@
 @interface SMAreasTableViewControllerParent : SMViewController
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (assign, nonatomic) BOOL deviceIsIPhone;
 
 - (void)presentIAPActionSheet;
 

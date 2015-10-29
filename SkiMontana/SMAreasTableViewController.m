@@ -7,19 +7,21 @@
 //
 
 #import "SMAreasTableViewController.h"
+#import "SMOverviewMapViewController.h"
 #import "SMDetailsViewController.h"
 #import "SMDataManager.h"
 
 #import "SMSkiRouteTableViewCell.h"
-
 #import "SMArrowView.h"
+#import "SMSlideAnimation.h"
 
 static NSString *cellIdentifier;
 
 @interface SMAreasTableViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) NSSortDescriptor *routeSortDescriptor;
-@property (assign, nonatomic) BOOL deviceIsIPhone;
+@property (weak, nonatomic) IBOutlet UIButton *overviewMapButton;
+@property (weak, nonatomic) IBOutlet UILabel *overviewMapLabel;
 
 @end
 
@@ -40,6 +42,11 @@ static NSString *cellIdentifier;
     self.managedObjectContext = [SMDataManager sharedInstance].managedObjectContext;
     self.routeSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name_route" ascending:YES];
     self.deviceIsIPhone = ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone);
+    
+    //[self.overviewMapButton setBackgroundImage:[UIImage imageNamed:@"overview_map"] forState:UIControlStateNormal];
+    [self.overviewMapButton setImage:[UIImage imageNamed:@"overview_map"] forState:UIControlStateNormal];
+    (self.overviewMapButton).imageView.contentMode = UIViewContentModeScaleAspectFill;
+    (self.overviewMapLabel).layer.zPosition = 10;
     
     NSError *error;
     if (![self.fetchedResultsController performFetch:&error]) {
@@ -168,6 +175,7 @@ static NSString *cellIdentifier;
             lockedView.image = [UIImage imageNamed:@"lock"];
             lockedView.contentMode = UIViewContentModeCenter;
             lockedView.tag = 500;
+            lockedView.autoresizingMask = (UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin);
             [cell.areaImage addSubview:lockedView];
         }
     }
@@ -338,6 +346,28 @@ static NSString *cellIdentifier;
         UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:nil action:nil];
         (self.navigationItem).backBarButtonItem = newBackButton;
     }
+}
+
+- (IBAction)didSelectOverviewMap:(id)sender
+{
+    CABasicAnimation *pulseAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    pulseAnimation.duration = 0.2f;
+    pulseAnimation.toValue = @1.1f;
+    pulseAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    pulseAnimation.fillMode = kCAFillModeForwards;
+    pulseAnimation.removedOnCompletion = NO;
+    pulseAnimation.autoreverses = NO;
+    [CATransaction setCompletionBlock:^{
+        SMOverviewMapViewController *overviewMapController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"overviewMapViewController"];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:overviewMapController];
+        overviewMapController.transitioningDelegate = self.transitioningDelegate;
+        [self presentViewController:navController animated:YES completion:^{
+            [self.overviewMapButton.layer removeAnimationForKey:pulseAnimation.keyPath];
+            [self.overviewMapLabel.layer removeAnimationForKey:pulseAnimation.keyPath];
+        }];
+    }];
+    [self.overviewMapButton.layer addAnimation:pulseAnimation forKey:pulseAnimation.keyPath];
+    [self.overviewMapLabel.layer addAnimation:pulseAnimation forKey:pulseAnimation.keyPath];
 }
 
 @end

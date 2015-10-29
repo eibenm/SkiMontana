@@ -43,8 +43,11 @@ static NSString *cellIdentifier = @"glossaryTerm";
     self.tableView.tableHeaderView = (self.searchController).searchBar;
     self.definesPresentationContext = YES;
     [self.searchController.searchBar sizeToFit];
-    
-    //[self.tableView reloadData];
+}
+
+- (void)dealloc
+{
+    [self.searchController removeFromParentViewController];
 }
 
 - (void)didReceiveMemoryWarning

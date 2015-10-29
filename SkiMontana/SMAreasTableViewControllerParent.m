@@ -9,7 +9,7 @@
 #import "SMAreasTableViewControllerParent.h"
 #import "SMUtilities.h"
 
-@interface SMAreasTableViewControllerParent ()
+@interface SMAreasTableViewControllerParent () <UIPopoverPresentationControllerDelegate>
 
 @property (nonatomic, strong) NSArray *products;
 @property (nonatomic, strong) NSSet *productIdentifiers;
@@ -34,6 +34,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.deviceIsIPhone = ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone);
     
     self.productIdentifiers = [NSSet setWithObjects:
         kIdentifierSubscription1Month,
@@ -250,12 +252,24 @@
     [self.actionSheetViewController addAction:manager];
     [self.actionSheetViewController addAction:cancel];
     
+    self.actionSheetViewController.popoverPresentationController.delegate = self;
+    
     [self presentViewController:self.actionSheetViewController animated:YES completion:nil];
 }
 
 - (void)didEnterBackground:(NSNotification *)notification
 {
     [self.actionSheetViewController dismissViewControllerAnimated:NO completion:nil];
+}
+
+#pragma mark - UIPopoverPresentationControllerDelegate
+
+- (void)prepareForPopoverPresentation:(UIPopoverPresentationController *)popoverPresentationController
+{
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    popoverPresentationController.sourceView = self.view;
+    popoverPresentationController.sourceRect = cell.bounds;
 }
 
 @end

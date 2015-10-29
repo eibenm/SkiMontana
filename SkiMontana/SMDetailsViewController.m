@@ -276,10 +276,10 @@ static CGFloat maxOffsetDiff = 46.0f;
 
 #pragma mark - Navigation
 
+/*
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"showMap"]) {
-        
         SMDetailsViewController *thisViewController = (SMDetailsViewController *) self;
         SMRouteMapViewController *modalController = segue.destinationViewController;
         SMSlideAnimation *layerAnimation = [[SMSlideAnimation alloc] initWithType:SMSlideAnimationFromRight];
@@ -288,5 +288,5 @@ static CGFloat maxOffsetDiff = 46.0f;
         modalController.skiRoute = self.skiRoute;
     }
 }
-
+*/
 @end
