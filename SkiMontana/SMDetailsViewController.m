@@ -47,7 +47,7 @@ static CGFloat maxOffsetDiff = 46.0f;
     self.routeTopContraintHeight = self.headerView.routeTitleTopConstaint.constant;
     
     (self.tableView).contentInset = UIEdgeInsetsMake(self.offsetStartingY, 0, 0, 0);
-    (self.headerView).backgroundColor = [UIColor colorwithHexString:@"#0000ff" alpha:0.5];
+    (self.headerView).backgroundColor = [UIColor colorwithHexString:@"#0000ff" alpha:0.7];
     
     // View for background color (opaque white mask)
     UIView *backgroundColorView = [[UIView alloc]initWithFrame:self.view.frame];

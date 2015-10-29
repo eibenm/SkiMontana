@@ -47,6 +47,7 @@
 		CB8694C91B09649D00D4A93F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8694C81B09649D00D4A93F /* QuartzCore.framework */; };
 		CB8694CE1B0A8B6300D4A93F /* CLLocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8694CD1B0A8B6300D4A93F /* CLLocationHelper.m */; };
 		CB8DD6721BE154A200CD8217 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB8DD6711BE154A200CD8217 /* Images.xcassets */; };
+		CB8DD67B1BE1BE9800CD8217 /* SMLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8DD67A1BE1BE9800CD8217 /* SMLabel.m */; };
 		CB8F30A21BC4D3D600F4FA2C /* SMArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8F30A11BC4D3D600F4FA2C /* SMArrowView.m */; };
 		CB8F30AE1BCB021400F4FA2C /* beartoothPass.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CB8F30A31BCAFF0500F4FA2C /* beartoothPass.mbtiles */; };
 		CB8F30AF1BCB021400F4FA2C /* blackMountain.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CB8F30A41BCAFF0500F4FA2C /* blackMountain.mbtiles */; };
@@ -168,6 +169,8 @@
 		CB8694CC1B0A8B6300D4A93F /* CLLocationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLocationHelper.h; sourceTree = "<group>"; };
 		CB8694CD1B0A8B6300D4A93F /* CLLocationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLocationHelper.m; sourceTree = "<group>"; };
 		CB8DD6711BE154A200CD8217 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		CB8DD6791BE1BE9800CD8217 /* SMLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMLabel.h; sourceTree = "<group>"; };
+		CB8DD67A1BE1BE9800CD8217 /* SMLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMLabel.m; sourceTree = "<group>"; };
 		CB8F30A01BC4D3D600F4FA2C /* SMArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMArrowView.h; sourceTree = "<group>"; };
 		CB8F30A11BC4D3D600F4FA2C /* SMArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMArrowView.m; sourceTree = "<group>"; };
 		CB8F30A31BCAFF0500F4FA2C /* beartoothPass.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = beartoothPass.mbtiles; path = Tiles/beartoothPass.mbtiles; sourceTree = "<group>"; };
@@ -449,6 +452,8 @@
 				CB99FF601AB635940067E547 /* SMTableViewController.m */,
 				CB54F5F91B9FD93100D93401 /* SMDetailsHeaderView.h */,
 				CB54F5FA1B9FD93100D93401 /* SMDetailsHeaderView.m */,
+				CB8DD6791BE1BE9800CD8217 /* SMLabel.h */,
+				CB8DD67A1BE1BE9800CD8217 /* SMLabel.m */,
 			);
 			name = "Base Classes";
 			sourceTree = "<group>";
@@ -687,6 +692,7 @@
 				CB57FA4E1BD75F60009C3B3E /* SMRSSParseOperation.m in Sources */,
 				CB4208A81AA3BB5100ADFA97 /* SMAreasTableViewController.m in Sources */,
 				CB1111F91BD9D92E00B41862 /* Gps.m in Sources */,
+				CB8DD67B1BE1BE9800CD8217 /* SMLabel.m in Sources */,
 				CBA338DC1B82BBD1001BA5FF /* SMReachabilityManager.m in Sources */,
 				CB99FF5A1AB6347F0067E547 /* SMFlipAnimation.m in Sources */,
 				CB99FF611AB635940067E547 /* SMTableViewController.m in Sources */,

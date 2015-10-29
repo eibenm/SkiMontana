@@ -811,22 +811,23 @@
                                                     </subviews>
                                                     <animations/>
                                                     <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="iG4-3F-jDW" secondAttribute="bottom" id="C50-Pe-hHy"/>
-                                                        <constraint firstAttribute="trailing" secondItem="g6x-o0-dHD" secondAttribute="trailing" id="K9C-gX-ZqO"/>
-                                                        <constraint firstItem="iG4-3F-jDW" firstAttribute="leading" secondItem="xrc-uM-fNd" secondAttribute="leading" id="Rc6-i6-F0X"/>
-                                                        <constraint firstItem="iG4-3F-jDW" firstAttribute="top" secondItem="xrc-uM-fNd" secondAttribute="top" id="Vld-SO-iqV"/>
-                                                        <constraint firstItem="g6x-o0-dHD" firstAttribute="leading" secondItem="iG4-3F-jDW" secondAttribute="trailing" constant="4" id="WJl-rG-Xqg"/>
-                                                        <constraint firstItem="g6x-o0-dHD" firstAttribute="leading" secondItem="iG4-3F-jDW" secondAttribute="trailing" constant="4" id="YRr-nA-XiN"/>
-                                                        <constraint firstItem="g6x-o0-dHD" firstAttribute="top" secondItem="xrc-uM-fNd" secondAttribute="top" id="o2c-W1-udX"/>
-                                                        <constraint firstAttribute="bottom" secondItem="g6x-o0-dHD" secondAttribute="bottom" id="sXF-eF-WY6"/>
+                                                        <constraint firstItem="g6x-o0-dHD" firstAttribute="leading" secondItem="iG4-3F-jDW" secondAttribute="trailing" constant="4" id="0sv-CH-IHr"/>
+                                                        <constraint firstAttribute="bottom" secondItem="iG4-3F-jDW" secondAttribute="bottom" id="1eA-4l-sYo"/>
+                                                        <constraint firstAttribute="bottom" secondItem="g6x-o0-dHD" secondAttribute="bottom" id="AdE-C7-SXu"/>
+                                                        <constraint firstItem="iG4-3F-jDW" firstAttribute="leading" secondItem="xrc-uM-fNd" secondAttribute="leading" id="Zqc-gi-RtJ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="g6x-o0-dHD" secondAttribute="trailing" id="akO-Dr-Use"/>
+                                                        <constraint firstItem="iG4-3F-jDW" firstAttribute="top" secondItem="xrc-uM-fNd" secondAttribute="top" id="glv-YS-jFp"/>
+                                                        <constraint firstItem="g6x-o0-dHD" firstAttribute="top" secondItem="xrc-uM-fNd" secondAttribute="top" id="iAA-s4-tEa"/>
+                                                        <constraint firstItem="g6x-o0-dHD" firstAttribute="leading" secondItem="iG4-3F-jDW" secondAttribute="trailing" constant="4" id="v4a-5f-90O"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <animations/>
                                             <constraints>
-                                                <constraint firstItem="xrc-uM-fNd" firstAttribute="top" secondItem="Pce-RJ-l3E" secondAttribute="topMargin" id="5dh-SO-slP"/>
-                                                <constraint firstItem="xrc-uM-fNd" firstAttribute="bottom" secondItem="Pce-RJ-l3E" secondAttribute="bottomMargin" id="Nhk-8y-OPC"/>
-                                                <constraint firstItem="xrc-uM-fNd" firstAttribute="centerX" secondItem="Pce-RJ-l3E" secondAttribute="centerX" id="V4e-91-Xdc"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="xrc-uM-fNd" secondAttribute="trailing" constant="179" id="2Jq-wN-Ygg"/>
+                                                <constraint firstItem="xrc-uM-fNd" firstAttribute="leading" secondItem="Pce-RJ-l3E" secondAttribute="leadingMargin" constant="179" id="S2J-qu-dna"/>
+                                                <constraint firstItem="xrc-uM-fNd" firstAttribute="bottom" secondItem="Pce-RJ-l3E" secondAttribute="bottomMargin" id="lKZ-OE-sD0"/>
+                                                <constraint firstItem="xrc-uM-fNd" firstAttribute="top" secondItem="Pce-RJ-l3E" secondAttribute="topMargin" id="mbd-Np-yJJ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
@@ -989,12 +990,20 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZh-r9-IGu" userLabel="Background View">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ski Bozman" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RgU-7m-gN1">
-                                        <rect key="frame" x="8" y="60" width="584" height="47"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ski Bozman" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RgU-7m-gN1" customClass="SMLabel">
+                                        <rect key="frame" x="8" y="60" width="584" height="55"/>
                                         <animations/>
-                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="34"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="40"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="strokeWidth">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="strokeColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                 </subviews>
                                 <animations/>
