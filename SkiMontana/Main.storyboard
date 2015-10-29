@@ -1126,7 +1126,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Advisory" id="ofW-X5-GYf">
-                        <barButtonItem key="rightBarButtonItem" title="RSS" id="xvi-tb-atT">
+                        <barButtonItem key="rightBarButtonItem" title="More" id="xvi-tb-atT">
                             <connections>
                                 <segue destination="nEb-6D-Cy9" kind="show" identifier="showRSS" id="hbK-Pd-Zek"/>
                             </connections>

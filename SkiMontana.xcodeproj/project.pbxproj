@@ -19,7 +19,6 @@
 		CB1111FA1BD9D92E00B41862 /* SkiRoutes+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111EF1BD9D92E00B41862 /* SkiRoutes+CoreDataProperties.m */; };
 		CB1111FB1BD9D92E00B41862 /* SkiRoutes.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111F11BD9D92E00B41862 /* SkiRoutes.m */; };
 		CB1112011BDA8B5C00B41862 /* RSSHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB1112001BDA8B5C00B41862 /* RSSHeaderView.xib */; };
-		CB12986F1BA10E6C0046095B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB12986E1BA10E6C0046095B /* Images.xcassets */; };
 		CB17F6731AA93F4600048BC5 /* SMSkiAreaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB17F6721AA93F4600048BC5 /* SMSkiAreaTableViewCell.m */; };
 		CB17F6761AA93F5C00048BC5 /* SMSkiRouteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB17F6751AA93F5C00048BC5 /* SMSkiRouteTableViewCell.m */; };
 		CB2B346A1BAE058F007067C3 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2B34691BAE058F007067C3 /* StoreKit.framework */; };
@@ -47,6 +46,7 @@
 		CB8694C71B09649200D4A93F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8694C61B09649200D4A93F /* CoreLocation.framework */; };
 		CB8694C91B09649D00D4A93F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8694C81B09649D00D4A93F /* QuartzCore.framework */; };
 		CB8694CE1B0A8B6300D4A93F /* CLLocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8694CD1B0A8B6300D4A93F /* CLLocationHelper.m */; };
+		CB8DD6721BE154A200CD8217 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB8DD6711BE154A200CD8217 /* Images.xcassets */; };
 		CB8F30A21BC4D3D600F4FA2C /* SMArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8F30A11BC4D3D600F4FA2C /* SMArrowView.m */; };
 		CB8F30AE1BCB021400F4FA2C /* beartoothPass.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CB8F30A31BCAFF0500F4FA2C /* beartoothPass.mbtiles */; };
 		CB8F30AF1BCB021400F4FA2C /* blackMountain.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CB8F30A41BCAFF0500F4FA2C /* blackMountain.mbtiles */; };
@@ -121,7 +121,6 @@
 		CB1111F01BD9D92E00B41862 /* SkiRoutes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SkiRoutes.h; path = NSManagedObjects/SkiRoutes.h; sourceTree = "<group>"; };
 		CB1111F11BD9D92E00B41862 /* SkiRoutes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SkiRoutes.m; path = NSManagedObjects/SkiRoutes.m; sourceTree = "<group>"; };
 		CB1112001BDA8B5C00B41862 /* RSSHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RSSHeaderView.xib; sourceTree = "<group>"; };
-		CB12986E1BA10E6C0046095B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CB17F6711AA93F4600048BC5 /* SMSkiAreaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSkiAreaTableViewCell.h; sourceTree = "<group>"; };
 		CB17F6721AA93F4600048BC5 /* SMSkiAreaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSkiAreaTableViewCell.m; sourceTree = "<group>"; };
 		CB17F6741AA93F5C00048BC5 /* SMSkiRouteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSkiRouteTableViewCell.h; sourceTree = "<group>"; };
@@ -168,6 +167,7 @@
 		CB8694C81B09649D00D4A93F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CB8694CC1B0A8B6300D4A93F /* CLLocationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLocationHelper.h; sourceTree = "<group>"; };
 		CB8694CD1B0A8B6300D4A93F /* CLLocationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLocationHelper.m; sourceTree = "<group>"; };
+		CB8DD6711BE154A200CD8217 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CB8F30A01BC4D3D600F4FA2C /* SMArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMArrowView.h; sourceTree = "<group>"; };
 		CB8F30A11BC4D3D600F4FA2C /* SMArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMArrowView.m; sourceTree = "<group>"; };
 		CB8F30A31BCAFF0500F4FA2C /* beartoothPass.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = beartoothPass.mbtiles; path = Tiles/beartoothPass.mbtiles; sourceTree = "<group>"; };
@@ -397,7 +397,7 @@
 				CB4208A21AA3B94C00ADFA97 /* Catagories */,
 				CB96952C1A9A3EF6009757B7 /* LaunchScreen.xib */,
 				CB2B346E1BAE0C1D007067C3 /* Main.storyboard */,
-				CB12986E1BA10E6C0046095B /* Images.xcassets */,
+				CB8DD6711BE154A200CD8217 /* Images.xcassets */,
 				CB9C212F1BA7EBDB00D0D5DC /* MBTiles */,
 				CB96951D1A9A3EF6009757B7 /* Supporting Files */,
 				CB437C3E1A9C230600315353 /* Frameworks */,
@@ -653,12 +653,12 @@
 				CB8F30B31BCB021400F4FA2C /* mtEllisChestnut.mbtiles in Resources */,
 				CB8F30B41BCB021400F4FA2C /* northernMadison.mbtiles in Resources */,
 				CB8F30B51BCB021400F4FA2C /* telemarkMeadows.mbtiles in Resources */,
+				CB8DD6721BE154A200CD8217 /* Images.xcassets in Resources */,
 				CB8F30B61BCB021400F4FA2C /* theFin.mbtiles in Resources */,
 				CB8F30B71BCB021400F4FA2C /* theSkillet.mbtiles in Resources */,
 				CB8F30B81BCB021400F4FA2C /* theSphinx.mbtiles in Resources */,
 				CB8694C41B09639B00D4A93F /* Mapbox.bundle in Resources */,
 				CB4208E61AA3FA6C00ADFA97 /* database.sqlite in Resources */,
-				CB12986F1BA10E6C0046095B /* Images.xcassets in Resources */,
 				CB96952E1A9A3EF6009757B7 /* LaunchScreen.xib in Resources */,
 				CB2B346F1BAE0C1D007067C3 /* Main.storyboard in Resources */,
 				CB1112011BDA8B5C00B41862 /* RSSHeaderView.xib in Resources */,
