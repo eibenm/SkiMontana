@@ -10,8 +10,6 @@
 
 @interface SMSkiAreaTableViewCell()
 
-@property (nonatomic, strong) UIView *headerBackgroundLayer;
-
 @end
 
 @implementation SMSkiAreaTableViewCell
@@ -20,7 +18,9 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        [self drawHeaderBackground];
+        if ([self.reuseIdentifier isEqualToString:@"SkiArea"]) {
+            [self drawBackground];
+        }
     }
     return self;
 }
@@ -29,33 +29,34 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        [self drawHeaderBackground];
+        if ([self.reuseIdentifier isEqualToString:@"SkiArea"]) {
+            [self drawBackground];
+        }
     }
     return self;
 }
 
-- (void)drawHeaderBackground
+- (void)drawBackground
 {
-    if (!_headerBackgroundLayer) {
-        _headerBackgroundLayer = [[UIView alloc] initWithFrame:CGRectInset(self.bounds, 5, 5)];
-        _headerBackgroundLayer.backgroundColor = [UIColor blackColor];
-        (_headerBackgroundLayer.layer).cornerRadius = 4.5f;
-        (_headerBackgroundLayer.layer).opacity = 0.5f;
-        [self addSubview:_headerBackgroundLayer];
-        [self sendSubviewToBack:_headerBackgroundLayer];
+    if (!self.areaBackgroundLayer) {
+        self.areaBackgroundLayer = [UIView new];
+        (self.areaBackgroundLayer).backgroundColor = [UIColor blackColor];
+        (self.areaBackgroundLayer.layer).opacity = 0.5f;
+        [self addSubview:self.areaBackgroundLayer];
+        [self sendSubviewToBack:self.areaBackgroundLayer];
     }
 }
 
 - (void)layoutSubviews
 {
-    _headerBackgroundLayer.frame = CGRectInset(self.bounds, 5, 5);
+    (self.areaBackgroundLayer).frame = CGRectMake(5, 5, CGRectGetWidth(self.bounds) - 10, CGRectGetHeight(self.bounds));
     [super layoutSubviews];
 }
 
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
 {
     [UIView animateWithDuration:0.2 animations:^{
-        (_headerBackgroundLayer.layer).opacity = (highlighted ? 0.65f : 0.5f);
+        (self.areaBackgroundLayer.layer).opacity = (highlighted ? 0.65f : 0.5f);
     }];
     [super setHighlighted:highlighted animated:animated];
 }

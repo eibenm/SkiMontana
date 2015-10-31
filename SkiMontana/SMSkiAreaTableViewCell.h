@@ -10,6 +10,11 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *areaImage;
 @property (strong, nonatomic) IBOutlet UILabel *areaName;
-@property (strong, nonatomic) IBOutlet UITextView *areaShortDesc;
+@property (strong, nonatomic) IBOutlet UITextView *areaConditions;
+
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *areaConditionsHeightConstraint;
+
+@property (nonatomic, strong) UIView *areaBackgroundLayer;
+@property (nonatomic, strong) UIView *routeBackgroundLayer;
 
 @end

@@ -13,7 +13,6 @@
 
 #import "SMSkiRouteTableViewCell.h"
 #import "SMArrowView.h"
-#import "SMSlideAnimation.h"
 
 static NSString *cellIdentifier;
 
@@ -108,7 +107,7 @@ static NSString *cellIdentifier;
             return 1;
         }
         NSUInteger countRoutes = (skiArea.ski_routes).count;
-        return countRoutes + 2;
+        return countRoutes + 1;
     }
     
     return 0;
@@ -118,7 +117,6 @@ static NSString *cellIdentifier;
 {
     switch (indexPath.row) {
         case 0: cellIdentifier = @"SkiArea"; break;
-        case 1: cellIdentifier = @"SkiAreaConditions"; break;
         default: cellIdentifier = @"SkiRoute"; break;
     }
     
@@ -137,6 +135,7 @@ static NSString *cellIdentifier;
     NSArray *skiAreaObjects = (self.fetchedResultsController).fetchedObjects;
     SkiAreas *skiArea = skiAreaObjects[indexPath.section];
 
+    // Ski Area
     if (indexPath.row == 0) {
         
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
@@ -147,26 +146,26 @@ static NSString *cellIdentifier;
             NSForegroundColorAttributeName: [UIColor whiteColor]
         };
         
+        UIBezierPath *imgRect = [UIBezierPath bezierPathWithRect:CGRectInset(cell.areaImage.bounds, -8.0f, 0)];
+
+        (cell.areaName).text = skiArea.name_area;
+        (cell.areaName).textColor = [UIColor whiteColor];
         (cell.areaImage).image = [UIImage imageNamed:skiArea.ski_area_image.avatar];
         (cell.areaImage.layer).borderColor = [UIColor blackColor].CGColor;
         (cell.areaImage.layer).borderWidth = 1.0;
-        (cell.areaName).text = skiArea.name_area;
-        (cell.areaName).textColor = [UIColor whiteColor];
-        (cell.areaShortDesc).textContainerInset = UIEdgeInsetsZero;
-        (cell.areaShortDesc.textContainer).lineFragmentPadding = 0;
-        (cell.areaShortDesc.textContainer).lineBreakMode = NSLineBreakByTruncatingTail;
-        (cell.areaShortDesc).attributedText = [[NSAttributedString alloc] initWithString:skiArea.short_desc attributes:attrsDictionary];
-        
-        if (self.deviceIsIPhone) {
-            UIBezierPath *imgRect = [UIBezierPath bezierPathWithRect:CGRectInset(cell.areaImage.bounds, -8.0f, 0)];
-            (cell.areaShortDesc.textContainer).exclusionPaths = @[imgRect];
-        }
-        
+        (cell.areaConditions).textContainerInset = UIEdgeInsetsZero;
+        (cell.areaConditions.textContainer).lineFragmentPadding = 0;
+        (cell.areaConditions.textContainer).lineBreakMode = NSLineBreakByTruncatingTail;
+        (cell.areaConditions).attributedText = [[NSAttributedString alloc] initWithString:skiArea.conditions attributes:attrsDictionary];
+        (cell.areaConditions.textContainer).exclusionPaths = @[imgRect];
+                
         if (![_isShowingArray[[skiAreaObjects indexOfObject:skiArea]] boolValue]) {
             cell.accessoryView = [[SMArrowView alloc] initWithFrame:CGRectMake(0, 0, 30, 22) arrowType:SMArrowDown color:[UIColor blueColor]];
+            (cell.areaConditionsHeightConstraint).priority = UILayoutPriorityDefaultHigh;
         }
         else {
             cell.accessoryView = [[SMArrowView alloc] initWithFrame:CGRectMake(0, 0, 30, 22) arrowType:SMArrowUp color:[UIColor redColor]];
+            (cell.areaConditionsHeightConstraint).priority = UILayoutPriorityDefaultLow;
         }
         
         // Setting lock on image if appropriate
@@ -180,15 +179,10 @@ static NSString *cellIdentifier;
         }
     }
     
-    else if (indexPath.row == 1) {
-        (cell.areaConditions).text = skiArea.conditions;
-        (cell.areaConditions).textColor = [UIColor whiteColor];
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    }
-    
+    // Ski Route
     else {
         NSArray *skiRoutesArray = [skiArea.ski_routes sortedArrayUsingDescriptors:@[self.routeSortDescriptor]];
-        SkiRoutes *skiRoute = skiRoutesArray[indexPath.row - 2];
+        SkiRoutes *skiRoute = skiRoutesArray[indexPath.row - 1];
         NSDictionary *underlineAttribute = @{
             NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle),
             NSForegroundColorAttributeName: [UIColor whiteColor]
@@ -211,26 +205,27 @@ static NSString *cellIdentifier;
 
 #pragma mark - UITableViewDelegate
 
-
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSArray *skiAreaObjects = (self.fetchedResultsController).fetchedObjects;
+    SkiAreas *skiArea = skiAreaObjects[indexPath.section];
     CGFloat height = UITableViewAutomaticDimension;
-    
     CGRect conditionsRect = CGRectNull;
     
-    // If conditions cell, calculating a rough cell height
-    if (indexPath.row == 1) {
-        NSArray *skiAreaObjects = (self.fetchedResultsController).fetchedObjects;
-        SkiAreas *skiArea = skiAreaObjects[indexPath.section];
-        NSAttributedString * attributedString = [[NSAttributedString alloc] initWithString:skiArea.conditions attributes:@{ NSFontAttributeName:[UIFont mediumSkiMontanaFontOfSize:14]}];
-        CGSize constraintSize = CGSizeMake(tableView.frame.size.width - 15, MAXFLOAT);
-        conditionsRect = [attributedString boundingRectWithSize:constraintSize options:(NSStringDrawingUsesLineFragmentOrigin |NSStringDrawingUsesFontLeading) context:nil];
+    if (indexPath.row == 0) {
+        if ([_isShowingArray[[skiAreaObjects indexOfObject:skiArea]] boolValue] == NO) {
+            height = 178.0f;
+        }
+        else {
+            // Estimating a better height if row is expanded
+            NSAttributedString * attributedString = [[NSAttributedString alloc] initWithString:skiArea.conditions attributes:@{ NSFontAttributeName:[UIFont mediumSkiMontanaFontOfSize:14]}];
+            CGSize constraintSize = CGSizeMake(tableView.frame.size.width - 15, MAXFLOAT);
+            conditionsRect = [attributedString boundingRectWithSize:constraintSize options:(NSStringDrawingUsesLineFragmentOrigin |NSStringDrawingUsesFontLeading) context:nil];
+            height = (conditionsRect.size.height < 178.0f) ? 178.0f : conditionsRect.size.height;
+        }
     }
-    
-    switch (indexPath.row) {
-        case 0: height = 230.0f; break;
-        case 1: height = conditionsRect.size.height; break;
-        default: height = 150.0f; break;
+    else {
+        height = 150.0f;
     }
     
     return height;
@@ -238,24 +233,23 @@ static NSString *cellIdentifier;
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Collapse or expand section when skiArea cells are selected
     NSArray *skiAreaObjects = (self.fetchedResultsController).fetchedObjects;
-    [skiAreaObjects enumerateObjectsUsingBlock:^(id skiArea, NSUInteger index, BOOL *stop) {
-        if (indexPath.section == index) {
-            if (indexPath.row == 0 || indexPath.row == 1) {
-                _isShowingArray[index] = [NSNumber numberWithBool:![_isShowingArray[index] boolValue]];
-                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationAutomatic];
-            }
-            else {
-                // Present IAP options if needed
-                NSArray *skiAreaObjects = (self.fetchedResultsController).fetchedObjects;
-                SkiAreas *skiArea = skiAreaObjects[indexPath.section];
-                if (skiArea.permissions.boolValue == NO) {
-                    [self presentIAPActionSheet];
-                }
-            }
+    SkiAreas *skiArea = skiAreaObjects[indexPath.section];
+    NSUInteger index = [(self.fetchedResultsController).fetchedObjects indexOfObject:skiArea];
+    
+    // Collapse or expand section when skiArea cells are selected
+    if (indexPath.row == 0) {
+        _isShowingArray[index] = [NSNumber numberWithBool:![_isShowingArray[index] boolValue]];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+    else {
+        // Present IAP options if needed
+        NSArray *skiAreaObjects = (self.fetchedResultsController).fetchedObjects;
+        SkiAreas *skiArea = skiAreaObjects[indexPath.section];
+        if (skiArea.permissions.boolValue == NO) {
+            [self presentIAPActionSheet];
         }
-    }];
+    }
 }
 
 #pragma mark - NSFetchedResultsController
@@ -314,7 +308,7 @@ static NSString *cellIdentifier;
     NSArray *skiAreaObjects = (self.fetchedResultsController).fetchedObjects;
     NSIndexPath *indexPath = (self.tableView).indexPathForSelectedRow;
     SkiAreas *skiArea = skiAreaObjects[indexPath.section];
-    if (skiArea.permissions.boolValue == NO) {
+    if ((skiArea.permissions).boolValue == NO) {
         return NO;
     }
     
@@ -329,7 +323,7 @@ static NSString *cellIdentifier;
         NSIndexPath *indexPath = (self.tableView).indexPathForSelectedRow;
         SkiAreas *skiArea = skiAreaObjects[indexPath.section];
         NSArray *skiRoutesArray = [skiArea.ski_routes sortedArrayUsingDescriptors:@[self.routeSortDescriptor]];
-        SkiRoutes *skiRoute = skiRoutesArray[indexPath.row - 2];
+        SkiRoutes *skiRoute = skiRoutesArray[indexPath.row - 1];
         SMDetailsViewController *viewController = segue.destinationViewController;
         viewController.nameArea = skiArea.name_area;
         viewController.skiRoute = skiRoute;

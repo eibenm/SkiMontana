@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Gneiss Software. All rights reserved.
 //
 
-#import "SMSkiAreaConditionsTableViewCell.h"
+#import "SMSkiAreaTableViewCell.h"
 
-@interface SMSkiRouteTableViewCell : SMSkiAreaConditionsTableViewCell
+@interface SMSkiRouteTableViewCell : SMSkiAreaTableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *routeTitle;
 @property (strong, nonatomic) IBOutlet UILabel *routeQuip;
