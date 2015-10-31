@@ -16,11 +16,11 @@
     UIColor *textColor = self.textColor;
     
     CGContextRef c = UIGraphicsGetCurrentContext();
-    CGContextSetLineWidth(c, self.strokeWidth);
+    CGContextSetLineWidth(c, 3);
     CGContextSetLineJoin(c, kCGLineJoinRound);
     
     CGContextSetTextDrawingMode(c, kCGTextStroke);
-    self.textColor = self.strokeColor;
+    self.textColor = [UIColor whiteColor];
     [super drawTextInRect:rect];
     
     CGContextSetTextDrawingMode(c, kCGTextFill);

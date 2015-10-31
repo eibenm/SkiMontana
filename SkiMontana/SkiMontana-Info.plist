@@ -27,6 +27,7 @@
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>comgooglemaps</string>
+		<string>comgoogleearth</string>
 	</array>
 	<key>NSAppTransportSecurity</key>
 	<dict>

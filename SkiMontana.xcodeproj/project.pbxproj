@@ -27,6 +27,31 @@
 		CB4208A51AA3B98700ADFA97 /* UIFont+SkiMontana.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4208A41AA3B98700ADFA97 /* UIFont+SkiMontana.m */; };
 		CB4208A81AA3BB5100ADFA97 /* SMAreasTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4208A71AA3BB5100ADFA97 /* SMAreasTableViewController.m */; };
 		CB4208E61AA3FA6C00ADFA97 /* database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = CB4208E51AA3FA6C00ADFA97 /* database.sqlite */; };
+		CB4437F21BE45958004A4BEC /* Bacon Rind Skillet.kmz in Resources */ = {isa = PBXBuildFile; fileRef = CB4437D81BE4567E004A4BEC /* Bacon Rind Skillet.kmz */; };
+		CB4437F31BE45958004A4BEC /* Beartooth Pass.kmz in Resources */ = {isa = PBXBuildFile; fileRef = CB4437D91BE4567E004A4BEC /* Beartooth Pass.kmz */; };
+		CB4437F41BE45958004A4BEC /* Beehive Meadows.kmz in Resources */ = {isa = PBXBuildFile; fileRef = CB4437DA1BE4567E004A4BEC /* Beehive Meadows.kmz */; };
+		CB4437F51BE45958004A4BEC /* Beehive to Bear Basin.kmz in Resources */ = {isa = PBXBuildFile; fileRef = CB4437DB1BE4567E004A4BEC /* Beehive to Bear Basin.kmz */; };
+		CB4437F61BE45958004A4BEC /* Black Mountain.kmz in Resources */ = {isa = PBXBuildFile; fileRef = CB4437DC1BE4567E004A4BEC /* Black Mountain.kmz */; };
+		CB4437F71BE45958004A4BEC /* Bridger Bowl.kmz in Resources */ = {isa = PBXBuildFile; fileRef = CB4437DD1BE4567E004A4BEC /* Bridger Bowl.kmz */; };
+		CB4437F81BE45958004A4BEC /* Buttcrack Chute.kmz in Resources */ = {isa = PBXBuildFile; fileRef = CB4437DE1BE4567E004A4BEC /* Buttcrack Chute.kmz */; };
+		CB4437F91BE45958004A4BEC /* Deer Creek.kmz in Resources */ = {isa = PBXBuildFile; fileRef = CB4437DF1BE4567E004A4BEC /* Deer Creek.kmz */; };
+		CB4437FA1BE45958004A4BEC /* Dudley Creek.kmz in Resources */ = {isa = PBXBuildFile; fileRef = CB4437E01BE4567E004A4BEC /* Dudley Creek.kmz */; };
+		CB4437FB1BE45958004A4BEC /* Elephant Head Mountain.kmz in Resources */ = {isa = PBXBuildFile; fileRef = CB4437E11BE4567E004A4BEC /* Elephant Head Mountain.kmz */; };
+		CB4437FC1BE45958004A4BEC /* Garnet Mountain Chute.kmz in Resources */ = {isa = PBXBuildFile; fileRef = CB4437E21BE4567E004A4BEC /* Garnet Mountain Chute.kmz */; };
+		CB4437FD1BE45958004A4BEC /* Goose Creek Meadow.kmz in Resources */ = {isa = PBXBuildFile; fileRef = CB4437E31BE4567E004A4BEC /* Goose Creek Meadow.kmz */; };
+		CB4437FE1BE45958004A4BEC /* History Rock.kmz in Resources */ = {isa = PBXBuildFile; fileRef = CB4437E41BE4567E004A4BEC /* History Rock.kmz */; };
+		CB4437FF1BE45958004A4BEC /* Hyalite Peak.kmz in Resources */ = {isa = PBXBuildFile; fileRef = CB4437E51BE4567E004A4BEC /* Hyalite Peak.kmz */; };
+		CB4438001BE45958004A4BEC /* Lick Creek Meadows.kmz in Resources */ = {isa = PBXBuildFile; fileRef = CB4437E61BE4567E004A4BEC /* Lick Creek Meadows.kmz */; };
+		CB4438011BE45958004A4BEC /* Little Ellis.kmz in Resources */ = {isa = PBXBuildFile; fileRef = CB4437E71BE4567E004A4BEC /* Little Ellis.kmz */; };
+		CB4438021BE45958004A4BEC /* Middle Cottonwood.kmz in Resources */ = {isa = PBXBuildFile; fileRef = CB4437E81BE4567E004A4BEC /* Middle Cottonwood.kmz */; };
+		CB4438031BE45958004A4BEC /* Mt. Blackmore.kmz in Resources */ = {isa = PBXBuildFile; fileRef = CB4437E91BE4567E004A4BEC /* Mt. Blackmore.kmz */; };
+		CB4438041BE45958004A4BEC /* Telemark Meadows.kmz in Resources */ = {isa = PBXBuildFile; fileRef = CB4437EA1BE4567E004A4BEC /* Telemark Meadows.kmz */; };
+		CB4438051BE45958004A4BEC /* Texas Meadows.kmz in Resources */ = {isa = PBXBuildFile; fileRef = CB4437EB1BE4567F004A4BEC /* Texas Meadows.kmz */; };
+		CB4438061BE45958004A4BEC /* The Fin.kmz in Resources */ = {isa = PBXBuildFile; fileRef = CB4437EC1BE4567F004A4BEC /* The Fin.kmz */; };
+		CB4438071BE45958004A4BEC /* The Mt. Ellis Burn.kmz in Resources */ = {isa = PBXBuildFile; fileRef = CB4437ED1BE4567F004A4BEC /* The Mt. Ellis Burn.kmz */; };
+		CB4438081BE45958004A4BEC /* The Sphinx.kmz in Resources */ = {isa = PBXBuildFile; fileRef = CB4437EE1BE4567F004A4BEC /* The Sphinx.kmz */; };
+		CB4438091BE45958004A4BEC /* Truman Gulch.kmz in Resources */ = {isa = PBXBuildFile; fileRef = CB4437EF1BE4567F004A4BEC /* Truman Gulch.kmz */; };
+		CB44380A1BE45958004A4BEC /* Yellow Mountain.kmz in Resources */ = {isa = PBXBuildFile; fileRef = CB4437F01BE4567F004A4BEC /* Yellow Mountain.kmz */; };
 		CB54F5FB1B9FD93100D93401 /* SMDetailsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB54F5FA1B9FD93100D93401 /* SMDetailsHeaderView.m */; };
 		CB57FA421BD54C04009C3B3E /* SMIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CB57FA411BD54C04009C3B3E /* SMIAPHelper.m */; };
 		CB57FA451BD5FD6A009C3B3E /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CB57FA441BD5FD6A009C3B3E /* NSDate+Utilities.m */; };
@@ -137,6 +162,31 @@
 		CB4208A61AA3BB5100ADFA97 /* SMAreasTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAreasTableViewController.h; sourceTree = "<group>"; };
 		CB4208A71AA3BB5100ADFA97 /* SMAreasTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAreasTableViewController.m; sourceTree = "<group>"; };
 		CB4208E51AA3FA6C00ADFA97 /* database.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = database.sqlite; sourceTree = "<group>"; };
+		CB4437D81BE4567E004A4BEC /* Bacon Rind Skillet.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Bacon Rind Skillet.kmz"; path = "kmz/Bacon Rind Skillet.kmz"; sourceTree = "<group>"; };
+		CB4437D91BE4567E004A4BEC /* Beartooth Pass.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Beartooth Pass.kmz"; path = "kmz/Beartooth Pass.kmz"; sourceTree = "<group>"; };
+		CB4437DA1BE4567E004A4BEC /* Beehive Meadows.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Beehive Meadows.kmz"; path = "kmz/Beehive Meadows.kmz"; sourceTree = "<group>"; };
+		CB4437DB1BE4567E004A4BEC /* Beehive to Bear Basin.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Beehive to Bear Basin.kmz"; path = "kmz/Beehive to Bear Basin.kmz"; sourceTree = "<group>"; };
+		CB4437DC1BE4567E004A4BEC /* Black Mountain.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Black Mountain.kmz"; path = "kmz/Black Mountain.kmz"; sourceTree = "<group>"; };
+		CB4437DD1BE4567E004A4BEC /* Bridger Bowl.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Bridger Bowl.kmz"; path = "kmz/Bridger Bowl.kmz"; sourceTree = "<group>"; };
+		CB4437DE1BE4567E004A4BEC /* Buttcrack Chute.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Buttcrack Chute.kmz"; path = "kmz/Buttcrack Chute.kmz"; sourceTree = "<group>"; };
+		CB4437DF1BE4567E004A4BEC /* Deer Creek.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Deer Creek.kmz"; path = "kmz/Deer Creek.kmz"; sourceTree = "<group>"; };
+		CB4437E01BE4567E004A4BEC /* Dudley Creek.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Dudley Creek.kmz"; path = "kmz/Dudley Creek.kmz"; sourceTree = "<group>"; };
+		CB4437E11BE4567E004A4BEC /* Elephant Head Mountain.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Elephant Head Mountain.kmz"; path = "kmz/Elephant Head Mountain.kmz"; sourceTree = "<group>"; };
+		CB4437E21BE4567E004A4BEC /* Garnet Mountain Chute.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Garnet Mountain Chute.kmz"; path = "kmz/Garnet Mountain Chute.kmz"; sourceTree = "<group>"; };
+		CB4437E31BE4567E004A4BEC /* Goose Creek Meadow.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Goose Creek Meadow.kmz"; path = "kmz/Goose Creek Meadow.kmz"; sourceTree = "<group>"; };
+		CB4437E41BE4567E004A4BEC /* History Rock.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; name = "History Rock.kmz"; path = "kmz/History Rock.kmz"; sourceTree = "<group>"; };
+		CB4437E51BE4567E004A4BEC /* Hyalite Peak.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hyalite Peak.kmz"; path = "kmz/Hyalite Peak.kmz"; sourceTree = "<group>"; };
+		CB4437E61BE4567E004A4BEC /* Lick Creek Meadows.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lick Creek Meadows.kmz"; path = "kmz/Lick Creek Meadows.kmz"; sourceTree = "<group>"; };
+		CB4437E71BE4567E004A4BEC /* Little Ellis.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Little Ellis.kmz"; path = "kmz/Little Ellis.kmz"; sourceTree = "<group>"; };
+		CB4437E81BE4567E004A4BEC /* Middle Cottonwood.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Middle Cottonwood.kmz"; path = "kmz/Middle Cottonwood.kmz"; sourceTree = "<group>"; };
+		CB4437E91BE4567E004A4BEC /* Mt. Blackmore.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Mt. Blackmore.kmz"; path = "kmz/Mt. Blackmore.kmz"; sourceTree = "<group>"; };
+		CB4437EA1BE4567E004A4BEC /* Telemark Meadows.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Telemark Meadows.kmz"; path = "kmz/Telemark Meadows.kmz"; sourceTree = "<group>"; };
+		CB4437EB1BE4567F004A4BEC /* Texas Meadows.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Texas Meadows.kmz"; path = "kmz/Texas Meadows.kmz"; sourceTree = "<group>"; };
+		CB4437EC1BE4567F004A4BEC /* The Fin.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; name = "The Fin.kmz"; path = "kmz/The Fin.kmz"; sourceTree = "<group>"; };
+		CB4437ED1BE4567F004A4BEC /* The Mt. Ellis Burn.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; name = "The Mt. Ellis Burn.kmz"; path = "kmz/The Mt. Ellis Burn.kmz"; sourceTree = "<group>"; };
+		CB4437EE1BE4567F004A4BEC /* The Sphinx.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; name = "The Sphinx.kmz"; path = "kmz/The Sphinx.kmz"; sourceTree = "<group>"; };
+		CB4437EF1BE4567F004A4BEC /* Truman Gulch.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Truman Gulch.kmz"; path = "kmz/Truman Gulch.kmz"; sourceTree = "<group>"; };
+		CB4437F01BE4567F004A4BEC /* Yellow Mountain.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Yellow Mountain.kmz"; path = "kmz/Yellow Mountain.kmz"; sourceTree = "<group>"; };
 		CB54F5F91B9FD93100D93401 /* SMDetailsHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDetailsHeaderView.h; sourceTree = "<group>"; };
 		CB54F5FA1B9FD93100D93401 /* SMDetailsHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDetailsHeaderView.m; sourceTree = "<group>"; };
 		CB57FA401BD54C04009C3B3E /* SMIAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMIAPHelper.h; sourceTree = "<group>"; };
@@ -349,6 +399,38 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		CB4437F11BE45687004A4BEC /* KML */ = {
+			isa = PBXGroup;
+			children = (
+				CB4437D81BE4567E004A4BEC /* Bacon Rind Skillet.kmz */,
+				CB4437D91BE4567E004A4BEC /* Beartooth Pass.kmz */,
+				CB4437DA1BE4567E004A4BEC /* Beehive Meadows.kmz */,
+				CB4437DB1BE4567E004A4BEC /* Beehive to Bear Basin.kmz */,
+				CB4437DC1BE4567E004A4BEC /* Black Mountain.kmz */,
+				CB4437DD1BE4567E004A4BEC /* Bridger Bowl.kmz */,
+				CB4437DE1BE4567E004A4BEC /* Buttcrack Chute.kmz */,
+				CB4437DF1BE4567E004A4BEC /* Deer Creek.kmz */,
+				CB4437E01BE4567E004A4BEC /* Dudley Creek.kmz */,
+				CB4437E11BE4567E004A4BEC /* Elephant Head Mountain.kmz */,
+				CB4437E21BE4567E004A4BEC /* Garnet Mountain Chute.kmz */,
+				CB4437E31BE4567E004A4BEC /* Goose Creek Meadow.kmz */,
+				CB4437E41BE4567E004A4BEC /* History Rock.kmz */,
+				CB4437E51BE4567E004A4BEC /* Hyalite Peak.kmz */,
+				CB4437E61BE4567E004A4BEC /* Lick Creek Meadows.kmz */,
+				CB4437E71BE4567E004A4BEC /* Little Ellis.kmz */,
+				CB4437E81BE4567E004A4BEC /* Middle Cottonwood.kmz */,
+				CB4437E91BE4567E004A4BEC /* Mt. Blackmore.kmz */,
+				CB4437EA1BE4567E004A4BEC /* Telemark Meadows.kmz */,
+				CB4437EB1BE4567F004A4BEC /* Texas Meadows.kmz */,
+				CB4437EC1BE4567F004A4BEC /* The Fin.kmz */,
+				CB4437ED1BE4567F004A4BEC /* The Mt. Ellis Burn.kmz */,
+				CB4437EE1BE4567F004A4BEC /* The Sphinx.kmz */,
+				CB4437EF1BE4567F004A4BEC /* Truman Gulch.kmz */,
+				CB4437F01BE4567F004A4BEC /* Yellow Mountain.kmz */,
+			);
+			name = KML;
+			sourceTree = "<group>";
+		};
 		CB8694C51B0963A300D4A93F /* Mapbox */ = {
 			isa = PBXGroup;
 			children = (
@@ -409,6 +491,7 @@
 				CB2B346E1BAE0C1D007067C3 /* Main.storyboard */,
 				CB8DD6711BE154A200CD8217 /* Images.xcassets */,
 				CB9C212F1BA7EBDB00D0D5DC /* MBTiles */,
+				CB4437F11BE45687004A4BEC /* KML */,
 				CB96951D1A9A3EF6009757B7 /* Supporting Files */,
 				CB437C3E1A9C230600315353 /* Frameworks */,
 			);
@@ -657,6 +740,31 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB4437F21BE45958004A4BEC /* Bacon Rind Skillet.kmz in Resources */,
+				CB4437F31BE45958004A4BEC /* Beartooth Pass.kmz in Resources */,
+				CB4437F41BE45958004A4BEC /* Beehive Meadows.kmz in Resources */,
+				CB4437F51BE45958004A4BEC /* Beehive to Bear Basin.kmz in Resources */,
+				CB4437F61BE45958004A4BEC /* Black Mountain.kmz in Resources */,
+				CB4437F71BE45958004A4BEC /* Bridger Bowl.kmz in Resources */,
+				CB4437F81BE45958004A4BEC /* Buttcrack Chute.kmz in Resources */,
+				CB4437F91BE45958004A4BEC /* Deer Creek.kmz in Resources */,
+				CB4437FA1BE45958004A4BEC /* Dudley Creek.kmz in Resources */,
+				CB4437FB1BE45958004A4BEC /* Elephant Head Mountain.kmz in Resources */,
+				CB4437FC1BE45958004A4BEC /* Garnet Mountain Chute.kmz in Resources */,
+				CB4437FD1BE45958004A4BEC /* Goose Creek Meadow.kmz in Resources */,
+				CB4437FE1BE45958004A4BEC /* History Rock.kmz in Resources */,
+				CB4437FF1BE45958004A4BEC /* Hyalite Peak.kmz in Resources */,
+				CB4438001BE45958004A4BEC /* Lick Creek Meadows.kmz in Resources */,
+				CB4438011BE45958004A4BEC /* Little Ellis.kmz in Resources */,
+				CB4438021BE45958004A4BEC /* Middle Cottonwood.kmz in Resources */,
+				CB4438031BE45958004A4BEC /* Mt. Blackmore.kmz in Resources */,
+				CB4438041BE45958004A4BEC /* Telemark Meadows.kmz in Resources */,
+				CB4438051BE45958004A4BEC /* Texas Meadows.kmz in Resources */,
+				CB4438061BE45958004A4BEC /* The Fin.kmz in Resources */,
+				CB4438071BE45958004A4BEC /* The Mt. Ellis Burn.kmz in Resources */,
+				CB4438081BE45958004A4BEC /* The Sphinx.kmz in Resources */,
+				CB4438091BE45958004A4BEC /* Truman Gulch.kmz in Resources */,
+				CB44380A1BE45958004A4BEC /* Yellow Mountain.kmz in Resources */,
 				CB8DD67D1BE1C2BF00CD8217 /* overviewMap.mbtiles in Resources */,
 				CB8F30AE1BCB021400F4FA2C /* beartoothPass.mbtiles in Resources */,
 				CB8F30AF1BCB021400F4FA2C /* blackMountain.mbtiles in Resources */,
@@ -859,7 +967,7 @@
 				GCC_PREFIX_HEADER = "SkiMontana/SkiMontana-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEV=1",
-					"TRIAL=0",
+					"TRIAL=1",
 					"$(inherited)",
 				);
 				HEADER_SEARCH_PATHS = (

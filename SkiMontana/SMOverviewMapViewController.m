@@ -41,7 +41,7 @@
     (self.mapView).hideAttribution = YES;
     [self.mapViewContainer addSubview:self.mapView];
     (self.mapView.layer).opacity = 0;
-    [self.mapView setZoom:18.0f atCoordinate:CLLocationCoordinate2DMake(45.75, -111.0) animated:NO];
+    [self.mapView setZoom:10.5f atCoordinate:CLLocationCoordinate2DMake(45.72, -110.80) animated:NO];
 }
 
 - (void)dismissViewController
