@@ -132,8 +132,8 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TNV-vt-fUG">
-                                            <rect key="frame" x="-519" y="-183" width="1590" height="500"/>
+                                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TNV-vt-fUG">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
                                             <animations/>
                                             <connections>
                                                 <action selector="didSelectOverviewMap:" destination="A15-bb-RHp" eventType="touchUpInside" id="CV1-Hh-Q5M"/>
@@ -143,8 +143,12 @@
                                     <animations/>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
+                                        <constraint firstItem="TNV-vt-fUG" firstAttribute="leading" secondItem="FUm-JV-fGS" secondAttribute="leading" id="28r-VP-WVy"/>
+                                        <constraint firstAttribute="bottom" secondItem="TNV-vt-fUG" secondAttribute="bottom" id="9Bd-VW-bQp"/>
                                         <constraint firstItem="WQR-U9-3VM" firstAttribute="top" secondItem="FUm-JV-fGS" secondAttribute="top" constant="8" id="JaK-xT-99e"/>
+                                        <constraint firstItem="TNV-vt-fUG" firstAttribute="top" secondItem="FUm-JV-fGS" secondAttribute="top" id="Wig-47-NAu"/>
                                         <constraint firstItem="WQR-U9-3VM" firstAttribute="leading" secondItem="FUm-JV-fGS" secondAttribute="leading" constant="8" id="juy-Bk-Pg6"/>
+                                        <constraint firstAttribute="trailing" secondItem="TNV-vt-fUG" secondAttribute="trailing" id="rHq-Vr-cJY"/>
                                     </constraints>
                                 </view>
                                 <prototypes>
