@@ -121,19 +121,19 @@
                                     <rect key="frame" x="0.0" y="64" width="600" height="120"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tap for overview map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQR-U9-3VM">
-                                            <rect key="frame" x="459" y="8" width="133" height="20"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview Map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQR-U9-3VM">
+                                            <rect key="frame" x="8" y="8" width="133" height="28"/>
                                             <animations/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="20" id="adJ-4J-EtI"/>
-                                                <constraint firstAttribute="width" constant="133" id="tio-9B-b6k"/>
+                                                <constraint firstAttribute="height" constant="28" id="YdX-Z0-n7o"/>
+                                                <constraint firstAttribute="width" constant="133" id="ml6-9Y-Sep"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TNV-vt-fUG">
-                                            <rect key="frame" x="-495" y="-190" width="1590" height="500"/>
+                                            <rect key="frame" x="-519" y="-183" width="1590" height="500"/>
                                             <animations/>
                                             <connections>
                                                 <action selector="didSelectOverviewMap:" destination="A15-bb-RHp" eventType="touchUpInside" id="CV1-Hh-Q5M"/>
@@ -143,8 +143,8 @@
                                     <animations/>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="WQR-U9-3VM" firstAttribute="top" secondItem="FUm-JV-fGS" secondAttribute="top" constant="8" id="24p-AX-dje"/>
-                                        <constraint firstAttribute="trailing" secondItem="WQR-U9-3VM" secondAttribute="trailing" constant="8" id="Kh3-n8-tbg"/>
+                                        <constraint firstItem="WQR-U9-3VM" firstAttribute="top" secondItem="FUm-JV-fGS" secondAttribute="top" constant="8" id="JaK-xT-99e"/>
+                                        <constraint firstItem="WQR-U9-3VM" firstAttribute="leading" secondItem="FUm-JV-fGS" secondAttribute="leading" constant="8" id="juy-Bk-Pg6"/>
                                     </constraints>
                                 </view>
                                 <prototypes>

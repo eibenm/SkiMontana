@@ -165,7 +165,7 @@ static CGFloat maxOffsetDiff = 46.0f;
         
         // Add KML Label
         self.kmlLabel = [UILabel new];
-        (self.kmlLabel).text = @"View KML";
+        (self.kmlLabel).text = @"Open Google Earth";
         (self.kmlLabel).textColor = [UIColor whiteColor];
         (self.kmlLabel).font = [UIFont fontWithName:@"Avenir Book" size:16.0f];
         (self.kmlLabel).translatesAutoresizingMaskIntoConstraints = NO;
