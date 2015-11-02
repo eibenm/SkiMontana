@@ -44,12 +44,14 @@ static CGFloat maxOffsetDiff = 46.0f;
     [backButton addTarget:self action:@selector(dismissViewController) forControlEvents:UIControlEventTouchUpInside];
     [backButton setTitle:@"Back" forState:UIControlStateNormal];
     [backButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [backButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     backButton.titleLabel.font = [UIFont boldSkiMontanaFontOfSize:17.0f];
     backButton.translatesAutoresizingMaskIntoConstraints = NO;
     backButton.layer.zPosition = 100.0f;
+    [backButton sizeToFit];
     [self.view addSubview:backButton];
     NSDictionary *views = @{ @"backButton": backButton, @"topLayoutGuide": self.topLayoutGuide };
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topLayoutGuide]-6-[backButton]" options:kNilOptions metrics:nil views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topLayoutGuide]-1-[backButton]" options:kNilOptions metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[backButton]" options:kNilOptions metrics:nil views:views]];
     
     [super viewWillAppear:animated];

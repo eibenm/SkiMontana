@@ -20,7 +20,7 @@
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:self action:@selector(dismissViewController)];
     (self.navigationItem).leftBarButtonItem = backButton;
-    self.title = @"Overview Map";
+    self.title = @"About This App";
 }
 
 - (void)dismissViewController

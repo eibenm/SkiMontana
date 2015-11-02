@@ -29,6 +29,8 @@ static NSString *cellIdentifier;
 @property (weak, nonatomic) IBOutlet UIButton *aboutThisAppButton;
 @property (weak, nonatomic) IBOutlet UILabel *aboutThisAppLabel;
 
+@property (strong, nonatomic) CAShapeLayer *maskLayer;
+
 - (IBAction)didSelectOverviewMap:(id)sender;
 - (IBAction)didSelectAboutThisApp:(id)sender;
 
@@ -103,12 +105,14 @@ static NSString *cellIdentifier;
     [super viewDidLayoutSubviews];
     
     // Creating mask so the CAnimation doesn't spill over view boundaries.
-    CAShapeLayer *maskLayer = [CAShapeLayer layer];
+    if (!self.maskLayer) {
+        self.maskLayer = [CAShapeLayer layer];
+    }
     CGRect maskRect = CGRectMake(0, 4.0f, CGRectGetWidth(self.aboutThisAppView.bounds), CGRectGetHeight(self.aboutThisAppView.bounds) - 4.0f);
     CGPathRef path = CGPathCreateWithRect(maskRect, NULL);
-    maskLayer.path = path;
+    self.maskLayer.path = path;
     CGPathRelease(path);
-    self.aboutThisAppView.layer.mask = maskLayer;
+    self.aboutThisAppView.layer.mask = self.maskLayer;
 }
 
 - (void)didReceiveMemoryWarning
