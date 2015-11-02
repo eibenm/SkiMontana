@@ -52,6 +52,7 @@
 		CB4438081BE45958004A4BEC /* The Sphinx.kmz in Resources */ = {isa = PBXBuildFile; fileRef = CB4437EE1BE4567F004A4BEC /* The Sphinx.kmz */; };
 		CB4438091BE45958004A4BEC /* Truman Gulch.kmz in Resources */ = {isa = PBXBuildFile; fileRef = CB4437EF1BE4567F004A4BEC /* Truman Gulch.kmz */; };
 		CB44380A1BE45958004A4BEC /* Yellow Mountain.kmz in Resources */ = {isa = PBXBuildFile; fileRef = CB4437F01BE4567F004A4BEC /* Yellow Mountain.kmz */; };
+		CB44380D1BE7E3CF004A4BEC /* SMAboutThisAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB44380C1BE7E3CF004A4BEC /* SMAboutThisAppViewController.m */; };
 		CB54F5FB1B9FD93100D93401 /* SMDetailsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB54F5FA1B9FD93100D93401 /* SMDetailsHeaderView.m */; };
 		CB57FA421BD54C04009C3B3E /* SMIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CB57FA411BD54C04009C3B3E /* SMIAPHelper.m */; };
 		CB57FA451BD5FD6A009C3B3E /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CB57FA441BD5FD6A009C3B3E /* NSDate+Utilities.m */; };
@@ -186,6 +187,8 @@
 		CB4437EE1BE4567F004A4BEC /* The Sphinx.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; name = "The Sphinx.kmz"; path = "kmz/The Sphinx.kmz"; sourceTree = "<group>"; };
 		CB4437EF1BE4567F004A4BEC /* Truman Gulch.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Truman Gulch.kmz"; path = "kmz/Truman Gulch.kmz"; sourceTree = "<group>"; };
 		CB4437F01BE4567F004A4BEC /* Yellow Mountain.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Yellow Mountain.kmz"; path = "kmz/Yellow Mountain.kmz"; sourceTree = "<group>"; };
+		CB44380B1BE7E3CF004A4BEC /* SMAboutThisAppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAboutThisAppViewController.h; sourceTree = "<group>"; };
+		CB44380C1BE7E3CF004A4BEC /* SMAboutThisAppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAboutThisAppViewController.m; sourceTree = "<group>"; };
 		CB54F5F91B9FD93100D93401 /* SMDetailsHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDetailsHeaderView.h; sourceTree = "<group>"; };
 		CB54F5FA1B9FD93100D93401 /* SMDetailsHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDetailsHeaderView.m; sourceTree = "<group>"; };
 		CB57FA401BD54C04009C3B3E /* SMIAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMIAPHelper.h; sourceTree = "<group>"; };
@@ -469,6 +472,8 @@
 				CB4208A71AA3BB5100ADFA97 /* SMAreasTableViewController.m */,
 				CB8DD67E1BE1CB7E00CD8217 /* SMOverviewMapViewController.h */,
 				CB8DD67F1BE1CB7E00CD8217 /* SMOverviewMapViewController.m */,
+				CB44380B1BE7E3CF004A4BEC /* SMAboutThisAppViewController.h */,
+				CB44380C1BE7E3CF004A4BEC /* SMAboutThisAppViewController.m */,
 				CB9C21231BA7635100D0D5DC /* SMGlossaryTableViewController.h */,
 				CB9C21241BA7635100D0D5DC /* SMGlossaryTableViewController.m */,
 				CB7446211AEDBE670070B36D /* SMDetailsViewController.h */,
@@ -803,6 +808,7 @@
 				CB57FA4E1BD75F60009C3B3E /* SMRSSParseOperation.m in Sources */,
 				CB4208A81AA3BB5100ADFA97 /* SMAreasTableViewController.m in Sources */,
 				CB1111F91BD9D92E00B41862 /* Gps.m in Sources */,
+				CB44380D1BE7E3CF004A4BEC /* SMAboutThisAppViewController.m in Sources */,
 				CB8DD67B1BE1BE9800CD8217 /* SMLabel.m in Sources */,
 				CBA338DC1B82BBD1001BA5FF /* SMReachabilityManager.m in Sources */,
 				CB99FF5A1AB6347F0067E547 /* SMFlipAnimation.m in Sources */,

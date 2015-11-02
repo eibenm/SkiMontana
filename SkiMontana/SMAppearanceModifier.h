@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 Gneiss Software. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 @interface SMAppearanceModifier : NSObject
 
 + (void)defaultAppearance;

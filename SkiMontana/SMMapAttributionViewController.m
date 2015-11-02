@@ -47,7 +47,7 @@
     
     self.title = @"Map Legend";
     
-    self.view.backgroundColor = [UIColor colorWithWhite:1 alpha:0.9];
+    self.view.backgroundColor = [UIColor colorWithWhite:1 alpha:1.0];
     
     UIImageView *legendView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"legend"]];
     
@@ -74,7 +74,7 @@
     (attributionButton.layer).shadowColor = [UIColor blackColor].CGColor;
     (attributionButton.layer).shadowOffset = CGSizeMake(0, 0);
     (attributionButton.layer).shadowRadius = 3.0f;
-    (attributionButton.layer).shadowOpacity = 0.5f;
+    (attributionButton.layer).shadowOpacity = 0.4f;
     attributionButton.autoresizingMask = (UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin);
     [attributionButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [attributionButton addTarget:self action:@selector(legendDismiss:) forControlEvents:UIControlEventTouchUpInside];

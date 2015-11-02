@@ -14,6 +14,10 @@
 #import "SMSkiRouteTableViewCell.h"
 #import "SMArrowView.h"
 
+static NSString *arrowUp = @"arrow_up";
+static NSString *arrowDown = @"arrow_down";
+static NSString *arrowRight = @"arrow_right";
+
 static NSString *cellIdentifier;
 
 @interface SMAreasTableViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -21,6 +25,12 @@ static NSString *cellIdentifier;
 @property (strong, nonatomic) NSSortDescriptor *routeSortDescriptor;
 @property (weak, nonatomic) IBOutlet UIButton *overviewMapButton;
 @property (weak, nonatomic) IBOutlet UILabel *overviewMapLabel;
+@property (weak, nonatomic) IBOutlet UIView *aboutThisAppView;
+@property (weak, nonatomic) IBOutlet UIButton *aboutThisAppButton;
+@property (weak, nonatomic) IBOutlet UILabel *aboutThisAppLabel;
+
+- (IBAction)didSelectOverviewMap:(id)sender;
+- (IBAction)didSelectAboutThisApp:(id)sender;
 
 @end
 
@@ -41,11 +51,6 @@ static NSString *cellIdentifier;
     self.managedObjectContext = [SMDataManager sharedInstance].managedObjectContext;
     self.routeSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name_route" ascending:YES];
     self.deviceIsIPhone = ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone);
-    
-    //[self.overviewMapButton setBackgroundImage:[UIImage imageNamed:@"overview_map"] forState:UIControlStateNormal];
-    [self.overviewMapButton setImage:[UIImage imageNamed:@"overview_map"] forState:UIControlStateNormal];
-    (self.overviewMapButton).imageView.contentMode = UIViewContentModeScaleAspectFill;
-    (self.overviewMapLabel).layer.zPosition = 10;
     
     NSError *error;
     if (![self.fetchedResultsController performFetch:&error]) {
@@ -83,6 +88,27 @@ static NSString *cellIdentifier;
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[backgroundImageView]|" options:kNilOptions metrics:nil views:backgroundImageViews]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[backgroundImageView]|" options:kNilOptions metrics:nil views:backgroundImageViews]];
     
+    // Configuring "Overview Map" View
+    [self.overviewMapButton setImage:[UIImage imageNamed:@"overview_map"] forState:UIControlStateNormal];
+    (self.overviewMapButton).imageView.contentMode = UIViewContentModeScaleAspectFill;
+    
+    // Configuring "About This App" View
+    [self.aboutThisAppButton setImage:[UIImage imageNamed:@"Skin Track"] forState:UIControlStateNormal];
+    (self.aboutThisAppButton).imageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.aboutThisAppView.backgroundColor = [UIColor clearColor];
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    // Creating mask so the CAnimation doesn't spill over view boundaries.
+    CAShapeLayer *maskLayer = [CAShapeLayer layer];
+    CGRect maskRect = CGRectMake(0, 4.0f, CGRectGetWidth(self.aboutThisAppView.bounds), CGRectGetHeight(self.aboutThisAppView.bounds) - 4.0f);
+    CGPathRef path = CGPathCreateWithRect(maskRect, NULL);
+    maskLayer.path = path;
+    CGPathRelease(path);
+    self.aboutThisAppView.layer.mask = maskLayer;
 }
 
 - (void)didReceiveMemoryWarning
@@ -160,11 +186,13 @@ static NSString *cellIdentifier;
         (cell.areaConditions.textContainer).exclusionPaths = @[imgRect];
                 
         if (![_isShowingArray[[skiAreaObjects indexOfObject:skiArea]] boolValue]) {
-            cell.accessoryView = [[SMArrowView alloc] initWithFrame:CGRectMake(0, 0, 30, 22) arrowType:SMArrowDown color:[UIColor blueColor]];
+            //cell.accessoryView = [[SMArrowView alloc] initWithFrame:CGRectMake(0, 0, 30, 22) arrowType:SMArrowDown color:[UIColor blueColor]];
+            cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:arrowDown]];
             (cell.areaConditionsHeightConstraint).priority = UILayoutPriorityDefaultHigh;
         }
         else {
-            cell.accessoryView = [[SMArrowView alloc] initWithFrame:CGRectMake(0, 0, 30, 22) arrowType:SMArrowUp color:[UIColor redColor]];
+            //cell.accessoryView = [[SMArrowView alloc] initWithFrame:CGRectMake(0, 0, 30, 22) arrowType:SMArrowUp color:[UIColor redColor]];
+            cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:arrowUp]];
             (cell.areaConditionsHeightConstraint).priority = UILayoutPriorityDefaultLow;
         }
         
@@ -197,7 +225,8 @@ static NSString *cellIdentifier;
         (cell.routeElevationGain).textColor = [UIColor whiteColor];
         (cell.routeDistance).text = [NSString stringWithFormat:@"Distance: ~%@ mi", skiRoute.distance];
         (cell.routeDistance).textColor = [UIColor whiteColor];
-        cell.accessoryView = [[SMArrowView alloc] initWithFrame:CGRectMake(0, 0, 22, 30) arrowType:SMArrowRight color:[UIColor redColor]];
+        //cell.accessoryView = [[SMArrowView alloc] initWithFrame:CGRectMake(0, 0, 22, 30) arrowType:SMArrowRight color:[UIColor redColor]];
+        cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:arrowRight]];
     }
     
     return cell;
@@ -225,7 +254,7 @@ static NSString *cellIdentifier;
         }
     }
     else {
-        height = 150.0f;
+        height = 135.0f;
     }
     
     return height;
@@ -354,7 +383,6 @@ static NSString *cellIdentifier;
     [CATransaction setCompletionBlock:^{
         SMOverviewMapViewController *overviewMapController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"overviewMapViewController"];
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:overviewMapController];
-        overviewMapController.transitioningDelegate = self.transitioningDelegate;
         [self presentViewController:navController animated:YES completion:^{
             [self.overviewMapButton.layer removeAnimationForKey:pulseAnimation.keyPath];
             [self.overviewMapLabel.layer removeAnimationForKey:pulseAnimation.keyPath];
@@ -362,6 +390,27 @@ static NSString *cellIdentifier;
     }];
     [self.overviewMapButton.layer addAnimation:pulseAnimation forKey:pulseAnimation.keyPath];
     [self.overviewMapLabel.layer addAnimation:pulseAnimation forKey:pulseAnimation.keyPath];
+}
+
+- (IBAction)didSelectAboutThisApp:(id)sender
+{
+    CABasicAnimation *pulseAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    pulseAnimation.duration = 0.2f;
+    pulseAnimation.toValue = @1.1f;
+    pulseAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    pulseAnimation.fillMode = kCAFillModeForwards;
+    pulseAnimation.removedOnCompletion = NO;
+    pulseAnimation.autoreverses = NO;
+    [CATransaction setCompletionBlock:^{
+        UIViewController *aboutThisApp = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"aboutThisApp"];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:aboutThisApp];
+        [self presentViewController:navController animated:YES completion:^{
+            [self.aboutThisAppButton.layer removeAnimationForKey:pulseAnimation.keyPath];
+            [self.aboutThisAppLabel.layer removeAnimationForKey:pulseAnimation.keyPath];
+        }];
+    }];
+    [self.aboutThisAppButton.layer addAnimation:pulseAnimation forKey:pulseAnimation.keyPath];
+    [self.aboutThisAppLabel.layer addAnimation:pulseAnimation forKey:pulseAnimation.keyPath];
 }
 
 @end

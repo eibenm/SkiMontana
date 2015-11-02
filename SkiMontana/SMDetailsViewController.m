@@ -35,6 +35,37 @@ static CGFloat maxOffsetDiff = 46.0f;
 
 @implementation SMDetailsViewController
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    
+    // Adding custom back button
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backButton addTarget:self action:@selector(dismissViewController) forControlEvents:UIControlEventTouchUpInside];
+    [backButton setTitle:@"Back" forState:UIControlStateNormal];
+    [backButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    backButton.titleLabel.font = [UIFont boldSkiMontanaFontOfSize:17.0f];
+    backButton.translatesAutoresizingMaskIntoConstraints = NO;
+    backButton.layer.zPosition = 100.0f;
+    [self.view addSubview:backButton];
+    NSDictionary *views = @{ @"backButton": backButton, @"topLayoutGuide": self.topLayoutGuide };
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topLayoutGuide]-6-[backButton]" options:kNilOptions metrics:nil views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[backButton]" options:kNilOptions metrics:nil views:views]];
+    
+    [super viewWillAppear:animated];
+}
+
+- (void)dismissViewController
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [super viewWillDisappear:animated];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -75,11 +106,6 @@ static CGFloat maxOffsetDiff = 46.0f;
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[backgroundColorView]|" options:kNilOptions metrics:nil views:backgroundColorViews]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[backgroundImageView]|" options:kNilOptions metrics:nil views:backgroundImageViews]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[backgroundImageView]|" options:kNilOptions metrics:nil views:backgroundImageViews]];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
@@ -276,7 +302,8 @@ static CGFloat maxOffsetDiff = 46.0f;
             if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"comgoogleearth://"]]) {
                 NSURL *fileUrl = [[NSBundle mainBundle] URLForResource:self.skiRoute.name_route withExtension:@"kmz"];
                 self.docController = [UIDocumentInteractionController interactionControllerWithURL:fileUrl];
-                [self.docController presentOpenInMenuFromRect:self.view.bounds inView:self.view animated:YES];
+                BOOL isValid = [self.docController presentOpenInMenuFromRect:CGRectZero inView:self.view animated:YES];
+                NSLog(@"Document interaction controller is valid: %@", isValid ? @"YES" : @"NO");
             }
             else {
                 [self showNeedGoogleEarthAlert];
@@ -292,9 +319,7 @@ static CGFloat maxOffsetDiff = 46.0f;
 
 - (void)showNeedGoogleEarthAlert
 {
-    NSString *message = [NSString stringWithFormat:@"The Google Earth app is needed to view KML files from %@.", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"]];
-    UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"Google Earth" message:message preferredStyle:UIAlertControllerStyleAlert];
-    
+    UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"Google Earth" message:@"The Google Earth app is required to use this feature." preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *googleEarthAction = [UIAlertAction actionWithTitle:@"Get Google Earth" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         NSURL *itunesGoogleEarthLink = [NSURL URLWithString:@"https://itunes.apple.com/us/app/google-earth/id293622097?mt=8"];
         if ([[UIApplication sharedApplication] canOpenURL:itunesGoogleEarthLink]) {
