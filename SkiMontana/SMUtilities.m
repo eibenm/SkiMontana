@@ -310,16 +310,6 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
             skiRoute.mbtiles = skiRouteJson[@"mbtiles"];
             skiRoute.ski_area = skiArea;
             
-            NSDictionary *kmlImage = skiRouteJson[@"kml_image"];
-            
-            if (kmlImage != (NSDictionary *)[NSNull null]) {
-                File *fileKmlImage = [NSEntityDescription insertNewObjectForEntityForName:SM_File inManagedObjectContext:context];
-                fileKmlImage.filename = skiAreaImage[@"filename"];
-                fileKmlImage.avatar = skiAreaImage[@"avatar"];
-                fileKmlImage.ski_route_kml = skiRoute;
-                skiRoute.kml_image = fileKmlImage;
-            }
-            
             [skiRouteSet addObject:skiRoute];
             
             NSMutableSet *skiRouteImageSet = [NSMutableSet new];
@@ -333,6 +323,7 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
                 fileRoute.filename = skiRouteImageJson[@"filename"];
                 fileRoute.avatar = skiRouteImageJson[@"avatar"];
                 fileRoute.caption = skiRouteImageJson[@"caption"];
+                fileRoute.kml_image = skiRouteImageJson[@"kml_image"];
                 fileRoute.ski_route = skiRoute;
                 [skiRouteImageSet addObject:fileRoute];
             }

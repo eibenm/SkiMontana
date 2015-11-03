@@ -2,7 +2,7 @@
 //  SkiRoutes+CoreDataProperties.h
 //  SkiMontana
 //
-//  Created by Matt Eiben on 10/22/15.
+//  Created by Matt Eiben on 11/2/15.
 //  Copyright © 2015 Gneiss Software. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -37,7 +37,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) SkiAreas *ski_area;
 @property (nullable, nonatomic, retain) NSSet<Gps *> *ski_route_gps;
 @property (nullable, nonatomic, retain) NSSet<File *> *ski_route_images;
-@property (nullable, nonatomic, retain) File *kml_image;
 
 @end
 

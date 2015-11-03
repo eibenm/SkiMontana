@@ -108,6 +108,15 @@ static CGFloat maxOffsetDiff = 46.0f;
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[backgroundColorView]|" options:kNilOptions metrics:nil views:backgroundColorViews]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[backgroundImageView]|" options:kNilOptions metrics:nil views:backgroundImageViews]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[backgroundImageView]|" options:kNilOptions metrics:nil views:backgroundImageViews]];
+    
+    NSSet *routeImage = (self.skiRoute).ski_route_images;
+    
+    for (File *file in routeImage) {
+        NSLog(@"Avatar: %@", file.avatar);
+        NSLog(@"Filename: %@", file.filename);
+        NSLog(@"Caption: %@", file.caption);
+        NSLog(@"Is KML Image: %@", file.kml_image);
+    }
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator

@@ -8,16 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		CB1111DD1BD870B600B41862 /* SMRSSWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111DC1BD870B600B41862 /* SMRSSWebViewController.m */; };
-		CB1111F21BD9D92E00B41862 /* SkiAreas+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111DF1BD9D92E00B41862 /* SkiAreas+CoreDataProperties.m */; };
-		CB1111F31BD9D92E00B41862 /* SkiAreas.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111E11BD9D92E00B41862 /* SkiAreas.m */; };
-		CB1111F41BD9D92E00B41862 /* File+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111E31BD9D92E00B41862 /* File+CoreDataProperties.m */; };
-		CB1111F51BD9D92E00B41862 /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111E51BD9D92E00B41862 /* File.m */; };
-		CB1111F61BD9D92E00B41862 /* Glossary+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111E71BD9D92E00B41862 /* Glossary+CoreDataProperties.m */; };
-		CB1111F71BD9D92E00B41862 /* Glossary.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111E91BD9D92E00B41862 /* Glossary.m */; };
-		CB1111F81BD9D92E00B41862 /* Gps+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111EB1BD9D92E00B41862 /* Gps+CoreDataProperties.m */; };
-		CB1111F91BD9D92E00B41862 /* Gps.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111ED1BD9D92E00B41862 /* Gps.m */; };
-		CB1111FA1BD9D92E00B41862 /* SkiRoutes+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111EF1BD9D92E00B41862 /* SkiRoutes+CoreDataProperties.m */; };
-		CB1111FB1BD9D92E00B41862 /* SkiRoutes.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111F11BD9D92E00B41862 /* SkiRoutes.m */; };
 		CB1112011BDA8B5C00B41862 /* RSSHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB1112001BDA8B5C00B41862 /* RSSHeaderView.xib */; };
 		CB17F6731AA93F4600048BC5 /* SMSkiAreaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB17F6721AA93F4600048BC5 /* SMSkiAreaTableViewCell.m */; };
 		CB17F6761AA93F5C00048BC5 /* SMSkiRouteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB17F6751AA93F5C00048BC5 /* SMSkiRouteTableViewCell.m */; };
@@ -53,6 +43,16 @@
 		CB4438091BE45958004A4BEC /* Truman Gulch.kmz in Resources */ = {isa = PBXBuildFile; fileRef = CB4437EF1BE4567F004A4BEC /* Truman Gulch.kmz */; };
 		CB44380A1BE45958004A4BEC /* Yellow Mountain.kmz in Resources */ = {isa = PBXBuildFile; fileRef = CB4437F01BE4567F004A4BEC /* Yellow Mountain.kmz */; };
 		CB44380D1BE7E3CF004A4BEC /* SMAboutThisAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB44380C1BE7E3CF004A4BEC /* SMAboutThisAppViewController.m */; };
+		CB4438221BE832A2004A4BEC /* SkiRoutes+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CB44380F1BE832A2004A4BEC /* SkiRoutes+CoreDataProperties.m */; };
+		CB4438231BE832A2004A4BEC /* SkiRoutes.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4438111BE832A2004A4BEC /* SkiRoutes.m */; };
+		CB4438241BE832A2004A4BEC /* Glossary+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4438131BE832A2004A4BEC /* Glossary+CoreDataProperties.m */; };
+		CB4438251BE832A2004A4BEC /* Glossary.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4438151BE832A2004A4BEC /* Glossary.m */; };
+		CB4438261BE832A2004A4BEC /* SkiAreas+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4438171BE832A2004A4BEC /* SkiAreas+CoreDataProperties.m */; };
+		CB4438271BE832A2004A4BEC /* SkiAreas.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4438191BE832A2004A4BEC /* SkiAreas.m */; };
+		CB4438281BE832A2004A4BEC /* File+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CB44381B1BE832A2004A4BEC /* File+CoreDataProperties.m */; };
+		CB4438291BE832A2004A4BEC /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = CB44381D1BE832A2004A4BEC /* File.m */; };
+		CB44382A1BE832A2004A4BEC /* Gps+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CB44381F1BE832A2004A4BEC /* Gps+CoreDataProperties.m */; };
+		CB44382B1BE832A2004A4BEC /* Gps.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4438211BE832A2004A4BEC /* Gps.m */; };
 		CB54F5FB1B9FD93100D93401 /* SMDetailsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB54F5FA1B9FD93100D93401 /* SMDetailsHeaderView.m */; };
 		CB57FA421BD54C04009C3B3E /* SMIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CB57FA411BD54C04009C3B3E /* SMIAPHelper.m */; };
 		CB57FA451BD5FD6A009C3B3E /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CB57FA441BD5FD6A009C3B3E /* NSDate+Utilities.m */; };
@@ -128,26 +128,6 @@
 /* Begin PBXFileReference section */
 		CB1111DB1BD870B600B41862 /* SMRSSWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRSSWebViewController.h; sourceTree = "<group>"; };
 		CB1111DC1BD870B600B41862 /* SMRSSWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRSSWebViewController.m; sourceTree = "<group>"; };
-		CB1111DE1BD9D92E00B41862 /* SkiAreas+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SkiAreas+CoreDataProperties.h"; path = "NSManagedObjects/SkiAreas+CoreDataProperties.h"; sourceTree = "<group>"; };
-		CB1111DF1BD9D92E00B41862 /* SkiAreas+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SkiAreas+CoreDataProperties.m"; path = "NSManagedObjects/SkiAreas+CoreDataProperties.m"; sourceTree = "<group>"; };
-		CB1111E01BD9D92E00B41862 /* SkiAreas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SkiAreas.h; path = NSManagedObjects/SkiAreas.h; sourceTree = "<group>"; };
-		CB1111E11BD9D92E00B41862 /* SkiAreas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SkiAreas.m; path = NSManagedObjects/SkiAreas.m; sourceTree = "<group>"; };
-		CB1111E21BD9D92E00B41862 /* File+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "File+CoreDataProperties.h"; path = "NSManagedObjects/File+CoreDataProperties.h"; sourceTree = "<group>"; };
-		CB1111E31BD9D92E00B41862 /* File+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "File+CoreDataProperties.m"; path = "NSManagedObjects/File+CoreDataProperties.m"; sourceTree = "<group>"; };
-		CB1111E41BD9D92E00B41862 /* File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = File.h; path = NSManagedObjects/File.h; sourceTree = "<group>"; };
-		CB1111E51BD9D92E00B41862 /* File.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = File.m; path = NSManagedObjects/File.m; sourceTree = "<group>"; };
-		CB1111E61BD9D92E00B41862 /* Glossary+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Glossary+CoreDataProperties.h"; path = "NSManagedObjects/Glossary+CoreDataProperties.h"; sourceTree = "<group>"; };
-		CB1111E71BD9D92E00B41862 /* Glossary+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Glossary+CoreDataProperties.m"; path = "NSManagedObjects/Glossary+CoreDataProperties.m"; sourceTree = "<group>"; };
-		CB1111E81BD9D92E00B41862 /* Glossary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Glossary.h; path = NSManagedObjects/Glossary.h; sourceTree = "<group>"; };
-		CB1111E91BD9D92E00B41862 /* Glossary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Glossary.m; path = NSManagedObjects/Glossary.m; sourceTree = "<group>"; };
-		CB1111EA1BD9D92E00B41862 /* Gps+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Gps+CoreDataProperties.h"; path = "NSManagedObjects/Gps+CoreDataProperties.h"; sourceTree = "<group>"; };
-		CB1111EB1BD9D92E00B41862 /* Gps+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Gps+CoreDataProperties.m"; path = "NSManagedObjects/Gps+CoreDataProperties.m"; sourceTree = "<group>"; };
-		CB1111EC1BD9D92E00B41862 /* Gps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Gps.h; path = NSManagedObjects/Gps.h; sourceTree = "<group>"; };
-		CB1111ED1BD9D92E00B41862 /* Gps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Gps.m; path = NSManagedObjects/Gps.m; sourceTree = "<group>"; };
-		CB1111EE1BD9D92E00B41862 /* SkiRoutes+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SkiRoutes+CoreDataProperties.h"; path = "NSManagedObjects/SkiRoutes+CoreDataProperties.h"; sourceTree = "<group>"; };
-		CB1111EF1BD9D92E00B41862 /* SkiRoutes+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SkiRoutes+CoreDataProperties.m"; path = "NSManagedObjects/SkiRoutes+CoreDataProperties.m"; sourceTree = "<group>"; };
-		CB1111F01BD9D92E00B41862 /* SkiRoutes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SkiRoutes.h; path = NSManagedObjects/SkiRoutes.h; sourceTree = "<group>"; };
-		CB1111F11BD9D92E00B41862 /* SkiRoutes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SkiRoutes.m; path = NSManagedObjects/SkiRoutes.m; sourceTree = "<group>"; };
 		CB1112001BDA8B5C00B41862 /* RSSHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RSSHeaderView.xib; sourceTree = "<group>"; };
 		CB17F6711AA93F4600048BC5 /* SMSkiAreaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSkiAreaTableViewCell.h; sourceTree = "<group>"; };
 		CB17F6721AA93F4600048BC5 /* SMSkiAreaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSkiAreaTableViewCell.m; sourceTree = "<group>"; };
@@ -189,6 +169,27 @@
 		CB4437F01BE4567F004A4BEC /* Yellow Mountain.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Yellow Mountain.kmz"; path = "kmz/Yellow Mountain.kmz"; sourceTree = "<group>"; };
 		CB44380B1BE7E3CF004A4BEC /* SMAboutThisAppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAboutThisAppViewController.h; sourceTree = "<group>"; };
 		CB44380C1BE7E3CF004A4BEC /* SMAboutThisAppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAboutThisAppViewController.m; sourceTree = "<group>"; };
+		CB44380E1BE832A2004A4BEC /* SkiRoutes+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SkiRoutes+CoreDataProperties.h"; path = "NSManagedObjects/SkiRoutes+CoreDataProperties.h"; sourceTree = "<group>"; };
+		CB44380F1BE832A2004A4BEC /* SkiRoutes+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SkiRoutes+CoreDataProperties.m"; path = "NSManagedObjects/SkiRoutes+CoreDataProperties.m"; sourceTree = "<group>"; };
+		CB4438101BE832A2004A4BEC /* SkiRoutes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SkiRoutes.h; path = NSManagedObjects/SkiRoutes.h; sourceTree = "<group>"; };
+		CB4438111BE832A2004A4BEC /* SkiRoutes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SkiRoutes.m; path = NSManagedObjects/SkiRoutes.m; sourceTree = "<group>"; };
+		CB4438121BE832A2004A4BEC /* Glossary+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Glossary+CoreDataProperties.h"; path = "NSManagedObjects/Glossary+CoreDataProperties.h"; sourceTree = "<group>"; };
+		CB4438131BE832A2004A4BEC /* Glossary+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Glossary+CoreDataProperties.m"; path = "NSManagedObjects/Glossary+CoreDataProperties.m"; sourceTree = "<group>"; };
+		CB4438141BE832A2004A4BEC /* Glossary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Glossary.h; path = NSManagedObjects/Glossary.h; sourceTree = "<group>"; };
+		CB4438151BE832A2004A4BEC /* Glossary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Glossary.m; path = NSManagedObjects/Glossary.m; sourceTree = "<group>"; };
+		CB4438161BE832A2004A4BEC /* SkiAreas+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SkiAreas+CoreDataProperties.h"; path = "NSManagedObjects/SkiAreas+CoreDataProperties.h"; sourceTree = "<group>"; };
+		CB4438171BE832A2004A4BEC /* SkiAreas+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SkiAreas+CoreDataProperties.m"; path = "NSManagedObjects/SkiAreas+CoreDataProperties.m"; sourceTree = "<group>"; };
+		CB4438181BE832A2004A4BEC /* SkiAreas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SkiAreas.h; path = NSManagedObjects/SkiAreas.h; sourceTree = "<group>"; };
+		CB4438191BE832A2004A4BEC /* SkiAreas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SkiAreas.m; path = NSManagedObjects/SkiAreas.m; sourceTree = "<group>"; };
+		CB44381A1BE832A2004A4BEC /* File+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "File+CoreDataProperties.h"; path = "NSManagedObjects/File+CoreDataProperties.h"; sourceTree = "<group>"; };
+		CB44381B1BE832A2004A4BEC /* File+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "File+CoreDataProperties.m"; path = "NSManagedObjects/File+CoreDataProperties.m"; sourceTree = "<group>"; };
+		CB44381C1BE832A2004A4BEC /* File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = File.h; path = NSManagedObjects/File.h; sourceTree = "<group>"; };
+		CB44381D1BE832A2004A4BEC /* File.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = File.m; path = NSManagedObjects/File.m; sourceTree = "<group>"; };
+		CB44381E1BE832A2004A4BEC /* Gps+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Gps+CoreDataProperties.h"; path = "NSManagedObjects/Gps+CoreDataProperties.h"; sourceTree = "<group>"; };
+		CB44381F1BE832A2004A4BEC /* Gps+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Gps+CoreDataProperties.m"; path = "NSManagedObjects/Gps+CoreDataProperties.m"; sourceTree = "<group>"; };
+		CB4438201BE832A2004A4BEC /* Gps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Gps.h; path = NSManagedObjects/Gps.h; sourceTree = "<group>"; };
+		CB4438211BE832A2004A4BEC /* Gps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Gps.m; path = NSManagedObjects/Gps.m; sourceTree = "<group>"; };
+		CB44382C1BE83328004A4BEC /* SMManagedObjects.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SMManagedObjects.h; path = NSManagedObjects/SMManagedObjects.h; sourceTree = "<group>"; };
 		CB54F5F91B9FD93100D93401 /* SMDetailsHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDetailsHeaderView.h; sourceTree = "<group>"; };
 		CB54F5FA1B9FD93100D93401 /* SMDetailsHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDetailsHeaderView.m; sourceTree = "<group>"; };
 		CB57FA401BD54C04009C3B3E /* SMIAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMIAPHelper.h; sourceTree = "<group>"; };
@@ -281,7 +282,6 @@
 		CBA2B5E91BCDE1C300B7C129 /* SMMapAttributionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMapAttributionViewController.m; sourceTree = "<group>"; };
 		CBA338951B8280F0001BA5FF /* SMDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDataManager.h; sourceTree = "<group>"; };
 		CBA338961B8280F0001BA5FF /* SMDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDataManager.m; sourceTree = "<group>"; };
-		CBA338981B8280F0001BA5FF /* SMManagedObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMManagedObjects.h; sourceTree = "<group>"; };
 		CBA338AB1B82821F001BA5FF /* skiappdata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = skiappdata.json; sourceTree = "<group>"; };
 		CBA338AD1B8282AD001BA5FF /* SMUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMUtilities.h; sourceTree = "<group>"; };
 		CBA338AE1B8282AD001BA5FF /* SMUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMUtilities.m; sourceTree = "<group>"; };
@@ -601,27 +601,27 @@
 		CBA338AA1B828105001BA5FF /* Managed Models */ = {
 			isa = PBXGroup;
 			children = (
-				CBA338981B8280F0001BA5FF /* SMManagedObjects.h */,
-				CB1111DE1BD9D92E00B41862 /* SkiAreas+CoreDataProperties.h */,
-				CB1111DF1BD9D92E00B41862 /* SkiAreas+CoreDataProperties.m */,
-				CB1111E01BD9D92E00B41862 /* SkiAreas.h */,
-				CB1111E11BD9D92E00B41862 /* SkiAreas.m */,
-				CB1111E21BD9D92E00B41862 /* File+CoreDataProperties.h */,
-				CB1111E31BD9D92E00B41862 /* File+CoreDataProperties.m */,
-				CB1111E41BD9D92E00B41862 /* File.h */,
-				CB1111E51BD9D92E00B41862 /* File.m */,
-				CB1111E61BD9D92E00B41862 /* Glossary+CoreDataProperties.h */,
-				CB1111E71BD9D92E00B41862 /* Glossary+CoreDataProperties.m */,
-				CB1111E81BD9D92E00B41862 /* Glossary.h */,
-				CB1111E91BD9D92E00B41862 /* Glossary.m */,
-				CB1111EA1BD9D92E00B41862 /* Gps+CoreDataProperties.h */,
-				CB1111EB1BD9D92E00B41862 /* Gps+CoreDataProperties.m */,
-				CB1111EC1BD9D92E00B41862 /* Gps.h */,
-				CB1111ED1BD9D92E00B41862 /* Gps.m */,
-				CB1111EE1BD9D92E00B41862 /* SkiRoutes+CoreDataProperties.h */,
-				CB1111EF1BD9D92E00B41862 /* SkiRoutes+CoreDataProperties.m */,
-				CB1111F01BD9D92E00B41862 /* SkiRoutes.h */,
-				CB1111F11BD9D92E00B41862 /* SkiRoutes.m */,
+				CB44382C1BE83328004A4BEC /* SMManagedObjects.h */,
+				CB44380E1BE832A2004A4BEC /* SkiRoutes+CoreDataProperties.h */,
+				CB44380F1BE832A2004A4BEC /* SkiRoutes+CoreDataProperties.m */,
+				CB4438101BE832A2004A4BEC /* SkiRoutes.h */,
+				CB4438111BE832A2004A4BEC /* SkiRoutes.m */,
+				CB4438121BE832A2004A4BEC /* Glossary+CoreDataProperties.h */,
+				CB4438131BE832A2004A4BEC /* Glossary+CoreDataProperties.m */,
+				CB4438141BE832A2004A4BEC /* Glossary.h */,
+				CB4438151BE832A2004A4BEC /* Glossary.m */,
+				CB4438161BE832A2004A4BEC /* SkiAreas+CoreDataProperties.h */,
+				CB4438171BE832A2004A4BEC /* SkiAreas+CoreDataProperties.m */,
+				CB4438181BE832A2004A4BEC /* SkiAreas.h */,
+				CB4438191BE832A2004A4BEC /* SkiAreas.m */,
+				CB44381A1BE832A2004A4BEC /* File+CoreDataProperties.h */,
+				CB44381B1BE832A2004A4BEC /* File+CoreDataProperties.m */,
+				CB44381C1BE832A2004A4BEC /* File.h */,
+				CB44381D1BE832A2004A4BEC /* File.m */,
+				CB44381E1BE832A2004A4BEC /* Gps+CoreDataProperties.h */,
+				CB44381F1BE832A2004A4BEC /* Gps+CoreDataProperties.m */,
+				CB4438201BE832A2004A4BEC /* Gps.h */,
+				CB4438211BE832A2004A4BEC /* Gps.m */,
 			);
 			name = "Managed Models";
 			sourceTree = "<group>";
@@ -797,33 +797,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB44382A1BE832A2004A4BEC /* Gps+CoreDataProperties.m in Sources */,
 				CB17F6761AA93F5C00048BC5 /* SMSkiRouteTableViewCell.m in Sources */,
 				CBA2B5EA1BCDE1C300B7C129 /* SMMapAttributionViewController.m in Sources */,
 				CB7E02CA1BDACF4400F19328 /* RSSHeaderView.m in Sources */,
 				CB9695451A9A3FC1009757B7 /* SMIntroViewController.m in Sources */,
 				CBF4662F1BBE537F00791383 /* SCPStoreKitReceipt.m in Sources */,
+				CB4438281BE832A2004A4BEC /* File+CoreDataProperties.m in Sources */,
+				CB4438241BE832A2004A4BEC /* Glossary+CoreDataProperties.m in Sources */,
+				CB4438221BE832A2004A4BEC /* SkiRoutes+CoreDataProperties.m in Sources */,
 				CB17F6731AA93F4600048BC5 /* SMSkiAreaTableViewCell.m in Sources */,
-				CB1111F81BD9D92E00B41862 /* Gps+CoreDataProperties.m in Sources */,
-				CB1111F41BD9D92E00B41862 /* File+CoreDataProperties.m in Sources */,
 				CB57FA4E1BD75F60009C3B3E /* SMRSSParseOperation.m in Sources */,
 				CB4208A81AA3BB5100ADFA97 /* SMAreasTableViewController.m in Sources */,
-				CB1111F91BD9D92E00B41862 /* Gps.m in Sources */,
+				CB44382B1BE832A2004A4BEC /* Gps.m in Sources */,
 				CB44380D1BE7E3CF004A4BEC /* SMAboutThisAppViewController.m in Sources */,
 				CB8DD67B1BE1BE9800CD8217 /* SMLabel.m in Sources */,
 				CBA338DC1B82BBD1001BA5FF /* SMReachabilityManager.m in Sources */,
 				CB99FF5A1AB6347F0067E547 /* SMFlipAnimation.m in Sources */,
 				CB99FF611AB635940067E547 /* SMTableViewController.m in Sources */,
 				CB9C21281BA7726D00D0D5DC /* SMGlossaryTableViewCell.m in Sources */,
-				CB1111F51BD9D92E00B41862 /* File.m in Sources */,
 				CBA338AF1B8282AD001BA5FF /* SMUtilities.m in Sources */,
-				CB1111F71BD9D92E00B41862 /* Glossary.m in Sources */,
 				CB76D9C61AFC6102005EC2E8 /* SMRouteMapViewController.m in Sources */,
 				CB99FF4E1AB634270067E547 /* SMViewController.m in Sources */,
 				CBF160A31BE0626700B29232 /* SMRSSCurrentViewController.m in Sources */,
-				CB1111F21BD9D92E00B41862 /* SkiAreas+CoreDataProperties.m in Sources */,
 				CBA338D91B82BACB001BA5FF /* Reachability.m in Sources */,
 				CBF4662E1BBE537F00791383 /* SCPStoreKitIAPReceipt.m in Sources */,
-				CB1111FB1BD9D92E00B41862 /* SkiRoutes.m in Sources */,
+				CB4438261BE832A2004A4BEC /* SkiAreas+CoreDataProperties.m in Sources */,
 				CBA338C31B82A3DD001BA5FF /* SkiDataModel.xcdatamodeld in Sources */,
 				CB96954C1A9A43A7009757B7 /* SMConstants.m in Sources */,
 				CB7446261AEEA36A0070B36D /* SMDetailsInformationTableViewCell.m in Sources */,
@@ -833,19 +832,18 @@
 				CB54F5FB1B9FD93100D93401 /* SMDetailsHeaderView.m in Sources */,
 				CB3FBFC41AB67AFD00D5A037 /* SMAppearanceModifier.m in Sources */,
 				CBF466201BBE534F00791383 /* SCPStoreKitManager.m in Sources */,
+				CB4438251BE832A2004A4BEC /* Glossary.m in Sources */,
 				CB9695231A9A3EF6009757B7 /* AppDelegate.m in Sources */,
 				CB57FA451BD5FD6A009C3B3E /* NSDate+Utilities.m in Sources */,
 				CBF466301BBE537F00791383 /* SCPStoreKitReceiptValidator.m in Sources */,
-				CB1111F61BD9D92E00B41862 /* Glossary+CoreDataProperties.m in Sources */,
 				CB7446231AEDBE670070B36D /* SMDetailsViewController.m in Sources */,
+				CB4438231BE832A2004A4BEC /* SkiRoutes.m in Sources */,
 				CBF466241BBE536500791383 /* NSError+SCPStoreKitManager.m in Sources */,
 				CB8DD6801BE1CB7E00CD8217 /* SMOverviewMapViewController.m in Sources */,
 				CB8694CE1B0A8B6300D4A93F /* CLLocationHelper.m in Sources */,
-				CB1111F31BD9D92E00B41862 /* SkiAreas.m in Sources */,
 				CB4208A51AA3B98700ADFA97 /* UIFont+SkiMontana.m in Sources */,
 				CB753AE31BBA2CBA007EAAAD /* UIImage+ImageEffects.m in Sources */,
 				CB57FA421BD54C04009C3B3E /* SMIAPHelper.m in Sources */,
-				CB1111FA1BD9D92E00B41862 /* SkiRoutes+CoreDataProperties.m in Sources */,
 				CB753AD71BBA0D12007EAAAD /* SMAreasTableViewControllerParent.m in Sources */,
 				CB9695201A9A3EF6009757B7 /* main.m in Sources */,
 				CB99FF451AB61F010067E547 /* UIColor+FromHex.m in Sources */,
@@ -853,9 +851,11 @@
 				CB99FF5B1AB6347F0067E547 /* SMLayerAnimation.m in Sources */,
 				CB57FA4B1BD754B4009C3B3E /* SMRSSEntry.m in Sources */,
 				CB99FF5C1AB6347F0067E547 /* SMScaleAnimation.m in Sources */,
+				CB4438271BE832A2004A4BEC /* SkiAreas.m in Sources */,
 				CB99FF5D1AB6347F0067E547 /* SMSlideAnimation.m in Sources */,
 				CB1111DD1BD870B600B41862 /* SMRSSWebViewController.m in Sources */,
 				CB99FF591AB6347F0067E547 /* SMBaseAnimation.m in Sources */,
+				CB4438291BE832A2004A4BEC /* File.m in Sources */,
 				CBA338A31B8280F0001BA5FF /* SMDataManager.m in Sources */,
 				CB57FA481BD74BEB009C3B3E /* SMRSSViewController.m in Sources */,
 			);
