@@ -108,15 +108,6 @@ static CGFloat maxOffsetDiff = 46.0f;
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[backgroundColorView]|" options:kNilOptions metrics:nil views:backgroundColorViews]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[backgroundImageView]|" options:kNilOptions metrics:nil views:backgroundImageViews]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[backgroundImageView]|" options:kNilOptions metrics:nil views:backgroundImageViews]];
-    
-    NSSet *routeImage = (self.skiRoute).ski_route_images;
-    
-    for (File *file in routeImage) {
-        NSLog(@"Avatar: %@", file.avatar);
-        NSLog(@"Filename: %@", file.filename);
-        NSLog(@"Caption: %@", file.caption);
-        NSLog(@"Is KML Image: %@", file.kml_image);
-    }
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
@@ -141,7 +132,7 @@ static CGFloat maxOffsetDiff = 46.0f;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 7;
+    return 8;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -152,8 +143,9 @@ static CGFloat maxOffsetDiff = 46.0f;
         case 2: cellIdentifier = @"avalanche"; break;
         case 3: cellIdentifier = @"content"; break;
         case 4: cellIdentifier = @"getting_there"; break;
-        case 5: cellIdentifier = @"directions"; break;
-        case 6: cellIdentifier = @"kml"; break;
+        case 5: cellIdentifier = @"images"; break;
+        case 6: cellIdentifier = @"directions"; break;
+        case 7: cellIdentifier = @"kml"; break;
     }
     
     SMDetailsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
@@ -185,6 +177,9 @@ static CGFloat maxOffsetDiff = 46.0f;
     }
     else if ([cellIdentifier isEqualToString:@"getting_there"]) {
         (cell.labelDirectionsInformation).text = self.skiRoute.directions;
+    }
+    else if ([cellIdentifier isEqualToString:@"images"]) {
+        nil;
     }
     else if ([cellIdentifier isEqualToString:@"directions"]) {
         nil;
@@ -228,13 +223,14 @@ static CGFloat maxOffsetDiff = 46.0f;
     CGFloat height = UITableViewAutomaticDimension;
     
     switch (indexPath.row) {
-        case 0: height = 180; break;
-        case 1: height = 188; break;
-        case 3: height = 350; break;
-        case 2: height = 350; break;
-        case 4: height = 350; break;
-        case 5: height = 44; break;
-        case 6: height = 240; break;
+        case 0: height = 180.0f; break;
+        case 1: height = 188.0f; break;
+        case 3: height = 350.0f; break;
+        case 2: height = 350.0f; break;
+        case 4: height = 350.0f; break;
+        case 5: height = 44.0f; break;
+        case 6: height = 44.0f; break;
+        case 7: height = 240.0f; break;
         default: break;
     }
     
@@ -270,8 +266,20 @@ static CGFloat maxOffsetDiff = 46.0f;
         [cell.mapTapLabel.layer addAnimation:pulseAnimation forKey:pulseAnimation.keyPath];
     }
     
+    else if ([cell.reuseIdentifier isEqualToString:@"images"]) {
+        NSSet *routeImages = (self.skiRoute).ski_route_images;
+        for (File *file in routeImages) {
+            NSLog(@"Image:");
+            NSLog(@"\tAvatar: %@", file.avatar);
+            NSLog(@"\tFilename: %@", file.filename);
+            NSLog(@"\tCaption: %@", file.caption);
+            NSLog(@"\tIs KML Image: %@", file.kml_image);
+        }
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
+    
     // Open up appropriate mapping App for directions to parking lot
-    if ([cell.reuseIdentifier isEqualToString:@"directions"]) {
+    else if ([cell.reuseIdentifier isEqualToString:@"directions"]) {
         NSSet *gpsPoints = (self.skiRoute).ski_route_gps;
         
         double latitude = 40.0f;
@@ -301,7 +309,7 @@ static CGFloat maxOffsetDiff = 46.0f;
     }
     
     // Open KMZ in Google Earth
-    if ([cell.reuseIdentifier isEqualToString:@"kml"]) {
+    else if ([cell.reuseIdentifier isEqualToString:@"kml"]) {
         CABasicAnimation *pulseAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
         pulseAnimation.duration = 0.2f;
         pulseAnimation.toValue = @1.1f;

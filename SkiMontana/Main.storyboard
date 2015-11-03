@@ -589,16 +589,6 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Annual Snowfall:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Zc-Qa-ngm">
-                                                    <rect key="frame" x="8" y="120" width="584" height="20"/>
-                                                    <animations/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="20" id="Sd2-gp-Shb"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avalanche Terrain Danger:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbW-iN-YOE">
                                                     <rect key="frame" x="8" y="140" width="584" height="20"/>
                                                     <animations/>
@@ -614,6 +604,16 @@
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="NTT-Hl-hT6"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Annual Snowfall:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Zc-Qa-ngm">
+                                                    <rect key="frame" x="8" y="120" width="584" height="20"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="Sd2-gp-Shb"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -793,8 +793,56 @@
                                             <outlet property="labelDirectionsInformation" destination="KuG-uj-BMO" id="XEA-Rx-XBy"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="directions" rowHeight="44" id="Utx-Qz-KXf" customClass="SMDetailsInformationTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="images" rowHeight="44" id="x8G-vW-Epr" customClass="SMDetailsInformationTableViewCell">
                                         <rect key="frame" x="0.0" y="570" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x8G-vW-Epr" id="fPl-pf-IzX">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J3t-5g-uSj" userLabel="Images View">
+                                                    <rect key="frame" x="200" y="8" width="201" height="28"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View Route Images" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mrg-BY-ar6">
+                                                            <rect key="frame" x="44" y="0.0" width="157" height="28"/>
+                                                            <animations/>
+                                                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map" translatesAutoresizingMaskIntoConstraints="NO" id="Kjo-IH-YHJ">
+                                                            <rect key="frame" x="0.0" y="0.0" width="40" height="28"/>
+                                                            <animations/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstItem="Mrg-BY-ar6" firstAttribute="leading" secondItem="Kjo-IH-YHJ" secondAttribute="trailing" constant="4" id="4QX-rh-dqh"/>
+                                                        <constraint firstItem="Mrg-BY-ar6" firstAttribute="top" secondItem="J3t-5g-uSj" secondAttribute="top" id="C6t-19-eBL"/>
+                                                        <constraint firstItem="Kjo-IH-YHJ" firstAttribute="leading" secondItem="J3t-5g-uSj" secondAttribute="leading" id="L52-1i-WFb"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Mrg-BY-ar6" secondAttribute="trailing" id="LdL-9H-8B2"/>
+                                                        <constraint firstItem="Mrg-BY-ar6" firstAttribute="leading" secondItem="Kjo-IH-YHJ" secondAttribute="trailing" constant="4" id="MQs-rV-LMz"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Mrg-BY-ar6" secondAttribute="bottom" id="N5E-aU-nCA"/>
+                                                        <constraint firstAttribute="width" constant="201" id="c8m-KA-efO"/>
+                                                        <constraint firstItem="Mrg-BY-ar6" firstAttribute="leading" secondItem="Kjo-IH-YHJ" secondAttribute="trailing" constant="4" id="ddB-79-jqd"/>
+                                                        <constraint firstAttribute="height" constant="28" id="fDi-QA-QbP"/>
+                                                        <constraint firstItem="Mrg-BY-ar6" firstAttribute="leading" secondItem="Kjo-IH-YHJ" secondAttribute="trailing" constant="4" id="lpm-ih-Bay"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Kjo-IH-YHJ" secondAttribute="bottom" id="s6R-qz-fXn"/>
+                                                        <constraint firstItem="Kjo-IH-YHJ" firstAttribute="top" secondItem="J3t-5g-uSj" secondAttribute="top" id="utx-Qj-NXD"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstItem="J3t-5g-uSj" firstAttribute="top" secondItem="fPl-pf-IzX" secondAttribute="topMargin" id="ApV-72-pqh"/>
+                                                <constraint firstItem="J3t-5g-uSj" firstAttribute="bottom" secondItem="fPl-pf-IzX" secondAttribute="bottomMargin" id="XUT-uO-P4R"/>
+                                                <constraint firstItem="J3t-5g-uSj" firstAttribute="centerX" secondItem="fPl-pf-IzX" secondAttribute="centerX" id="kZD-Xl-hDL"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="directions" rowHeight="44" id="Utx-Qz-KXf" customClass="SMDetailsInformationTableViewCell">
+                                        <rect key="frame" x="0.0" y="614" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Utx-Qz-KXf" id="Pce-RJ-l3E">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -840,7 +888,7 @@
                                         <animations/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="kml" id="rYV-v6-dgn" customClass="SMDetailsInformationTableViewCell">
-                                        <rect key="frame" x="0.0" y="614" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="658" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rYV-v6-dgn" id="TDW-Gb-diR">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
