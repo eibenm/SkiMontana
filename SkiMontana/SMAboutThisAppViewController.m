@@ -10,6 +10,8 @@
 
 @interface SMAboutThisAppViewController ()
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
 @end
 
 @implementation SMAboutThisAppViewController

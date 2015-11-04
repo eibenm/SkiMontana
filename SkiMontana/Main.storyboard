@@ -1143,9 +1143,56 @@
                     <view key="view" contentMode="scaleToFill" id="eP0-4P-qbO">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cUs-cV-Qjz">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p21-o7-4fb" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="274"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ylY-WI-R9U" userLabel="About This App">
+                                                <rect key="frame" x="8" y="8" width="584" height="246"/>
+                                                <animations/>
+                                                <mutableString key="text">Elevation data only has a resolution of ~33 ft.  This means you can ski off a 30 ft cliff that won’t even show up on the map.  Additionally, GPS signals are easily obstructed and made less accurate by obstructions such as cliffs, trees, and mountains; basically anywhere fun.  All map data, save for the ski info, is from publicly available datasets from around the web which have various data accuracies.  Make sure to check out the legend to understand what the shading represents on the terrain map and do take note that even if an area is green, if it is below avalanche terrain you can still be in a dangerous zone.  While the data is an aid in safe travel, it should not be treated as a bible as the resolution of the data doesn’t allow for small rollovers and other features that increase the slope angle to a dangerous angle to be displayed.  Use your brain just as you would have before you had access to this data.  If it feels sketchy, it probably is.  Ski/Board safe, have fun, and don’t let the map data lull you into a false sense of security.</mutableString>
+                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                    <rect key="frame" x="12" y="48" width="380" height="144"/>
+                                                </variation>
+                                            </textView>
+                                        </subviews>
+                                        <animations/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="ylY-WI-R9U" firstAttribute="top" secondItem="p21-o7-4fb" secondAttribute="top" constant="8" id="5Rl-7V-Kpi"/>
+                                            <constraint firstAttribute="bottom" secondItem="ylY-WI-R9U" secondAttribute="bottom" constant="20" id="aM8-xx-Q4X"/>
+                                            <constraint firstAttribute="trailing" secondItem="ylY-WI-R9U" secondAttribute="trailing" constant="8" id="jA8-Cr-0NP"/>
+                                            <constraint firstItem="ylY-WI-R9U" firstAttribute="leading" secondItem="p21-o7-4fb" secondAttribute="leading" constant="8" id="nCx-19-lTP"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="p21-o7-4fb" secondAttribute="bottom" id="DVv-5M-NU4"/>
+                                    <constraint firstItem="p21-o7-4fb" firstAttribute="top" secondItem="cUs-cV-Qjz" secondAttribute="top" id="SCe-aN-cJD"/>
+                                    <constraint firstAttribute="trailing" secondItem="p21-o7-4fb" secondAttribute="trailing" id="YkA-6x-Wqj"/>
+                                    <constraint firstItem="p21-o7-4fb" firstAttribute="leading" secondItem="cUs-cV-Qjz" secondAttribute="leading" id="g4y-eM-J2n"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="p21-o7-4fb" firstAttribute="width" secondItem="eP0-4P-qbO" secondAttribute="width" id="Bsr-4e-6qM"/>
+                            <constraint firstItem="cUs-cV-Qjz" firstAttribute="top" secondItem="eP0-4P-qbO" secondAttribute="top" id="KKM-5z-0sR"/>
+                            <constraint firstAttribute="trailing" secondItem="cUs-cV-Qjz" secondAttribute="trailing" id="N0L-Ru-KY4"/>
+                            <constraint firstItem="chJ-Ae-UEo" firstAttribute="top" secondItem="cUs-cV-Qjz" secondAttribute="bottom" id="adb-ai-bRu"/>
+                            <constraint firstItem="cUs-cV-Qjz" firstAttribute="leading" secondItem="eP0-4P-qbO" secondAttribute="leading" id="o8B-sZ-YTS"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="scrollView" destination="cUs-cV-Qjz" id="B11-DJ-YJv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AQn-oK-bFL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

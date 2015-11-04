@@ -123,6 +123,12 @@
 		CBF466351BBE543700791383 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBF466331BBE543700791383 /* libssl.a */; };
 		CBF466371BBE545100791383 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CBF466361BBE545100791383 /* libz.tbd */; };
 		CBF466391BBE545800791383 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CBF466381BBE545800791383 /* libsqlite3.tbd */; };
+		CBFE00351BE9BEF400113BCC /* libMWPhotoBrowser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBFE00331BE9BEF400113BCC /* libMWPhotoBrowser.a */; };
+		CBFE00361BE9BEF400113BCC /* MWPhotoBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CBFE00341BE9BEF400113BCC /* MWPhotoBrowser.bundle */; };
+		CBFE00381BE9BF0E00113BCC /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBFE00371BE9BF0E00113BCC /* MessageUI.framework */; };
+		CBFE003A1BE9BF1800113BCC /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBFE00391BE9BF1800113BCC /* AssetsLibrary.framework */; };
+		CBFE003C1BE9BF1F00113BCC /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBFE003B1BE9BF1F00113BCC /* ImageIO.framework */; };
+		CBFE00411BE9C8AE00113BCC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBFE00401BE9C8AE00113BCC /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -307,6 +313,13 @@
 		CBF466331BBE543700791383 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = SkiMontana/OpenSSL/lib/libssl.a; sourceTree = "<group>"; };
 		CBF466361BBE545100791383 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		CBF466381BBE545800791383 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		CBFE00331BE9BEF400113BCC /* libMWPhotoBrowser.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMWPhotoBrowser.a; path = SkiMontana/MWPhotoBrowser/libMWPhotoBrowser.a; sourceTree = "<group>"; };
+		CBFE00341BE9BEF400113BCC /* MWPhotoBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MWPhotoBrowser.bundle; path = SkiMontana/MWPhotoBrowser/MWPhotoBrowser.bundle; sourceTree = "<group>"; };
+		CBFE00371BE9BF0E00113BCC /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		CBFE00391BE9BF1800113BCC /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		CBFE003B1BE9BF1F00113BCC /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		CBFE003F1BE9C47100113BCC /* MWPhotoBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MWPhotoBrowser.h; path = SkiMontana/MWPhotoBrowser/MWPhotoBrowser/MWPhotoBrowser.h; sourceTree = "<group>"; };
+		CBFE00401BE9C8AE00113BCC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -314,9 +327,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBFE00411BE9C8AE00113BCC /* MapKit.framework in Frameworks */,
+				CBFE003C1BE9BF1F00113BCC /* ImageIO.framework in Frameworks */,
+				CBFE003A1BE9BF1800113BCC /* AssetsLibrary.framework in Frameworks */,
+				CBFE00381BE9BF0E00113BCC /* MessageUI.framework in Frameworks */,
 				CB8694C91B09649D00D4A93F /* QuartzCore.framework in Frameworks */,
 				CB8694C71B09649200D4A93F /* CoreLocation.framework in Frameworks */,
 				CB2B346A1BAE058F007067C3 /* StoreKit.framework in Frameworks */,
+				CBFE00351BE9BEF400113BCC /* libMWPhotoBrowser.a in Frameworks */,
 				CB8694C31B09639B00D4A93F /* libMapbox.a in Frameworks */,
 				CBF466391BBE545800791383 /* libsqlite3.tbd in Frameworks */,
 				CBF466371BBE545100791383 /* libz.tbd in Frameworks */,
@@ -385,8 +403,13 @@
 		CB437C3E1A9C230600315353 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CBFE00321BE9BEC800113BCC /* MWPhotoBrowser */,
 				CBF466211BBE535800791383 /* SCPStoreKitManager */,
 				CB8694C51B0963A300D4A93F /* Mapbox */,
+				CBFE00401BE9C8AE00113BCC /* MapKit.framework */,
+				CBFE003B1BE9BF1F00113BCC /* ImageIO.framework */,
+				CBFE00391BE9BF1800113BCC /* AssetsLibrary.framework */,
+				CBFE00371BE9BF0E00113BCC /* MessageUI.framework */,
 				CB8694C81B09649D00D4A93F /* QuartzCore.framework */,
 				CB8694C61B09649200D4A93F /* CoreLocation.framework */,
 				CB2B34691BAE058F007067C3 /* StoreKit.framework */,
@@ -677,6 +700,16 @@
 			name = SCPStoreKitReceiptValidator;
 			sourceTree = "<group>";
 		};
+		CBFE00321BE9BEC800113BCC /* MWPhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				CBFE003F1BE9C47100113BCC /* MWPhotoBrowser.h */,
+				CBFE00331BE9BEF400113BCC /* libMWPhotoBrowser.a */,
+				CBFE00341BE9BEF400113BCC /* MWPhotoBrowser.bundle */,
+			);
+			name = MWPhotoBrowser;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -755,6 +788,7 @@
 				CB4437FE1BE45958004A4BEC /* History Rock.kmz in Resources */,
 				CB4437FF1BE45958004A4BEC /* Hyalite Peak.kmz in Resources */,
 				CB4438001BE45958004A4BEC /* Lick Creek Meadows.kmz in Resources */,
+				CBFE00361BE9BEF400113BCC /* MWPhotoBrowser.bundle in Resources */,
 				CB4438011BE45958004A4BEC /* Little Ellis.kmz in Resources */,
 				CB4438021BE45958004A4BEC /* Middle Cottonwood.kmz in Resources */,
 				CB4438031BE45958004A4BEC /* Mt. Blackmore.kmz in Resources */,
@@ -975,6 +1009,11 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"\"$(SRCROOT)/SkiMontana/Headers\"",
 					"\"$(SRCROOT)/SkiMontana/OpenSSL\"/**",
+					"\"$(SRCROOT)/SkiMontana/MWPhotoBrowser/MWPhotoBrowser\"",
+					"\"$(SRCROOT)/SkiMontana/MWPhotoBrowser/CACircularProgress\"",
+					"\"$(SRCROOT)/SkiMontana/MWPhotoBrowser/MBProgressHUD\"",
+					"\"$(SRCROOT)/SkiMontana/MWPhotoBrowser/PSTCollectionView\"",
+					"\"$(SRCROOT)/SkiMontana/MWPhotoBrowser/SDWebImage\"",
 				);
 				INFOPLIST_FILE = "SkiMontana/SkiMontana-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
@@ -983,8 +1022,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/SkiMontana",
 					"$(PROJECT_DIR)/SkiMontana/OpenSSL/lib",
+					"$(PROJECT_DIR)/SkiMontana/MWPhotoBrowser",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-l\"MWPhotoBrowser\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.eibenm.SkiMontanaTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1008,6 +1051,11 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"\"$(SRCROOT)/SkiMontana/Headers\"",
 					"\"$(SRCROOT)/SkiMontana/OpenSSL\"/**",
+					"\"$(SRCROOT)/SkiMontana/MWPhotoBrowser/MWPhotoBrowser\"",
+					"\"$(SRCROOT)/SkiMontana/MWPhotoBrowser/CACircularProgress\"",
+					"\"$(SRCROOT)/SkiMontana/MWPhotoBrowser/MBProgressHUD\"",
+					"\"$(SRCROOT)/SkiMontana/MWPhotoBrowser/PSTCollectionView\"",
+					"\"$(SRCROOT)/SkiMontana/MWPhotoBrowser/SDWebImage\"",
 				);
 				INFOPLIST_FILE = "SkiMontana/SkiMontana-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
@@ -1016,8 +1064,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/SkiMontana",
 					"$(PROJECT_DIR)/SkiMontana/OpenSSL/lib",
+					"$(PROJECT_DIR)/SkiMontana/MWPhotoBrowser",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-l\"MWPhotoBrowser\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.eibenm.SkiMontanaTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

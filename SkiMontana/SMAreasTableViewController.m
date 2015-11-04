@@ -180,7 +180,8 @@ static NSString *cellIdentifier;
 
         (cell.areaName).text = skiArea.name_area;
         (cell.areaName).textColor = [UIColor whiteColor];
-        (cell.areaImage).image = [UIImage imageNamed:skiArea.ski_area_image.avatar];
+        //(cell.areaImage).image = [UIImage imageNamed:skiArea.ski_area_image.avatar];
+        (cell.areaImage).image = [UIImage imageNamed:[skiArea.name_area stringByAppendingString:@"-thumbnail"]];
         (cell.areaImage.layer).borderColor = [UIColor blackColor].CGColor;
         (cell.areaImage.layer).borderWidth = 1.0;
         (cell.areaConditions).textContainerInset = UIEdgeInsetsZero;
@@ -190,12 +191,10 @@ static NSString *cellIdentifier;
         (cell.areaConditions.textContainer).exclusionPaths = @[imgRect];
                 
         if (![_isShowingArray[[skiAreaObjects indexOfObject:skiArea]] boolValue]) {
-            //cell.accessoryView = [[SMArrowView alloc] initWithFrame:CGRectMake(0, 0, 30, 22) arrowType:SMArrowDown color:[UIColor blueColor]];
             cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:arrowDown]];
             (cell.areaConditionsHeightConstraint).priority = UILayoutPriorityDefaultHigh;
         }
         else {
-            //cell.accessoryView = [[SMArrowView alloc] initWithFrame:CGRectMake(0, 0, 30, 22) arrowType:SMArrowUp color:[UIColor redColor]];
             cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:arrowUp]];
             (cell.areaConditionsHeightConstraint).priority = UILayoutPriorityDefaultLow;
         }
@@ -229,7 +228,6 @@ static NSString *cellIdentifier;
         (cell.routeElevationGain).textColor = [UIColor whiteColor];
         (cell.routeDistance).text = [NSString stringWithFormat:@"Distance: ~%@ mi", skiRoute.distance];
         (cell.routeDistance).textColor = [UIColor whiteColor];
-        //cell.accessoryView = [[SMArrowView alloc] initWithFrame:CGRectMake(0, 0, 22, 30) arrowType:SMArrowRight color:[UIColor redColor]];
         cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:arrowRight]];
     }
     

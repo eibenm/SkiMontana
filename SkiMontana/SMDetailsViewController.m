@@ -12,13 +12,14 @@
 #import "SMDetailsTableViewCell.h"
 
 #import "SMSlideAnimation.h"
+#import "MWPhotoBrowser.h"
 
 static NSString *cellIdentifier;
 
 static CGFloat scalingFactor = 0.3f;
 static CGFloat maxOffsetDiff = 46.0f;
 
-@interface SMDetailsViewController() <UITableViewDelegate, UITableViewDataSource, UIDocumentInteractionControllerDelegate>
+@interface SMDetailsViewController() <UITableViewDelegate, UITableViewDataSource, UIDocumentInteractionControllerDelegate, MWPhotoBrowserDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet SMDetailsHeaderView *headerView;
@@ -30,6 +31,8 @@ static CGFloat maxOffsetDiff = 46.0f;
 @property (nonatomic, assign) CGFloat offsetStartingY;
 @property (nonatomic, assign) CGFloat maxOffsetY;
 @property (nonatomic, assign) CGFloat routeTopContraintHeight;
+
+@property (nonatomic, strong) NSMutableArray *photos;
 
 @end
 
@@ -186,7 +189,15 @@ static CGFloat maxOffsetDiff = 46.0f;
     }
     else if ([cellIdentifier isEqualToString:@"kml"]) {
         // Add KML Image
-        self.kmlImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"EllisKML"]];
+        NSString __block *kmlImage = @"EllisKML";
+        NSSet *routeImages = (self.skiRoute).ski_route_images;
+        [routeImages enumerateObjectsUsingBlock:^(File *file, BOOL *stop) {
+            if ((file.kml_image).boolValue == YES) {
+                kmlImage = file.avatar;
+                *stop = YES;
+            }
+        }];
+        self.kmlImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kmlImage]];
         (self.kmlImage).contentMode = UIViewContentModeScaleAspectFill;
         (self.kmlImage).translatesAutoresizingMaskIntoConstraints = NO;
         [cell.contentView addSubview:self.kmlImage];
@@ -268,13 +279,24 @@ static CGFloat maxOffsetDiff = 46.0f;
     
     else if ([cell.reuseIdentifier isEqualToString:@"images"]) {
         NSSet *routeImages = (self.skiRoute).ski_route_images;
+        self.photos = [NSMutableArray array];
         for (File *file in routeImages) {
-            NSLog(@"Image:");
-            NSLog(@"\tAvatar: %@", file.avatar);
-            NSLog(@"\tFilename: %@", file.filename);
-            NSLog(@"\tCaption: %@", file.caption);
-            NSLog(@"\tIs KML Image: %@", file.kml_image);
+            MWPhoto *photo = [MWPhoto photoWithImage:[UIImage imageNamed:file.avatar]];
+            photo.caption = file.caption;
+            [self.photos addObject:photo];
         }
+        
+        MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
+        browser.displayActionButton = NO;
+        browser.displayNavArrows = YES;
+        browser.displaySelectionButtons = NO;
+        browser.zoomPhotosToFill = YES;
+        browser.alwaysShowControls = NO;
+        browser.enableGrid = YES;
+        browser.startOnGrid = NO;
+        [browser setCurrentPhotoIndex:0];
+        
+        [self.navigationController pushViewController:browser animated:YES];
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
     
@@ -410,4 +432,28 @@ static CGFloat maxOffsetDiff = 46.0f;
     }
 }
 */
+
+#pragma mark - MWPhotoBrowserDelegate
+
+- (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser
+{
+    return (self.photos).count;
+}
+
+- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index
+{
+    if (index < (self.photos).count) {
+        return self.photos[index];
+    }
+    return nil;
+}
+
+- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser thumbPhotoAtIndex:(NSUInteger)index
+{
+    if (index < (self.photos).count) {
+        return self.photos[index];
+    }
+    return nil;
+}
+
 @end
