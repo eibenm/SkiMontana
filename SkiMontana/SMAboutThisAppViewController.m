@@ -7,6 +7,7 @@
 //
 
 #import "SMAboutThisAppViewController.h"
+#import "SMTutorialPageViewController.h"
 
 @interface SMAboutThisAppViewController ()
 
@@ -21,13 +22,23 @@
     [super viewDidLoad];
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:self action:@selector(dismissViewController)];
+    UIBarButtonItem *tutorialButton = [[UIBarButtonItem alloc] initWithTitle:@"Tutorial" style:UIBarButtonItemStyleDone target:self action:@selector(presentTutorialPageViewController)];
+    
     (self.navigationItem).leftBarButtonItem = backButton;
+    (self.navigationItem).rightBarButtonItem = tutorialButton;
+    
     self.title = @"About This App";
 }
 
 - (void)dismissViewController
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)presentTutorialPageViewController
+{
+    SMTutorialPageViewController *tutorialViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"tutorialPageViewController"];
+    [self.navigationController pushViewController:tutorialViewController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning

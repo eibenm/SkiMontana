@@ -81,8 +81,8 @@ static NSString *cellIdentifier;
     [self.view sendSubviewToBack:backgroundImageView];
     
     // Setting autolayout constraints for background views
-    [backgroundColorView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [backgroundImageView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    backgroundColorView.translatesAutoresizingMaskIntoConstraints = NO;
+    backgroundImageView.translatesAutoresizingMaskIntoConstraints = NO;
     NSDictionary *backgroundColorViews = NSDictionaryOfVariableBindings(backgroundColorView);
     NSDictionary *backgroundImageViews = NSDictionaryOfVariableBindings(backgroundImageView);
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[backgroundColorView]|" options:kNilOptions metrics:nil views:backgroundColorViews]];
