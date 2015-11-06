@@ -42,6 +42,8 @@
     [self.mapViewContainer addSubview:self.mapView];
     (self.mapView.layer).opacity = 0;
     [self.mapView setZoom:10.5f atCoordinate:CLLocationCoordinate2DMake(45.72, -110.80) animated:NO];
+    RMSphericalTrapezium boundingBox = self.tileSource.latitudeLongitudeBoundingBox;
+    [self.mapView setConstraintsSouthWest:boundingBox.southWest northEast:boundingBox.northEast];
 }
 
 - (void)dismissViewController

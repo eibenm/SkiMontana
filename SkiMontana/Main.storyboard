@@ -810,7 +810,7 @@
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map" translatesAutoresizingMaskIntoConstraints="NO" id="Kjo-IH-YHJ">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image" translatesAutoresizingMaskIntoConstraints="NO" id="Kjo-IH-YHJ">
                                                             <rect key="frame" x="0.0" y="0.0" width="40" height="28"/>
                                                             <animations/>
                                                         </imageView>
@@ -1368,6 +1368,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="image" width="40" height="40"/>
         <image name="map" width="40" height="40"/>
     </resources>
 </document>
