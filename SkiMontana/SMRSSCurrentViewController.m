@@ -30,6 +30,11 @@
     [self.webView loadRequest:[NSURLRequest requestWithURL:currentAdvisory]];
 }
 
+- (void)dealloc
+{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

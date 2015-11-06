@@ -182,7 +182,7 @@ static NSString *cellIdentifier;
         (cell.areaName).textColor = [UIColor whiteColor];
         //(cell.areaImage).image = [UIImage imageNamed:skiArea.ski_area_image.avatar];
         (cell.areaImage).image = [UIImage imageNamed:[skiArea.name_area stringByAppendingString:@"-thumbnail"]];
-        (cell.areaImage.layer).borderColor = [UIColor blackColor].CGColor;
+        (cell.areaImage.layer).borderColor = [UIColor darkGrayColor].CGColor;
         (cell.areaImage.layer).borderWidth = 1.0;
         (cell.areaConditions).textContainerInset = UIEdgeInsetsZero;
         (cell.areaConditions.textContainer).lineFragmentPadding = 0;
@@ -331,7 +331,7 @@ static NSString *cellIdentifier;
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
-    NSSet *segues = [[NSSet alloc] initWithObjects:@"showGlossary", @"showAdvisory", nil];
+    NSSet *segues = [[NSSet alloc] initWithObjects:@"showAdvisory", nil];
     if ([segues containsObject:identifier]) {
         return YES;
     }
@@ -358,11 +358,6 @@ static NSString *cellIdentifier;
         SMDetailsViewController *viewController = segue.destinationViewController;
         viewController.nameArea = skiArea.name_area;
         viewController.skiRoute = skiRoute;
-        UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:nil action:nil];
-        (self.navigationItem).backBarButtonItem = newBackButton;
-    }
-    
-    if ([segue.identifier isEqualToString:@"showGlossary"]) {
         UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:nil action:nil];
         (self.navigationItem).backBarButtonItem = newBackButton;
     }

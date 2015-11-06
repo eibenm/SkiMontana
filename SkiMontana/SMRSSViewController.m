@@ -93,18 +93,12 @@
                                                object:nil];
 }
 
-- (void)dealloc {
-    
-    // we are no longer interested in these notifications:
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:kAddAvyFeedNotificationName
-                                                  object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:kAvyFeedErrorNotificationName
-                                                  object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:NSCurrentLocaleDidChangeNotification
-                                                  object:nil];
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kAddAvyFeedNotificationName object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kAvyFeedErrorNotificationName object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSCurrentLocaleDidChangeNotification object:nil];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
 /**
@@ -115,7 +109,6 @@
     NSString *errorMessage = [error localizedDescription];
     NSString *alertTitle = NSLocalizedString(@"Error", @"Title for alert displayed when download or parse error occurs.");
     NSString *okTitle = NSLocalizedString(@"OK ", @"OK Title for alert displayed when download or parse error occurs.");
-    
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:alertTitle message:errorMessage delegate:nil cancelButtonTitle:okTitle otherButtonTitles:nil];
     [alertView show];
 }

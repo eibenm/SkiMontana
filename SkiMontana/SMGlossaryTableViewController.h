@@ -8,7 +8,7 @@
 
 #import "SMDataManager.h"
 
-@interface SMGlossaryTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@interface SMGlossaryTableViewController : UIViewController <NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

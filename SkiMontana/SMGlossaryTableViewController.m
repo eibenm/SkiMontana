@@ -11,7 +11,9 @@
 
 static NSString *cellIdentifier = @"glossaryTerm";
 
-@interface SMGlossaryTableViewController() <UISearchResultsUpdating>
+@interface SMGlossaryTableViewController() <UISearchResultsUpdating, UITableViewDataSource, UITableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, assign) NSInteger selectedIndex;
 @property (nonatomic, strong) NSArray *filteredResults;
@@ -26,6 +28,8 @@ static NSString *cellIdentifier = @"glossaryTerm";
 {
     [super viewDidLoad];
     
+    (self.tableView).dataSource = self;
+    (self.tableView).delegate = self;
     self.managedObjectContext = [SMDataManager sharedInstance].managedObjectContext;
     
     NSError *error;
@@ -40,20 +44,38 @@ static NSString *cellIdentifier = @"glossaryTerm";
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
     (self.searchController).searchResultsUpdater = self;
     (self.searchController).dimsBackgroundDuringPresentation = NO;
-    self.tableView.tableHeaderView = (self.searchController).searchBar;
+    (self.tableView).tableHeaderView = (self.searchController).searchBar;
     self.definesPresentationContext = YES;
-    [self.searchController.searchBar sizeToFit];
+    [(self.searchController).searchBar sizeToFit];
+    
+    // View for background color (opaque white mask)
+    UIView *backgroundColorView = [[UIView alloc]initWithFrame:self.view.frame];
+    backgroundColorView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.8];
+    [self.view addSubview:backgroundColorView];
+    [self.view sendSubviewToBack:backgroundColorView];
+    
+    // Background imageview
+    UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"RouteInfoBackground"]];
+    backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
+    backgroundImageView.frame = self.view.frame;
+    [self.view addSubview:backgroundImageView];
+    [self.view sendSubviewToBack:backgroundImageView];
+    
+    // Setting autolayout constraints for background views
+    [backgroundColorView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [backgroundImageView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    NSDictionary *backgroundColorViews = NSDictionaryOfVariableBindings(backgroundColorView);
+    NSDictionary *backgroundImageViews = NSDictionaryOfVariableBindings(backgroundImageView);
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[backgroundColorView]|" options:kNilOptions metrics:nil views:backgroundColorViews]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[backgroundColorView]|" options:kNilOptions metrics:nil views:backgroundColorViews]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[backgroundImageView]|" options:kNilOptions metrics:nil views:backgroundImageViews]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[backgroundImageView]|" options:kNilOptions metrics:nil views:backgroundImageViews]];
 }
 
 - (void)dealloc
 {
-    [self.searchController removeFromParentViewController];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    self.fetchedResultsController = nil;
+    [self.searchController.view removeFromSuperview];
+    self.searchController = nil;
 }
 
 #pragma mark - UITableViewDataSource
