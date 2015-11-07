@@ -110,6 +110,8 @@
 		CB8F30B61BCB021400F4FA2C /* theFin.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CB8F30AB1BCAFF0500F4FA2C /* theFin.mbtiles */; };
 		CB8F30B71BCB021400F4FA2C /* theSkillet.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CB8F30AC1BCAFF0500F4FA2C /* theSkillet.mbtiles */; };
 		CB8F30B81BCB021400F4FA2C /* theSphinx.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CB8F30AD1BCAFF0500F4FA2C /* theSphinx.mbtiles */; };
+		CB8FED951BED643400C0296C /* SMDisclaimer.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8FED941BED643400C0296C /* SMDisclaimer.xib */; };
+		CB8FED981BED645500C0296C /* SMDisclaimer.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8FED971BED645500C0296C /* SMDisclaimer.m */; };
 		CB9695201A9A3EF6009757B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB96951F1A9A3EF6009757B7 /* main.m */; };
 		CB9695231A9A3EF6009757B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9695221A9A3EF6009757B7 /* AppDelegate.m */; };
 		CB96952E1A9A3EF6009757B7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB96952C1A9A3EF6009757B7 /* LaunchScreen.xib */; };
@@ -311,6 +313,9 @@
 		CB8F30AB1BCAFF0500F4FA2C /* theFin.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = theFin.mbtiles; path = Tiles/theFin.mbtiles; sourceTree = "<group>"; };
 		CB8F30AC1BCAFF0500F4FA2C /* theSkillet.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = theSkillet.mbtiles; path = Tiles/theSkillet.mbtiles; sourceTree = "<group>"; };
 		CB8F30AD1BCAFF0500F4FA2C /* theSphinx.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = theSphinx.mbtiles; path = Tiles/theSphinx.mbtiles; sourceTree = "<group>"; };
+		CB8FED941BED643400C0296C /* SMDisclaimer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMDisclaimer.xib; sourceTree = "<group>"; };
+		CB8FED961BED645500C0296C /* SMDisclaimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDisclaimer.h; sourceTree = "<group>"; };
+		CB8FED971BED645500C0296C /* SMDisclaimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDisclaimer.m; sourceTree = "<group>"; };
 		CB96951A1A9A3EF6009757B7 /* SkiMontana.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkiMontana.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB96951E1A9A3EF6009757B7 /* SkiMontana-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SkiMontana-Info.plist"; sourceTree = "<group>"; };
 		CB96951F1A9A3EF6009757B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -574,6 +579,16 @@
 			path = SkiMontana;
 			sourceTree = "<group>";
 		};
+		CB8FED991BED68E000C0296C /* Disclaimer View */ = {
+			isa = PBXGroup;
+			children = (
+				CB8FED941BED643400C0296C /* SMDisclaimer.xib */,
+				CB8FED961BED645500C0296C /* SMDisclaimer.h */,
+				CB8FED971BED645500C0296C /* SMDisclaimer.m */,
+			);
+			name = "Disclaimer View";
+			sourceTree = "<group>";
+		};
 		CB9695111A9A3EF6009757B7 = {
 			isa = PBXGroup;
 			children = (
@@ -614,6 +629,7 @@
 				CB76D9C51AFC6102005EC2E8 /* SMRouteMapViewController.m */,
 				CBA2B5E81BCDE1C300B7C129 /* SMMapAttributionViewController.h */,
 				CBA2B5E91BCDE1C300B7C129 /* SMMapAttributionViewController.m */,
+				CB8FED991BED68E000C0296C /* Disclaimer View */,
 				CBB480871AA5774D00C2A7E3 /* TableCells */,
 				CB1111FC1BD9DD0000B41862 /* RSS Feed */,
 				CB235EAE1A9A591C0002E482 /* Utility Classes */,
@@ -877,6 +893,7 @@
 				CB4437F41BE45958004A4BEC /* Beehive Meadows.kmz in Resources */,
 				CB4437F51BE45958004A4BEC /* Beehive to Bear Basin.kmz in Resources */,
 				CB4437F61BE45958004A4BEC /* Black Mountain.kmz in Resources */,
+				CB8FED951BED643400C0296C /* SMDisclaimer.xib in Resources */,
 				CB4437F71BE45958004A4BEC /* Bridger Bowl.kmz in Resources */,
 				CB4437F81BE45958004A4BEC /* Buttcrack Chute.kmz in Resources */,
 				CB4437F91BE45958004A4BEC /* Deer Creek.kmz in Resources */,
@@ -945,6 +962,7 @@
 				CB4208A81AA3BB5100ADFA97 /* SMAreasTableViewController.m in Sources */,
 				CB44382B1BE832A2004A4BEC /* Gps.m in Sources */,
 				CB4D92951BEC789000E889A5 /* PSTCollectionView.m in Sources */,
+				CB8FED981BED645500C0296C /* SMDisclaimer.m in Sources */,
 				CB44380D1BE7E3CF004A4BEC /* SMAboutThisAppViewController.m in Sources */,
 				CB8DD67B1BE1BE9800CD8217 /* SMLabel.m in Sources */,
 				CB4D92991BEC789000E889A5 /* PSTCollectionViewFlowLayout.m in Sources */,

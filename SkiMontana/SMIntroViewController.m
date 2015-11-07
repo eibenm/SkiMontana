@@ -9,7 +9,7 @@
 #import "SMIntroViewController.h"
 #import "SMNavigationController.h"
 #import "SMAreasTableViewController.h"
-
+#import "SMDisclaimer.h"
 #import "SMUtilities.h"
 
 @interface SMIntroViewController ()
@@ -93,7 +93,24 @@
     
     emitterLayer.emitterCells = @[emitterCell];
     
-    [self.backgroundView.layer addSublayer:emitterLayer];
+    //[self.backgroundView.layer addSublayer:emitterLayer];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        BOOL deviceIsIPhone = ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone);
+        
+        CGRect rect;
+        if (deviceIsIPhone) {
+            rect = CGRectMake(0, 0, CGRectGetWidth(self.view.bounds) * 0.75, CGRectGetHeight(self.view.bounds) * 0.7);
+        }
+        else {
+            rect = CGRectMake(0, 0, 300, 300);
+        }
+        
+        SMDisclaimer *disclaimerView = [[SMDisclaimer alloc] initWithFrame:rect];
+        disclaimerView.center = self.view.center;
+        [self.view addSubview:disclaimerView];
+    });
 }
 
 -(void) viewWillAppear:(BOOL)animated
