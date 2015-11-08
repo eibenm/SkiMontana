@@ -15,8 +15,9 @@
 @interface SMIntroViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *backgroundView;
-@property (weak, nonatomic) IBOutlet UIButton *startSkiingBtn;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UITextView *disclaimerTextView;
+@property (weak, nonatomic) IBOutlet UIButton *startSkiingBtn;
 
 - (IBAction)startSkiingAction:(id)sender;
 
@@ -34,8 +35,9 @@
     UIEdgeInsets insets = UIEdgeInsetsMake(0.0f, 10.0f, 0.0f, 10.0f);
     UIImage *skiButtonEnabled = [UIImage imageNamed:@"start_skiing"];
     
+    (self.disclaimerTextView).layer.cornerRadius = 5.0f;
     (self.startSkiingBtn).userInteractionEnabled = NO;
-    (self.startSkiingBtn.layer).opacity = 0.8;
+    (self.startSkiingBtn).layer.opacity = 0.8;
     [self.startSkiingBtn setTitle:@"Updating ..." forState:UIControlStateNormal];
     [self.startSkiingBtn setBackgroundImage:[skiButtonEnabled resizableImageWithCapInsets:insets]
                                    forState:UIControlStateNormal];
@@ -50,14 +52,14 @@
             NSLog(@"Message: %@", message);
         }
         [self.startSkiingBtn setUserInteractionEnabled:YES];
-        [self.startSkiingBtn setTitle:@"Start Skiing" forState:UIControlStateNormal];
+        [self.startSkiingBtn setTitle:@"I Agree" forState:UIControlStateNormal];
         [UIView animateWithDuration:0.25 animations:^{
-            (self.startSkiingBtn.layer).opacity = 1.0;
+            (self.startSkiingBtn).layer.opacity = 1.0;
         }];
     } error:^(NSError *error) {
         NSLog(@"Download failure: Error: %@", error.localizedDescription);
         [self.startSkiingBtn setUserInteractionEnabled:YES];
-        [self.startSkiingBtn setTitle:@"Start Skiing" forState:UIControlStateNormal];
+        [self.startSkiingBtn setTitle:@"I Agree" forState:UIControlStateNormal];
         [UIView animateWithDuration:0.25 animations:^{
             (self.startSkiingBtn.layer).opacity = 1.0;
         }];
@@ -94,23 +96,6 @@
     emitterLayer.emitterCells = @[emitterCell];
     
     //[self.backgroundView.layer addSublayer:emitterLayer];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
-        BOOL deviceIsIPhone = ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone);
-        
-        CGRect rect;
-        if (deviceIsIPhone) {
-            rect = CGRectMake(0, 0, CGRectGetWidth(self.view.bounds) * 0.75, CGRectGetHeight(self.view.bounds) * 0.7);
-        }
-        else {
-            rect = CGRectMake(0, 0, 300, 300);
-        }
-        
-        SMDisclaimer *disclaimerView = [[SMDisclaimer alloc] initWithFrame:rect];
-        disclaimerView.center = self.view.center;
-        [self.view addSubview:disclaimerView];
-    });
 }
 
 -(void) viewWillAppear:(BOOL)animated
