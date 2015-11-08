@@ -9,7 +9,6 @@
 #import "SMIntroViewController.h"
 #import "SMNavigationController.h"
 #import "SMAreasTableViewController.h"
-#import "SMDisclaimer.h"
 #import "SMUtilities.h"
 
 @interface SMIntroViewController ()
