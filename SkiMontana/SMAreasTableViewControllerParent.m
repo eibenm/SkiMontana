@@ -237,19 +237,19 @@
         [self restorePurchases];
     }];
     
-    UIAlertAction *manager = [UIAlertAction actionWithTitle:@"Manage Subscription" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        NSURL *manageUrl = [NSURL URLWithString:manageSubscriptionsUrl];
-        if ([[UIApplication sharedApplication] canOpenURL:manageUrl]) {
-            [[UIApplication sharedApplication] openURL:manageUrl];
-        }
-    }];
+//    UIAlertAction *manager = [UIAlertAction actionWithTitle:@"Manage Subscription" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+//        NSURL *manageUrl = [NSURL URLWithString:manageSubscriptionsUrl];
+//        if ([[UIApplication sharedApplication] canOpenURL:manageUrl]) {
+//            [[UIApplication sharedApplication] openURL:manageUrl];
+//        }
+//    }];
     
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
         [self.actionSheetViewController dismissViewControllerAnimated:YES completion:nil];
     }];
     
     [self.actionSheetViewController addAction:restore];
-    [self.actionSheetViewController addAction:manager];
+//    [self.actionSheetViewController addAction:manager];
     [self.actionSheetViewController addAction:cancel];
     
     self.actionSheetViewController.popoverPresentationController.delegate = self;
