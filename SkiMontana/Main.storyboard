@@ -1078,7 +1078,7 @@
                                             <constraint firstAttribute="height" priority="750" constant="279" id="Fcp-Sg-Lyz"/>
                                             <constraint firstAttribute="width" constant="260" id="kVy-DP-GHe"/>
                                         </constraints>
-                                        <string key="text">Backcountry skiing is an inherently dangerous activity, and this app is not a substitute for taking the proper safety precautions or having professional training in the skills you need to stay safe. By continuing, you agree to read the full disclaimer in the “About” section of the app, and accept your own liability for any travel that results from from use of this app.</string>
+                                        <string key="text">Backcountry skiing is an inherently dangerous activity, and this app is not a substitute for taking the proper safety precautions or having professional training in the skills you need to stay safe. By continuing, you agree to read the full disclaimer in the “About” section of the app, and accept your own liability for any travel that results from use of this app.</string>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1150,93 +1150,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wr7-eI-6Xr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2515" y="-1180"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="YzD-L7-PHs">
-            <objects>
-                <viewController storyboardIdentifier="tutorialPageViewController" id="bcO-HX-mgC" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="VvB-XU-SYl"/>
-                        <viewControllerLayoutGuide type="bottom" id="m8m-bO-pT9"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ECg-OL-Cpr">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGm-BP-TGT" userLabel="Page Control Bar">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
-                                <subviews>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="JtO-vv-Vbc">
-                                        <rect key="frame" x="281" y="3" width="39" height="37"/>
-                                        <animations/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="37" id="f1J-NQ-MHA"/>
-                                            <constraint firstAttribute="width" constant="39" id="woK-LQ-dDT"/>
-                                        </constraints>
-                                    </pageControl>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOL-Th-CNI">
-                                        <rect key="frame" x="546" y="7" width="46" height="30"/>
-                                        <animations/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="46" id="NCI-gX-iJr"/>
-                                            <constraint firstAttribute="height" constant="30" id="POh-wq-mAf"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
-                                        <state key="normal" title="End"/>
-                                        <connections>
-                                            <action selector="dismissViewController:" destination="bcO-HX-mgC" eventType="touchUpInside" id="Jp4-Jj-jbp"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <animations/>
-                                <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="JtO-vv-Vbc" secondAttribute="bottom" constant="4" id="2PY-Uk-sOr"/>
-                                    <constraint firstAttribute="trailing" secondItem="WOL-Th-CNI" secondAttribute="trailing" constant="8" id="5bd-CJ-jfs"/>
-                                    <constraint firstItem="JtO-vv-Vbc" firstAttribute="top" secondItem="bGm-BP-TGT" secondAttribute="top" constant="3" id="84H-xb-CbO"/>
-                                    <constraint firstItem="JtO-vv-Vbc" firstAttribute="centerX" secondItem="bGm-BP-TGT" secondAttribute="centerX" id="bMk-SF-Jga"/>
-                                    <constraint firstAttribute="height" constant="44" id="eUf-En-tSj"/>
-                                    <constraint firstItem="WOL-Th-CNI" firstAttribute="top" secondItem="bGm-BP-TGT" secondAttribute="top" constant="7" id="qrU-Xv-yXy"/>
-                                    <constraint firstAttribute="bottom" secondItem="WOL-Th-CNI" secondAttribute="bottom" constant="7" id="yz6-K2-E4a"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="bGm-BP-TGT" firstAttribute="leading" secondItem="ECg-OL-Cpr" secondAttribute="leading" id="7XD-ba-N69"/>
-                            <constraint firstItem="m8m-bO-pT9" firstAttribute="top" secondItem="bGm-BP-TGT" secondAttribute="bottom" id="J91-xX-Etr"/>
-                            <constraint firstAttribute="trailing" secondItem="bGm-BP-TGT" secondAttribute="trailing" id="vpf-79-5FC"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="dismissButton" destination="WOL-Th-CNI" id="3ne-mn-BOH"/>
-                        <outlet property="pageControl" destination="JtO-vv-Vbc" id="cMK-gP-EG3"/>
-                        <outlet property="pageControlBar" destination="bGm-BP-TGT" id="aWm-fv-xPr"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="US8-ix-wAP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1725" y="-418"/>
-        </scene>
-        <!--Tutorial Content View Controller-->
-        <scene sceneID="OyU-1U-wnE">
-            <objects>
-                <viewController storyboardIdentifier="tutorialContentViewController" id="gKN-FF-3gZ" customClass="SMTutorialContentViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="HRd-lh-wjF"/>
-                        <viewControllerLayoutGuide type="bottom" id="5Ct-yv-mkG"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="T4q-gd-GxW">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hbZ-es-sJE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1725" y="328"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="H99-4H-Pk6">

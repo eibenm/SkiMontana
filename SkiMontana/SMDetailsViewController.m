@@ -206,6 +206,7 @@ static CGFloat maxOffsetDiff = 46.0f;
         // Add KML Image
         NSString __block *kmlImage = @"EllisKML";
         NSSet *routeImages = (self.skiRoute).ski_route_images;
+        //NSLog(@"%@", routeImages);
         [routeImages enumerateObjectsUsingBlock:^(File *file, BOOL *stop) {
             if ((file.kml_image).boolValue == YES) {
                 kmlImage = file.avatar;
@@ -226,6 +227,8 @@ static CGFloat maxOffsetDiff = 46.0f;
         (self.kmlLabel).text = @"Open Google Earth";
         (self.kmlLabel).textColor = [UIColor whiteColor];
         (self.kmlLabel).font = [UIFont fontWithName:@"Avenir Book" size:16.0f];
+        //(self.kmlImage).layer.shadowColor = [UIColor blackColor].CGColor;
+        //(self.kmlImage).layer.shadowOffset = CGSizeZero;
         (self.kmlLabel).translatesAutoresizingMaskIntoConstraints = NO;
         (self.kmlLabel).autoresizingMask = (UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin);
         [cell.contentView addSubview:self.kmlLabel];
