@@ -190,6 +190,7 @@ static CGFloat maxOffsetDiff = 46.0f;
         // Add KML Image
         NSString __block *kmlImage = @"EllisKML";
         NSSet *routeImages = (self.skiRoute).ski_route_images;
+        NSLog(@"%@", routeImages);
         [routeImages enumerateObjectsUsingBlock:^(File *file, BOOL *stop) {
             if ((file.kml_image).boolValue == YES) {
                 kmlImage = file.avatar;
