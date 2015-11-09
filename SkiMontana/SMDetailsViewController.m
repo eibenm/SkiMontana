@@ -23,6 +23,8 @@ static CGFloat maxOffsetDiff = 46.0f;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet SMDetailsHeaderView *headerView;
 
+@property (nonatomic, strong) UIButton *backButton;
+@property (nonatomic, strong) CAShapeLayer *maskLayer;
 @property (nonatomic, strong) UIDocumentInteractionController *docController;
 @property (nonatomic, strong) UIImageView *kmlImage;
 @property (nonatomic, strong) UILabel *kmlLabel;
@@ -42,19 +44,32 @@ static CGFloat maxOffsetDiff = 46.0f;
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     
     // Adding custom back button
-    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backButton addTarget:self action:@selector(dismissViewController) forControlEvents:UIControlEventTouchUpInside];
-    [backButton setTitle:@"Back" forState:UIControlStateNormal];
-    [backButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [backButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
-    backButton.titleLabel.font = [UIFont boldSkiMontanaFontOfSize:17.0f];
-    backButton.translatesAutoresizingMaskIntoConstraints = NO;
-    backButton.layer.zPosition = 100.0f;
-    [backButton sizeToFit];
-    [self.view addSubview:backButton];
-    NSDictionary *views = @{ @"backButton": backButton, @"topLayoutGuide": self.topLayoutGuide };
+    self.backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.backButton addTarget:self action:@selector(dismissViewController) forControlEvents:UIControlEventTouchUpInside];
+    [self.backButton setTitle:@"Back" forState:UIControlStateNormal];
+    [self.backButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.backButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
+    (self.backButton).titleLabel.font = [UIFont boldSkiMontanaFontOfSize:17.0f];
+    (self.backButton).translatesAutoresizingMaskIntoConstraints = NO;
+    (self.backButton).layer.zPosition = 100.0f;
+    [self.backButton sizeToFit];
+    [self.view addSubview:self.backButton];
+    NSDictionary *views = @{ @"backButton": self.backButton, @"topLayoutGuide": self.topLayoutGuide };
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topLayoutGuide]-1-[backButton]" options:kNilOptions metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[backButton]" options:kNilOptions metrics:nil views:views]];
+    
+    // Creating mask on route title so it doesn't overflow underneath the back button
+    CAGradientLayer *maskLayer = [CAGradientLayer layer];
+    maskLayer.bounds = self.headerView.frame;
+    maskLayer.colors = @[(id)[UIColor clearColor].CGColor, (id)[UIColor clearColor].CGColor, (id)[UIColor whiteColor].CGColor, (id)[UIColor whiteColor].CGColor];
+    maskLayer.locations = @[@0, @0.07, @0.09, @1.0];
+    maskLayer.anchorPoint = CGPointMake(0, 0.5);
+    maskLayer.startPoint = CGPointMake(0.0, 0.5);
+    maskLayer.endPoint = CGPointMake(1.0, 0.5);
+    
+    (self.headerView).routeTitle.layer.mask = maskLayer;
+    (self.headerView).routeTitle.layer.masksToBounds = YES;
+    //[(self.headerView).routeTitle.layer addSublayer:maskLayer];
     
     [super viewWillAppear:animated];
 }
@@ -116,6 +131,7 @@ static CGFloat maxOffsetDiff = 46.0f;
 {
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        // Update header view offset
         [self scrollViewDidScroll:self.tableView];
     } completion:nil];
 }
