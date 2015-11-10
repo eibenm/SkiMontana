@@ -9,9 +9,17 @@
 #import "SMAboutThisAppViewController.h"
 #import "SMGlossaryTableViewController.h"
 
+static NSString *gneisssoftware = @"http://www.gneisssoftware.com";
+static NSString *bozemanSkiGuide = @"http://bozemanskiguide.com";
+static NSString *email = @"mailto:ty@gneisssoftware.com?cc=matt@gneisssoftware.com&subject=Ski Bozeman Support";
+static NSString *manageSubscriptionsUrl = @"https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions";
+
 @interface SMAboutThisAppViewController ()
 
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+- (IBAction)didClickViewGneisssoftware:(id)sender;
+- (IBAction)didClickViewBozemanSkiGuide:(id)sender;
+- (IBAction)didClickEmailTyAtGneisssoftware:(id)sender;
+- (IBAction)didClickManageSubscriptions:(id)sender;
 
 @end
 
@@ -69,6 +77,37 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (IBAction)didClickViewGneisssoftware:(id)sender
+{
+    NSURL *gneisssoftwareUrl = [NSURL URLWithString:gneisssoftware];
+    if ([[UIApplication sharedApplication] canOpenURL:gneisssoftwareUrl]) {
+        [[UIApplication sharedApplication] openURL:gneisssoftwareUrl];
+    }
+}
+
+- (IBAction)didClickViewBozemanSkiGuide:(id)sender
+{
+    NSURL *bozemanSkiGuideUrl = [NSURL URLWithString:bozemanSkiGuide];
+    if ([[UIApplication sharedApplication] canOpenURL:bozemanSkiGuideUrl]) {
+        [[UIApplication sharedApplication] openURL:bozemanSkiGuideUrl];
+    }
+}
+
+- (IBAction)didClickEmailTyAtGneisssoftware:(id)sender
+{
+    NSString *emailUrl = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL *developerSuppport = [NSURL URLWithString:emailUrl];
+    [[UIApplication sharedApplication] openURL:developerSuppport];
+}
+
+- (IBAction)didClickManageSubscriptions:(id)sender
+{
+    NSURL *manageUrl = [NSURL URLWithString:manageSubscriptionsUrl];
+    if ([[UIApplication sharedApplication] canOpenURL:manageUrl]) {
+        [[UIApplication sharedApplication] openURL:manageUrl];
+    }
 }
 
 @end

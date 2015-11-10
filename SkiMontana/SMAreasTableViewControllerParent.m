@@ -205,7 +205,7 @@
 
 - (void)presentIAPActionSheet
 {
-    self.actionSheetViewController = [UIAlertController alertControllerWithTitle:@"Subscribe to Ski Bozeman\nGet all the skiing shenanigans you can!" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    self.actionSheetViewController = [UIAlertController alertControllerWithTitle:@"Subscribe to Ski Bozeman\nLess than 1/2 the cost of a lift ticket for a season’s worth of adventure." message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
     NSNumberFormatter *formatter = [NSNumberFormatter new];
     formatter.numberStyle = NSNumberFormatterCurrencyStyle;
@@ -237,19 +237,11 @@
         [self restorePurchases];
     }];
     
-//    UIAlertAction *manager = [UIAlertAction actionWithTitle:@"Manage Subscription" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-//        NSURL *manageUrl = [NSURL URLWithString:manageSubscriptionsUrl];
-//        if ([[UIApplication sharedApplication] canOpenURL:manageUrl]) {
-//            [[UIApplication sharedApplication] openURL:manageUrl];
-//        }
-//    }];
-    
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
         [self.actionSheetViewController dismissViewControllerAnimated:YES completion:nil];
     }];
     
     [self.actionSheetViewController addAction:restore];
-//    [self.actionSheetViewController addAction:manager];
     [self.actionSheetViewController addAction:cancel];
     
     self.actionSheetViewController.popoverPresentationController.delegate = self;

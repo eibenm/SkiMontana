@@ -9,8 +9,6 @@
 #import "SCPStoreKitManager.h"
 #import "SCPStoreKitReceiptValidator.h"
 
-static NSString *manageSubscriptionsUrl = @"https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions";
-
 @interface SMIAPHelper : NSObject
 
 + (BOOL)checkInAppMemoryPurchasedState;
