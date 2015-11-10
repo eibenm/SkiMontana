@@ -24,7 +24,6 @@ static CGFloat maxOffsetDiff = 46.0f;
 @property (weak, nonatomic) IBOutlet SMDetailsHeaderView *headerView;
 
 @property (nonatomic, strong) UIButton *backButton;
-@property (nonatomic, strong) CAShapeLayer *maskLayer;
 @property (nonatomic, strong) UIDocumentInteractionController *docController;
 @property (nonatomic, strong) UIImageView *kmlImage;
 @property (nonatomic, strong) UILabel *kmlLabel;
@@ -34,6 +33,9 @@ static CGFloat maxOffsetDiff = 46.0f;
 @property (nonatomic, assign) CGFloat routeTopContraintHeight;
 
 @property (nonatomic, strong) NSMutableArray *photos;
+
+@property (nonatomic, strong) CAGradientLayer *maskLayer;
+@property (nonatomic, assign) CGRect stuff;
 
 @end
 
@@ -59,19 +61,26 @@ static CGFloat maxOffsetDiff = 46.0f;
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[backButton]" options:kNilOptions metrics:nil views:views]];
     
     // Creating mask on route title so it doesn't overflow underneath the back button
-    CAGradientLayer *maskLayer = [CAGradientLayer layer];
-    maskLayer.bounds = self.headerView.frame;
-    maskLayer.colors = @[(id)[UIColor clearColor].CGColor, (id)[UIColor clearColor].CGColor, (id)[UIColor whiteColor].CGColor, (id)[UIColor whiteColor].CGColor];
-    maskLayer.locations = @[@0, @0.07, @0.09, @1.0];
-    maskLayer.anchorPoint = CGPointMake(0, 0.5);
-    maskLayer.startPoint = CGPointMake(0.0, 0.5);
-    maskLayer.endPoint = CGPointMake(1.0, 0.5);
-    
-    (self.headerView).routeTitle.layer.mask = maskLayer;
-    (self.headerView).routeTitle.layer.masksToBounds = YES;
-    //[(self.headerView).routeTitle.layer addSublayer:maskLayer];
+    if (!self.maskLayer ) {
+        self.maskLayer = [CAGradientLayer layer];
+        (self.maskLayer).colors = @[(id)[UIColor clearColor].CGColor, (id)[UIColor clearColor].CGColor, (id)[UIColor whiteColor].CGColor, (id)[UIColor whiteColor].CGColor];
+        (self.maskLayer).locations = @[@0, @0.13, @0.15, @1.0];
+        (self.maskLayer).anchorPoint = CGPointMake(0, 0.25);
+        (self.maskLayer).startPoint = CGPointMake(0.0, 0.5);
+        (self.maskLayer).endPoint = CGPointMake(1.0, 0.5);
+        
+        (self.headerView).routeTitle.layer.mask = self.maskLayer;
+        //[(self.headerView).routeTitle.layer addSublayer:self.maskLayer];
+        (self.headerView).routeTitle.layer.masksToBounds = YES;
+    }
     
     [super viewWillAppear:animated];
+}
+
+- (void)viewDidLayoutSubviews
+{
+    (self.maskLayer).bounds = (self.headerView).bounds;
+    [super viewDidLayoutSubviews];
 }
 
 - (void)dismissViewController
@@ -227,13 +236,16 @@ static CGFloat maxOffsetDiff = 46.0f;
         (self.kmlLabel).text = @"Open Google Earth";
         (self.kmlLabel).textColor = [UIColor whiteColor];
         (self.kmlLabel).font = [UIFont fontWithName:@"Avenir Book" size:16.0f];
-        //(self.kmlImage).layer.shadowColor = [UIColor blackColor].CGColor;
-        //(self.kmlImage).layer.shadowOffset = CGSizeZero;
+        (self.kmlLabel).layer.shadowColor = [UIColor blackColor].CGColor;
+        (self.kmlLabel).layer.shadowRadius = 2.0f;
+        (self.kmlLabel).layer.shadowOpacity = 1.0f;
+        (self.kmlLabel).layer.shadowOffset = CGSizeZero;
+        (self.kmlLabel).layer.masksToBounds = NO;
         (self.kmlLabel).translatesAutoresizingMaskIntoConstraints = NO;
-        (self.kmlLabel).autoresizingMask = (UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin);
+        (self.kmlLabel).autoresizingMask = (UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin);
         [cell.contentView addSubview:self.kmlLabel];
         NSDictionary *labelViews = @{ @"kmlLabel":self.kmlLabel };
-        [cell.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-8-[kmlLabel]" options:kNilOptions metrics:nil views:labelViews]];
+        [cell.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[kmlLabel]-8-|" options:kNilOptions metrics:nil views:labelViews]];
         [cell.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[kmlLabel]-8-|" options:kNilOptions metrics:nil views:labelViews]];
     }
     
@@ -310,7 +322,7 @@ static CGFloat maxOffsetDiff = 46.0f;
         browser.displaySelectionButtons = NO;
         browser.zoomPhotosToFill = YES;
         browser.alwaysShowControls = NO;
-        browser.enableGrid = YES;
+        browser.enableGrid = NO;
         browser.startOnGrid = NO;
         [browser setCurrentPhotoIndex:0];
         

@@ -32,9 +32,8 @@ static NSString *manageSubscriptionsUrl = @"https://buy.itunes.apple.com/WebObje
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:self action:@selector(dismissViewController)];
     UIBarButtonItem *glossaryButton = [[UIBarButtonItem alloc] initWithTitle:@"Glossary" style:UIBarButtonItemStyleDone target:self action:@selector(presentGlossaryViewController)];
     
-    (self.navigationItem).leftBarButtonItem = backButton;
-    (self.navigationItem).rightBarButtonItem = glossaryButton;
-    
+    self.navigationItem.leftBarButtonItem = backButton;
+    self.navigationItem.rightBarButtonItem = glossaryButton;
     self.title = @"About This App";
         
     // View for background color (opaque white mask)
