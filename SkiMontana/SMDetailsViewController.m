@@ -170,9 +170,9 @@ static CGFloat maxOffsetDiff = 46.0f;
         case 2: cellIdentifier = @"avalanche"; break;
         case 3: cellIdentifier = @"content"; break;
         case 4: cellIdentifier = @"getting_there"; break;
-        case 5: cellIdentifier = @"images"; break;
+        case 5: cellIdentifier = @"kml"; break;
         case 6: cellIdentifier = @"directions"; break;
-        case 7: cellIdentifier = @"kml"; break;
+        case 7: cellIdentifier = @"images"; break;
     }
     
     SMDetailsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
@@ -205,15 +205,15 @@ static CGFloat maxOffsetDiff = 46.0f;
     else if ([cellIdentifier isEqualToString:@"getting_there"]) {
         (cell.labelDirectionsInformation).text = self.skiRoute.directions;
     }
-    else if ([cellIdentifier isEqualToString:@"images"]) {
+    else if ([cellIdentifier isEqualToString:@"kml"]) {
         nil;
     }
     else if ([cellIdentifier isEqualToString:@"directions"]) {
         nil;
     }
-    else if ([cellIdentifier isEqualToString:@"kml"]) {
+    else if ([cellIdentifier isEqualToString:@"images"]) {
         // Add KML Image
-        NSString __block *kmlImage = @"EllisKML";
+        NSString __block *kmlImage;
         NSSet *routeImages = (self.skiRoute).ski_route_images;
         //NSLog(@"%@", routeImages);
         [routeImages enumerateObjectsUsingBlock:^(File *file, BOOL *stop) {
@@ -233,7 +233,7 @@ static CGFloat maxOffsetDiff = 46.0f;
         
         // Add KML Label
         self.kmlLabel = [UILabel new];
-        (self.kmlLabel).text = @"Open Google Earth";
+        (self.kmlLabel).text = @"View Route Images";
         (self.kmlLabel).textColor = [UIColor whiteColor];
         (self.kmlLabel).font = [UIFont fontWithName:@"Avenir Book" size:16.0f];
         (self.kmlLabel).layer.shadowColor = [UIColor blackColor].CGColor;
@@ -312,7 +312,7 @@ static CGFloat maxOffsetDiff = 46.0f;
         self.photos = [NSMutableArray array];
         for (File *file in routeImages) {
             MWPhoto *photo = [MWPhoto photoWithImage:[UIImage imageNamed:file.avatar]];
-            photo.caption = file.caption;
+            //photo.caption = file.caption;
             [self.photos addObject:photo];
         }
         
@@ -326,7 +326,25 @@ static CGFloat maxOffsetDiff = 46.0f;
         browser.startOnGrid = NO;
         [browser setCurrentPhotoIndex:0];
         
-        [self.navigationController pushViewController:browser animated:YES];
+        // Animated image and label
+        CABasicAnimation *pulseAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+        pulseAnimation.duration = 0.2f;
+        pulseAnimation.toValue = @1.1f;
+        pulseAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+        pulseAnimation.fillMode = kCAFillModeForwards;
+        pulseAnimation.removedOnCompletion = NO;
+        pulseAnimation.autoreverses = NO;
+        [CATransaction setCompletionBlock:^{
+            // Push MWPhotoBrowser Controller
+            [self.navigationController pushViewController:browser animated:YES];
+            // Remove animation 2 sec after pushed controller .... this is hacky
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [(self.kmlImage).layer removeAnimationForKey:pulseAnimation.keyPath];
+                [(self.kmlLabel).layer removeAnimationForKey:pulseAnimation.keyPath];
+            });
+        }];
+        [(self.kmlImage).layer addAnimation:pulseAnimation forKey:pulseAnimation.keyPath];
+        [(self.kmlLabel).layer addAnimation:pulseAnimation forKey:pulseAnimation.keyPath];
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
     
@@ -362,28 +380,14 @@ static CGFloat maxOffsetDiff = 46.0f;
     
     // Open KMZ in Google Earth
     else if ([cell.reuseIdentifier isEqualToString:@"kml"]) {
-        CABasicAnimation *pulseAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-        pulseAnimation.duration = 0.2f;
-        pulseAnimation.toValue = @1.1f;
-        pulseAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-        pulseAnimation.fillMode = kCAFillModeForwards;
-        pulseAnimation.removedOnCompletion = NO;
-        pulseAnimation.autoreverses = YES;
-        [CATransaction setCompletionBlock:^{
-            if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"comgoogleearth://"]]) {
-                NSURL *fileUrl = [[NSBundle mainBundle] URLForResource:self.skiRoute.name_route withExtension:@"kmz"];
-                self.docController = [UIDocumentInteractionController interactionControllerWithURL:fileUrl];
-                BOOL isValid = [self.docController presentOpenInMenuFromRect:CGRectZero inView:self.view animated:YES];
-                NSLog(@"Document interaction controller is valid: %@", isValid ? @"YES" : @"NO");
-            }
-            else {
-                [self showNeedGoogleEarthAlert];
-            }
-            [(self.kmlImage).layer removeAnimationForKey:pulseAnimation.keyPath];
-            [(self.kmlLabel).layer removeAnimationForKey:pulseAnimation.keyPath];
-        }];
-        [(self.kmlImage).layer addAnimation:pulseAnimation forKey:pulseAnimation.keyPath];
-        [(self.kmlLabel).layer addAnimation:pulseAnimation forKey:pulseAnimation.keyPath];
+        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"comgoogleearth://"]]) {
+            NSURL *fileUrl = [[NSBundle mainBundle] URLForResource:self.skiRoute.name_route withExtension:@"kmz"];
+            self.docController = [UIDocumentInteractionController interactionControllerWithURL:fileUrl];
+            [self.docController presentOpenInMenuFromRect:CGRectZero inView:self.view animated:YES];
+        }
+        else {
+            [self showNeedGoogleEarthAlert];
+        }
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
 }

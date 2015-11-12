@@ -805,50 +805,47 @@
                                             <outlet property="labelDirectionsInformation" destination="KuG-uj-BMO" id="XEA-Rx-XBy"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="images" rowHeight="44" id="x8G-vW-Epr" customClass="SMDetailsInformationTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="kml" rowHeight="44" id="x8G-vW-Epr" customClass="SMDetailsInformationTableViewCell">
                                         <rect key="frame" x="0.0" y="570" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x8G-vW-Epr" id="fPl-pf-IzX">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J3t-5g-uSj" userLabel="Images View">
-                                                    <rect key="frame" x="200" y="8" width="201" height="28"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J3t-5g-uSj" userLabel="Google Earth View">
+                                                    <rect key="frame" x="198" y="8" width="205" height="28"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View Route Images" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mrg-BY-ar6">
-                                                            <rect key="frame" x="44" y="0.0" width="157" height="28"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open Google Earth" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mrg-BY-ar6">
+                                                            <rect key="frame" x="44" y="0.0" width="161" height="28"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image" translatesAutoresizingMaskIntoConstraints="NO" id="Kjo-IH-YHJ">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="google_earth" translatesAutoresizingMaskIntoConstraints="NO" id="Kjo-IH-YHJ">
                                                             <rect key="frame" x="0.0" y="0.0" width="40" height="28"/>
                                                             <animations/>
                                                         </imageView>
                                                     </subviews>
                                                     <animations/>
                                                     <constraints>
-                                                        <constraint firstItem="Mrg-BY-ar6" firstAttribute="leading" secondItem="Kjo-IH-YHJ" secondAttribute="trailing" constant="4" id="4QX-rh-dqh"/>
-                                                        <constraint firstItem="Mrg-BY-ar6" firstAttribute="top" secondItem="J3t-5g-uSj" secondAttribute="top" id="C6t-19-eBL"/>
-                                                        <constraint firstItem="Kjo-IH-YHJ" firstAttribute="leading" secondItem="J3t-5g-uSj" secondAttribute="leading" id="L52-1i-WFb"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Mrg-BY-ar6" secondAttribute="trailing" id="LdL-9H-8B2"/>
-                                                        <constraint firstItem="Mrg-BY-ar6" firstAttribute="leading" secondItem="Kjo-IH-YHJ" secondAttribute="trailing" constant="4" id="MQs-rV-LMz"/>
-                                                        <constraint firstAttribute="bottom" secondItem="Mrg-BY-ar6" secondAttribute="bottom" id="N5E-aU-nCA"/>
-                                                        <constraint firstAttribute="width" constant="201" id="c8m-KA-efO"/>
-                                                        <constraint firstItem="Mrg-BY-ar6" firstAttribute="leading" secondItem="Kjo-IH-YHJ" secondAttribute="trailing" constant="4" id="ddB-79-jqd"/>
-                                                        <constraint firstAttribute="height" constant="28" id="fDi-QA-QbP"/>
-                                                        <constraint firstItem="Mrg-BY-ar6" firstAttribute="leading" secondItem="Kjo-IH-YHJ" secondAttribute="trailing" constant="4" id="lpm-ih-Bay"/>
-                                                        <constraint firstAttribute="bottom" secondItem="Kjo-IH-YHJ" secondAttribute="bottom" id="s6R-qz-fXn"/>
-                                                        <constraint firstItem="Kjo-IH-YHJ" firstAttribute="top" secondItem="J3t-5g-uSj" secondAttribute="top" id="utx-Qj-NXD"/>
+                                                        <constraint firstItem="Mrg-BY-ar6" firstAttribute="leading" secondItem="Kjo-IH-YHJ" secondAttribute="trailing" constant="4" id="2hf-6e-CEk"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Kjo-IH-YHJ" secondAttribute="bottom" id="5Zw-mk-eWH"/>
+                                                        <constraint firstAttribute="width" constant="205" id="EA1-c5-2UQ"/>
+                                                        <constraint firstItem="Kjo-IH-YHJ" firstAttribute="leading" secondItem="J3t-5g-uSj" secondAttribute="leading" id="KB9-cm-9D3"/>
+                                                        <constraint firstItem="Kjo-IH-YHJ" firstAttribute="top" secondItem="J3t-5g-uSj" secondAttribute="top" id="TFu-Wm-LmR"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Mrg-BY-ar6" secondAttribute="trailing" id="VmT-g8-lcG"/>
+                                                        <constraint firstAttribute="height" constant="28" id="Wdz-fx-Hxr"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Mrg-BY-ar6" secondAttribute="bottom" id="Xaq-7P-Las"/>
+                                                        <constraint firstItem="Mrg-BY-ar6" firstAttribute="top" secondItem="J3t-5g-uSj" secondAttribute="top" id="c5H-Ta-qzW"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <animations/>
                                             <constraints>
-                                                <constraint firstItem="J3t-5g-uSj" firstAttribute="top" secondItem="fPl-pf-IzX" secondAttribute="topMargin" id="ApV-72-pqh"/>
-                                                <constraint firstItem="J3t-5g-uSj" firstAttribute="bottom" secondItem="fPl-pf-IzX" secondAttribute="bottomMargin" id="XUT-uO-P4R"/>
-                                                <constraint firstItem="J3t-5g-uSj" firstAttribute="centerX" secondItem="fPl-pf-IzX" secondAttribute="centerX" id="kZD-Xl-hDL"/>
+                                                <constraint firstItem="J3t-5g-uSj" firstAttribute="top" secondItem="fPl-pf-IzX" secondAttribute="topMargin" id="3e6-Lt-0CN"/>
+                                                <constraint firstItem="J3t-5g-uSj" firstAttribute="centerX" secondItem="fPl-pf-IzX" secondAttribute="centerX" id="EMI-TN-YJE"/>
+                                                <constraint firstItem="J3t-5g-uSj" firstAttribute="bottom" secondItem="fPl-pf-IzX" secondAttribute="bottomMargin" id="pj6-po-ewi"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
@@ -899,7 +896,7 @@
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="kml" id="rYV-v6-dgn" customClass="SMDetailsInformationTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="images" id="rYV-v6-dgn" customClass="SMDetailsInformationTableViewCell">
                                         <rect key="frame" x="0.0" y="658" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rYV-v6-dgn" id="TDW-Gb-diR">
@@ -1201,9 +1198,9 @@
                                             <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ylY-WI-R9U" userLabel="About This App">
                                                 <rect key="frame" x="8" y="41" width="584" height="169"/>
                                                 <animations/>
-                                                <mutableString key="text">While viewing the maps, clicking the arrow icon in the upper right hand corner twice allows you to turn on the compass in the iPhone and rotate the maps depending on where you point the device.
+                                                <string key="text">While viewing the maps, clicking the arrow icon in the upper right hand corner twice allows you to turn on the compass in the iPhone and rotate the maps depending on where you point the device.
 
-While still in cell coverage/on wifi, you can open Google Earth via the route page and scroll around the map to cache the aerial imagery on Google Earth.  Your device will store a limited amount of map data locally and allows you to use it offline.  This is very helpful for finding those hidden glades of glory or scoping your latest chute.</mutableString>
+While still in cell coverage/on wifi, you can open Google Earth via the route page and scroll around the map to cache the aerial imagery on Google Earth.  Your device will store a limited amount of map data locally and allows you to use it offline.  This is very helpful for finding those hidden glades of glory or scoping your latest chute.</string>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
@@ -1223,7 +1220,7 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                                             <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CLs-qf-7Nu" userLabel="About This App">
                                                 <rect key="frame" x="8" y="251" width="584" height="208"/>
                                                 <animations/>
-                                                <mutableString key="text">All map data, save for the ski info, is from publicly available datasets from around the web which have various data accuracies.  The elevation data in particular only has a resolution of 33ft, meaning lots of dangerous zones can’t be seen on the maps.  Make sure to check out the legend to understand what the shading represents on the terrain map and do take note that even if an area is green, if it is below avalanche terrain you can still be in a dangerous zone. While the data is an aid in safe travel, it should not be treated as fact given the resolution of the data doesn’t allow for small rollovers and other features that increase the slope angle to a dangerous angle to be displayed.  Use your brain just as you would have before you had access to this data.  Ski/Board safe, have fun, and don’t let the map data lull you into a false sense of security.</mutableString>
+                                                <string key="text">All map data, save for the ski info, is from publicly available datasets from around the web which have various data accuracies.  The elevation data in particular only has a resolution of 33ft, meaning lots of dangerous zones can’t be seen on the maps.  Make sure to check out the legend to understand what the shading represents on the terrain map and do take note that even if an area is green, if it is below avalanche terrain you can still be in a dangerous zone. While the data is an aid in safe travel, it should not be treated as fact given the resolution of the data doesn’t allow for small rollovers and other features that increase the slope angle to a dangerous angle to be displayed.  Use your brain just as you would have before you had access to this data.  Ski/Board safe, have fun, and don’t let the map data lull you into a false sense of security.</string>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
@@ -1287,7 +1284,7 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                                             <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wEW-qv-A3c" userLabel="About This App">
                                                 <rect key="frame" x="8" y="660" width="584" height="227"/>
                                                 <animations/>
-                                                <mutableString key="text">No warranty or guarantee of accuracy is either expressed or implied by the publishers of this app. GPS waypoints, maps, route descriptions and all other information should not be considered fact (i.e. it is beta) and shall always be superseded by your own observations in the backcountry. Map data has a resolution of about 33ft - this means a cliff as large as 32 feet may not even show up on the map. In addition, the GPS accuracy of your device may vary hugely in accuracy, and can be further impacted by trees, steep slopes and mountains. This app is not a substitute for hiring a professional guiding service or taking the appropriate amount of safety training. Weather and snow conditions often change rapidly — always make sure you take proper safety precautions, including but not limited to hiring a professional guide if you do not have professional avalanche and wilderness first aid training.</mutableString>
+                                                <string key="text">No warranty or guarantee of accuracy is either expressed or implied by the publishers of this app. GPS waypoints, maps, route descriptions and all other information should not be considered fact (i.e. it is beta) and shall always be superseded by your own observations in the backcountry. Map data has a resolution of about 33ft - this means a cliff as large as 32 feet may not even show up on the map. In addition, the GPS accuracy of your device may vary hugely in accuracy, and can be further impacted by trees, steep slopes and mountains. This app is not a substitute for hiring a professional guiding service or taking the appropriate amount of safety training. Weather and snow conditions often change rapidly — always make sure you take proper safety precautions, including but not limited to hiring a professional guide if you do not have professional avalanche and wilderness first aid training.</string>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
@@ -1470,7 +1467,7 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
         </scene>
     </scenes>
     <resources>
-        <image name="image" width="40" height="40"/>
+        <image name="google_earth" width="40" height="40"/>
         <image name="map" width="40" height="40"/>
     </resources>
 </document>
