@@ -1131,7 +1131,7 @@
 					"\"$(SRCROOT)/SkiMontana/OpenSSL\"/**",
 				);
 				INFOPLIST_FILE = "SkiMontana/SkiMontana-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1154,7 +1154,7 @@
 				GCC_PREFIX_HEADER = "SkiMontana/SkiMontana-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEV=0",
-					"TRIAL=0",
+					"TRIAL=1",
 					"$(inherited)",
 				);
 				HEADER_SEARCH_PATHS = (
@@ -1164,7 +1164,7 @@
 					"\"$(SRCROOT)/SkiMontana/OpenSSL\"/**",
 				);
 				INFOPLIST_FILE = "SkiMontana/SkiMontana-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

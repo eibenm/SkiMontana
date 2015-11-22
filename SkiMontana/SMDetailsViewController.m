@@ -27,15 +27,12 @@ static CGFloat maxOffsetDiff = 46.0f;
 @property (nonatomic, strong) UIDocumentInteractionController *docController;
 @property (nonatomic, strong) UIImageView *kmlImage;
 @property (nonatomic, strong) UILabel *kmlLabel;
-
 @property (nonatomic, assign) CGFloat offsetStartingY;
 @property (nonatomic, assign) CGFloat maxOffsetY;
 @property (nonatomic, assign) CGFloat routeTopContraintHeight;
-
 @property (nonatomic, strong) NSMutableArray *photos;
-
 @property (nonatomic, strong) CAGradientLayer *maskLayer;
-@property (nonatomic, assign) CGRect stuff;
+@property (nonatomic, assign) BOOL notesExist;
 
 @end
 
@@ -112,6 +109,8 @@ static CGFloat maxOffsetDiff = 46.0f;
     (self.tableView).contentInset = UIEdgeInsetsMake(self.offsetStartingY, 0, 0, 0);
     (self.headerView).backgroundColor = [UIColor colorwithHexString:@"#0000ff" alpha:0.7];
     
+    self.notesExist = ((self.skiRoute).notes.length == 0) ? NO : YES;
+    
     // View for background color (opaque white mask)
     UIView *backgroundColorView = [[UIView alloc]initWithFrame:self.view.frame];
     backgroundColorView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.8];
@@ -159,20 +158,41 @@ static CGFloat maxOffsetDiff = 46.0f;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 8;
+    if (self.notesExist == YES) {
+        return 10;
+    }
+    
+    return 9;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    switch (indexPath.row) {
-        case 0: cellIdentifier = @"map"; break;
-        case 1: cellIdentifier = @"overview"; break;
-        case 2: cellIdentifier = @"avalanche"; break;
-        case 3: cellIdentifier = @"content"; break;
-        case 4: cellIdentifier = @"getting_there"; break;
-        case 5: cellIdentifier = @"kml"; break;
-        case 6: cellIdentifier = @"directions"; break;
-        case 7: cellIdentifier = @"images"; break;
+    if (self.notesExist == YES) {
+        switch (indexPath.row) {
+            case 0: cellIdentifier = @"map"; break;
+            case 1: cellIdentifier = @"overview"; break;
+            case 2: cellIdentifier = @"avalanche"; break;
+            case 3: cellIdentifier = @"content"; break;
+            case 4: cellIdentifier = @"getting_there"; break;
+            case 5: cellIdentifier = @"notes"; break;
+            case 6: cellIdentifier = @"waypoint_guidance"; break;
+            case 7: cellIdentifier = @"kml"; break;
+            case 8: cellIdentifier = @"directions"; break;
+            case 9: cellIdentifier = @"images"; break;
+        }
+    }
+    else {
+        switch (indexPath.row) {
+            case 0: cellIdentifier = @"map"; break;
+            case 1: cellIdentifier = @"overview"; break;
+            case 2: cellIdentifier = @"avalanche"; break;
+            case 3: cellIdentifier = @"content"; break;
+            case 4: cellIdentifier = @"getting_there"; break;
+            case 5: cellIdentifier = @"waypoint_guidance"; break;
+            case 6: cellIdentifier = @"kml"; break;
+            case 7: cellIdentifier = @"directions"; break;
+            case 8: cellIdentifier = @"images"; break;
+        }
     }
     
     SMDetailsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
@@ -205,6 +225,12 @@ static CGFloat maxOffsetDiff = 46.0f;
     else if ([cellIdentifier isEqualToString:@"getting_there"]) {
         (cell.labelDirectionsInformation).text = self.skiRoute.directions;
     }
+    else if ([cellIdentifier isEqualToString:@"notes"]) {
+        (cell.labelNotesInformation).text = self.skiRoute.notes;
+    }
+    else if ([cellIdentifier isEqualToString:@"waypoint_guidance"]) {
+        (cell.labelWaypointGuidanceInformation).text = self.skiRoute.gps_guidance;
+    }
     else if ([cellIdentifier isEqualToString:@"kml"]) {
         nil;
     }
@@ -217,6 +243,7 @@ static CGFloat maxOffsetDiff = 46.0f;
         NSSet *routeImages = (self.skiRoute).ski_route_images;
         //NSLog(@"%@", routeImages);
         [routeImages enumerateObjectsUsingBlock:^(File *file, BOOL *stop) {
+            //NSLog(@"%@", file.filename);
             if ((file.kml_image).boolValue == YES) {
                 kmlImage = file.avatar;
                 *stop = YES;
@@ -263,16 +290,34 @@ static CGFloat maxOffsetDiff = 46.0f;
 {
     CGFloat height = UITableViewAutomaticDimension;
     
-    switch (indexPath.row) {
-        case 0: height = 180.0f; break;
-        case 1: height = 188.0f; break;
-        case 3: height = 350.0f; break;
-        case 2: height = 350.0f; break;
-        case 4: height = 350.0f; break;
-        case 5: height = 44.0f; break;
-        case 6: height = 44.0f; break;
-        case 7: height = 240.0f; break;
-        default: break;
+    if (self.notesExist == YES) {
+        switch (indexPath.row) {
+            case 0: height = 180.0f; break;
+            case 1: height = 188.0f; break;
+            case 3: height = 350.0f; break;
+            case 2: height = 350.0f; break;
+            case 4: height = 350.0f; break;
+            case 5: height = 350.0f; break;
+            case 6: height = 350.0f; break;
+            case 7: height = 44.0f; break;
+            case 8: height = 44.0f; break;
+            case 9: height = 240.0f; break;
+            default: break;
+        }
+    }
+    else {
+        switch (indexPath.row) {
+            case 0: height = 180.0f; break;
+            case 1: height = 188.0f; break;
+            case 3: height = 350.0f; break;
+            case 2: height = 350.0f; break;
+            case 4: height = 350.0f; break;
+            case 5: height = 350.0f; break;
+            case 6: height = 44.0f; break;
+            case 7: height = 44.0f; break;
+            case 8: height = 240.0f; break;
+            default: break;
+        }
     }
     
     return height;

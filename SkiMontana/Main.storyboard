@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="amG-dg-XFq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="amG-dg-XFq">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -805,8 +805,96 @@
                                             <outlet property="labelDirectionsInformation" destination="KuG-uj-BMO" id="XEA-Rx-XBy"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="notes" rowHeight="60" id="WWB-CL-WPd" customClass="SMDetailsInformationTableViewCell">
+                                        <rect key="frame" x="0.0" y="570" width="600" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WWB-CL-WPd" id="e5q-Yx-q22">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOz-Jf-y2e">
+                                                    <rect key="frame" x="8" y="10" width="584" height="14"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" verticalCompressionResistancePriority="755" text="Notes Information" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THk-b4-Ibg">
+                                                    <rect key="frame" x="12" y="32" width="576" height="20"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="THk-b4-Ibg" secondAttribute="trailing" constant="12" id="2gR-X3-GAY"/>
+                                                <constraint firstItem="aOz-Jf-y2e" firstAttribute="top" secondItem="e5q-Yx-q22" secondAttribute="top" constant="10" id="8t1-b3-uda"/>
+                                                <constraint firstItem="aOz-Jf-y2e" firstAttribute="trailing" secondItem="e5q-Yx-q22" secondAttribute="trailingMargin" id="Ct6-lN-FeA"/>
+                                                <constraint firstItem="THk-b4-Ibg" firstAttribute="top" secondItem="aOz-Jf-y2e" secondAttribute="bottom" constant="8" id="FqE-Fv-itn"/>
+                                                <constraint firstItem="aOz-Jf-y2e" firstAttribute="top" secondItem="e5q-Yx-q22" secondAttribute="topMargin" id="lbR-MU-f4W"/>
+                                                <constraint firstItem="aOz-Jf-y2e" firstAttribute="leading" secondItem="e5q-Yx-q22" secondAttribute="leadingMargin" id="nAo-YG-bC8"/>
+                                                <constraint firstItem="THk-b4-Ibg" firstAttribute="leading" secondItem="e5q-Yx-q22" secondAttribute="leading" constant="12" id="osb-x5-1nB"/>
+                                                <constraint firstAttribute="bottom" secondItem="THk-b4-Ibg" secondAttribute="bottom" constant="8" id="uPO-sW-ZSf"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="lbR-MU-f4W"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <connections>
+                                            <outlet property="labelNotesInformation" destination="THk-b4-Ibg" id="j6Y-uQ-hnC"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="waypoint_guidance" rowHeight="60" id="8A5-uM-axC" customClass="SMDetailsInformationTableViewCell">
+                                        <rect key="frame" x="0.0" y="630" width="600" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8A5-uM-axC" id="QTy-Qc-WwU">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waypoint Guidance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btf-WH-03z">
+                                                    <rect key="frame" x="8" y="10" width="584" height="14"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" verticalCompressionResistancePriority="755" text="Waypoint Guidance Information" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Cd-df-cxe">
+                                                    <rect key="frame" x="12" y="32" width="576" height="20"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="2Cd-df-cxe" secondAttribute="bottom" constant="8" id="2qa-Jz-J06"/>
+                                                <constraint firstItem="btf-WH-03z" firstAttribute="top" secondItem="QTy-Qc-WwU" secondAttribute="top" constant="10" id="6U6-11-Zb5"/>
+                                                <constraint firstItem="btf-WH-03z" firstAttribute="leading" secondItem="QTy-Qc-WwU" secondAttribute="leadingMargin" id="9DL-qN-qy2"/>
+                                                <constraint firstAttribute="trailing" secondItem="2Cd-df-cxe" secondAttribute="trailing" constant="12" id="AMO-jp-LcV"/>
+                                                <constraint firstItem="btf-WH-03z" firstAttribute="trailing" secondItem="QTy-Qc-WwU" secondAttribute="trailingMargin" id="Bpn-Ci-7Da"/>
+                                                <constraint firstItem="2Cd-df-cxe" firstAttribute="leading" secondItem="QTy-Qc-WwU" secondAttribute="leading" constant="12" id="FyD-ms-JKe"/>
+                                                <constraint firstItem="btf-WH-03z" firstAttribute="top" secondItem="QTy-Qc-WwU" secondAttribute="topMargin" id="OS1-fO-2bb"/>
+                                                <constraint firstItem="2Cd-df-cxe" firstAttribute="top" secondItem="btf-WH-03z" secondAttribute="bottom" constant="8" id="lcw-wj-c6L"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="OS1-fO-2bb"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <connections>
+                                            <outlet property="labelWaypointGuidanceInformation" destination="2Cd-df-cxe" id="fhO-Vq-JPw"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="kml" rowHeight="44" id="x8G-vW-Epr" customClass="SMDetailsInformationTableViewCell">
-                                        <rect key="frame" x="0.0" y="570" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="690" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x8G-vW-Epr" id="fPl-pf-IzX">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -851,7 +939,7 @@
                                         <animations/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="directions" rowHeight="44" id="Utx-Qz-KXf" customClass="SMDetailsInformationTableViewCell">
-                                        <rect key="frame" x="0.0" y="614" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="734" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Utx-Qz-KXf" id="Pce-RJ-l3E">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -897,7 +985,7 @@
                                         <animations/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="images" id="rYV-v6-dgn" customClass="SMDetailsInformationTableViewCell">
-                                        <rect key="frame" x="0.0" y="658" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="778" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rYV-v6-dgn" id="TDW-Gb-diR">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -1080,21 +1168,6 @@
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k25-nX-han">
-                                        <rect key="frame" x="30" y="462" width="540" height="64"/>
-                                        <animations/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="64" id="cja-WV-KHt"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="25"/>
-                                        <state key="normal" title="I Agree">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="startSkiingAction:" destination="amG-dg-XFq" eventType="touchUpInside" id="PFS-k6-uPH"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ski Bozman" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RgU-7m-gN1" userLabel="Title" customClass="SMLabel">
                                         <rect key="frame" x="8" y="40" width="584" height="55"/>
                                         <animations/>
@@ -1111,10 +1184,27 @@
                                             </mask>
                                         </variation>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k25-nX-han">
+                                        <rect key="frame" x="170" y="462" width="260" height="64"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="cja-WV-KHt"/>
+                                            <constraint firstAttribute="width" constant="260" id="r0o-Ok-moA"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="25"/>
+                                        <state key="normal" title="I Agree">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="startSkiingAction:" destination="amG-dg-XFq" eventType="touchUpInside" id="PFS-k6-uPH"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="k25-nX-han" firstAttribute="centerX" secondItem="hZh-r9-IGu" secondAttribute="centerX" id="7zG-t1-3GS"/>
                                     <constraint firstItem="RgU-7m-gN1" firstAttribute="leading" secondItem="hZh-r9-IGu" secondAttribute="leading" constant="8" id="9y6-s4-AFA"/>
                                     <constraint firstItem="6jl-gC-a6T" firstAttribute="top" relation="greaterThanOrEqual" secondItem="RgU-7m-gN1" secondAttribute="bottom" constant="10" id="P4D-sO-Cu5"/>
                                     <constraint firstItem="k25-nX-han" firstAttribute="leading" secondItem="hZh-r9-IGu" secondAttribute="leading" constant="30" id="ZU8-qr-E4B"/>
@@ -1125,6 +1215,12 @@
                                     <constraint firstAttribute="trailing" secondItem="k25-nX-han" secondAttribute="trailing" constant="30" id="vW2-e0-vjE"/>
                                     <constraint firstItem="k25-nX-han" firstAttribute="top" secondItem="6jl-gC-a6T" secondAttribute="bottom" constant="8" id="wP5-FN-7Eb"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ZU8-qr-E4B"/>
+                                        <exclude reference="vW2-e0-vjE"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <animations/>
@@ -1183,14 +1279,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p21-o7-4fb" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="949"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="1024"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pro Tips" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sjf-P9-14d">
                                                 <rect key="frame" x="8" y="8" width="584" height="25"/>
                                                 <animations/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="25" id="RaX-Xw-Nxo"/>
-                                                </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1210,9 +1303,6 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data Discussion" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SpM-h1-DPU">
                                                 <rect key="frame" x="8" y="218" width="584" height="25"/>
                                                 <animations/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="25" id="dPK-pC-bwk"/>
-                                                </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1230,9 +1320,6 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get in Touch" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8z-Az-mG8">
                                                 <rect key="frame" x="8" y="467" width="584" height="25"/>
                                                 <animations/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="25" id="2XN-V8-jFy"/>
-                                                </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1240,9 +1327,6 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J9T-gL-ZPe">
                                                 <rect key="frame" x="8" y="534" width="584" height="34"/>
                                                 <animations/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="34" id="XJu-8I-Jb5"/>
-                                                </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                 <state key="normal" title="www.bozemanskiguide.com"/>
                                                 <connections>
@@ -1250,11 +1334,8 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Disclaimer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AzD-x3-qk0">
-                                                <rect key="frame" x="8" y="630" width="584" height="22"/>
+                                                <rect key="frame" x="8" y="705" width="584" height="22"/>
                                                 <animations/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="22" id="maZ-GC-HBZ"/>
-                                                </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1262,9 +1343,6 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qAI-Wp-GRE">
                                                 <rect key="frame" x="8" y="588" width="584" height="34"/>
                                                 <animations/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="34" id="iLz-dw-ch4"/>
-                                                </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                 <state key="normal" title="ty@gneisssoftware.com"/>
                                                 <connections>
@@ -1274,15 +1352,19 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Need Support?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dIr-Ji-5dI">
                                                 <rect key="frame" x="8" y="568" width="584" height="20"/>
                                                 <animations/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="20" id="FxK-f8-5oP"/>
-                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="14"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy Policy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xts-Qf-aG2">
+                                                <rect key="frame" x="8" y="630" width="584" height="20"/>
+                                                <animations/>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="14"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wEW-qv-A3c" userLabel="About This App">
-                                                <rect key="frame" x="8" y="660" width="584" height="227"/>
+                                                <rect key="frame" x="8" y="735" width="584" height="227"/>
                                                 <animations/>
                                                 <string key="text">No warranty or guarantee of accuracy is either expressed or implied by the publishers of this app. GPS waypoints, maps, route descriptions and all other information should not be considered fact (i.e. it is beta) and shall always be superseded by your own observations in the backcountry. Map data has a resolution of about 33ft - this means a cliff as large as 32 feet may not even show up on the map. In addition, the GPS accuracy of your device may vary hugely in accuracy, and can be further impacted by trees, steep slopes and mountains. This app is not a substitute for hiring a professional guiding service or taking the appropriate amount of safety training. Weather and snow conditions often change rapidly — always make sure you take proper safety precautions, including but not limited to hiring a professional guide if you do not have professional avalanche and wilderness first aid training.</string>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
@@ -1292,11 +1374,8 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                                                 </variation>
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5dO-eW-Au5">
-                                                <rect key="frame" x="8" y="895" width="584" height="34"/>
+                                                <rect key="frame" x="8" y="970" width="584" height="34"/>
                                                 <animations/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="34" id="TOL-2U-969"/>
-                                                </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                 <state key="normal" title="Manage Subscriptions"/>
                                                 <connections>
@@ -1306,76 +1385,88 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ban-ov-FDx">
                                                 <rect key="frame" x="8" y="500" width="584" height="34"/>
                                                 <animations/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="34" id="dNG-Z1-2Wf"/>
-                                                </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                 <state key="normal" title="www.gneisssoftware.com"/>
                                                 <connections>
                                                     <action selector="didClickViewGneisssoftware:" destination="IsQ-Cn-cQd" eventType="touchUpInside" id="S6J-6K-hN7"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="26s-YH-8P8">
+                                                <rect key="frame" x="8" y="658" width="584" height="34"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                                <state key="normal" title="www.gneisssoftware.com/privacy"/>
+                                                <connections>
+                                                    <action selector="didClickViewPrivacyPolicy:" destination="IsQ-Cn-cQd" eventType="touchUpInside" id="hP4-bp-DDO"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <animations/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="5dO-eW-Au5" firstAttribute="leading" secondItem="p21-o7-4fb" secondAttribute="leading" constant="8" id="0z1-AH-gnb"/>
-                                            <constraint firstItem="ylY-WI-R9U" firstAttribute="leading" secondItem="p21-o7-4fb" secondAttribute="leading" constant="8" id="1Co-ID-3cT"/>
-                                            <constraint firstAttribute="trailing" secondItem="qAI-Wp-GRE" secondAttribute="trailing" constant="8" id="1zE-KW-bG6"/>
-                                            <constraint firstItem="wEW-qv-A3c" firstAttribute="leading" secondItem="p21-o7-4fb" secondAttribute="leading" constant="8" id="6gM-Pa-PfD"/>
-                                            <constraint firstItem="Sjf-P9-14d" firstAttribute="top" secondItem="p21-o7-4fb" secondAttribute="top" constant="8" id="AOT-pm-ePo"/>
-                                            <constraint firstItem="ylY-WI-R9U" firstAttribute="top" secondItem="Sjf-P9-14d" secondAttribute="bottom" constant="8" id="CYl-aL-cWD"/>
-                                            <constraint firstItem="Ban-ov-FDx" firstAttribute="top" secondItem="b8z-Az-mG8" secondAttribute="bottom" constant="8" id="Doy-Ly-9x1"/>
-                                            <constraint firstAttribute="trailing" secondItem="b8z-Az-mG8" secondAttribute="trailing" constant="8" id="Ei9-76-CqI"/>
-                                            <constraint firstItem="5dO-eW-Au5" firstAttribute="top" secondItem="wEW-qv-A3c" secondAttribute="bottom" constant="8" id="Gz9-5C-vMq"/>
-                                            <constraint firstItem="dIr-Ji-5dI" firstAttribute="leading" secondItem="p21-o7-4fb" secondAttribute="leading" constant="8" id="Huw-St-Vsw"/>
-                                            <constraint firstItem="b8z-Az-mG8" firstAttribute="top" secondItem="CLs-qf-7Nu" secondAttribute="bottom" constant="8" id="Jro-ID-W3a"/>
-                                            <constraint firstItem="b8z-Az-mG8" firstAttribute="leading" secondItem="p21-o7-4fb" secondAttribute="leading" constant="8" id="LUv-H2-mfA"/>
-                                            <constraint firstItem="J9T-gL-ZPe" firstAttribute="top" secondItem="Ban-ov-FDx" secondAttribute="bottom" id="Nst-xS-DJc"/>
-                                            <constraint firstAttribute="bottom" secondItem="5dO-eW-Au5" secondAttribute="bottom" constant="20" id="OaF-JA-d9l"/>
-                                            <constraint firstAttribute="trailing" secondItem="J9T-gL-ZPe" secondAttribute="trailing" constant="8" id="S0W-Q3-ZxG"/>
-                                            <constraint firstAttribute="trailing" secondItem="ylY-WI-R9U" secondAttribute="trailing" constant="8" id="Sdr-mC-5QP"/>
-                                            <constraint firstAttribute="trailing" secondItem="5dO-eW-Au5" secondAttribute="trailing" constant="8" id="UUZ-rF-oef"/>
-                                            <constraint firstItem="CLs-qf-7Nu" firstAttribute="leading" secondItem="p21-o7-4fb" secondAttribute="leading" constant="8" id="VqZ-Ox-kAd"/>
-                                            <constraint firstItem="qAI-Wp-GRE" firstAttribute="leading" secondItem="p21-o7-4fb" secondAttribute="leading" constant="8" id="Xmh-Fi-bGB"/>
-                                            <constraint firstAttribute="trailing" secondItem="Ban-ov-FDx" secondAttribute="trailing" constant="8" id="ZBe-Oh-UEg"/>
-                                            <constraint firstItem="Sjf-P9-14d" firstAttribute="leading" secondItem="p21-o7-4fb" secondAttribute="leading" constant="8" id="a8p-gH-NjF"/>
-                                            <constraint firstItem="dIr-Ji-5dI" firstAttribute="top" secondItem="J9T-gL-ZPe" secondAttribute="bottom" id="ciB-an-L3J"/>
-                                            <constraint firstItem="SpM-h1-DPU" firstAttribute="leading" secondItem="p21-o7-4fb" secondAttribute="leading" constant="8" id="d3h-HP-zuj"/>
-                                            <constraint firstItem="AzD-x3-qk0" firstAttribute="top" secondItem="qAI-Wp-GRE" secondAttribute="bottom" constant="8" id="dS8-Ug-Fzc"/>
-                                            <constraint firstAttribute="trailing" secondItem="SpM-h1-DPU" secondAttribute="trailing" constant="8" id="f69-Ng-DR3"/>
-                                            <constraint firstItem="CLs-qf-7Nu" firstAttribute="top" secondItem="SpM-h1-DPU" secondAttribute="bottom" constant="8" id="fva-jw-PDs"/>
-                                            <constraint firstItem="AzD-x3-qk0" firstAttribute="leading" secondItem="p21-o7-4fb" secondAttribute="leading" constant="8" id="gtX-3U-Cta"/>
-                                            <constraint firstAttribute="trailing" secondItem="wEW-qv-A3c" secondAttribute="trailing" constant="8" id="k3o-pc-OKn"/>
-                                            <constraint firstAttribute="trailing" secondItem="dIr-Ji-5dI" secondAttribute="trailing" constant="8" id="paw-JY-PkN"/>
-                                            <constraint firstItem="Ban-ov-FDx" firstAttribute="leading" secondItem="p21-o7-4fb" secondAttribute="leading" constant="8" id="rbq-vZ-icg"/>
-                                            <constraint firstAttribute="trailing" secondItem="CLs-qf-7Nu" secondAttribute="trailing" constant="8" id="rdH-Tg-hGj"/>
-                                            <constraint firstItem="J9T-gL-ZPe" firstAttribute="leading" secondItem="p21-o7-4fb" secondAttribute="leading" constant="8" id="tgZ-YU-Bqy"/>
-                                            <constraint firstAttribute="trailing" secondItem="AzD-x3-qk0" secondAttribute="trailing" constant="8" id="vWM-RQ-S2H"/>
-                                            <constraint firstItem="SpM-h1-DPU" firstAttribute="top" secondItem="ylY-WI-R9U" secondAttribute="bottom" constant="8" id="veH-Hn-Xbc"/>
-                                            <constraint firstAttribute="trailing" secondItem="Sjf-P9-14d" secondAttribute="trailing" constant="8" id="y7q-2B-rjr"/>
-                                            <constraint firstItem="wEW-qv-A3c" firstAttribute="top" secondItem="AzD-x3-qk0" secondAttribute="bottom" constant="8" id="y8G-zh-jVL"/>
-                                            <constraint firstItem="qAI-Wp-GRE" firstAttribute="top" secondItem="dIr-Ji-5dI" secondAttribute="bottom" id="yQm-CU-bBj"/>
+                                            <constraint firstItem="SpM-h1-DPU" firstAttribute="top" secondItem="ylY-WI-R9U" secondAttribute="bottom" constant="8" id="0Kt-AN-krz"/>
+                                            <constraint firstItem="5dO-eW-Au5" firstAttribute="top" secondItem="wEW-qv-A3c" secondAttribute="bottom" constant="8" id="3o5-Iq-cef"/>
+                                            <constraint firstAttribute="trailing" secondItem="26s-YH-8P8" secondAttribute="trailing" constant="8" id="AKE-VU-woB"/>
+                                            <constraint firstItem="AzD-x3-qk0" firstAttribute="top" secondItem="26s-YH-8P8" secondAttribute="bottom" constant="13" id="Brg-I8-9Cu"/>
+                                            <constraint firstAttribute="trailing" secondItem="5dO-eW-Au5" secondAttribute="trailing" constant="8" id="Cbm-pR-B9v"/>
+                                            <constraint firstAttribute="trailing" secondItem="SpM-h1-DPU" secondAttribute="trailing" constant="8" id="FFP-Fk-sbA"/>
+                                            <constraint firstItem="5dO-eW-Au5" firstAttribute="leading" secondItem="p21-o7-4fb" secondAttribute="leading" constant="8" id="FbD-D4-Evd"/>
+                                            <constraint firstItem="dIr-Ji-5dI" firstAttribute="leading" secondItem="p21-o7-4fb" secondAttribute="leading" constant="8" id="Grm-CB-pfn"/>
+                                            <constraint firstItem="J9T-gL-ZPe" firstAttribute="top" secondItem="Ban-ov-FDx" secondAttribute="bottom" id="HGP-wI-g1d"/>
+                                            <constraint firstAttribute="trailing" secondItem="ylY-WI-R9U" secondAttribute="trailing" constant="8" id="KwW-8g-bFu"/>
+                                            <constraint firstItem="ylY-WI-R9U" firstAttribute="top" secondItem="Sjf-P9-14d" secondAttribute="bottom" constant="8" id="LKA-T2-G9U"/>
+                                            <constraint firstItem="wEW-qv-A3c" firstAttribute="top" secondItem="AzD-x3-qk0" secondAttribute="bottom" constant="8" id="MxS-6z-jgb"/>
+                                            <constraint firstItem="Sjf-P9-14d" firstAttribute="top" secondItem="p21-o7-4fb" secondAttribute="top" constant="8" id="QHF-75-XFQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="CLs-qf-7Nu" secondAttribute="trailing" constant="8" id="Qzc-7d-1MG"/>
+                                            <constraint firstItem="Ban-ov-FDx" firstAttribute="leading" secondItem="p21-o7-4fb" secondAttribute="leading" constant="8" id="S0o-lU-NNS"/>
+                                            <constraint firstItem="b8z-Az-mG8" firstAttribute="leading" secondItem="p21-o7-4fb" secondAttribute="leading" constant="8" id="XeK-30-wI5"/>
+                                            <constraint firstItem="SpM-h1-DPU" firstAttribute="leading" secondItem="p21-o7-4fb" secondAttribute="leading" constant="8" id="YSA-cD-9FZ"/>
+                                            <constraint firstItem="b8z-Az-mG8" firstAttribute="top" secondItem="CLs-qf-7Nu" secondAttribute="bottom" constant="8" id="Yp2-OE-WJh"/>
+                                            <constraint firstItem="ylY-WI-R9U" firstAttribute="leading" secondItem="p21-o7-4fb" secondAttribute="leading" constant="8" id="aao-oA-Efr"/>
+                                            <constraint firstItem="dIr-Ji-5dI" firstAttribute="top" secondItem="J9T-gL-ZPe" secondAttribute="bottom" id="bFD-Qh-MEW"/>
+                                            <constraint firstItem="qAI-Wp-GRE" firstAttribute="top" secondItem="dIr-Ji-5dI" secondAttribute="bottom" id="bLN-eA-KpH"/>
+                                            <constraint firstItem="CLs-qf-7Nu" firstAttribute="leading" secondItem="p21-o7-4fb" secondAttribute="leading" constant="8" id="bSV-zT-95a"/>
+                                            <constraint firstItem="Xts-Qf-aG2" firstAttribute="top" secondItem="qAI-Wp-GRE" secondAttribute="bottom" constant="8" id="boI-aT-gxa"/>
+                                            <constraint firstAttribute="trailing" secondItem="AzD-x3-qk0" secondAttribute="trailing" constant="8" id="f9h-FW-h4x"/>
+                                            <constraint firstAttribute="trailing" secondItem="Xts-Qf-aG2" secondAttribute="trailing" constant="8" id="few-sb-kM9"/>
+                                            <constraint firstItem="qAI-Wp-GRE" firstAttribute="leading" secondItem="p21-o7-4fb" secondAttribute="leading" constant="8" id="ggV-DV-DKm"/>
+                                            <constraint firstAttribute="trailing" secondItem="Sjf-P9-14d" secondAttribute="trailing" constant="8" id="gwj-D3-VO1"/>
+                                            <constraint firstItem="Ban-ov-FDx" firstAttribute="top" secondItem="b8z-Az-mG8" secondAttribute="bottom" constant="8" id="hAx-dU-kUu"/>
+                                            <constraint firstItem="Xts-Qf-aG2" firstAttribute="leading" secondItem="p21-o7-4fb" secondAttribute="leading" constant="8" id="j60-8d-Uoz"/>
+                                            <constraint firstAttribute="trailing" secondItem="wEW-qv-A3c" secondAttribute="trailing" constant="8" id="lfD-5u-nEJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="dIr-Ji-5dI" secondAttribute="trailing" constant="8" id="m3j-BC-EzK"/>
+                                            <constraint firstItem="Sjf-P9-14d" firstAttribute="leading" secondItem="p21-o7-4fb" secondAttribute="leading" constant="8" id="mhY-g2-Pmq"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ban-ov-FDx" secondAttribute="trailing" constant="8" id="mlo-Ye-zRa"/>
+                                            <constraint firstAttribute="trailing" secondItem="b8z-Az-mG8" secondAttribute="trailing" constant="8" id="moI-8L-u7W"/>
+                                            <constraint firstItem="26s-YH-8P8" firstAttribute="leading" secondItem="p21-o7-4fb" secondAttribute="leading" constant="8" id="op1-H0-N0M"/>
+                                            <constraint firstItem="26s-YH-8P8" firstAttribute="top" secondItem="Xts-Qf-aG2" secondAttribute="bottom" constant="8" id="peT-B0-9T7"/>
+                                            <constraint firstAttribute="trailing" secondItem="qAI-Wp-GRE" secondAttribute="trailing" constant="8" id="qSy-y8-oCC"/>
+                                            <constraint firstAttribute="bottom" secondItem="5dO-eW-Au5" secondAttribute="bottom" constant="20" id="ucq-tA-lCi"/>
+                                            <constraint firstAttribute="trailing" secondItem="J9T-gL-ZPe" secondAttribute="trailing" constant="8" id="w1l-Vs-ccO"/>
+                                            <constraint firstItem="J9T-gL-ZPe" firstAttribute="leading" secondItem="p21-o7-4fb" secondAttribute="leading" constant="8" id="wJo-6R-exS"/>
+                                            <constraint firstItem="CLs-qf-7Nu" firstAttribute="top" secondItem="SpM-h1-DPU" secondAttribute="bottom" constant="8" id="y4y-F4-6IL"/>
+                                            <constraint firstItem="wEW-qv-A3c" firstAttribute="leading" secondItem="p21-o7-4fb" secondAttribute="leading" constant="8" id="yQv-OD-t42"/>
+                                            <constraint firstItem="AzD-x3-qk0" firstAttribute="leading" secondItem="p21-o7-4fb" secondAttribute="leading" constant="8" id="ySF-Yi-7Mv"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstItem="p21-o7-4fb" firstAttribute="top" secondItem="cUs-cV-Qjz" secondAttribute="top" id="ABo-bU-zLX"/>
-                                    <constraint firstAttribute="trailing" secondItem="p21-o7-4fb" secondAttribute="trailing" id="Ft8-M6-ktv"/>
-                                    <constraint firstAttribute="bottom" secondItem="p21-o7-4fb" secondAttribute="bottom" id="nbV-Kb-GFh"/>
-                                    <constraint firstItem="p21-o7-4fb" firstAttribute="leading" secondItem="cUs-cV-Qjz" secondAttribute="leading" id="oFv-Ab-hcm"/>
+                                    <constraint firstItem="p21-o7-4fb" firstAttribute="top" secondItem="cUs-cV-Qjz" secondAttribute="top" id="6Sx-vl-HSM"/>
+                                    <constraint firstAttribute="trailing" secondItem="p21-o7-4fb" secondAttribute="trailing" id="cYK-y4-v9f"/>
+                                    <constraint firstItem="p21-o7-4fb" firstAttribute="leading" secondItem="cUs-cV-Qjz" secondAttribute="leading" id="grL-pK-Rd6"/>
+                                    <constraint firstAttribute="bottom" secondItem="p21-o7-4fb" secondAttribute="bottom" id="rPd-VH-sbU"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="cUs-cV-Qjz" firstAttribute="top" secondItem="eP0-4P-qbO" secondAttribute="top" id="4n0-gl-h64"/>
-                            <constraint firstItem="p21-o7-4fb" firstAttribute="width" secondItem="eP0-4P-qbO" secondAttribute="width" id="FI8-DU-Ahv"/>
-                            <constraint firstItem="cUs-cV-Qjz" firstAttribute="leading" secondItem="eP0-4P-qbO" secondAttribute="leading" id="WHs-8P-LDZ"/>
-                            <constraint firstItem="chJ-Ae-UEo" firstAttribute="top" secondItem="cUs-cV-Qjz" secondAttribute="bottom" id="oav-xt-a6K"/>
-                            <constraint firstAttribute="trailing" secondItem="cUs-cV-Qjz" secondAttribute="trailing" id="rmF-zc-5PX"/>
+                            <constraint firstItem="cUs-cV-Qjz" firstAttribute="top" secondItem="eP0-4P-qbO" secondAttribute="top" id="8ox-SU-iFs"/>
+                            <constraint firstAttribute="trailing" secondItem="cUs-cV-Qjz" secondAttribute="trailing" id="AJP-8g-bK4"/>
+                            <constraint firstItem="p21-o7-4fb" firstAttribute="width" secondItem="eP0-4P-qbO" secondAttribute="width" id="K5P-5e-l7q"/>
+                            <constraint firstItem="cUs-cV-Qjz" firstAttribute="leading" secondItem="eP0-4P-qbO" secondAttribute="leading" id="Vhn-U6-fNb"/>
+                            <constraint firstItem="chJ-Ae-UEo" firstAttribute="top" secondItem="cUs-cV-Qjz" secondAttribute="bottom" id="iBM-uv-235"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>

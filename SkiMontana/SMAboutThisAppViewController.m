@@ -12,6 +12,7 @@
 static NSString *gneisssoftware = @"http://www.gneisssoftware.com";
 static NSString *bozemanSkiGuide = @"http://bozemanskiguide.com";
 static NSString *email = @"mailto:ty@gneisssoftware.com?cc=matt@gneisssoftware.com&subject=Ski Bozeman Support";
+static NSString *privacyPolicy = @"http://www.gneisssoftware.com/privacy";
 static NSString *manageSubscriptionsUrl = @"https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions";
 
 @interface SMAboutThisAppViewController ()
@@ -19,6 +20,7 @@ static NSString *manageSubscriptionsUrl = @"https://buy.itunes.apple.com/WebObje
 - (IBAction)didClickViewGneisssoftware:(id)sender;
 - (IBAction)didClickViewBozemanSkiGuide:(id)sender;
 - (IBAction)didClickEmailTyAtGneisssoftware:(id)sender;
+- (IBAction)didClickViewPrivacyPolicy:(id)sender;
 - (IBAction)didClickManageSubscriptions:(id)sender;
 
 @end
@@ -99,6 +101,14 @@ static NSString *manageSubscriptionsUrl = @"https://buy.itunes.apple.com/WebObje
     NSString *emailUrl = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL *developerSuppport = [NSURL URLWithString:emailUrl];
     [[UIApplication sharedApplication] openURL:developerSuppport];
+}
+
+- (IBAction)didClickViewPrivacyPolicy:(id)sender
+{
+    NSURL *privacyPolicyUrl = [NSURL URLWithString:privacyPolicy];
+    if ([[UIApplication sharedApplication] canOpenURL:privacyPolicyUrl]) {
+        [[UIApplication sharedApplication] openURL:privacyPolicyUrl];
+    }
 }
 
 - (IBAction)didClickManageSubscriptions:(id)sender
