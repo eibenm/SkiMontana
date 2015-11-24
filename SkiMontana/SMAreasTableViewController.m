@@ -28,7 +28,8 @@ static NSString *cellIdentifier;
 @property (weak, nonatomic) IBOutlet UIView *aboutThisAppView;
 @property (weak, nonatomic) IBOutlet UIButton *aboutThisAppButton;
 @property (weak, nonatomic) IBOutlet UILabel *aboutThisAppLabel;
-
+@property (strong, nonatomic) NSOperationQueue *imageLoadingOperationQueue;
+@property (strong, nonatomic) NSMutableDictionary *imageLoadingOperationsDictionary;
 @property (strong, nonatomic) CAShapeLayer *maskLayer;
 
 - (IBAction)didSelectOverviewMap:(id)sender;
@@ -98,6 +99,11 @@ static NSString *cellIdentifier;
     [self.aboutThisAppButton setImage:[UIImage imageNamed:@"Skin Track"] forState:UIControlStateNormal];
     (self.aboutThisAppButton).imageView.contentMode = UIViewContentModeScaleAspectFill;
     self.aboutThisAppView.backgroundColor = [UIColor clearColor];
+    
+    // Initializing asynch image loading queue
+    if (!self.imageLoadingOperationQueue) {
+        self.imageLoadingOperationQueue = [NSOperationQueue new];
+    }
 }
 
 - (void)viewDidLayoutSubviews
@@ -113,6 +119,11 @@ static NSString *cellIdentifier;
     self.maskLayer.path = path;
     CGPathRelease(path);
     self.aboutThisAppView.layer.mask = self.maskLayer;
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [self.imageLoadingOperationQueue cancelAllOperations];
 }
 
 - (void)didReceiveMemoryWarning
@@ -181,7 +192,7 @@ static NSString *cellIdentifier;
         (cell.areaName).text = skiArea.name_area;
         (cell.areaName).textColor = [UIColor whiteColor];
         //(cell.areaImage).image = [UIImage imageNamed:skiArea.ski_area_image.avatar];
-        (cell.areaImage).image = [UIImage imageNamed:[skiArea.name_area stringByAppendingString:@"-thumbnail"]];
+        //(cell.areaImage).image = [UIImage imageNamed:[skiArea.name_area stringByAppendingString:@"-thumbnail"]];
         (cell.areaImage.layer).borderColor = [UIColor darkGrayColor].CGColor;
         (cell.areaImage.layer).borderWidth = 1.0;
         (cell.areaConditions).textContainerInset = UIEdgeInsetsZero;
@@ -208,6 +219,34 @@ static NSString *cellIdentifier;
             lockedView.autoresizingMask = (UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin);
             [cell.areaImage addSubview:lockedView];
         }
+        
+        // Asynchronous image loading
+        NSBlockOperation *loadImageIntoCellOp = [NSBlockOperation new];
+        __weak NSBlockOperation *weakOperation = loadImageIntoCellOp;
+        __block NSString *imageName = [skiArea.name_area stringByAppendingString:@"-thumbnail"];
+        [loadImageIntoCellOp addExecutionBlock:^(void){
+            // Background Thread
+            UIImage *image = [UIImage imageNamed:imageName];
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^(void) {
+                // Main Thread
+                if (!weakOperation.isCancelled) {
+                    SMSkiRouteTableViewCell *cell = (SMSkiRouteTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+                    (cell.areaImage).layer.opacity = 0;
+                    (cell.areaImage).image = image;
+                    [UIView animateWithDuration:0.4 animations:^{
+                        (cell.areaImage).layer.opacity = 1;
+                    }];
+                }
+            }];
+        }];
+        
+        [self.imageLoadingOperationsDictionary setObject:loadImageIntoCellOp forKey:imageName];
+        
+        if (loadImageIntoCellOp) {
+            [self.imageLoadingOperationQueue addOperation:loadImageIntoCellOp];
+        }
+        
+        (cell.areaImage).image = nil;
     }
     
     // Ski Route
@@ -235,6 +274,21 @@ static NSString *cellIdentifier;
 }
 
 #pragma mark - UITableViewDelegate
+
+// Remove asynch image operation if cell leaves screen before loaded up.
+- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0) {
+        NSArray *skiAreaObjects = (self.fetchedResultsController).fetchedObjects;
+        SkiAreas *skiArea = skiAreaObjects[indexPath.section];
+        NSString *imageName = [skiArea.name_area stringByAppendingString:@"-thumbnail"];
+        NSBlockOperation *ongoingImageOperation = [self.imageLoadingOperationsDictionary objectForKey:imageName];
+        if (ongoingImageOperation) {
+            [ongoingImageOperation cancel];
+            [self.imageLoadingOperationsDictionary removeObjectForKey:imageName];
+        }
+    }
+}
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
