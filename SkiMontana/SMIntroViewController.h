@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Gneiss Software. All rights reserved.
 //
 
-@interface SMIntroViewController : UIViewController
+#import "SMViewController.h"
+
+@interface SMIntroViewController : SMViewController
 
 @end

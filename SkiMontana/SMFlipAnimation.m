@@ -19,7 +19,7 @@
 - (instancetype) init
 {
     self = [super init];
-    if (self){
+    if (self) {
         self.animationDuration = 1.5;
     }
     
@@ -29,8 +29,8 @@
 - (instancetype)initWithType:(SMFlipAnimationType)type
 {
     self = [super init];
-    if (self){
-        self.animationDuration = 1.5;
+    if (self) {
+        self.animationDuration = 1.0;
         self.type = type;
     }
     return self;
@@ -59,7 +59,7 @@
         }
     }
     
-    //Get references to the view hierarchy
+    // Get references to the view hierarchy
     UIView *containerView = [transitionContext containerView];
     [containerView addSubview:toView];
     
@@ -70,7 +70,7 @@
     
     // Give both VCs the same start frame
     CGRect initialFrame;
-    if (self.modalTransition){
+    if (self.modalTransition) {
         initialFrame = containerView.frame;
     } else {
         initialFrame = [transitionContext initialFrameForViewController:self.fromViewController];

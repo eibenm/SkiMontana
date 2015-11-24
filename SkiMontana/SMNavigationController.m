@@ -16,7 +16,7 @@
 - (id)initWithRootViewController:(UIViewController *)rootViewController withAnimation:(SMBaseAnimation *)animation
 {
     self = [super initWithRootViewController:rootViewController];
-    if (self){
+    if (self) {
         self.delegate = self;
         self.animationController = animation;
     }
@@ -43,16 +43,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    NSShadow *shadow = [NSShadow new];
-    shadow.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8];
-    shadow.shadowOffset = CGSizeMake(0, 1);
-    [[UINavigationBar appearance] setTranslucent:YES];
-    [UINavigationBar appearance].titleTextAttributes = @{
-        //NSForegroundColorAttributeName: [UIColor darkGrayColor],
-        //NSShadowAttributeName: shadow,
-        NSFontAttributeName: [UIFont boldSkiMontanaFontOfSize:20.0f]
-    };
 }
 
 

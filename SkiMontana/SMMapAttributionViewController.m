@@ -69,12 +69,12 @@
 {
     UIButton *attributionButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [attributionButton setTitle:@"Done" forState:UIControlStateNormal];
-    (attributionButton.titleLabel).font = [UIFont boldSkiMontanaFontOfSize:20.0f];
+    attributionButton.titleLabel.font = [UIFont boldSkiMontanaFontOfSize:20.0f];
     [attributionButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    (attributionButton.layer).shadowColor = [UIColor blackColor].CGColor;
-    (attributionButton.layer).shadowOffset = CGSizeMake(0, 0);
-    (attributionButton.layer).shadowRadius = 3.0f;
-    (attributionButton.layer).shadowOpacity = 0.4f;
+    attributionButton.layer.shadowColor = [UIColor blackColor].CGColor;
+    attributionButton.layer.shadowOffset = CGSizeMake(0, 0);
+    attributionButton.layer.shadowRadius = 3.0f;
+    attributionButton.layer.shadowOpacity = 0.4f;
     attributionButton.autoresizingMask = (UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin);
     [attributionButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [attributionButton addTarget:self action:@selector(legendDismiss:) forControlEvents:UIControlEventTouchUpInside];

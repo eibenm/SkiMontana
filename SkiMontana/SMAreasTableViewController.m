@@ -191,7 +191,6 @@ static NSString *cellIdentifier;
 
         (cell.areaName).text = skiArea.name_area;
         (cell.areaName).textColor = [UIColor whiteColor];
-        //(cell.areaImage).image = [UIImage imageNamed:skiArea.ski_area_image.avatar];
         //(cell.areaImage).image = [UIImage imageNamed:[skiArea.name_area stringByAppendingString:@"-thumbnail"]];
         (cell.areaImage.layer).borderColor = [UIColor darkGrayColor].CGColor;
         (cell.areaImage.layer).borderWidth = 1.0;

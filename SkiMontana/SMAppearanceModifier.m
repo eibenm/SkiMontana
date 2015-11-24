@@ -14,24 +14,20 @@
 {
     /*  Navbar Customizations */
     
-    //UIEdgeInsets navBarImageInsets = UIEdgeInsetsMake(0.0f, 4.0f, 0.0f, 4.0f);
-    //UIImage *navBarImage = [[UIImage imageNamed:@"nav_bg.png"] resizableImageWithCapInsets:navBarImageInsets];
-    
-    //[[UINavigationBar appearance] setTintColor:[UIColor darkGrayColor]];
-    //[[UINavigationBar appearance] setBackgroundImage:navBarImage forBarMetrics:UIBarMetricsDefault];
-    
     NSShadow *shadow = [NSShadow new];
-    shadow.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8];
-    shadow.shadowOffset = CGSizeMake(0, 1);
+    shadow.shadowColor = [UIColor colorWithWhite:0 alpha:0.8];
+    shadow.shadowBlurRadius = 2.0f;
+    shadow.shadowOffset = CGSizeZero;
     
-    [[UINavigationBar appearance] setTranslucent:YES];
+    [UINavigationBar appearance].translucent = YES;
+    [UINavigationBar appearance].barStyle = UIBarStyleDefault;
     [UINavigationBar appearance].titleTextAttributes = @{
-        //NSForegroundColorAttributeName: [UIColor darkGrayColor],
+        NSForegroundColorAttributeName: [UIColor blackColor],
         //NSShadowAttributeName: shadow,
         NSFontAttributeName: [UIFont boldSkiMontanaFontOfSize:20.0f],
     };
     
-    //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     /* UIBarButton Item Customizations */
     

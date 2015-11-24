@@ -85,7 +85,6 @@
 		CB7446261AEEA36A0070B36D /* SMDetailsInformationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7446251AEEA36A0070B36D /* SMDetailsInformationTableViewCell.m */; };
 		CB7446291AEEA38E0070B36D /* SMDetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7446281AEEA38E0070B36D /* SMDetailsTableViewCell.m */; };
 		CB753AD71BBA0D12007EAAAD /* SMAreasTableViewControllerParent.m in Sources */ = {isa = PBXBuildFile; fileRef = CB753AD61BBA0D12007EAAAD /* SMAreasTableViewControllerParent.m */; };
-		CB753AE31BBA2CBA007EAAAD /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = CB753AE21BBA2CBA007EAAAD /* UIImage+ImageEffects.m */; };
 		CB76D9C61AFC6102005EC2E8 /* SMRouteMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB76D9C51AFC6102005EC2E8 /* SMRouteMapViewController.m */; };
 		CB7E02CA1BDACF4400F19328 /* RSSHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7E02C91BDACF4400F19328 /* RSSHeaderView.m */; };
 		CB8694C21B09639B00D4A93F /* Headers in Resources */ = {isa = PBXBuildFile; fileRef = CB8694BF1B09639B00D4A93F /* Headers */; };
@@ -279,8 +278,6 @@
 		CB7446281AEEA38E0070B36D /* SMDetailsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDetailsTableViewCell.m; sourceTree = "<group>"; };
 		CB753AD51BBA0D12007EAAAD /* SMAreasTableViewControllerParent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAreasTableViewControllerParent.h; sourceTree = "<group>"; };
 		CB753AD61BBA0D12007EAAAD /* SMAreasTableViewControllerParent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAreasTableViewControllerParent.m; sourceTree = "<group>"; };
-		CB753AE11BBA2CBA007EAAAD /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
-		CB753AE21BBA2CBA007EAAAD /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		CB76D9C41AFC6102005EC2E8 /* SMRouteMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRouteMapViewController.h; sourceTree = "<group>"; };
 		CB76D9C51AFC6102005EC2E8 /* SMRouteMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRouteMapViewController.m; sourceTree = "<group>"; };
 		CB7E02C81BDACF4400F19328 /* RSSHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSHeaderView.h; sourceTree = "<group>"; };
@@ -441,8 +438,6 @@
 			children = (
 				CB57FA431BD5FD6A009C3B3E /* NSDate+Utilities.h */,
 				CB57FA441BD5FD6A009C3B3E /* NSDate+Utilities.m */,
-				CB753AE11BBA2CBA007EAAAD /* UIImage+ImageEffects.h */,
-				CB753AE21BBA2CBA007EAAAD /* UIImage+ImageEffects.m */,
 				CB4208A31AA3B98700ADFA97 /* UIFont+SkiMontana.h */,
 				CB4208A41AA3B98700ADFA97 /* UIFont+SkiMontana.m */,
 				CB99FF431AB61F010067E547 /* UIColor+FromHex.h */,
@@ -988,7 +983,6 @@
 				CB8DD6801BE1CB7E00CD8217 /* SMOverviewMapViewController.m in Sources */,
 				CB8694CE1B0A8B6300D4A93F /* CLLocationHelper.m in Sources */,
 				CB4208A51AA3B98700ADFA97 /* UIFont+SkiMontana.m in Sources */,
-				CB753AE31BBA2CBA007EAAAD /* UIImage+ImageEffects.m in Sources */,
 				CB4D92BD1BEC7CE800E889A5 /* MWTapDetectingView.m in Sources */,
 				CB57FA421BD54C04009C3B3E /* SMIAPHelper.m in Sources */,
 				CB4D92BE1BEC7CE800E889A5 /* MWZoomingScrollView.m in Sources */,

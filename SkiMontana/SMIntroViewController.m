@@ -11,6 +11,8 @@
 #import "SMAreasTableViewController.h"
 #import "SMUtilities.h"
 
+#import "SMFlipAnimation.h"
+
 @interface SMIntroViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *backgroundView;
@@ -134,11 +136,12 @@
 
 - (IBAction)startSkiingAction:(id)sender
 {
+    SMIntroViewController *thisViewController = (SMIntroViewController *)self;
     SMNavigationController *navController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"baseNavigationController"];
-    
-    [UIView transitionWithView:self.view.window duration:0.6 options:UIViewAnimationOptionTransitionFlipFromBottom animations:^{
-        [self presentViewController:navController animated:NO completion:nil];
-    } completion:nil];
+    SMFlipAnimation *layerAnimation = [[SMFlipAnimation alloc] initWithType:SMFlipAnimationBottom];
+    thisViewController.animationController = layerAnimation;
+    navController.transitioningDelegate = self.transitioningDelegate;
+    [self presentViewController:navController animated:YES completion:nil];
 }
 
 @end
