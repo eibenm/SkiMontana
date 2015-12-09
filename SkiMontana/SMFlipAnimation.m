@@ -89,21 +89,21 @@
     // animate
     NSTimeInterval duration = [self transitionDuration:transitionContext];
     [UIView animateKeyframesWithDuration:duration delay:0.0 options:0 animations:^{
-        [UIView addKeyframeWithRelativeStartTime:0.0 relativeDuration:0.2 animations:^{
+        [UIView addKeyframeWithRelativeStartTime:0.0 relativeDuration:0.1 animations:^{
             // rotate the from view
             fromView.layer.transform = [self rotate:factor * -M_PI_2/8];
         }];
-        [UIView addKeyframeWithRelativeStartTime:0.2 relativeDuration:0.3 animations:^{
+        [UIView addKeyframeWithRelativeStartTime:0.2 relativeDuration:0.4 animations:^{
             // rotate the from view
             fromView.layer.transform = [self rotate:factor * M_PI_2];
             fromView.alpha = 0.0;
         }];
-        [UIView addKeyframeWithRelativeStartTime:0.5 relativeDuration:0.3 animations:^{
+        [UIView addKeyframeWithRelativeStartTime:0.5 relativeDuration:0.4 animations:^{
             // rotate the to view
             toView.layer.transform = [self rotate:factor * M_PI_2/8];
             toView.alpha = 1.0;
         }];
-        [UIView addKeyframeWithRelativeStartTime:0.8 relativeDuration:0.2 animations:^{
+        [UIView addKeyframeWithRelativeStartTime:0.8 relativeDuration:0.1 animations:^{
             // rotate the to view
             toView.layer.transform = CATransform3DIdentity;
         }];

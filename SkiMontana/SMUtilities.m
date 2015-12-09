@@ -64,42 +64,38 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
             NSDictionary *parsedObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
             NSDictionary *internalJson = [self skiAppCurrentJson];
             
-            //NSLog(@"Recieved json from cloud");
-            
             NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
             numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
             
             float internalVersion = [numberFormatter numberFromString:internalJson[@"version"]].floatValue;
             float externalVersion = [numberFormatter numberFromString:parsedObject[@"version"]].floatValue;
-                        
+            
+            typedef void (^SuccessMessage)(BOOL appUpdate, NSString *message);
+            
+            SuccessMessage successMessage = ^(BOOL appUpdated, NSString *message) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.successBlock(appUpdated, message);
+                });
+            };
+            
             if (externalVersion > internalVersion) {
-                //NSLog(@"Cloud json is different, refreshing local data!");
                 if ([[SMDataManager sharedInstance] clearPersistentStores]) {
-                    //NSLog(@"Stores cleared!");
                     [self copyJsonToDataStore:parsedObject];
                     if ([self createCopyOfSkiJsonFromData:parsedObject]) {
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            self.successBlock(YES, @"Updated Local Data from server");
-                        });
+                        successMessage(YES, @"Updated Local Data from server");
                         return;
                     }
                     else {
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            self.successBlock(NO, @"Problem writing Local json file from server");
-                        });
+                        successMessage(NO, @"Problem writing Local json file from server");
                         return;
                     }
                 }
                 else {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        self.successBlock(NO, @"Problem clear persistent stores");
-                    });
+                    successMessage(NO, @"Problem clear persistent stores");
                     return;
                 }
             }
-            dispatch_async(dispatch_get_main_queue(), ^{
-                self.successBlock(NO, @"Version is the same, no changes needed");
-            });
+            successMessage(NO, @"Version is the same, no changes needed");
         }
     };
     

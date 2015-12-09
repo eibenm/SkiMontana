@@ -216,16 +216,20 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
     NSLog(@"Failed to locaiton user with error: %@", error.localizedDescription);
 }
 
-//- (void)mapView:(RMMapView *)mapView didUpdateUserLocation:(RMUserLocation *)userLocation
-//{
-//    NSLog(@"Lat: %f, Lon: %f", userLocation.location.coordinate.latitude, userLocation.location.coordinate.longitude);
-//}
+/*
+- (void)mapView:(RMMapView *)mapView didUpdateUserLocation:(RMUserLocation *)userLocation
+{
+    NSLog(@"Lat: %f, Lon: %f", userLocation.location.coordinate.latitude, userLocation.location.coordinate.longitude);
+}
+*/
 
-//- (void)singleTapOnMap:(RMMapView *)myMapView at:(CGPoint)point
-//{
-//    NSLog(@"Tapped Lat: %f, Lon: %f", [myMapView pixelToCoordinate:point].latitude, [myMapView pixelToCoordinate:point].longitude);
-//    NSLog(@"Zoom Level: %f", myMapView.zoom);
-//}
+/*
+- (void)singleTapOnMap:(RMMapView *)myMapView at:(CGPoint)point
+{
+    NSLog(@"Tapped Lat: %f, Lon: %f", [myMapView pixelToCoordinate:point].latitude, [myMapView pixelToCoordinate:point].longitude);
+    NSLog(@"Zoom Level: %f", myMapView.zoom);
+}
+*/
 
 #pragma mark - UIBarPositioningDelegate
 
