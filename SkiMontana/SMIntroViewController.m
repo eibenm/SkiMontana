@@ -33,14 +33,22 @@
     (self.titleLabel).attributedText = [[NSAttributedString alloc] initWithString:@"Ski Bozeman" attributes:attrsDictionary];
     
     UIEdgeInsets insets = UIEdgeInsetsMake(0.0f, 10.0f, 0.0f, 10.0f);
-    UIImage *skiButtonEnabled = [UIImage imageNamed:@"start_skiing"];
+    UIImage *skiButton = [UIImage imageNamed:@"start_skiing"];
     
     (self.disclaimerTextView).layer.cornerRadius = 5.0f;
     (self.startSkiingBtn).userInteractionEnabled = NO;
     (self.startSkiingBtn).layer.opacity = 0.8;
     [self.startSkiingBtn setTitle:@"Updating ..." forState:UIControlStateNormal];
-    [self.startSkiingBtn setBackgroundImage:[skiButtonEnabled resizableImageWithCapInsets:insets]
+    [self.startSkiingBtn setBackgroundImage:[skiButton resizableImageWithCapInsets:insets]
                                    forState:UIControlStateNormal];
+    
+    void (^setButtonEnabled)(void) = ^(void) {
+        (self.startSkiingBtn).userInteractionEnabled = YES;
+        [self.startSkiingBtn setTitle:@"I Agree" forState:UIControlStateNormal];
+        [UIView animateWithDuration:0.25 animations:^{
+            (self.startSkiingBtn).layer.opacity = 1.0;
+        }];
+    };
     
     [[SMUtilities sharedInstance] downloadSMJsonWithSuccess:^(BOOL appUpdated, NSString *message) {
         if (appUpdated == YES) {
@@ -51,20 +59,12 @@
             NSLog(@"Download success: App has NOT been updated");
             NSLog(@"Message: %@", message);
         }
-        [self.startSkiingBtn setUserInteractionEnabled:YES];
-        [self.startSkiingBtn setTitle:@"I Agree" forState:UIControlStateNormal];
-        [UIView animateWithDuration:0.25 animations:^{
-            (self.startSkiingBtn).layer.opacity = 1.0;
-        }];
+        setButtonEnabled();
     } error:^(NSError *error) {
         NSLog(@"Download failure: Error: %@", error.localizedDescription);
-        [self.startSkiingBtn setUserInteractionEnabled:YES];
-        [self.startSkiingBtn setTitle:@"I Agree" forState:UIControlStateNormal];
-        [UIView animateWithDuration:0.25 animations:^{
-            (self.startSkiingBtn.layer).opacity = 1.0;
-        }];
+        setButtonEnabled();
     }];
-        
+    
     // Setup Background Image
     UIImage *image = [UIImage imageNamed:@"landing_image"];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];

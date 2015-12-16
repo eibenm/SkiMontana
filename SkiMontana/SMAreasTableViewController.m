@@ -350,7 +350,14 @@ static NSString *cellIdentifier;
     NSEntityDescription *entity = [NSEntityDescription entityForName:SM_SkiAreas inManagedObjectContext:self.managedObjectContext];
     
     NSSortDescriptor *sortDescriptor1 = [[NSSortDescriptor alloc] initWithKey:@"name_area" ascending:YES];
-    NSArray *descriptors = @[sortDescriptor1];
+    NSSortDescriptor *sortDescriptor2 = [[NSSortDescriptor alloc] initWithKey:@"permissions" ascending:NO];
+    NSArray *descriptors = @[sortDescriptor2, sortDescriptor1];
+    
+    // Don't display the free areas if app is purchased or a trial
+    if (IS_TRIAL == YES || self.purchased == YES) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name_area != %@", @"Free Routes"];
+        fetchRequest.predicate = predicate;
+    }
     
     fetchRequest.entity = entity;
     fetchRequest.fetchBatchSize = 20;

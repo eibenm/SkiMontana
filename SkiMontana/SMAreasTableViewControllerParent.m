@@ -11,9 +11,9 @@
 
 @interface SMAreasTableViewControllerParent () <UIPopoverPresentationControllerDelegate>
 
-@property (nonatomic, strong) NSArray *products;
-@property (nonatomic, strong) NSSet *productIdentifiers;
-@property (nonatomic, strong) UIAlertController *actionSheetViewController;
+@property (strong, nonatomic) NSArray *products;
+@property (strong, nonatomic) NSSet *productIdentifiers;
+@property (strong, nonatomic) UIAlertController *actionSheetViewController;
 
 @end
 
@@ -43,13 +43,15 @@
         nil
     ];
     
-    BOOL purchased = [SMIAPHelper checkInAppMemoryPurchasedState];
-    
-    if (purchased == YES) {
-        [self checkReceiptsForSubscriptionChange];
-    }
-    else {
-        [self requestProductsWithProductIdentifiers:self.productIdentifiers];
+    self.purchased = [SMIAPHelper checkInAppMemoryPurchasedState];
+        
+    if (TRIAL == NO) {
+        if (self.purchased == YES) {
+            [self checkReceiptsForSubscriptionChange];
+        }
+        else {
+            [self requestProductsWithProductIdentifiers:self.productIdentifiers];
+        }
     }
 }
 
@@ -133,7 +135,7 @@
         NSLog(@"Latest receipt purchase date: %@", lastTransaction.purchaseDate);
         
         
-        BOOL currentlyPurchased = [SMIAPHelper checkInAppMemoryPurchasedState];
+        BOOL purchased = self.purchased;
         BOOL active = [SMIAPHelper subscriptionIsActiveWithReceipt:lastTransaction date:[NSDate date]];
         
         NSLog(@"%@", (active ? @"active" : @"not active"));
@@ -147,7 +149,7 @@
         }
         
         // In the case of restored subscription
-        if (currentlyPurchased == NO && active == YES) {
+        if (purchased == NO && active == YES) {
             [[SMUtilities sharedInstance] setAppLockedStateIsUnlocked:YES];
             NSIndexSet *sections = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, self.tableView.numberOfSections)];
             [self.tableView reloadSections:sections withRowAnimation:UITableViewRowAnimationAutomatic];

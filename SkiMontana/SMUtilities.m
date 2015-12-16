@@ -104,14 +104,10 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
     // Initial Launch - Get Data from bundle
     
     if (![defaults boolForKey:NS_USER_DEFUALTS_INITAL_LAUNCH]) {
-        if ([self createCopyOfSkiJsonFromBundle]) {
-            [self copyJsonToDataStore:[self skiAppCurrentJson]];
-        }
+        [self createCopyOfSkiJsonFromBundle];
+        [self copyJsonToDataStore:[self skiAppCurrentJson]];
+        [defaults setBool:NO  forKey:NS_USER_DEFUALTS_PURCHASED];
         [defaults setBool:YES forKey:NS_USER_DEFUALTS_INITAL_LAUNCH];
-        
-        // Set on device memory to false purchased state
-        [defaults setBool:NO forKey:NS_USER_DEFUALTS_PURCHASED];
-        
         [defaults synchronize];
         self.successBlock(NO, @"First app launch, no updated needed");
     }
@@ -151,7 +147,7 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
     
     NSManagedObjectContext *context = [SMDataManager sharedInstance].managedObjectContext;
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:SM_SkiAreas];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name_area != %@", @"Greater Gallatins"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name_area != %@", @"Free Routes"];
     fetchRequest.predicate = predicate;
     NSError *error;
     NSArray *skiAreasArray = [context executeFetchRequest:fetchRequest error:&error];

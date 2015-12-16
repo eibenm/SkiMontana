@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (assign, nonatomic) BOOL deviceIsIPhone;
+@property (assign, nonatomic) BOOL purchased;
 
 - (void)presentIAPActionSheet;
 
