@@ -19,7 +19,6 @@
 @dynamic conditions;
 @dynamic name_area;
 @dynamic permissions;
-@dynamic short_desc;
 @dynamic ski_area_image;
 @dynamic ski_routes;
 

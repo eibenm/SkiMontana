@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15B42" minimumToolsVersion="Xcode 4.3">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15C50" minimumToolsVersion="Xcode 4.3">
     <entity name="File" representedClassName="File" syncable="YES">
         <attribute name="avatar" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="caption" optional="YES" attributeType="String" syncable="YES"/>
@@ -27,7 +27,6 @@
         <attribute name="conditions" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name_area" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="permissions" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="short_desc" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="ski_area_image" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="File" inverseName="ski_area" inverseEntity="File" syncable="YES"/>
         <relationship name="ski_routes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SkiRoutes" inverseName="ski_area" inverseEntity="SkiRoutes" syncable="YES"/>
     </entity>
@@ -59,7 +58,7 @@
         <element name="File" positionX="-7040" positionY="-4581" width="128" height="133"/>
         <element name="Glossary" positionX="-7164" positionY="-4879" width="128" height="73"/>
         <element name="Gps" positionX="-7076" positionY="-4761" width="128" height="133"/>
-        <element name="SkiAreas" positionX="-7533" positionY="-4680" width="128" height="180"/>
+        <element name="SkiAreas" positionX="-7533" positionY="-4680" width="128" height="165"/>
         <element name="SkiRoutes" positionX="-7335" positionY="-4968" width="128" height="373"/>
     </elements>
 </model>

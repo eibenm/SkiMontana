@@ -21,7 +21,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *conditions;
 @property (nullable, nonatomic, retain) NSString *name_area;
 @property (nullable, nonatomic, retain) NSNumber *permissions;
-@property (nullable, nonatomic, retain) NSString *short_desc;
 @property (nullable, nonatomic, retain) File *ski_area_image;
 @property (nullable, nonatomic, retain) NSSet<SkiRoutes *> *ski_routes;
 

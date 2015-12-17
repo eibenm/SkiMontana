@@ -260,7 +260,6 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
         skiArea.bounds_northeast = skiAreaJson[@"bounds_northeast"];
         skiArea.bounds_southwest = skiAreaJson[@"bounds_southwest"];
         skiArea.color = skiAreaJson[@"color"];
-        skiArea.short_desc = skiAreaJson[@"short_desc"];
         skiArea.conditions = skiAreaJson[@"conditions"];
         skiArea.name_area = skiAreaJson[@"name_area"];
         skiArea.permissions = (IS_TRIAL ? @YES : skiAreaJson[@"permissions"]);
