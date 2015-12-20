@@ -340,7 +340,7 @@
 		CBA338DA1B82BBD1001BA5FF /* SMReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMReachabilityManager.h; sourceTree = "<group>"; };
 		CBA338DB1B82BBD1001BA5FF /* SMReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMReachabilityManager.m; sourceTree = "<group>"; };
 		CBB8A4BD1C274084007D5D0C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		CBB8A4CB1C2743DC007D5D0C /* absaroka.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = absaroka.mbtiles; path = Tiles/absaroka.mbtiles; sourceTree = "<group>"; };
+		CBB8A4CB1C2743DC007D5D0C /* absaroka.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = text; name = absaroka.mbtiles; path = Tiles/absaroka.mbtiles; sourceTree = "<group>"; };
 		CBB8A4CC1C2743DC007D5D0C /* beartoothPass.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = beartoothPass.mbtiles; path = Tiles/beartoothPass.mbtiles; sourceTree = "<group>"; };
 		CBB8A4CD1C2743DC007D5D0C /* bridgerRange.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = bridgerRange.mbtiles; path = Tiles/bridgerRange.mbtiles; sourceTree = "<group>"; };
 		CBB8A4CE1C2743DC007D5D0C /* garnetMountain.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = garnetMountain.mbtiles; path = Tiles/garnetMountain.mbtiles; sourceTree = "<group>"; };

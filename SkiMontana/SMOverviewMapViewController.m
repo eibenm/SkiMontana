@@ -10,6 +10,8 @@
 #import "CLLocationHelper.h"
 #import "Mapbox.h"
 
+#import "SMMapAttributionViewController.h"
+
 @interface SMOverviewMapViewController () <RMMapViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *mapViewContainer;
@@ -23,6 +25,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self setAttributionButton];
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:self action:@selector(dismissViewController)];
     (self.navigationItem).leftBarButtonItem = backButton;
@@ -96,6 +100,49 @@
     [alertView addAction:okAction];
     
     [self presentViewController:alertView animated:YES completion:nil];
+}
+
+#pragma mark - Attribution
+
+- (void)setAttributionButton
+{
+    UIButton *attributionButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [attributionButton setTitle:@"Legend" forState:UIControlStateNormal];
+    (attributionButton.titleLabel).font = [UIFont boldSkiMontanaFontOfSize:20.0f];
+    [attributionButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    (attributionButton.layer).shadowColor = [UIColor blackColor].CGColor;
+    (attributionButton.layer).shadowOffset = CGSizeMake(0, 0);
+    (attributionButton.layer).shadowRadius = 3.0f;
+    (attributionButton.layer).shadowOpacity = 0.8f;
+    attributionButton.autoresizingMask = (UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin);
+    [attributionButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [attributionButton addTarget:self action:@selector(showAttribution:) forControlEvents:UIControlEventTouchUpInside];
+    attributionButton.frame = CGRectMake(
+        self.view.bounds.size.width - attributionButton.bounds.size.width - 8,
+        self.view.bounds.size.height - attributionButton.bounds.size.height - 8,
+        attributionButton.bounds.size.width,
+        attributionButton.bounds.size.height
+    );
+    
+    [self.view addSubview:attributionButton];
+    
+    NSString *bottomFormatString = @"V:[attributionButton]-bottomSpacing-[bottomLayoutGuide]";
+    NSString *rightFormatString = @"H:[attributionButton]-rightSpacing-|";
+    
+    NSDictionary *views = @{
+                            @"attributionButton" : attributionButton,
+                            @"bottomLayoutGuide" : self.bottomLayoutGuide
+                            };
+    
+    [self.view addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:bottomFormatString options:kNilOptions metrics:@{ @"bottomSpacing" : @(8) } views:views]];
+    [self.view addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:rightFormatString options:kNilOptions metrics:@{ @"rightSpacing" : @(8) } views:views]];
+}
+
+- (void)showAttribution:(id)sender
+{
+    SMMapAttributionViewController *attributionViewController = [[SMMapAttributionViewController alloc] initWithMapView:self.mapView];
+    attributionViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    [self presentViewController:attributionViewController animated:YES completion:nil];
 }
 
 @end
