@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="amG-dg-XFq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="amG-dg-XFq">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -20,7 +20,6 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5Q1-xJ-g4P">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="glossaryTerm" rowHeight="70" id="0Uc-Xn-GiB" customClass="SMGlossaryTableViewCell">
@@ -32,20 +31,17 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Term Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggb-aP-MMF">
                                                     <rect key="frame" x="8" y="8" width="584" height="25"/>
-                                                    <animations/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAb-7T-HtI">
                                                     <rect key="frame" x="8" y="41" width="584" height="20"/>
-                                                    <animations/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="aAb-7T-HtI" secondAttribute="trailing" constant="8" id="S9J-WC-n8K"/>
                                                 <constraint firstItem="aAb-7T-HtI" firstAttribute="leading" secondItem="kC6-0j-Sud" secondAttribute="leading" constant="8" id="d5v-qX-xsX"/>
@@ -56,7 +52,6 @@
                                                 <constraint firstItem="ggb-aP-MMF" firstAttribute="leading" secondItem="kC6-0j-Sud" secondAttribute="leading" constant="8" id="spI-Ym-Poi"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <animations/>
                                         <connections>
                                             <outlet property="descriptionLabel" destination="aAb-7T-HtI" id="G2Q-lU-bmT"/>
                                             <outlet property="termLabel" destination="ggb-aP-MMF" id="3sl-dG-o0q"/>
@@ -65,7 +60,6 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Trf-fA-LyF" firstAttribute="top" secondItem="5Q1-xJ-g4P" secondAttribute="bottom" id="6Xy-aw-iKx"/>
@@ -97,11 +91,9 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XGz-8D-zE9">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="XGz-8D-zE9" secondAttribute="trailing" id="5T9-DT-2Pe"/>
@@ -132,7 +124,6 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CjX-rc-ptT">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                                <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" clipsSubviews="YES" contentMode="scaleToFill" id="FUm-JV-fGS" userLabel="Overview Map">
                                     <rect key="frame" x="0.0" y="64" width="600" height="120"/>
@@ -140,14 +131,12 @@
                                     <subviews>
                                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TNV-vt-fUG">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
-                                            <animations/>
                                             <connections>
                                                 <action selector="didSelectOverviewMap:" destination="A15-bb-RHp" eventType="touchUpInside" id="mgB-ik-WGC"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview Map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQR-U9-3VM">
                                             <rect key="frame" x="8" y="8" width="133" height="28"/>
-                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="28" id="YdX-Z0-n7o"/>
                                                 <constraint firstAttribute="width" constant="133" id="ml6-9Y-Sep"/>
@@ -157,7 +146,6 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <animations/>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="TNV-vt-fUG" firstAttribute="leading" secondItem="FUm-JV-fGS" secondAttribute="leading" id="28r-VP-WVy"/>
@@ -174,7 +162,6 @@
                                     <subviews>
                                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="shq-1p-bv5" userLabel="About This App Button">
                                             <rect key="frame" x="0.0" y="4" width="600" height="120"/>
-                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="120" id="Xd7-w8-n2R"/>
                                             </constraints>
@@ -184,7 +171,6 @@
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About This App" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UtH-AG-sKm" userLabel="About This App Label">
                                             <rect key="frame" x="8" y="8" width="143" height="28"/>
-                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="28" id="DpS-Cm-cEJ"/>
                                                 <constraint firstAttribute="width" constant="143" id="T6a-Xh-Peu"/>
@@ -194,7 +180,6 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <animations/>
                                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="shq-1p-bv5" firstAttribute="top" secondItem="9Dl-o8-41x" secondAttribute="top" constant="4" id="ICl-aO-ZL1"/>
@@ -215,7 +200,6 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Area Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="QSo-98-6ip">
                                                     <rect key="frame" x="12" y="12" width="576" height="28"/>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="28" id="39M-Vt-cl3"/>
                                                     </constraints>
@@ -225,7 +209,6 @@
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OtC-EQ-hmF">
                                                     <rect key="frame" x="12" y="48" width="120" height="114"/>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="120" id="MjT-MV-8X1"/>
                                                         <constraint firstAttribute="height" constant="114" id="Rqs-jP-v3e"/>
@@ -233,7 +216,6 @@
                                                 </imageView>
                                                 <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="Conditions" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eke-Xi-LmH" userLabel="Area Conditions">
                                                     <rect key="frame" x="12" y="48" width="576" height="114"/>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="114" id="vMO-jz-El6"/>
                                                     </constraints>
@@ -244,7 +226,6 @@
                                                     </variation>
                                                 </textView>
                                             </subviews>
-                                            <animations/>
                                             <constraints>
                                                 <constraint firstItem="OtC-EQ-hmF" firstAttribute="top" secondItem="QSo-98-6ip" secondAttribute="bottom" constant="8" id="BIo-et-wo4"/>
                                                 <constraint firstItem="QSo-98-6ip" firstAttribute="leading" secondItem="dZZ-Ih-V8M" secondAttribute="leadingMargin" constant="4" id="ByQ-7e-snh"/>
@@ -272,7 +253,6 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
-                                        <animations/>
                                         <connections>
                                             <outlet property="areaConditions" destination="Eke-Xi-LmH" id="d7i-Ic-gtn"/>
                                             <outlet property="areaConditionsHeightConstraint" destination="vMO-jz-El6" id="1Hg-ZM-BxA"/>
@@ -289,40 +269,34 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Route Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lei-SV-7B3">
                                                     <rect key="frame" x="8" y="12" width="584" height="26"/>
-                                                    <animations/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" verticalCompressionResistancePriority="755" text="Vertical" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzM-ry-0PL">
                                                     <rect key="frame" x="12" y="63" width="580" height="20"/>
-                                                    <animations/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" verticalCompressionResistancePriority="755" text="Elevation Gain" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pM1-h4-kZy">
                                                     <rect key="frame" x="12" y="83" width="580" height="20"/>
-                                                    <animations/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" verticalCompressionResistancePriority="755" text="Distance" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H9Q-1D-RQX">
                                                     <rect key="frame" x="12" y="103" width="580" height="20"/>
-                                                    <animations/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" verticalCompressionResistancePriority="755" text="Quip" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOq-05-Zhp">
                                                     <rect key="frame" x="12" y="42" width="580" height="21"/>
-                                                    <animations/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <animations/>
                                             <constraints>
                                                 <constraint firstItem="lei-SV-7B3" firstAttribute="leading" secondItem="6YL-5Q-GwW" secondAttribute="leadingMargin" id="0Ff-ZN-YRd"/>
                                                 <constraint firstItem="lei-SV-7B3" firstAttribute="top" secondItem="6YL-5Q-GwW" secondAttribute="topMargin" constant="4" id="435-Dm-Llv"/>
@@ -343,7 +317,6 @@
                                                 <constraint firstItem="H9Q-1D-RQX" firstAttribute="top" secondItem="pM1-h4-kZy" secondAttribute="bottom" id="kPl-0k-hOr"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <animations/>
                                         <connections>
                                             <outlet property="routeDistance" destination="H9Q-1D-RQX" id="xwx-E4-P05"/>
                                             <outlet property="routeElevationGain" destination="pM1-h4-kZy" id="80l-0S-sgX"/>
@@ -356,7 +329,6 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <animations/>
                         <constraints>
                             <constraint firstItem="CjX-rc-ptT" firstAttribute="leading" secondItem="eij-f9-wOB" secondAttribute="leading" id="AN1-fa-bP8"/>
                             <constraint firstAttribute="trailing" secondItem="CjX-rc-ptT" secondAttribute="trailing" id="Di2-wd-pXU"/>
@@ -398,7 +370,6 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CqE-ZA-fuR">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="rssCell" textLabel="eJu-uO-8fh" detailTextLabel="WRI-uK-fJq" style="IBUITableViewCellStyleSubtitle" id="hL8-ve-0hB">
@@ -411,7 +382,6 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eJu-uO-8fh">
                                                     <rect key="frame" x="15" y="5" width="32" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -419,20 +389,16 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WRI-uK-fJq">
                                                     <rect key="frame" x="15" y="25" width="41" height="14"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <animations/>
                                         </tableViewCellContentView>
-                                        <animations/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="CqE-ZA-fuR" firstAttribute="top" secondItem="yfs-Rc-PEX" secondAttribute="top" id="7gs-8E-2Zp"/>
@@ -466,20 +432,17 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Route Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wlg-2v-XPg">
                                         <rect key="frame" x="8" y="17" width="584" height="31"/>
-                                        <animations/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Area Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kU-Ob-wdg">
                                         <rect key="frame" x="8" y="48" width="584" height="24"/>
-                                        <animations/>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <animations/>
                                 <constraints>
                                     <constraint firstItem="1kU-Ob-wdg" firstAttribute="leading" secondItem="3hk-Yq-jPO" secondAttribute="leadingMargin" id="13G-YJ-Lom"/>
                                     <constraint firstAttribute="height" constant="85" id="5aJ-BW-AaC"/>
@@ -498,7 +461,6 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="5VO-kt-fgf">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                                <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.37642045454545459" green="0.37642045454545459" blue="0.37642045454545459" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
@@ -511,14 +473,12 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J09-16-QYS">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="180"/>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="180" id="5sG-w3-9IC"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tap for map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GuO-kO-d2q">
                                                     <rect key="frame" x="518" y="8" width="74" height="20"/>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="74" id="4f7-fh-Mum"/>
                                                         <constraint firstAttribute="height" constant="20" id="D48-bg-B2Q"/>
@@ -528,7 +488,6 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <animations/>
                                             <constraints>
                                                 <constraint firstItem="GuO-kO-d2q" firstAttribute="top" secondItem="vMy-uN-hHT" secondAttribute="topMargin" id="HXQ-vx-Wdj"/>
                                                 <constraint firstItem="J09-16-QYS" firstAttribute="top" secondItem="vMy-uN-hHT" secondAttribute="top" id="SLm-Mi-RQY"/>
@@ -538,7 +497,6 @@
                                                 <constraint firstItem="J09-16-QYS" firstAttribute="leading" secondItem="vMy-uN-hHT" secondAttribute="leading" id="ysR-8Y-Jgc"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <animations/>
                                         <connections>
                                             <outlet property="imageMapBackground" destination="J09-16-QYS" id="slc-DN-Onf"/>
                                             <outlet property="mapTapLabel" destination="GuO-kO-d2q" id="DeL-hb-fHS"/>
@@ -553,7 +511,6 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stats" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BgU-nt-w5h">
                                                     <rect key="frame" x="8" y="18" width="584" height="17"/>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="2Bx-8t-2em"/>
                                                     </constraints>
@@ -563,7 +520,6 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Elevation Gain:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bm0-ry-qN1">
                                                     <rect key="frame" x="8" y="40" width="584" height="20"/>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="fgT-ok-1Z0"/>
                                                     </constraints>
@@ -573,7 +529,6 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skiable Vertical:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g95-wO-egg">
                                                     <rect key="frame" x="8" y="60" width="584" height="20"/>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="xuT-Zo-2NR"/>
                                                     </constraints>
@@ -583,7 +538,6 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Slope Aspect:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2d-FF-98t">
                                                     <rect key="frame" x="8" y="80" width="584" height="20"/>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="FpR-Ly-hEC"/>
                                                     </constraints>
@@ -593,7 +547,6 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance to Summit:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jpH-5g-sOD">
                                                     <rect key="frame" x="8" y="100" width="584" height="20"/>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="skC-DG-EVh"/>
                                                     </constraints>
@@ -603,7 +556,6 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avalanche Terrain Danger:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbW-iN-YOE">
                                                     <rect key="frame" x="8" y="140" width="584" height="20"/>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="2os-Ll-dF6"/>
                                                     </constraints>
@@ -613,7 +565,6 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skier Traffic:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbZ-o5-iGN">
                                                     <rect key="frame" x="8" y="160" width="584" height="20"/>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="NTT-Hl-hT6"/>
                                                     </constraints>
@@ -623,7 +574,6 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Annual Snowfall:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Zc-Qa-ngm">
                                                     <rect key="frame" x="8" y="120" width="584" height="20"/>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="Sd2-gp-Shb"/>
                                                     </constraints>
@@ -632,7 +582,6 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <animations/>
                                             <constraints>
                                                 <constraint firstItem="g95-wO-egg" firstAttribute="trailing" secondItem="a08-5f-Eaa" secondAttribute="trailingMargin" id="1eB-xM-OV0"/>
                                                 <constraint firstItem="8Zc-Qa-ngm" firstAttribute="top" secondItem="jpH-5g-sOD" secondAttribute="bottom" id="3JG-B4-htM"/>
@@ -662,7 +611,6 @@
                                                 <constraint firstItem="sbW-iN-YOE" firstAttribute="top" secondItem="8Zc-Qa-ngm" secondAttribute="bottom" id="smI-9A-oJJ"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <animations/>
                                         <connections>
                                             <outlet property="labelAvalanche" destination="sbW-iN-YOE" id="JYa-is-LdO"/>
                                             <outlet property="labelDistance" destination="jpH-5g-sOD" id="B2F-Z3-X3G"/>
@@ -682,20 +630,17 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F3N-Y3-0Cr">
                                                     <rect key="frame" x="8" y="10" width="584" height="17"/>
-                                                    <animations/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" verticalCompressionResistancePriority="755" text="Overview Information" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ATT-vF-7N3">
                                                     <rect key="frame" x="12" y="32" width="576" height="20"/>
-                                                    <animations/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <animations/>
                                             <constraints>
                                                 <constraint firstItem="ATT-vF-7N3" firstAttribute="top" secondItem="F3N-Y3-0Cr" secondAttribute="bottom" constant="5" id="3IB-oH-VAP"/>
                                                 <constraint firstItem="F3N-Y3-0Cr" firstAttribute="trailing" secondItem="vhn-K8-t20" secondAttribute="trailingMargin" id="DGQ-Nv-czS"/>
@@ -712,7 +657,6 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
-                                        <animations/>
                                         <connections>
                                             <outlet property="labelOverviewInformation" destination="ATT-vF-7N3" id="I3I-Ni-ycn"/>
                                         </connections>
@@ -726,20 +670,17 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avalanche Information" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aou-c0-9Y0">
                                                     <rect key="frame" x="8" y="10" width="584" height="14"/>
-                                                    <animations/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" verticalCompressionResistancePriority="755" text="Avalanche Information" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mrV-yR-6DY">
                                                     <rect key="frame" x="12" y="32" width="576" height="20"/>
-                                                    <animations/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <animations/>
                                             <constraints>
                                                 <constraint firstItem="aou-c0-9Y0" firstAttribute="top" secondItem="pvp-ye-xEs" secondAttribute="top" constant="10" id="2TY-AK-Fyw"/>
                                                 <constraint firstAttribute="bottom" secondItem="mrV-yR-6DY" secondAttribute="bottom" constant="8" id="4nf-se-b3S"/>
@@ -756,7 +697,6 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
-                                        <animations/>
                                         <connections>
                                             <outlet property="labelAvalancheInformation" destination="mrV-yR-6DY" id="lN5-do-hqO"/>
                                         </connections>
@@ -770,20 +710,17 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Getting There" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RHA-t3-ZmD">
                                                     <rect key="frame" x="8" y="10" width="584" height="14"/>
-                                                    <animations/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" verticalCompressionResistancePriority="755" text="Directions Information" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KuG-uj-BMO">
                                                     <rect key="frame" x="12" y="32" width="576" height="20"/>
-                                                    <animations/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="KuG-uj-BMO" secondAttribute="trailing" constant="12" id="26g-e6-d3o"/>
                                                 <constraint firstItem="RHA-t3-ZmD" firstAttribute="top" secondItem="iq5-UR-hBa" secondAttribute="top" constant="10" id="aVO-5x-WdO"/>
@@ -800,7 +737,6 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
-                                        <animations/>
                                         <connections>
                                             <outlet property="labelDirectionsInformation" destination="KuG-uj-BMO" id="XEA-Rx-XBy"/>
                                         </connections>
@@ -814,20 +750,17 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOz-Jf-y2e">
                                                     <rect key="frame" x="8" y="10" width="584" height="14"/>
-                                                    <animations/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" verticalCompressionResistancePriority="755" text="Notes Information" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THk-b4-Ibg">
                                                     <rect key="frame" x="12" y="32" width="576" height="20"/>
-                                                    <animations/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="THk-b4-Ibg" secondAttribute="trailing" constant="12" id="2gR-X3-GAY"/>
                                                 <constraint firstItem="aOz-Jf-y2e" firstAttribute="top" secondItem="e5q-Yx-q22" secondAttribute="top" constant="10" id="8t1-b3-uda"/>
@@ -844,7 +777,6 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
-                                        <animations/>
                                         <connections>
                                             <outlet property="labelNotesInformation" destination="THk-b4-Ibg" id="j6Y-uQ-hnC"/>
                                         </connections>
@@ -858,20 +790,17 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waypoint Guidance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btf-WH-03z">
                                                     <rect key="frame" x="8" y="10" width="584" height="14"/>
-                                                    <animations/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" verticalCompressionResistancePriority="755" text="Waypoint Guidance Information" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Cd-df-cxe">
                                                     <rect key="frame" x="12" y="32" width="576" height="20"/>
-                                                    <animations/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="2Cd-df-cxe" secondAttribute="bottom" constant="8" id="2qa-Jz-J06"/>
                                                 <constraint firstItem="btf-WH-03z" firstAttribute="top" secondItem="QTy-Qc-WwU" secondAttribute="top" constant="10" id="6U6-11-Zb5"/>
@@ -888,7 +817,6 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
-                                        <animations/>
                                         <connections>
                                             <outlet property="labelWaypointGuidanceInformation" destination="2Cd-df-cxe" id="fhO-Vq-JPw"/>
                                         </connections>
@@ -905,17 +833,14 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open Google Earth" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mrg-BY-ar6">
                                                             <rect key="frame" x="44" y="0.0" width="161" height="28"/>
-                                                            <animations/>
                                                             <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="google_earth" translatesAutoresizingMaskIntoConstraints="NO" id="Kjo-IH-YHJ">
                                                             <rect key="frame" x="0.0" y="0.0" width="40" height="28"/>
-                                                            <animations/>
                                                         </imageView>
                                                     </subviews>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstItem="Mrg-BY-ar6" firstAttribute="leading" secondItem="Kjo-IH-YHJ" secondAttribute="trailing" constant="4" id="2hf-6e-CEk"/>
                                                         <constraint firstAttribute="bottom" secondItem="Kjo-IH-YHJ" secondAttribute="bottom" id="5Zw-mk-eWH"/>
@@ -929,14 +854,12 @@
                                                     </constraints>
                                                 </view>
                                             </subviews>
-                                            <animations/>
                                             <constraints>
                                                 <constraint firstItem="J3t-5g-uSj" firstAttribute="top" secondItem="fPl-pf-IzX" secondAttribute="topMargin" id="3e6-Lt-0CN"/>
                                                 <constraint firstItem="J3t-5g-uSj" firstAttribute="centerX" secondItem="fPl-pf-IzX" secondAttribute="centerX" id="EMI-TN-YJE"/>
                                                 <constraint firstItem="J3t-5g-uSj" firstAttribute="bottom" secondItem="fPl-pf-IzX" secondAttribute="bottomMargin" id="pj6-po-ewi"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <animations/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="directions" rowHeight="44" id="Utx-Qz-KXf" customClass="SMDetailsInformationTableViewCell">
                                         <rect key="frame" x="0.0" y="734" width="600" height="44"/>
@@ -950,17 +873,14 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get Driving Directions" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6x-o0-dHD">
                                                             <rect key="frame" x="44" y="0.0" width="182" height="28"/>
-                                                            <animations/>
                                                             <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map" translatesAutoresizingMaskIntoConstraints="NO" id="iG4-3F-jDW">
                                                             <rect key="frame" x="0.0" y="0.0" width="40" height="28"/>
-                                                            <animations/>
                                                         </imageView>
                                                     </subviews>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstItem="g6x-o0-dHD" firstAttribute="leading" secondItem="iG4-3F-jDW" secondAttribute="trailing" constant="4" id="6YH-7G-xWi"/>
                                                         <constraint firstItem="g6x-o0-dHD" firstAttribute="leading" secondItem="iG4-3F-jDW" secondAttribute="trailing" constant="4" id="Eyf-hX-Nff"/>
@@ -975,14 +895,12 @@
                                                     </constraints>
                                                 </view>
                                             </subviews>
-                                            <animations/>
                                             <constraints>
                                                 <constraint firstItem="xrc-uM-fNd" firstAttribute="bottom" secondItem="Pce-RJ-l3E" secondAttribute="bottomMargin" id="BUU-dE-mF7"/>
                                                 <constraint firstItem="xrc-uM-fNd" firstAttribute="top" secondItem="Pce-RJ-l3E" secondAttribute="topMargin" id="ay8-Cc-coh"/>
                                                 <constraint firstItem="xrc-uM-fNd" firstAttribute="centerX" secondItem="Pce-RJ-l3E" secondAttribute="centerX" id="vxn-x6-6sJ"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <animations/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="images" id="rYV-v6-dgn" customClass="SMDetailsInformationTableViewCell">
                                         <rect key="frame" x="0.0" y="778" width="600" height="44"/>
@@ -990,9 +908,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rYV-v6-dgn" id="TDW-Gb-diR">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <animations/>
                                         </tableViewCellContentView>
-                                        <animations/>
                                         <accessibility key="accessibilityConfiguration">
                                             <accessibilityTraits key="traits" button="YES"/>
                                         </accessibility>
@@ -1000,7 +916,6 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <animations/>
                         <constraints>
                             <constraint firstItem="IO6-3q-E0Z" firstAttribute="top" secondItem="5VO-kt-fgf" secondAttribute="bottom" id="7vB-rz-QZC"/>
                             <constraint firstItem="5VO-kt-fgf" firstAttribute="leading" secondItem="Xk5-yW-wzU" secondAttribute="leading" id="JGb-3g-IEg"/>
@@ -1034,18 +949,15 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="90a-cF-b8f">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="TXn-bV-VWS"/>
                                 </constraints>
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bja-ab-gc8">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                                <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="XmK-w0-6k4" firstAttribute="top" secondItem="Bja-ab-gc8" secondAttribute="bottom" id="3tk-iB-JgJ"/>
@@ -1080,12 +992,10 @@
                         <subviews>
                             <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DMv-WO-27F">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pbh-fK-QJ1">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
-                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="NiO-yO-l1k"/>
                                 </constraints>
@@ -1116,7 +1026,6 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="iny-mr-3Yz" firstAttribute="top" secondItem="DMv-WO-27F" secondAttribute="bottom" id="GwD-fE-Il7"/>
@@ -1157,7 +1066,6 @@
                                 <subviews>
                                     <textView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6jl-gC-a6T" userLabel="Disclaimer Text">
                                         <rect key="frame" x="170" y="175" width="260" height="279"/>
-                                        <animations/>
                                         <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" priority="750" constant="279" id="Fcp-Sg-Lyz"/>
@@ -1170,7 +1078,6 @@
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ski Bozman" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RgU-7m-gN1" userLabel="Title" customClass="SMLabel">
                                         <rect key="frame" x="8" y="40" width="584" height="55"/>
-                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="SeQ-Eg-Y7g"/>
                                             <constraint firstAttribute="height" constant="55" id="p4f-AJ-yKg"/>
@@ -1186,7 +1093,6 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k25-nX-han">
                                         <rect key="frame" x="170" y="462" width="260" height="64"/>
-                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="64" id="cja-WV-KHt"/>
                                             <constraint firstAttribute="width" constant="260" id="r0o-Ok-moA"/>
@@ -1201,7 +1107,6 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="k25-nX-han" firstAttribute="centerX" secondItem="hZh-r9-IGu" secondAttribute="centerX" id="7zG-t1-3GS"/>
@@ -1223,7 +1128,6 @@
                                 </variation>
                             </view>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="hZh-r9-IGu" firstAttribute="top" secondItem="bgM-34-XQa" secondAttribute="top" id="NaA-ay-r4X"/>
@@ -1252,7 +1156,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XdJ-N7-WEa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1283,14 +1186,12 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pro Tips" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sjf-P9-14d">
                                                 <rect key="frame" x="8" y="8" width="584" height="25"/>
-                                                <animations/>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ylY-WI-R9U" userLabel="About This App">
                                                 <rect key="frame" x="8" y="41" width="584" height="169"/>
-                                                <animations/>
                                                 <string key="text">While viewing the maps, clicking the arrow icon in the upper right hand corner twice allows you to turn on the compass in the iPhone and rotate the maps depending on where you point the device.
 
 While still in cell coverage/on wifi, you can open Google Earth via the route page and scroll around the map to cache the aerial imagery on Google Earth.  Your device will store a limited amount of map data locally and allows you to use it offline.  This is very helpful for finding those hidden glades of glory or scoping your latest chute.</string>
@@ -1302,14 +1203,12 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data Discussion" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SpM-h1-DPU">
                                                 <rect key="frame" x="8" y="218" width="584" height="25"/>
-                                                <animations/>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CLs-qf-7Nu" userLabel="About This App">
                                                 <rect key="frame" x="8" y="251" width="584" height="208"/>
-                                                <animations/>
                                                 <string key="text">All map data, save for the ski info, is from publicly available datasets from around the web which have various data accuracies.  The elevation data in particular only has a resolution of 33ft, meaning lots of dangerous zones can’t be seen on the maps.  Make sure to check out the legend to understand what the shading represents on the terrain map and do take note that even if an area is green, if it is below avalanche terrain you can still be in a dangerous zone. While the data is an aid in safe travel, it should not be treated as fact given the resolution of the data doesn’t allow for small rollovers and other features that increase the slope angle to a dangerous angle to be displayed.  Use your brain just as you would have before you had access to this data.  Ski/Board safe, have fun, and don’t let the map data lull you into a false sense of security.</string>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1319,14 +1218,12 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get in Touch" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8z-Az-mG8">
                                                 <rect key="frame" x="8" y="467" width="584" height="25"/>
-                                                <animations/>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J9T-gL-ZPe">
                                                 <rect key="frame" x="8" y="534" width="584" height="34"/>
-                                                <animations/>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                 <state key="normal" title="www.bozemanskiguide.com"/>
                                                 <connections>
@@ -1335,14 +1232,12 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Disclaimer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AzD-x3-qk0">
                                                 <rect key="frame" x="8" y="705" width="584" height="22"/>
-                                                <animations/>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qAI-Wp-GRE">
                                                 <rect key="frame" x="8" y="588" width="584" height="34"/>
-                                                <animations/>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                 <state key="normal" title="ty@gneisssoftware.com"/>
                                                 <connections>
@@ -1351,21 +1246,18 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Need Support?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dIr-Ji-5dI">
                                                 <rect key="frame" x="8" y="568" width="584" height="20"/>
-                                                <animations/>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="14"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy Policy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xts-Qf-aG2">
                                                 <rect key="frame" x="8" y="630" width="584" height="20"/>
-                                                <animations/>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="14"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wEW-qv-A3c" userLabel="About This App">
                                                 <rect key="frame" x="8" y="735" width="584" height="227"/>
-                                                <animations/>
                                                 <string key="text">No warranty or guarantee of accuracy is either expressed or implied by the publishers of this app. GPS waypoints, maps, route descriptions and all other information should not be considered fact (i.e. it is beta) and shall always be superseded by your own observations in the backcountry. Map data has a resolution of about 33ft - this means a cliff as large as 32 feet may not even show up on the map. In addition, the GPS accuracy of your device may vary hugely in accuracy, and can be further impacted by trees, steep slopes and mountains. This app is not a substitute for hiring a professional guiding service or taking the appropriate amount of safety training. Weather and snow conditions often change rapidly — always make sure you take proper safety precautions, including but not limited to hiring a professional guide if you do not have professional avalanche and wilderness first aid training.</string>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1375,7 +1267,6 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5dO-eW-Au5">
                                                 <rect key="frame" x="8" y="970" width="584" height="34"/>
-                                                <animations/>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                 <state key="normal" title="Manage Subscriptions"/>
                                                 <connections>
@@ -1384,7 +1275,6 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ban-ov-FDx">
                                                 <rect key="frame" x="8" y="500" width="584" height="34"/>
-                                                <animations/>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                 <state key="normal" title="www.gneisssoftware.com"/>
                                                 <connections>
@@ -1393,7 +1283,6 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="26s-YH-8P8">
                                                 <rect key="frame" x="8" y="658" width="584" height="34"/>
-                                                <animations/>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                 <state key="normal" title="www.gneisssoftware.com/privacy"/>
                                                 <connections>
@@ -1401,7 +1290,6 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <animations/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="SpM-h1-DPU" firstAttribute="top" secondItem="ylY-WI-R9U" secondAttribute="bottom" constant="8" id="0Kt-AN-krz"/>
@@ -1450,7 +1338,6 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <animations/>
                                 <constraints>
                                     <constraint firstItem="p21-o7-4fb" firstAttribute="top" secondItem="cUs-cV-Qjz" secondAttribute="top" id="6Sx-vl-HSM"/>
                                     <constraint firstAttribute="trailing" secondItem="p21-o7-4fb" secondAttribute="trailing" id="cYK-y4-v9f"/>
@@ -1459,7 +1346,6 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="cUs-cV-Qjz" firstAttribute="top" secondItem="eP0-4P-qbO" secondAttribute="top" id="8ox-SU-iFs"/>
@@ -1489,12 +1375,10 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                         <subviews>
                             <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GcW-hP-vR5">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SeD-zW-fRh">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
-                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="orP-Vl-pjA"/>
                                 </constraints>
@@ -1525,7 +1409,6 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                                 </items>
                             </toolbar>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="SeD-zW-fRh" firstAttribute="leading" secondItem="brR-6u-06l" secondAttribute="leading" id="Oc0-Ba-xd7"/>

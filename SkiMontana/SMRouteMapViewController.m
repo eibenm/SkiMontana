@@ -41,6 +41,8 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
     self.gpsObjects = self.skiRoute.ski_route_gps;
     
     NSArray *mbtilesArray = [self.skiRoute.mbtiles componentsSeparatedByString:@"."];
+    
+    NSLog(@"%@", mbtilesArray);
 
     // Setting up Navigation Bar
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissViewController)];

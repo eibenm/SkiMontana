@@ -23,16 +23,18 @@ static CGFloat maxOffsetDiff = 46.0f;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet SMDetailsHeaderView *headerView;
 
-@property (nonatomic, strong) UIButton *backButton;
-@property (nonatomic, strong) UIDocumentInteractionController *docController;
-@property (nonatomic, strong) UIImageView *kmlImage;
-@property (nonatomic, strong) UILabel *kmlLabel;
-@property (nonatomic, assign) CGFloat offsetStartingY;
-@property (nonatomic, assign) CGFloat maxOffsetY;
-@property (nonatomic, assign) CGFloat routeTopContraintHeight;
-@property (nonatomic, strong) NSMutableArray *photos;
-@property (nonatomic, strong) CAGradientLayer *maskLayer;
-@property (nonatomic, assign) BOOL notesExist;
+@property (strong, nonatomic) UIButton *backButton;
+@property (strong, nonatomic) UIDocumentInteractionController *docController;
+@property (assign, nonatomic) CGFloat offsetStartingY;
+@property (assign, nonatomic) CGFloat maxOffsetY;
+@property (assign, nonatomic) CGFloat routeTopContraintHeight;
+@property (strong, nonatomic) NSMutableArray *photos;
+@property (strong, nonatomic) CAGradientLayer *maskLayer;
+@property (assign, nonatomic) BOOL notesExist;
+
+// Images Cell
+@property (strong, nonatomic) UIImageView *kmlImage;
+@property (strong, nonatomic) UILabel *kmlLabel;
 
 @end
 
@@ -206,6 +208,10 @@ static CGFloat maxOffsetDiff = 46.0f;
     
     if ([cellIdentifier isEqualToString:@"map"]) {
         (cell.imageMapBackground).image = [UIImage imageNamed:self.skiRoute.name_route];
+        (cell.mapTapLabel).layer.shadowOpacity = 1.0;
+        (cell.mapTapLabel).layer.shadowRadius = 4.0;
+        (cell.mapTapLabel).layer.shadowColor = [UIColor blackColor].CGColor;
+        (cell.mapTapLabel).layer.shadowOffset = CGSizeMake(0.0, 0.0);
     }
     else if ([cellIdentifier isEqualToString:@"content"]) {
         (cell.labelElevation).text = [NSString stringWithFormat:@"Elevation Gain: %@ ft", self.skiRoute.elevation_gain];
@@ -241,9 +247,7 @@ static CGFloat maxOffsetDiff = 46.0f;
         // Add KML Image
         NSString __block *kmlImage;
         NSSet *routeImages = (self.skiRoute).ski_route_images;
-        //NSLog(@"%@", routeImages);
         [routeImages enumerateObjectsUsingBlock:^(File *file, BOOL *stop) {
-            //NSLog(@"%@", file.filename);
             if ((file.kml_image).boolValue == YES) {
                 kmlImage = file.avatar;
                 *stop = YES;
@@ -263,13 +267,11 @@ static CGFloat maxOffsetDiff = 46.0f;
         (self.kmlLabel).text = @"View Route Images";
         (self.kmlLabel).textColor = [UIColor whiteColor];
         (self.kmlLabel).font = [UIFont fontWithName:@"Avenir Book" size:16.0f];
+        (self.kmlLabel).layer.shadowOpacity = 1.0;
+        (self.kmlLabel).layer.shadowRadius = 4.0;
         (self.kmlLabel).layer.shadowColor = [UIColor blackColor].CGColor;
-        (self.kmlLabel).layer.shadowRadius = 2.0f;
-        (self.kmlLabel).layer.shadowOpacity = 1.0f;
-        (self.kmlLabel).layer.shadowOffset = CGSizeZero;
-        (self.kmlLabel).layer.masksToBounds = NO;
+        (self.kmlLabel).layer.shadowOffset = CGSizeMake(0.0, 0.0);
         (self.kmlLabel).translatesAutoresizingMaskIntoConstraints = NO;
-        (self.kmlLabel).autoresizingMask = (UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin);
         [cell.contentView addSubview:self.kmlLabel];
         NSDictionary *labelViews = @{ @"kmlLabel":self.kmlLabel };
         [cell.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[kmlLabel]-8-|" options:kNilOptions metrics:nil views:labelViews]];
@@ -329,14 +331,11 @@ static CGFloat maxOffsetDiff = 46.0f;
     
     // If the map cell is selected, animate and then push to the next view controller
     if ([cell.reuseIdentifier isEqualToString:@"map"]) {
-        CABasicAnimation *pulseAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-        pulseAnimation.duration = 0.2f;
-        pulseAnimation.toValue = @1.1f;
-        pulseAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-        pulseAnimation.fillMode = kCAFillModeForwards;
-        pulseAnimation.removedOnCompletion = NO;
-        pulseAnimation.autoreverses = NO;
-        [CATransaction setCompletionBlock:^{
+        
+        [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            cell.imageMapBackground.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.1, 1.1);
+            cell.mapTapLabel.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.1, 1.1);
+        } completion:^(BOOL finished) {
             SMDetailsViewController *thisViewController = (SMDetailsViewController *) self;
             SMRouteMapViewController *modalController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"routeMapViewController"];
             SMSlideAnimation *layerAnimation = [[SMSlideAnimation alloc] initWithType:SMSlideAnimationFromRight];
@@ -344,20 +343,19 @@ static CGFloat maxOffsetDiff = 46.0f;
             modalController.transitioningDelegate = self.transitioningDelegate;
             modalController.skiRoute = self.skiRoute;
             [self presentViewController:modalController animated:YES completion:^{
-                [cell.imageMapBackground.layer removeAnimationForKey:pulseAnimation.keyPath];
-                [cell.mapTapLabel.layer removeAnimationForKey:pulseAnimation.keyPath];
+                cell.imageMapBackground.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.0, 1.0);
+                cell.mapTapLabel.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.0, 1.0);
             }];
         }];
-        [cell.imageMapBackground.layer addAnimation:pulseAnimation forKey:pulseAnimation.keyPath];
-        [cell.mapTapLabel.layer addAnimation:pulseAnimation forKey:pulseAnimation.keyPath];
+        
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
     
     else if ([cell.reuseIdentifier isEqualToString:@"images"]) {
         NSSet *routeImages = (self.skiRoute).ski_route_images;
         self.photos = [NSMutableArray array];
         for (File *file in routeImages) {
-            NSString *assetName = [file.avatar stringByDeletingPathExtension];
-            MWPhoto *photo = [MWPhoto photoWithImage:[UIImage imageNamed:assetName]];
+            MWPhoto *photo = [MWPhoto photoWithImage:[UIImage imageNamed:[file.avatar stringByDeletingPathExtension]]];
             //photo.caption = file.caption;
             [self.photos addObject:photo];
         }
@@ -372,42 +370,35 @@ static CGFloat maxOffsetDiff = 46.0f;
         browser.startOnGrid = NO;
         [browser setCurrentPhotoIndex:0];
         
-        // Animated image and label
-        CABasicAnimation *pulseAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-        pulseAnimation.duration = 0.2f;
-        pulseAnimation.toValue = @1.1f;
-        pulseAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-        pulseAnimation.fillMode = kCAFillModeForwards;
-        pulseAnimation.removedOnCompletion = NO;
-        pulseAnimation.autoreverses = NO;
-        [CATransaction setCompletionBlock:^{
+        [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            (self.kmlImage).transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.1, 1.1);
+            (self.kmlLabel).transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.1, 1.1);
+        } completion:^(BOOL finished) {
             // Push MWPhotoBrowser Controller
             [self.navigationController pushViewController:browser animated:YES];
-            // Remove animation 2 sec after pushed controller .... this is hacky
+            // Remove animation 1 sec after pushed controller .... this is hacky
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [(self.kmlImage).layer removeAnimationForKey:pulseAnimation.keyPath];
-                [(self.kmlLabel).layer removeAnimationForKey:pulseAnimation.keyPath];
+                (self.kmlImage).transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.0, 1.0);
+                (self.kmlLabel).transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.0, 1.0);
             });
         }];
-        [(self.kmlImage).layer addAnimation:pulseAnimation forKey:pulseAnimation.keyPath];
-        [(self.kmlLabel).layer addAnimation:pulseAnimation forKey:pulseAnimation.keyPath];
+        
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
     
     // Open up appropriate mapping App for directions to parking lot
     else if ([cell.reuseIdentifier isEqualToString:@"directions"]) {
         NSSet *gpsPoints = (self.skiRoute).ski_route_gps;
-        
-        double latitude = 40.0f;
-        double longitude = -180.0f;
-        
-        for (Gps *gps in gpsPoints) {
+        double __block latitude = 40.0f;
+        double __block longitude = -180.0f;
+        [gpsPoints enumerateObjectsUsingBlock:^(Gps *gps, BOOL *stop) {
             if ([gps.waypoint isEqualToString:@"Parking"]) {
                 latitude = gps.lat.doubleValue;
                 longitude = gps.lon.doubleValue;
+                *stop = YES;
             }
-        }
-        
+        }];
+
         // Google Maps: https://developers.google.com/maps/documentation/ios-sdk/urlscheme?hl=en
         // Apple Maps: https://developer.apple.com/library/ios/featuredarticles/iPhoneURLScheme_Reference/MapLinks/MapLinks.html
         

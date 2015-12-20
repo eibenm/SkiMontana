@@ -93,22 +93,9 @@
 		CB8694C71B09649200D4A93F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8694C61B09649200D4A93F /* CoreLocation.framework */; };
 		CB8694C91B09649D00D4A93F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8694C81B09649D00D4A93F /* QuartzCore.framework */; };
 		CB8694CE1B0A8B6300D4A93F /* CLLocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8694CD1B0A8B6300D4A93F /* CLLocationHelper.m */; };
-		CB8DD6721BE154A200CD8217 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB8DD6711BE154A200CD8217 /* Images.xcassets */; };
 		CB8DD67B1BE1BE9800CD8217 /* SMLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8DD67A1BE1BE9800CD8217 /* SMLabel.m */; };
-		CB8DD67D1BE1C2BF00CD8217 /* overviewMap.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CB8DD67C1BE1C29C00CD8217 /* overviewMap.mbtiles */; };
 		CB8DD6801BE1CB7E00CD8217 /* SMOverviewMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8DD67F1BE1CB7E00CD8217 /* SMOverviewMapViewController.m */; };
 		CB8F30A21BC4D3D600F4FA2C /* SMArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8F30A11BC4D3D600F4FA2C /* SMArrowView.m */; };
-		CB8F30AE1BCB021400F4FA2C /* beartoothPass.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CB8F30A31BCAFF0500F4FA2C /* beartoothPass.mbtiles */; };
-		CB8F30AF1BCB021400F4FA2C /* blackMountain.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CB8F30A41BCAFF0500F4FA2C /* blackMountain.mbtiles */; };
-		CB8F30B01BCB021400F4FA2C /* elephantheadMountain.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CB8F30A51BCAFF0500F4FA2C /* elephantheadMountain.mbtiles */; };
-		CB8F30B11BCB021400F4FA2C /* garnetMountain.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CB8F30A61BCAFF0500F4FA2C /* garnetMountain.mbtiles */; };
-		CB8F30B21BCB021400F4FA2C /* hyalite.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CB8F30A71BCAFF0500F4FA2C /* hyalite.mbtiles */; };
-		CB8F30B31BCB021400F4FA2C /* mtEllisChestnut.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CB8F30A81BCAFF0500F4FA2C /* mtEllisChestnut.mbtiles */; };
-		CB8F30B41BCB021400F4FA2C /* northernMadison.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CB8F30A91BCAFF0500F4FA2C /* northernMadison.mbtiles */; };
-		CB8F30B51BCB021400F4FA2C /* telemarkMeadows.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CB8F30AA1BCAFF0500F4FA2C /* telemarkMeadows.mbtiles */; };
-		CB8F30B61BCB021400F4FA2C /* theFin.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CB8F30AB1BCAFF0500F4FA2C /* theFin.mbtiles */; };
-		CB8F30B71BCB021400F4FA2C /* theSkillet.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CB8F30AC1BCAFF0500F4FA2C /* theSkillet.mbtiles */; };
-		CB8F30B81BCB021400F4FA2C /* theSphinx.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CB8F30AD1BCAFF0500F4FA2C /* theSphinx.mbtiles */; };
 		CB9695201A9A3EF6009757B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB96951F1A9A3EF6009757B7 /* main.m */; };
 		CB9695231A9A3EF6009757B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9695221A9A3EF6009757B7 /* AppDelegate.m */; };
 		CB96952E1A9A3EF6009757B7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB96952C1A9A3EF6009757B7 /* LaunchScreen.xib */; };
@@ -125,7 +112,6 @@
 		CB99FF611AB635940067E547 /* SMTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB99FF601AB635940067E547 /* SMTableViewController.m */; };
 		CB9C21251BA7635100D0D5DC /* SMGlossaryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9C21241BA7635100D0D5DC /* SMGlossaryTableViewController.m */; };
 		CB9C21281BA7726D00D0D5DC /* SMGlossaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9C21271BA7726D00D0D5DC /* SMGlossaryTableViewCell.m */; };
-		CB9C21301BA7ED5400D0D5DC /* bridgerRange.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CB9C212E1BA7EBD500D0D5DC /* bridgerRange.mbtiles */; };
 		CBA2B5EA1BCDE1C300B7C129 /* SMMapAttributionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA2B5E91BCDE1C300B7C129 /* SMMapAttributionViewController.m */; };
 		CBA338A31B8280F0001BA5FF /* SMDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA338961B8280F0001BA5FF /* SMDataManager.m */; };
 		CBA338AC1B82821F001BA5FF /* skiappdata.json in Resources */ = {isa = PBXBuildFile; fileRef = CBA338AB1B82821F001BA5FF /* skiappdata.json */; };
@@ -133,6 +119,7 @@
 		CBA338C31B82A3DD001BA5FF /* SkiDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBA338C11B82A3DD001BA5FF /* SkiDataModel.xcdatamodeld */; };
 		CBA338D91B82BACB001BA5FF /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA338D81B82BACB001BA5FF /* Reachability.m */; };
 		CBA338DC1B82BBD1001BA5FF /* SMReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA338DB1B82BBD1001BA5FF /* SMReachabilityManager.m */; };
+		CBB8A4BE1C274084007D5D0C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBB8A4BD1C274084007D5D0C /* Images.xcassets */; };
 		CBF160A31BE0626700B29232 /* SMRSSCurrentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF160A21BE0626700B29232 /* SMRSSCurrentViewController.m */; };
 		CBF466201BBE534F00791383 /* SCPStoreKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF4661F1BBE534F00791383 /* SCPStoreKitManager.m */; };
 		CBF466241BBE536500791383 /* NSError+SCPStoreKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF466231BBE536500791383 /* NSError+SCPStoreKitManager.m */; };
@@ -289,33 +276,18 @@
 		CB8694C81B09649D00D4A93F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CB8694CC1B0A8B6300D4A93F /* CLLocationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLocationHelper.h; sourceTree = "<group>"; };
 		CB8694CD1B0A8B6300D4A93F /* CLLocationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLocationHelper.m; sourceTree = "<group>"; };
-		CB8DD6711BE154A200CD8217 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CB8DD6791BE1BE9800CD8217 /* SMLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMLabel.h; sourceTree = "<group>"; };
 		CB8DD67A1BE1BE9800CD8217 /* SMLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMLabel.m; sourceTree = "<group>"; };
-		CB8DD67C1BE1C29C00CD8217 /* overviewMap.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = overviewMap.mbtiles; path = Tiles/overviewMap.mbtiles; sourceTree = "<group>"; };
 		CB8DD67E1BE1CB7E00CD8217 /* SMOverviewMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMOverviewMapViewController.h; sourceTree = "<group>"; };
 		CB8DD67F1BE1CB7E00CD8217 /* SMOverviewMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMOverviewMapViewController.m; sourceTree = "<group>"; };
 		CB8F30A01BC4D3D600F4FA2C /* SMArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMArrowView.h; sourceTree = "<group>"; };
 		CB8F30A11BC4D3D600F4FA2C /* SMArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMArrowView.m; sourceTree = "<group>"; };
-		CB8F30A31BCAFF0500F4FA2C /* beartoothPass.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = beartoothPass.mbtiles; path = Tiles/beartoothPass.mbtiles; sourceTree = "<group>"; };
-		CB8F30A41BCAFF0500F4FA2C /* blackMountain.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = blackMountain.mbtiles; path = Tiles/blackMountain.mbtiles; sourceTree = "<group>"; };
-		CB8F30A51BCAFF0500F4FA2C /* elephantheadMountain.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = elephantheadMountain.mbtiles; path = Tiles/elephantheadMountain.mbtiles; sourceTree = "<group>"; };
-		CB8F30A61BCAFF0500F4FA2C /* garnetMountain.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = garnetMountain.mbtiles; path = Tiles/garnetMountain.mbtiles; sourceTree = "<group>"; };
-		CB8F30A71BCAFF0500F4FA2C /* hyalite.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = hyalite.mbtiles; path = Tiles/hyalite.mbtiles; sourceTree = "<group>"; };
-		CB8F30A81BCAFF0500F4FA2C /* mtEllisChestnut.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = mtEllisChestnut.mbtiles; path = Tiles/mtEllisChestnut.mbtiles; sourceTree = "<group>"; };
-		CB8F30A91BCAFF0500F4FA2C /* northernMadison.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = northernMadison.mbtiles; path = Tiles/northernMadison.mbtiles; sourceTree = "<group>"; };
-		CB8F30AA1BCAFF0500F4FA2C /* telemarkMeadows.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = telemarkMeadows.mbtiles; path = Tiles/telemarkMeadows.mbtiles; sourceTree = "<group>"; };
-		CB8F30AB1BCAFF0500F4FA2C /* theFin.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = theFin.mbtiles; path = Tiles/theFin.mbtiles; sourceTree = "<group>"; };
-		CB8F30AC1BCAFF0500F4FA2C /* theSkillet.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = theSkillet.mbtiles; path = Tiles/theSkillet.mbtiles; sourceTree = "<group>"; };
-		CB8F30AD1BCAFF0500F4FA2C /* theSphinx.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = theSphinx.mbtiles; path = Tiles/theSphinx.mbtiles; sourceTree = "<group>"; };
 		CB96951A1A9A3EF6009757B7 /* SkiMontana.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkiMontana.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB96951E1A9A3EF6009757B7 /* SkiMontana-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SkiMontana-Info.plist"; sourceTree = "<group>"; };
 		CB96951F1A9A3EF6009757B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CB9695211A9A3EF6009757B7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CB9695221A9A3EF6009757B7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		CB96952D1A9A3EF6009757B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		CB9695381A9A3EF6009757B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CB9695391A9A3EF6009757B7 /* SkiMontanaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SkiMontanaTests.m; sourceTree = "<group>"; };
 		CB9695431A9A3FC1009757B7 /* SMIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMIntroViewController.h; sourceTree = "<group>"; };
 		CB9695441A9A3FC1009757B7 /* SMIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMIntroViewController.m; sourceTree = "<group>"; };
 		CB9695461A9A415F009757B7 /* SkiMontana-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SkiMontana-Prefix.pch"; sourceTree = "<group>"; };
@@ -343,7 +315,6 @@
 		CB9C21241BA7635100D0D5DC /* SMGlossaryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMGlossaryTableViewController.m; sourceTree = "<group>"; };
 		CB9C21261BA7726D00D0D5DC /* SMGlossaryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMGlossaryTableViewCell.h; sourceTree = "<group>"; };
 		CB9C21271BA7726D00D0D5DC /* SMGlossaryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMGlossaryTableViewCell.m; sourceTree = "<group>"; };
-		CB9C212E1BA7EBD500D0D5DC /* bridgerRange.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = bridgerRange.mbtiles; path = Tiles/bridgerRange.mbtiles; sourceTree = "<group>"; };
 		CBA2B5E81BCDE1C300B7C129 /* SMMapAttributionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMapAttributionViewController.h; sourceTree = "<group>"; };
 		CBA2B5E91BCDE1C300B7C129 /* SMMapAttributionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMapAttributionViewController.m; sourceTree = "<group>"; };
 		CBA338951B8280F0001BA5FF /* SMDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDataManager.h; sourceTree = "<group>"; };
@@ -356,6 +327,19 @@
 		CBA338D81B82BACB001BA5FF /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		CBA338DA1B82BBD1001BA5FF /* SMReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMReachabilityManager.h; sourceTree = "<group>"; };
 		CBA338DB1B82BBD1001BA5FF /* SMReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMReachabilityManager.m; sourceTree = "<group>"; };
+		CBB8A4BD1C274084007D5D0C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		CBB8A4CB1C2743DC007D5D0C /* absaroka.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = absaroka.mbtiles; path = Tiles/absaroka.mbtiles; sourceTree = "<group>"; };
+		CBB8A4CC1C2743DC007D5D0C /* beartoothPass.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = beartoothPass.mbtiles; path = Tiles/beartoothPass.mbtiles; sourceTree = "<group>"; };
+		CBB8A4CD1C2743DC007D5D0C /* bridgerRange.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = bridgerRange.mbtiles; path = Tiles/bridgerRange.mbtiles; sourceTree = "<group>"; };
+		CBB8A4CE1C2743DC007D5D0C /* garnetMountain.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = garnetMountain.mbtiles; path = Tiles/garnetMountain.mbtiles; sourceTree = "<group>"; };
+		CBB8A4CF1C2743DC007D5D0C /* hyalite.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = hyalite.mbtiles; path = Tiles/hyalite.mbtiles; sourceTree = "<group>"; };
+		CBB8A4D01C2743DC007D5D0C /* mtEllisChestnut.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = mtEllisChestnut.mbtiles; path = Tiles/mtEllisChestnut.mbtiles; sourceTree = "<group>"; };
+		CBB8A4D11C2743DC007D5D0C /* northernMadison.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = northernMadison.mbtiles; path = Tiles/northernMadison.mbtiles; sourceTree = "<group>"; };
+		CBB8A4D21C2743DC007D5D0C /* overviewMap.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = overviewMap.mbtiles; path = Tiles/overviewMap.mbtiles; sourceTree = "<group>"; };
+		CBB8A4D31C2743DC007D5D0C /* telemarkMeadows.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = telemarkMeadows.mbtiles; path = Tiles/telemarkMeadows.mbtiles; sourceTree = "<group>"; };
+		CBB8A4D41C2743DC007D5D0C /* theFin.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = theFin.mbtiles; path = Tiles/theFin.mbtiles; sourceTree = "<group>"; };
+		CBB8A4D51C2743DC007D5D0C /* theSkillet.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = theSkillet.mbtiles; path = Tiles/theSkillet.mbtiles; sourceTree = "<group>"; };
+		CBB8A4D61C2743DC007D5D0C /* theSphinx.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = theSphinx.mbtiles; path = Tiles/theSphinx.mbtiles; sourceTree = "<group>"; };
 		CBF160A11BE0626700B29232 /* SMRSSCurrentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRSSCurrentViewController.h; sourceTree = "<group>"; };
 		CBF160A21BE0626700B29232 /* SMRSSCurrentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRSSCurrentViewController.m; sourceTree = "<group>"; };
 		CBF4661E1BBE534F00791383 /* SCPStoreKitManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCPStoreKitManager.h; path = SkiMontana/SCPStoreKitManager/SCPStoreKitManager.h; sourceTree = "<group>"; };
@@ -573,7 +557,6 @@
 			isa = PBXGroup;
 			children = (
 				CB96951C1A9A3EF6009757B7 /* SkiMontana */,
-				CB9695361A9A3EF6009757B7 /* SkiMontanaTests */,
 				CB96951B1A9A3EF6009757B7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -618,7 +601,7 @@
 				CB4208A21AA3B94C00ADFA97 /* Catagories */,
 				CB96952C1A9A3EF6009757B7 /* LaunchScreen.xib */,
 				CB2B346E1BAE0C1D007067C3 /* Main.storyboard */,
-				CB8DD6711BE154A200CD8217 /* Images.xcassets */,
+				CBB8A4BD1C274084007D5D0C /* Images.xcassets */,
 				CB9C212F1BA7EBDB00D0D5DC /* MBTiles */,
 				CB4437F11BE45687004A4BEC /* KML */,
 				CB96951D1A9A3EF6009757B7 /* Supporting Files */,
@@ -635,23 +618,6 @@
 				CB96951E1A9A3EF6009757B7 /* SkiMontana-Info.plist */,
 				CB9695461A9A415F009757B7 /* SkiMontana-Prefix.pch */,
 				CB96951F1A9A3EF6009757B7 /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		CB9695361A9A3EF6009757B7 /* SkiMontanaTests */ = {
-			isa = PBXGroup;
-			children = (
-				CB9695391A9A3EF6009757B7 /* SkiMontanaTests.m */,
-				CB9695371A9A3EF6009757B7 /* Supporting Files */,
-			);
-			path = SkiMontanaTests;
-			sourceTree = "<group>";
-		};
-		CB9695371A9A3EF6009757B7 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				CB9695381A9A3EF6009757B7 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -708,19 +674,18 @@
 		CB9C212F1BA7EBDB00D0D5DC /* MBTiles */ = {
 			isa = PBXGroup;
 			children = (
-				CB8DD67C1BE1C29C00CD8217 /* overviewMap.mbtiles */,
-				CB8F30A31BCAFF0500F4FA2C /* beartoothPass.mbtiles */,
-				CB8F30A41BCAFF0500F4FA2C /* blackMountain.mbtiles */,
-				CB9C212E1BA7EBD500D0D5DC /* bridgerRange.mbtiles */,
-				CB8F30A51BCAFF0500F4FA2C /* elephantheadMountain.mbtiles */,
-				CB8F30A61BCAFF0500F4FA2C /* garnetMountain.mbtiles */,
-				CB8F30A71BCAFF0500F4FA2C /* hyalite.mbtiles */,
-				CB8F30A81BCAFF0500F4FA2C /* mtEllisChestnut.mbtiles */,
-				CB8F30A91BCAFF0500F4FA2C /* northernMadison.mbtiles */,
-				CB8F30AA1BCAFF0500F4FA2C /* telemarkMeadows.mbtiles */,
-				CB8F30AB1BCAFF0500F4FA2C /* theFin.mbtiles */,
-				CB8F30AC1BCAFF0500F4FA2C /* theSkillet.mbtiles */,
-				CB8F30AD1BCAFF0500F4FA2C /* theSphinx.mbtiles */,
+				CBB8A4CB1C2743DC007D5D0C /* absaroka.mbtiles */,
+				CBB8A4CC1C2743DC007D5D0C /* beartoothPass.mbtiles */,
+				CBB8A4CD1C2743DC007D5D0C /* bridgerRange.mbtiles */,
+				CBB8A4CE1C2743DC007D5D0C /* garnetMountain.mbtiles */,
+				CBB8A4CF1C2743DC007D5D0C /* hyalite.mbtiles */,
+				CBB8A4D01C2743DC007D5D0C /* mtEllisChestnut.mbtiles */,
+				CBB8A4D11C2743DC007D5D0C /* northernMadison.mbtiles */,
+				CBB8A4D21C2743DC007D5D0C /* overviewMap.mbtiles */,
+				CBB8A4D31C2743DC007D5D0C /* telemarkMeadows.mbtiles */,
+				CBB8A4D41C2743DC007D5D0C /* theFin.mbtiles */,
+				CBB8A4D51C2743DC007D5D0C /* theSkillet.mbtiles */,
+				CBB8A4D61C2743DC007D5D0C /* theSphinx.mbtiles */,
 			);
 			name = MBTiles;
 			sourceTree = "<group>";
@@ -893,20 +858,7 @@
 				CB4438081BE45958004A4BEC /* The Sphinx.kmz in Resources */,
 				CB4438091BE45958004A4BEC /* Truman Gulch.kmz in Resources */,
 				CB44380A1BE45958004A4BEC /* Yellow Mountain.kmz in Resources */,
-				CB8DD67D1BE1C2BF00CD8217 /* overviewMap.mbtiles in Resources */,
-				CB8F30AE1BCB021400F4FA2C /* beartoothPass.mbtiles in Resources */,
-				CB8F30AF1BCB021400F4FA2C /* blackMountain.mbtiles in Resources */,
-				CB9C21301BA7ED5400D0D5DC /* bridgerRange.mbtiles in Resources */,
-				CB8F30B01BCB021400F4FA2C /* elephantheadMountain.mbtiles in Resources */,
-				CB8F30B11BCB021400F4FA2C /* garnetMountain.mbtiles in Resources */,
-				CB8F30B21BCB021400F4FA2C /* hyalite.mbtiles in Resources */,
-				CB8F30B31BCB021400F4FA2C /* mtEllisChestnut.mbtiles in Resources */,
-				CB8F30B41BCB021400F4FA2C /* northernMadison.mbtiles in Resources */,
-				CB8F30B51BCB021400F4FA2C /* telemarkMeadows.mbtiles in Resources */,
-				CB8DD6721BE154A200CD8217 /* Images.xcassets in Resources */,
-				CB8F30B61BCB021400F4FA2C /* theFin.mbtiles in Resources */,
-				CB8F30B71BCB021400F4FA2C /* theSkillet.mbtiles in Resources */,
-				CB8F30B81BCB021400F4FA2C /* theSphinx.mbtiles in Resources */,
+				CBB8A4BE1C274084007D5D0C /* Images.xcassets in Resources */,
 				CB8694C41B09639B00D4A93F /* Mapbox.bundle in Resources */,
 				CB4208E61AA3FA6C00ADFA97 /* database.sqlite in Resources */,
 				CB96952E1A9A3EF6009757B7 /* LaunchScreen.xib in Resources */,
@@ -1115,7 +1067,7 @@
 				GCC_PREFIX_HEADER = "SkiMontana/SkiMontana-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEV=1",
-					"TRIAL=1",
+					"TRIAL=0",
 					"$(inherited)",
 				);
 				HEADER_SEARCH_PATHS = (
