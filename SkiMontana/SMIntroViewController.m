@@ -95,7 +95,7 @@
     
     emitterLayer.emitterCells = @[emitterCell];
     
-    [self.backgroundView.layer addSublayer:emitterLayer];
+    //[self.backgroundView.layer addSublayer:emitterLayer];
 }
 
 -(void) viewWillAppear:(BOOL)animated

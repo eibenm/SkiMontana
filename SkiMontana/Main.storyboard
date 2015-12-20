@@ -1065,11 +1065,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6jl-gC-a6T" userLabel="Disclaimer Text">
-                                        <rect key="frame" x="170" y="175" width="260" height="279"/>
+                                        <rect key="frame" x="170" y="219" width="260" height="279"/>
                                         <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" priority="750" constant="279" id="Fcp-Sg-Lyz"/>
-                                            <constraint firstAttribute="width" constant="260" id="kVy-DP-GHe"/>
+                                            <constraint firstAttribute="height" priority="750" constant="279" id="NwB-kZ-R3a"/>
+                                            <constraint firstAttribute="width" constant="260" id="r5Q-FS-pCg"/>
                                         </constraints>
                                         <string key="text">Backcountry skiing is an inherently dangerous activity, and this app is not a substitute for taking the proper safety precautions or having professional training in the skills you need to stay safe. By continuing, you agree to read the full disclaimer in the “About” section of the app, and accept your own liability for any travel that results from use of this app.</string>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1080,7 +1080,7 @@
                                         <rect key="frame" x="8" y="40" width="584" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="SeQ-Eg-Y7g"/>
-                                            <constraint firstAttribute="height" constant="55" id="p4f-AJ-yKg"/>
+                                            <constraint firstAttribute="height" constant="55" id="lG8-UN-zEc"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="40"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1092,10 +1092,10 @@
                                         </variation>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k25-nX-han">
-                                        <rect key="frame" x="170" y="462" width="260" height="64"/>
+                                        <rect key="frame" x="170" y="506" width="260" height="64"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="64" id="cja-WV-KHt"/>
-                                            <constraint firstAttribute="width" constant="260" id="r0o-Ok-moA"/>
+                                            <constraint firstAttribute="width" constant="260" id="Sjf-g3-Iq1"/>
+                                            <constraint firstAttribute="height" constant="64" id="hhN-wR-eNY"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="25"/>
                                         <state key="normal" title="I Agree">
@@ -1106,34 +1106,37 @@
                                             <action selector="startSkiingAction:" destination="amG-dg-XFq" eventType="touchUpInside" id="PFS-k6-uPH"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="warning" translatesAutoresizingMaskIntoConstraints="NO" id="S3m-hU-fq6">
+                                        <rect key="frame" x="170" y="136" width="260" height="75"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="260" id="8I9-CL-axR"/>
+                                            <constraint firstAttribute="height" constant="75" id="yaX-6j-M3n"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="k25-nX-han" firstAttribute="centerX" secondItem="hZh-r9-IGu" secondAttribute="centerX" id="7zG-t1-3GS"/>
-                                    <constraint firstItem="RgU-7m-gN1" firstAttribute="leading" secondItem="hZh-r9-IGu" secondAttribute="leading" constant="8" id="9y6-s4-AFA"/>
-                                    <constraint firstItem="6jl-gC-a6T" firstAttribute="top" relation="greaterThanOrEqual" secondItem="RgU-7m-gN1" secondAttribute="bottom" constant="10" id="P4D-sO-Cu5"/>
-                                    <constraint firstItem="k25-nX-han" firstAttribute="leading" secondItem="hZh-r9-IGu" secondAttribute="leading" constant="30" id="ZU8-qr-E4B"/>
-                                    <constraint firstAttribute="trailing" secondItem="RgU-7m-gN1" secondAttribute="trailing" constant="8" id="dq0-s8-yhv"/>
-                                    <constraint firstItem="6jl-gC-a6T" firstAttribute="centerX" secondItem="hZh-r9-IGu" secondAttribute="centerX" id="iUA-8W-mgg"/>
-                                    <constraint firstItem="RgU-7m-gN1" firstAttribute="top" secondItem="hZh-r9-IGu" secondAttribute="top" constant="40" id="jcD-Ih-G2n"/>
-                                    <constraint firstAttribute="bottom" secondItem="k25-nX-han" secondAttribute="bottom" constant="74" id="rmv-99-0GH"/>
-                                    <constraint firstAttribute="trailing" secondItem="k25-nX-han" secondAttribute="trailing" constant="30" id="vW2-e0-vjE"/>
-                                    <constraint firstItem="k25-nX-han" firstAttribute="top" secondItem="6jl-gC-a6T" secondAttribute="bottom" constant="8" id="wP5-FN-7Eb"/>
+                                    <constraint firstItem="6jl-gC-a6T" firstAttribute="top" secondItem="S3m-hU-fq6" secondAttribute="bottom" constant="8" id="10g-wJ-vS3"/>
+                                    <constraint firstItem="RgU-7m-gN1" firstAttribute="top" secondItem="hZh-r9-IGu" secondAttribute="top" constant="40" id="1d7-Bq-Jnn"/>
+                                    <constraint firstAttribute="trailing" secondItem="RgU-7m-gN1" secondAttribute="trailing" constant="8" id="1vH-h2-lnW"/>
+                                    <constraint firstItem="S3m-hU-fq6" firstAttribute="centerX" secondItem="hZh-r9-IGu" secondAttribute="centerX" id="3yh-Fa-8Zz"/>
+                                    <constraint firstAttribute="bottom" secondItem="k25-nX-han" secondAttribute="bottom" constant="30" id="69Z-Ip-IZU"/>
+                                    <constraint firstItem="RgU-7m-gN1" firstAttribute="leading" secondItem="hZh-r9-IGu" secondAttribute="leading" constant="8" id="9Qo-LD-yo5"/>
+                                    <constraint firstItem="k25-nX-han" firstAttribute="top" secondItem="6jl-gC-a6T" secondAttribute="bottom" constant="8" id="RhM-ix-I6h"/>
+                                    <constraint firstItem="k25-nX-han" firstAttribute="top" secondItem="6jl-gC-a6T" secondAttribute="bottom" constant="8" id="WiH-zG-sSi"/>
+                                    <constraint firstItem="k25-nX-han" firstAttribute="centerX" secondItem="hZh-r9-IGu" secondAttribute="centerX" id="XO7-5O-7Ej"/>
+                                    <constraint firstItem="6jl-gC-a6T" firstAttribute="centerX" secondItem="hZh-r9-IGu" secondAttribute="centerX" id="aoW-II-oad"/>
+                                    <constraint firstItem="S3m-hU-fq6" firstAttribute="top" relation="greaterThanOrEqual" secondItem="RgU-7m-gN1" secondAttribute="bottom" constant="10" id="hop-hf-CPJ"/>
+                                    <constraint firstItem="6jl-gC-a6T" firstAttribute="top" secondItem="S3m-hU-fq6" secondAttribute="bottom" constant="8" id="mku-Oc-lGm"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="ZU8-qr-E4B"/>
-                                        <exclude reference="vW2-e0-vjE"/>
-                                    </mask>
-                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="hZh-r9-IGu" firstAttribute="top" secondItem="bgM-34-XQa" secondAttribute="top" id="NaA-ay-r4X"/>
-                            <constraint firstAttribute="trailing" secondItem="hZh-r9-IGu" secondAttribute="trailing" id="YsY-vQ-IgH"/>
-                            <constraint firstItem="BQV-yn-bgl" firstAttribute="top" secondItem="hZh-r9-IGu" secondAttribute="bottom" id="vxQ-Cg-jn2"/>
-                            <constraint firstItem="hZh-r9-IGu" firstAttribute="leading" secondItem="bgM-34-XQa" secondAttribute="leading" id="x9f-qr-buC"/>
+                            <constraint firstItem="hZh-r9-IGu" firstAttribute="top" secondItem="bgM-34-XQa" secondAttribute="top" id="27d-HA-aFl"/>
+                            <constraint firstItem="hZh-r9-IGu" firstAttribute="leading" secondItem="bgM-34-XQa" secondAttribute="leading" id="CMb-6e-kCN"/>
+                            <constraint firstItem="BQV-yn-bgl" firstAttribute="top" secondItem="hZh-r9-IGu" secondAttribute="bottom" id="g4b-RF-ivQ"/>
+                            <constraint firstAttribute="trailing" secondItem="hZh-r9-IGu" secondAttribute="trailing" id="lYs-eN-aLn"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="aGK-lt-Wu2"/>
@@ -1443,5 +1446,6 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
     <resources>
         <image name="google_earth" width="40" height="40"/>
         <image name="map" width="40" height="40"/>
+        <image name="warning" width="300" height="263"/>
     </resources>
 </document>
