@@ -53,6 +53,8 @@
 		CB4438291BE832A2004A4BEC /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = CB44381D1BE832A2004A4BEC /* File.m */; };
 		CB44382A1BE832A2004A4BEC /* Gps+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CB44381F1BE832A2004A4BEC /* Gps+CoreDataProperties.m */; };
 		CB44382B1BE832A2004A4BEC /* Gps.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4438211BE832A2004A4BEC /* Gps.m */; };
+		CB4597891C3369E000648372 /* RSSDataLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB4597881C3369E000648372 /* RSSDataLoadingView.xib */; };
+		CB45978C1C336B1900648372 /* RSSDataLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB45978B1C336B1900648372 /* RSSDataLoadingView.m */; };
 		CB4D92941BEC789000E889A5 /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4D92791BEC789000E889A5 /* NSIndexPath+PSTCollectionViewAdditions.m */; };
 		CB4D92951BEC789000E889A5 /* PSTCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4D927B1BEC789000E889A5 /* PSTCollectionView.m */; };
 		CB4D92961BEC789000E889A5 /* PSTCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4D927D1BEC789000E889A5 /* PSTCollectionViewCell.m */; };
@@ -210,6 +212,9 @@
 		CB4438201BE832A2004A4BEC /* Gps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Gps.h; path = NSManagedObjects/Gps.h; sourceTree = "<group>"; };
 		CB4438211BE832A2004A4BEC /* Gps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Gps.m; path = NSManagedObjects/Gps.m; sourceTree = "<group>"; };
 		CB44382C1BE83328004A4BEC /* SMManagedObjects.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SMManagedObjects.h; path = NSManagedObjects/SMManagedObjects.h; sourceTree = "<group>"; };
+		CB4597881C3369E000648372 /* RSSDataLoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RSSDataLoadingView.xib; sourceTree = "<group>"; };
+		CB45978A1C336B1900648372 /* RSSDataLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSDataLoadingView.h; sourceTree = "<group>"; };
+		CB45978B1C336B1900648372 /* RSSDataLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSDataLoadingView.m; sourceTree = "<group>"; };
 		CB4D92781BEC789000E889A5 /* NSIndexPath+PSTCollectionViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSIndexPath+PSTCollectionViewAdditions.h"; path = "SkiMontana/PSTCollectionView/NSIndexPath+PSTCollectionViewAdditions.h"; sourceTree = "<group>"; };
 		CB4D92791BEC789000E889A5 /* NSIndexPath+PSTCollectionViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSIndexPath+PSTCollectionViewAdditions.m"; path = "SkiMontana/PSTCollectionView/NSIndexPath+PSTCollectionViewAdditions.m"; sourceTree = "<group>"; };
 		CB4D927A1BEC789000E889A5 /* PSTCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PSTCollectionView.h; path = SkiMontana/PSTCollectionView/PSTCollectionView.h; sourceTree = "<group>"; };
@@ -406,6 +411,9 @@
 				CB1112001BDA8B5C00B41862 /* RSSHeaderView.xib */,
 				CB7E02C81BDACF4400F19328 /* RSSHeaderView.h */,
 				CB7E02C91BDACF4400F19328 /* RSSHeaderView.m */,
+				CB4597881C3369E000648372 /* RSSDataLoadingView.xib */,
+				CB45978A1C336B1900648372 /* RSSDataLoadingView.h */,
+				CB45978B1C336B1900648372 /* RSSDataLoadingView.m */,
 			);
 			name = "RSS Feed";
 			sourceTree = "<group>";
@@ -862,6 +870,7 @@
 				CB4437F51BE45958004A4BEC /* Beehive to Bear Basin.kmz in Resources */,
 				CB4437F61BE45958004A4BEC /* Black Mountain.kmz in Resources */,
 				CB4437F71BE45958004A4BEC /* Bridger Bowl.kmz in Resources */,
+				CB4597891C3369E000648372 /* RSSDataLoadingView.xib in Resources */,
 				CB4437F81BE45958004A4BEC /* Buttcrack Chute.kmz in Resources */,
 				CB4437F91BE45958004A4BEC /* Deer Creek.kmz in Resources */,
 				CB4437FA1BE45958004A4BEC /* Dudley Creek.kmz in Resources */,
@@ -933,6 +942,7 @@
 				CB99FF4E1AB634270067E547 /* SMViewController.m in Sources */,
 				CBF160A31BE0626700B29232 /* SMRSSCurrentViewController.m in Sources */,
 				CBA338D91B82BACB001BA5FF /* Reachability.m in Sources */,
+				CB45978C1C336B1900648372 /* RSSDataLoadingView.m in Sources */,
 				CBF4662E1BBE537F00791383 /* SCPStoreKitIAPReceipt.m in Sources */,
 				CB4D92971BEC789000E889A5 /* PSTCollectionViewController.m in Sources */,
 				CB4438261BE832A2004A4BEC /* SkiAreas+CoreDataProperties.m in Sources */,

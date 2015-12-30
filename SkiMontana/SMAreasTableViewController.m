@@ -48,8 +48,8 @@ static NSString *cellIdentifier;
 
     self.title = @"Ski Bozeman";
     
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
+    (self.tableView).delegate = self;
+    (self.tableView).dataSource = self;
     
     self.managedObjectContext = [SMDataManager sharedInstance].managedObjectContext;
     self.routeSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name_route" ascending:YES];
@@ -257,15 +257,15 @@ static NSString *cellIdentifier;
             NSForegroundColorAttributeName: [UIColor whiteColor]
         };
         
-        (cell.routeTitle).attributedText = [[NSAttributedString alloc] initWithString:(skiRoute.name_route).uppercaseString attributes:underlineAttribute];
-        (cell.routeQuip).text = skiRoute.quip;
-        (cell.routeQuip).textColor = [UIColor whiteColor];
-        (cell.routeVertical).text = [NSString stringWithFormat:@"Vertical: %@", skiRoute.vertical];
-        (cell.routeVertical).textColor = [UIColor whiteColor];
-        (cell.routeElevationGain).text = [NSString stringWithFormat:@"Elevation Gain: %@ ft", skiRoute.elevation_gain];
-        (cell.routeElevationGain).textColor = [UIColor whiteColor];
-        (cell.routeDistance).text = [NSString stringWithFormat:@"Distance: ~%@ mi", skiRoute.distance];
-        (cell.routeDistance).textColor = [UIColor whiteColor];
+        cell.routeTitle.attributedText = [[NSAttributedString alloc] initWithString:(skiRoute.name_route).uppercaseString attributes:underlineAttribute];
+        cell.routeQuip.text = skiRoute.quip;
+        cell.routeQuip.textColor = [UIColor whiteColor];
+        cell.routeVertical.text = [NSString stringWithFormat:@"Vertical: %@", skiRoute.vertical];
+        cell.routeVertical.textColor = [UIColor whiteColor];
+        cell.routeElevationGain.text = [NSString stringWithFormat:@"Elevation Gain: %@ ft", skiRoute.elevation_gain];
+        cell.routeElevationGain.textColor = [UIColor whiteColor];
+        cell.routeDistance.text = [NSString stringWithFormat:@"Distance: ~%@ mi", skiRoute.distance];
+        cell.routeDistance.textColor = [UIColor whiteColor];
         cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:arrowRight]];
     }
     

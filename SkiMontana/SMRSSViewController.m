@@ -17,6 +17,7 @@
 #import <CFNetwork/CFNetwork.h>
 
 #import "RSSHeaderView.h"
+#import "RSSDataLoadingView.h"
 
 @interface SMRSSViewController () <UITableViewDelegate, UITableViewDataSource, SFSafariViewControllerDelegate>
 
@@ -29,14 +30,40 @@
 
 @implementation SMRSSViewController
 
+- (void)setupDataLoadingView
+{
+    RSSDataLoadingView *dataLoadingView = [RSSDataLoadingView new];
+    
+    [self.view addSubview:dataLoadingView];
+    
+    // Centering data loading view
+    NSLayoutConstraint *horizonalCenterConstraint = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:dataLoadingView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];
+    NSLayoutConstraint *verticalCenterConstraint = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:dataLoadingView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0];
+    
+    dataLoadingView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addConstraint:horizonalCenterConstraint];
+    [self.view addConstraint:verticalCenterConstraint];
+}
+
+- (void)removeDataLoadingView
+{
+    for (id view in self.view.subviews) {
+        if ([view isKindOfClass:[RSSDataLoadingView class]]) {
+            [(RSSDataLoadingView *)view removeFromSuperview];
+        }
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    [self setupDataLoadingView];
+    
     self.title = @"GNFAC Advisory";
     
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
+    (self.tableView).delegate = self;
+    (self.tableView).dataSource = self;
     
     self.avyFeedList = [NSMutableArray array];
     
@@ -64,7 +91,7 @@
             }
             else {
                 NSString *errorString = NSLocalizedString(@"HTTP Error", @"Error message displayed when receving a connection error.");
-                NSDictionary *userInfo = @{ NSLocalizedDescriptionKey :errorString };
+                NSDictionary *userInfo = @{ NSLocalizedDescriptionKey: errorString };
                 NSError *reportError = [NSError errorWithDomain:@"HTTP" code:httpResponse.statusCode userInfo:userInfo];
                 [self handleError:reportError];
             }
@@ -113,16 +140,18 @@
     [alertView show];
 }
 
-- (void)addAvyFeeds:(NSNotification *)notif
+- (void)addAvyFeeds:(NSNotification *)notification
 {
     assert([NSThread isMainThread]);
-    [self addAvyFeedsToList:[[notif userInfo] valueForKey:kAvyFeedResultsKey]];
+    [self removeDataLoadingView];
+    [self addAvyFeedsToList:[notification.userInfo valueForKey:kAvyFeedResultsKey]];
 }
 
-- (void)avyFeedsError:(NSNotification *)notif
+- (void)avyFeedsError:(NSNotification *)notification
 {
     assert([NSThread isMainThread]);
-    [self handleError:[[notif userInfo] valueForKey:kAvyFeedMessageErrorKey]];
+    [self removeDataLoadingView];
+    [self handleError:[notification.userInfo valueForKey:kAvyFeedMessageErrorKey]];
 }
 
 - (void)localeChanged:(NSNotification *)notif

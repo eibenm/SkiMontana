@@ -1377,7 +1377,7 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GcW-hP-vR5">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SeD-zW-fRh">
@@ -1416,7 +1416,7 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                         <constraints>
                             <constraint firstItem="SeD-zW-fRh" firstAttribute="leading" secondItem="brR-6u-06l" secondAttribute="leading" id="Oc0-Ba-xd7"/>
                             <constraint firstAttribute="trailing" secondItem="GcW-hP-vR5" secondAttribute="trailing" id="aJi-Kg-syc"/>
-                            <constraint firstItem="vhq-qO-ZhO" firstAttribute="top" secondItem="GcW-hP-vR5" secondAttribute="bottom" id="cIa-sQ-n39"/>
+                            <constraint firstItem="vhq-qO-ZhO" firstAttribute="top" secondItem="GcW-hP-vR5" secondAttribute="bottom" constant="44" id="cIa-sQ-n39"/>
                             <constraint firstItem="GcW-hP-vR5" firstAttribute="leading" secondItem="brR-6u-06l" secondAttribute="leading" id="duh-Yv-STU"/>
                             <constraint firstItem="vhq-qO-ZhO" firstAttribute="top" secondItem="SeD-zW-fRh" secondAttribute="bottom" id="hBA-qy-uIy"/>
                             <constraint firstAttribute="trailing" secondItem="SeD-zW-fRh" secondAttribute="trailing" id="rnr-LE-BVs"/>

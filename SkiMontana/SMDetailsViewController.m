@@ -245,14 +245,15 @@ static CGFloat maxOffsetDiff = 46.0f;
     }
     else if ([cellIdentifier isEqualToString:@"images"]) {
         // Add KML Image
-        NSString __block *kmlImage;
-        NSSet *routeImages = (self.skiRoute).ski_route_images;
-        [routeImages enumerateObjectsUsingBlock:^(File *file, BOOL *stop) {
-            if ((file.kml_image).boolValue == YES) {
+        NSString *kmlImage;
+        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"filename" ascending:YES];
+        NSArray *routeImages = [(self.skiRoute).ski_route_images sortedArrayUsingDescriptors:@[sortDescriptor]];
+        for (File *file in routeImages) {
+            if (file.kml_image.boolValue == YES) {
                 kmlImage = file.avatar;
-                *stop = YES;
+                break;
             }
-        }];
+        }
         self.kmlImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kmlImage]];
         (self.kmlImage).contentMode = UIViewContentModeScaleAspectFill;
         (self.kmlImage).translatesAutoresizingMaskIntoConstraints = NO;

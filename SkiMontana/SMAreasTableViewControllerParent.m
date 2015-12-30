@@ -53,6 +53,20 @@
             [self requestProductsWithProductIdentifiers:self.productIdentifiers];
         }
     }
+    
+    // Adding button that returns to splash view
+    UIButton *homeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    homeButton.frame = CGRectMake(0, 0, 30, 30);
+    homeButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [homeButton setImage:[UIImage imageNamed:@"warning"] forState:UIControlStateNormal];
+    [homeButton addTarget:self action:@selector(popToSplashView) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *homeItem = [[UIBarButtonItem alloc] initWithCustomView:homeButton];
+    self.navigationItem.leftBarButtonItem = homeItem;
+}
+
+- (void)popToSplashView
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Display message
@@ -84,14 +98,14 @@
         NSLog(@"Receipt: %@", receipt.fullDescription);
         
         // Getting latest transaction
-        __block SCPStoreKitIAPReceipt *lastTransaction;
-        [receipt.inAppPurchases enumerateObjectsUsingBlock:^(SCPStoreKitIAPReceipt *iapReceipt, NSUInteger idx, BOOL *stop) {
+        SCPStoreKitIAPReceipt *lastTransaction;
+        for (SCPStoreKitIAPReceipt *iapReceipt in receipt.inAppPurchases) {
             if ([self.productIdentifiers containsObject:iapReceipt.productIdentifier]) {
                 if (!lastTransaction || [iapReceipt.subscriptionExpiryDate compare:lastTransaction.subscriptionExpiryDate] == NSOrderedDescending) {
                     lastTransaction = iapReceipt;
                 }
             }
-        }];
+        }
         
         NSLog(@"Latest receipt: %@", lastTransaction);
         
@@ -118,14 +132,14 @@
         NSLog(@"Receipt: %@", receipt.fullDescription);
         
         // Getting latest transaction
-        __block SCPStoreKitIAPReceipt *lastTransaction;
-        [receipt.inAppPurchases enumerateObjectsUsingBlock:^(SCPStoreKitIAPReceipt *iapReceipt, NSUInteger idx, BOOL *stop) {
+        SCPStoreKitIAPReceipt *lastTransaction;
+        for (SCPStoreKitIAPReceipt *iapReceipt in receipt.inAppPurchases) {
             if ([self.productIdentifiers containsObject:iapReceipt.productIdentifier]) {
                 if (!lastTransaction || [iapReceipt.subscriptionExpiryDate compare:lastTransaction.subscriptionExpiryDate] == NSOrderedDescending) {
                     lastTransaction = iapReceipt;
                 }
             }
-        }];
+        }
         
         NSLog(@"Latest receipt cancellation date: %@", lastTransaction.cancellationDate);
         
@@ -165,12 +179,12 @@
 {
     [[SCPStoreKitManager sharedInstance] restorePurchasesPaymentTransactionStateRestored:^(NSArray *transactions) {
         // Check if transaction is one of ours and verify receipt before unlocking
-        [transactions enumerateObjectsUsingBlock:^(SKPaymentTransaction *transation, NSUInteger idx, BOOL *stop) {
-            if ([self.productIdentifiers containsObject:transation.payment.productIdentifier]) {
+        for (SKPaymentTransaction *transaction in transactions) {
+            if ([self.productIdentifiers containsObject:transaction.payment.productIdentifier]) {
                 [self checkReceiptsForSubscriptionChange];
-                *stop = YES;
+                break;
             }
-        }];
+        }
     } paymentTransactionStateFailed:^(NSArray *transactions) {
         NSLog(@"Failed to restore transactions : %@", transactions);
         [self alertWithTitle:@"Subscription Restore" message:@"Your subscription restoration failed"];

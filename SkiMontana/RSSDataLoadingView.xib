@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RSSDataLoadingView">
+            <connections>
+                <outlet property="view" destination="iN0-l3-epB" id="Xoa-S4-5yF"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="218" height="135"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading RSS Feed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZK-r0-ooK">
+                    <rect key="frame" x="27" y="31" width="165" height="28"/>
+                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ZlZ-4S-Vkk">
+                    <rect key="frame" x="91" y="67" width="37" height="37"/>
+                </activityIndicatorView>
+            </subviews>
+            <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="CZK-r0-ooK" secondAttribute="trailing" constant="26" id="08c-0B-7BJ"/>
+                <constraint firstItem="ZlZ-4S-Vkk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="91" id="3hA-0o-p5k"/>
+                <constraint firstItem="ZlZ-4S-Vkk" firstAttribute="top" secondItem="CZK-r0-ooK" secondAttribute="bottom" constant="8" id="4Ox-hT-2l2"/>
+                <constraint firstItem="CZK-r0-ooK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="31" id="Fah-XE-xGU"/>
+                <constraint firstAttribute="bottom" secondItem="ZlZ-4S-Vkk" secondAttribute="bottom" constant="31" id="eQi-BA-v6p"/>
+                <constraint firstAttribute="trailing" secondItem="ZlZ-4S-Vkk" secondAttribute="trailing" constant="90" id="fVJ-gX-Bz6"/>
+                <constraint firstItem="CZK-r0-ooK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="27" id="zlm-ZT-ORh"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="133" y="227.5"/>
+        </view>
+    </objects>
+</document>

@@ -27,7 +27,7 @@
 
 @implementation SMMapAttributionViewController
 
-- (id)initWithMapView:(RMMapView *)mapView
+- (instancetype)initWithMapView:(RMMapView *)mapView
 {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {

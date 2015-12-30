@@ -39,9 +39,9 @@ NSString *kAvyFeedMessageErrorKey = @"AvyFeedMsgErrorKey";
         _avyFeedData = [parseData copy];
         
         _dateFormatter = [[NSDateFormatter alloc] init];
-        [_dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-        [_dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
-        [_dateFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss Z"];
+        _dateFormatter.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
+        _dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+        _dateFormatter.dateFormat = @"EEE, dd MMM yyyy HH:mm:ss Z";
         
         _currentParseBatch = [[NSMutableArray alloc] init];
         _currentParsedCharacterData = [[NSMutableString alloc] init];
@@ -146,8 +146,8 @@ static NSString * const kUpdatedElementName = @"pubDate";
 /**
  This method is called by the parser when it find parsed character data ("PCDATA") in an element. The parser is not guaranteed to deliver all of the parsed character data for an element in a single invocation, so it is necessary to accumulate character data until the end of the element is reached.
  */
-- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
-    
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
+{    
     if (_accumulatingParsedCharacterData) {
         [self.currentParsedCharacterData appendString:string];
     }

@@ -60,14 +60,12 @@
     [self setNeedsUpdateConstraints];
 }
 
-
 - (void)updateConstraints
 {
     [self removeConstraints:self.constraints];
     [self.constraints removeAllObjects];
     if (self.view != nil) {
-        UIView *view = self.view;
-        NSDictionary *views = NSDictionaryOfVariableBindings(view);
+        NSDictionary *views = @{ @"view" : self.view };
         [self.constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:kNilOptions metrics:nil views:views]];
         [self.constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view]|" options:kNilOptions metrics:nil views:views]];
         [self addConstraints:self.constraints];

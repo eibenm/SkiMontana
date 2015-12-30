@@ -10,6 +10,6 @@
 
 @interface SMMapAttributionViewController : UIViewController
 
-- (id)initWithMapView:(RMMapView *)mapView;
+- (instancetype)initWithMapView:(RMMapView *)mapView;
 
 @end

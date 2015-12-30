@@ -29,7 +29,7 @@
     [self setAttributionButton];
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:self action:@selector(dismissViewController)];
-    (self.navigationItem).leftBarButtonItem = backButton;
+    self.navigationItem.leftBarButtonItem = backButton;
     self.title = @"Overview Map";
     
     // Setting up Mapbox
@@ -44,7 +44,7 @@
     (self.mapView).showLogoBug = NO;
     (self.mapView).hideAttribution = YES;
     [self.mapViewContainer addSubview:self.mapView];
-    (self.mapView.layer).opacity = 0;
+    (self.mapView).layer.opacity = 0;
     [self.mapView setZoom:10.5f atCoordinate:CLLocationCoordinate2DMake(45.72, -110.80) animated:NO];
     RMSphericalTrapezium boundingBox = self.tileSource.latitudeLongitudeBoundingBox;
     [self.mapView setConstraintsSouthWest:boundingBox.southWest northEast:boundingBox.northEast];
@@ -108,12 +108,12 @@
 {
     UIButton *attributionButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [attributionButton setTitle:@"Legend" forState:UIControlStateNormal];
-    (attributionButton.titleLabel).font = [UIFont boldSkiMontanaFontOfSize:20.0f];
+    attributionButton.titleLabel.font = [UIFont boldSkiMontanaFontOfSize:20.0f];
     [attributionButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    (attributionButton.layer).shadowColor = [UIColor blackColor].CGColor;
-    (attributionButton.layer).shadowOffset = CGSizeMake(0, 0);
-    (attributionButton.layer).shadowRadius = 3.0f;
-    (attributionButton.layer).shadowOpacity = 0.8f;
+    attributionButton.layer.shadowColor = [UIColor blackColor].CGColor;
+    attributionButton.layer.shadowOffset = CGSizeMake(0, 0);
+    attributionButton.layer.shadowRadius = 3.0f;
+    attributionButton.layer.shadowOpacity = 0.8f;
     attributionButton.autoresizingMask = (UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin);
     [attributionButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [attributionButton addTarget:self action:@selector(showAttribution:) forControlEvents:UIControlEventTouchUpInside];
@@ -130,9 +130,9 @@
     NSString *rightFormatString = @"H:[attributionButton]-rightSpacing-|";
     
     NSDictionary *views = @{
-                            @"attributionButton" : attributionButton,
-                            @"bottomLayoutGuide" : self.bottomLayoutGuide
-                            };
+        @"attributionButton": attributionButton,
+        @"bottomLayoutGuide": self.bottomLayoutGuide
+    };
     
     [self.view addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:bottomFormatString options:kNilOptions metrics:@{ @"bottomSpacing" : @(8) } views:views]];
     [self.view addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:rightFormatString options:kNilOptions metrics:@{ @"rightSpacing" : @(8) } views:views]];
