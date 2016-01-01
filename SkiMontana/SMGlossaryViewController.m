@@ -1,36 +1,49 @@
 //
-//  SMGlossaryTableViewController.m
+//  SMGlossaryViewController.m
 //  SkiMontana
 //
 //  Created by Matt Eiben on 9/14/15.
 //  Copyright (c) 2015 Gneiss Software. All rights reserved.
 //
 
-#import "SMGlossaryTableViewController.h"
+#import "SMGlossaryViewController.h"
 #import "SMGlossaryTableViewCell.h"
 
 static NSString *cellIdentifier = @"glossaryTerm";
 
-@interface SMGlossaryTableViewController() <UISearchResultsUpdating, UITableViewDataSource, UITableViewDelegate>
+@interface SMGlossaryViewController () <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
-@property (nonatomic, assign) NSInteger selectedIndex;
-@property (nonatomic, strong) NSArray *filteredResults;
-@property (strong, nonatomic) UISearchController *searchController;
+@property (strong, nonatomic) NSManagedObjectID *selectedObjectID;
+@property (strong, nonatomic) NSArray *filteredResults;
 @property (strong, nonatomic) NSFetchRequest *searchFetchRequest;
+@property (strong, nonatomic) UISearchController *searchController;
 
 @end
 
-@implementation SMGlossaryTableViewController
+#pragma mark -
+
+@implementation SMGlossaryViewController
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+	[super viewDidLoad];
     
     (self.tableView).dataSource = self;
     (self.tableView).delegate = self;
     self.managedObjectContext = [SMDataManager sharedInstance].managedObjectContext;
+
+    // Setup the Search Controller
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    (self.searchController).searchResultsUpdater = self;
+    (self.searchController).searchBar.delegate = self;
+    (self.searchController).dimsBackgroundDuringPresentation = NO;
+    (self.searchController).searchBar.showsScopeBar = NO;
+    (self.searchController).searchBar.scopeButtonTitles = [NSArray array];
+    (self.searchController).searchBar.searchBarStyle = UISearchBarStyleProminent;
+    self.definesPresentationContext = YES;
+    (self.tableView).tableHeaderView = (self.searchController).searchBar;
+    [self.searchController.searchBar sizeToFit];
     
     NSError *error;
     if (![self.fetchedResultsController performFetch:&error]) {
@@ -39,14 +52,7 @@ static NSString *cellIdentifier = @"glossaryTerm";
     }
     
     self.title = @"Glossary";
-    self.selectedIndex = -1.0f;
-    
-    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
-    (self.searchController).searchResultsUpdater = self;
-    (self.searchController).dimsBackgroundDuringPresentation = NO;
-    (self.tableView).tableHeaderView = (self.searchController).searchBar;
-    self.definesPresentationContext = YES;
-    [(self.searchController).searchBar sizeToFit];
+    self.selectedObjectID = nil;
     
     // View for background color (opaque white mask)
     UIView *backgroundColorView = [[UIView alloc]initWithFrame:self.view.frame];
@@ -72,10 +78,22 @@ static NSString *cellIdentifier = @"glossaryTerm";
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[backgroundImageView]|" options:kNilOptions metrics:nil views:backgroundImageViews]];
 }
 
-- (void)dealloc
+- (void)didReceiveMemoryWarning
 {
-    [self.searchController.view removeFromSuperview];
-    self.searchController = nil;
+    [super didReceiveMemoryWarning];
+}
+
+- (void)filterContentForSearchText:(NSString *)searchText
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"term BEGINSWITH[cd] %@", searchText];
+    (self.searchFetchRequest).predicate = predicate;
+    self.filteredResults = [self.managedObjectContext executeFetchRequest:self.searchFetchRequest error:nil];
+    [self.tableView reloadData];
+}
+
+- (BOOL)searchControllerActive
+{
+    return (self.searchController).active && ![(self.searchController).searchBar.text isEqualToString:@""];
 }
 
 #pragma mark - UITableViewDataSource
@@ -83,13 +101,11 @@ static NSString *cellIdentifier = @"glossaryTerm";
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
-    
-    //return self.fetchedResultsController.sections.count;
 }
 
-- (NSInteger)tableView:(UITableView *)table numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if ((self.searchController).active) {
+    if ([self searchControllerActive]) {
         return (self.filteredResults).count;
     }
     
@@ -105,19 +121,12 @@ static NSString *cellIdentifier = @"glossaryTerm";
         cell = [[SMGlossaryTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
-    Glossary *glossary = nil;
-    
-    if ((self.searchController).active) {
-        glossary = self.filteredResults[indexPath.row];
-    }
-    else {
-        glossary = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    }
+    Glossary *glossary = [self searchControllerActive] ? self.filteredResults[indexPath.row] : [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     cell.backgroundColor = [UIColor clearColor];
     cell.termLabel.text = glossary.term;
-
-    if (indexPath.row == self.selectedIndex) {
+    
+    if (glossary.objectID == self.selectedObjectID) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [UIView animateWithDuration:0.15 animations:^{
                 cell.backgroundColor = [UIColor colorWithRed:0.0f green:0.0f blue:0.6f alpha:0.2];
@@ -136,14 +145,11 @@ static NSString *cellIdentifier = @"glossaryTerm";
 
 #pragma mark - UITableViewDelegate
 
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
-    return [[UIView alloc] initWithFrame:CGRectZero];
-}
-
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == self.selectedIndex) {
+    Glossary *glossary = [self searchControllerActive] ? self.filteredResults[indexPath.row] : [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    if (glossary.objectID == self.selectedObjectID) {
         return 44.0f + 30.0f;
     }
     
@@ -152,37 +158,40 @@ static NSString *cellIdentifier = @"glossaryTerm";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Glossary *glossary = [self searchControllerActive] ? self.filteredResults[indexPath.row] : [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
     // User taps expanded row
-    if (self.selectedIndex == indexPath.row) {
-        self.selectedIndex = -1;
+    if (glossary.objectID == self.selectedObjectID) {
+        self.selectedObjectID = nil;
         [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         return;
     }
     
     // User taps different row
-    if (self.selectedIndex != -1) {
-        NSIndexPath *prevPath = [NSIndexPath indexPathForRow:self.selectedIndex inSection:0];
-        self.selectedIndex = indexPath.row;
-        [CATransaction begin];
-        [CATransaction setCompletionBlock:^{
-            [UIView animateWithDuration:0.15 animations:^{
-                //[tableView cellForRowAtIndexPath:indexPath].backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.5];
-            }];
-        }];
-        [tableView reloadRowsAtIndexPaths:@[prevPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-        [CATransaction commit];
+    if (self.selectedObjectID != nil) {
+        
+        // Find previous cell and reload both the old and new ones if the old one is still visible
+        for (Glossary *entry in (self.fetchedResultsController).fetchedObjects) {
+            if (self.selectedObjectID == entry.objectID) {
+                for (SMGlossaryTableViewCell *visiblecell in tableView.visibleCells) {
+                    if ([visiblecell.termLabel.text isEqualToString:entry.term]) {
+                        self.selectedObjectID = glossary.objectID;
+                        NSIndexPath *previousIndexPath = [tableView indexPathForCell:visiblecell];
+                        [tableView reloadRowsAtIndexPaths:@[previousIndexPath, indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                        return;
+                    }
+                }
+            }
+        }
+        
+        self.selectedObjectID = glossary.objectID;
+        [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        return;
     }
     
     // User taps new row
-    self.selectedIndex = indexPath.row;
-    [CATransaction begin];
-    [CATransaction setCompletionBlock:^{
-        [UIView animateWithDuration:0.15 animations:^{
-            //[tableView cellForRowAtIndexPath:indexPath].backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.5];
-        }];
-    }];
+    self.selectedObjectID = glossary.objectID;
     [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    [CATransaction commit];
 }
 
 #pragma mark - NSFetchedResultsController
@@ -206,46 +215,15 @@ static NSString *cellIdentifier = @"glossaryTerm";
     fetchRequest.sortDescriptors = descriptors;
     
     NSFetchedResultsController *fetchedResultsController =
-        [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                            managedObjectContext:self.managedObjectContext
-                                              sectionNameKeyPath:nil
-                                                       cacheName:nil];
+    [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                        managedObjectContext:self.managedObjectContext
+                                          sectionNameKeyPath:nil
+                                                   cacheName:nil];
     
     fetchedResultsController.delegate = self;
     self.fetchedResultsController = fetchedResultsController;
     
     return _fetchedResultsController;
-}
-
-#pragma mark - NSFetchedResultsControllerDelegate
-
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
-{
-    [self.tableView beginUpdates];
-}
-
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
-{
-    [self.tableView endUpdates];
-}
-
-#pragma mark - UISearchResultsUpdating
-
-- (void)updateSearchResultsForSearchController:(UISearchController *)searchController
-{
-    NSString *searchString = searchController.searchBar.text;
-    
-    if (self.managedObjectContext) {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"term BEGINSWITH[cd] %@", searchString];
-        (self.searchFetchRequest).predicate = predicate;
-        
-        NSError *error = nil;
-        self.filteredResults = [self.managedObjectContext executeFetchRequest:self.searchFetchRequest error:&error];
-        if (error) {
-            NSLog(@"searchFetchRequest failed: %@",[error localizedDescription]);
-        }
-    }
-    [self.tableView reloadData];
 }
 
 - (NSFetchRequest *)searchFetchRequest
@@ -267,4 +245,24 @@ static NSString *cellIdentifier = @"glossaryTerm";
     return _searchFetchRequest;
 }
 
+#pragma mark - UISearchBarDelegate
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope
+{
+    [self filterContentForSearchText:searchBar.text];
+}
+
+#pragma mark - UISearchResultsUpdating
+
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController
+{
+    [self filterContentForSearchText:searchController.searchBar.text];
+}
+
 @end
+

@@ -15,15 +15,15 @@
     CGSize shadowOffset = self.shadowOffset;
     UIColor *textColor = self.textColor;
     
-    CGContextRef c = UIGraphicsGetCurrentContext();
-    CGContextSetLineWidth(c, 3);
-    CGContextSetLineJoin(c, kCGLineJoinRound);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetLineWidth(context, 3);
+    CGContextSetLineJoin(context, kCGLineJoinRound);
     
-    CGContextSetTextDrawingMode(c, kCGTextStroke);
+    CGContextSetTextDrawingMode(context, kCGTextStroke);
     self.textColor = [UIColor whiteColor];
     [super drawTextInRect:rect];
     
-    CGContextSetTextDrawingMode(c, kCGTextFill);
+    CGContextSetTextDrawingMode(context, kCGTextFill);
     self.textColor = textColor;
     self.shadowOffset = CGSizeZero;
     [super drawTextInRect:rect];

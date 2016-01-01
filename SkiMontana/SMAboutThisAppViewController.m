@@ -7,7 +7,6 @@
 //
 
 #import "SMAboutThisAppViewController.h"
-#import "SMGlossaryTableViewController.h"
 
 static NSString *gneisssoftware = @"http://www.gneisssoftware.com";
 static NSString *bozemanSkiGuide = @"http://bozemanskiguide.com";
@@ -32,10 +31,8 @@ static NSString *manageSubscriptionsUrl = @"https://buy.itunes.apple.com/WebObje
     [super viewDidLoad];
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:self action:@selector(dismissViewController)];
-    UIBarButtonItem *glossaryButton = [[UIBarButtonItem alloc] initWithTitle:@"Glossary" style:UIBarButtonItemStyleDone target:self action:@selector(presentGlossaryViewController)];
     
     self.navigationItem.leftBarButtonItem = backButton;
-    self.navigationItem.rightBarButtonItem = glossaryButton;
     self.title = @"About This App";
         
     // View for background color (opaque white mask)
@@ -67,17 +64,17 @@ static NSString *manageSubscriptionsUrl = @"https://buy.itunes.apple.com/WebObje
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)presentGlossaryViewController
-{
-    SMGlossaryTableViewController *glossaryViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"glossaryTableViewController"];
-    UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:nil action:nil];
-    (self.navigationItem).backBarButtonItem = newBackButton;
-    [self.navigationController pushViewController:glossaryViewController animated:YES];
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"showGlossary"]) {
+        UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:nil action:nil];
+        (self.navigationItem).backBarButtonItem = newBackButton;
+    }
 }
 
 - (IBAction)didClickViewGneisssoftware:(id)sender

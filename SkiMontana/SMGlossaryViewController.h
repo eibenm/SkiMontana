@@ -1,5 +1,5 @@
 //
-//  SMGlossaryTableViewController.h
+//  SMGlossaryViewController.h
 //  SkiMontana
 //
 //  Created by Matt Eiben on 9/14/15.
@@ -8,7 +8,7 @@
 
 #import "SMDataManager.h"
 
-@interface SMGlossaryTableViewController : UIViewController <NSFetchedResultsControllerDelegate>
+@interface SMGlossaryViewController : UIViewController <NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

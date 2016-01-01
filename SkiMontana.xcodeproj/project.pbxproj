@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		CB1111DD1BD870B600B41862 /* SMRSSWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111DC1BD870B600B41862 /* SMRSSWebViewController.m */; };
 		CB1112011BDA8B5C00B41862 /* RSSHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB1112001BDA8B5C00B41862 /* RSSHeaderView.xib */; };
+		CB1242AE1C35F82000E114BC /* NJKWebViewProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1242AB1C35F82000E114BC /* NJKWebViewProgress.m */; };
+		CB1242AF1C35F82000E114BC /* NJKWebViewProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1242AD1C35F82000E114BC /* NJKWebViewProgressView.m */; };
 		CB17F6731AA93F4600048BC5 /* SMSkiAreaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB17F6721AA93F4600048BC5 /* SMSkiAreaTableViewCell.m */; };
 		CB17F6761AA93F5C00048BC5 /* SMSkiRouteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB17F6751AA93F5C00048BC5 /* SMSkiRouteTableViewCell.m */; };
 		CB2B346A1BAE058F007067C3 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2B34691BAE058F007067C3 /* StoreKit.framework */; };
@@ -55,6 +57,7 @@
 		CB44382B1BE832A2004A4BEC /* Gps.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4438211BE832A2004A4BEC /* Gps.m */; };
 		CB4597891C3369E000648372 /* RSSDataLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB4597881C3369E000648372 /* RSSDataLoadingView.xib */; };
 		CB45978C1C336B1900648372 /* RSSDataLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB45978B1C336B1900648372 /* RSSDataLoadingView.m */; };
+		CB4597911C35117300648372 /* SMGlossaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB45978E1C35117300648372 /* SMGlossaryViewController.m */; };
 		CB4D92941BEC789000E889A5 /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4D92791BEC789000E889A5 /* NSIndexPath+PSTCollectionViewAdditions.m */; };
 		CB4D92951BEC789000E889A5 /* PSTCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4D927B1BEC789000E889A5 /* PSTCollectionView.m */; };
 		CB4D92961BEC789000E889A5 /* PSTCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4D927D1BEC789000E889A5 /* PSTCollectionViewCell.m */; };
@@ -112,7 +115,6 @@
 		CB99FF5C1AB6347F0067E547 /* SMScaleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = CB99FF561AB6347F0067E547 /* SMScaleAnimation.m */; };
 		CB99FF5D1AB6347F0067E547 /* SMSlideAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = CB99FF581AB6347F0067E547 /* SMSlideAnimation.m */; };
 		CB99FF611AB635940067E547 /* SMTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB99FF601AB635940067E547 /* SMTableViewController.m */; };
-		CB9C21251BA7635100D0D5DC /* SMGlossaryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9C21241BA7635100D0D5DC /* SMGlossaryTableViewController.m */; };
 		CB9C21281BA7726D00D0D5DC /* SMGlossaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9C21271BA7726D00D0D5DC /* SMGlossaryTableViewCell.m */; };
 		CBA2B5EA1BCDE1C300B7C129 /* SMMapAttributionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA2B5E91BCDE1C300B7C129 /* SMMapAttributionViewController.m */; };
 		CBA338A31B8280F0001BA5FF /* SMDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA338961B8280F0001BA5FF /* SMDataManager.m */; };
@@ -151,6 +153,10 @@
 		CB1111DB1BD870B600B41862 /* SMRSSWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRSSWebViewController.h; sourceTree = "<group>"; };
 		CB1111DC1BD870B600B41862 /* SMRSSWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRSSWebViewController.m; sourceTree = "<group>"; };
 		CB1112001BDA8B5C00B41862 /* RSSHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RSSHeaderView.xib; sourceTree = "<group>"; };
+		CB1242AA1C35F82000E114BC /* NJKWebViewProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJKWebViewProgress.h; sourceTree = "<group>"; };
+		CB1242AB1C35F82000E114BC /* NJKWebViewProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJKWebViewProgress.m; sourceTree = "<group>"; };
+		CB1242AC1C35F82000E114BC /* NJKWebViewProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJKWebViewProgressView.h; sourceTree = "<group>"; };
+		CB1242AD1C35F82000E114BC /* NJKWebViewProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJKWebViewProgressView.m; sourceTree = "<group>"; };
 		CB17F6711AA93F4600048BC5 /* SMSkiAreaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSkiAreaTableViewCell.h; sourceTree = "<group>"; };
 		CB17F6721AA93F4600048BC5 /* SMSkiAreaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSkiAreaTableViewCell.m; sourceTree = "<group>"; };
 		CB17F6741AA93F5C00048BC5 /* SMSkiRouteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSkiRouteTableViewCell.h; sourceTree = "<group>"; };
@@ -215,6 +221,8 @@
 		CB4597881C3369E000648372 /* RSSDataLoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RSSDataLoadingView.xib; sourceTree = "<group>"; };
 		CB45978A1C336B1900648372 /* RSSDataLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSDataLoadingView.h; sourceTree = "<group>"; };
 		CB45978B1C336B1900648372 /* RSSDataLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSDataLoadingView.m; sourceTree = "<group>"; };
+		CB45978D1C35117300648372 /* SMGlossaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMGlossaryViewController.h; sourceTree = "<group>"; };
+		CB45978E1C35117300648372 /* SMGlossaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMGlossaryViewController.m; sourceTree = "<group>"; };
 		CB4D92781BEC789000E889A5 /* NSIndexPath+PSTCollectionViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSIndexPath+PSTCollectionViewAdditions.h"; path = "SkiMontana/PSTCollectionView/NSIndexPath+PSTCollectionViewAdditions.h"; sourceTree = "<group>"; };
 		CB4D92791BEC789000E889A5 /* NSIndexPath+PSTCollectionViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSIndexPath+PSTCollectionViewAdditions.m"; path = "SkiMontana/PSTCollectionView/NSIndexPath+PSTCollectionViewAdditions.m"; sourceTree = "<group>"; };
 		CB4D927A1BEC789000E889A5 /* PSTCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PSTCollectionView.h; path = SkiMontana/PSTCollectionView/PSTCollectionView.h; sourceTree = "<group>"; };
@@ -328,8 +336,6 @@
 		CB99FF581AB6347F0067E547 /* SMSlideAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSlideAnimation.m; sourceTree = "<group>"; };
 		CB99FF5F1AB635940067E547 /* SMTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTableViewController.h; sourceTree = "<group>"; };
 		CB99FF601AB635940067E547 /* SMTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTableViewController.m; sourceTree = "<group>"; };
-		CB9C21231BA7635100D0D5DC /* SMGlossaryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMGlossaryTableViewController.h; sourceTree = "<group>"; };
-		CB9C21241BA7635100D0D5DC /* SMGlossaryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMGlossaryTableViewController.m; sourceTree = "<group>"; };
 		CB9C21261BA7726D00D0D5DC /* SMGlossaryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMGlossaryTableViewCell.h; sourceTree = "<group>"; };
 		CB9C21271BA7726D00D0D5DC /* SMGlossaryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMGlossaryTableViewCell.m; sourceTree = "<group>"; };
 		CBA2B5E81BCDE1C300B7C129 /* SMMapAttributionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMapAttributionViewController.h; sourceTree = "<group>"; };
@@ -418,6 +424,18 @@
 			name = "RSS Feed";
 			sourceTree = "<group>";
 		};
+		CB1242B01C35F82B00E114BC /* NJKWebViewProgress */ = {
+			isa = PBXGroup;
+			children = (
+				CB1242AA1C35F82000E114BC /* NJKWebViewProgress.h */,
+				CB1242AB1C35F82000E114BC /* NJKWebViewProgress.m */,
+				CB1242AC1C35F82000E114BC /* NJKWebViewProgressView.h */,
+				CB1242AD1C35F82000E114BC /* NJKWebViewProgressView.m */,
+			);
+			name = NJKWebViewProgress;
+			path = SkiMontana;
+			sourceTree = "<group>";
+		};
 		CB235EAE1A9A591C0002E482 /* Utility Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -453,6 +471,7 @@
 		CB437C3E1A9C230600315353 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CB1242B01C35F82B00E114BC /* NJKWebViewProgress */,
 				CB4D92A11BEC7CDD00E889A5 /* MWPhotoBrowser */,
 				CB7761861BEC6913005D84B7 /* PSTCollectionView */,
 				CBF466211BBE535800791383 /* SCPStoreKitManager */,
@@ -600,18 +619,18 @@
 				CB753AD61BBA0D12007EAAAD /* SMAreasTableViewControllerParent.m */,
 				CB4208A61AA3BB5100ADFA97 /* SMAreasTableViewController.h */,
 				CB4208A71AA3BB5100ADFA97 /* SMAreasTableViewController.m */,
-				CB8DD67E1BE1CB7E00CD8217 /* SMOverviewMapViewController.h */,
-				CB8DD67F1BE1CB7E00CD8217 /* SMOverviewMapViewController.m */,
-				CB44380B1BE7E3CF004A4BEC /* SMAboutThisAppViewController.h */,
-				CB44380C1BE7E3CF004A4BEC /* SMAboutThisAppViewController.m */,
-				CB9C21231BA7635100D0D5DC /* SMGlossaryTableViewController.h */,
-				CB9C21241BA7635100D0D5DC /* SMGlossaryTableViewController.m */,
 				CB7446211AEDBE670070B36D /* SMDetailsViewController.h */,
 				CB7446221AEDBE670070B36D /* SMDetailsViewController.m */,
 				CB76D9C41AFC6102005EC2E8 /* SMRouteMapViewController.h */,
 				CB76D9C51AFC6102005EC2E8 /* SMRouteMapViewController.m */,
 				CBA2B5E81BCDE1C300B7C129 /* SMMapAttributionViewController.h */,
 				CBA2B5E91BCDE1C300B7C129 /* SMMapAttributionViewController.m */,
+				CB8DD67E1BE1CB7E00CD8217 /* SMOverviewMapViewController.h */,
+				CB8DD67F1BE1CB7E00CD8217 /* SMOverviewMapViewController.m */,
+				CB44380B1BE7E3CF004A4BEC /* SMAboutThisAppViewController.h */,
+				CB44380C1BE7E3CF004A4BEC /* SMAboutThisAppViewController.m */,
+				CB45978D1C35117300648372 /* SMGlossaryViewController.h */,
+				CB45978E1C35117300648372 /* SMGlossaryViewController.m */,
 				CBB480871AA5774D00C2A7E3 /* TableCells */,
 				CB1111FC1BD9DD0000B41862 /* RSS Feed */,
 				CB235EAE1A9A591C0002E482 /* Utility Classes */,
@@ -950,6 +969,7 @@
 				CB96954C1A9A43A7009757B7 /* SMConstants.m in Sources */,
 				CB7446261AEEA36A0070B36D /* SMDetailsInformationTableViewCell.m in Sources */,
 				CB7446291AEEA38E0070B36D /* SMDetailsTableViewCell.m in Sources */,
+				CB1242AE1C35F82000E114BC /* NJKWebViewProgress.m in Sources */,
 				CB99FF4D1AB634270067E547 /* SMNavigationController.m in Sources */,
 				CB8F30A21BC4D3D600F4FA2C /* SMArrowView.m in Sources */,
 				CB54F5FB1B9FD93100D93401 /* SMDetailsHeaderView.m in Sources */,
@@ -970,13 +990,13 @@
 				CB8694CE1B0A8B6300D4A93F /* CLLocationHelper.m in Sources */,
 				CB4208A51AA3B98700ADFA97 /* UIFont+SkiMontana.m in Sources */,
 				CB4D92BD1BEC7CE800E889A5 /* MWTapDetectingView.m in Sources */,
+				CB4597911C35117300648372 /* SMGlossaryViewController.m in Sources */,
 				CB57FA421BD54C04009C3B3E /* SMIAPHelper.m in Sources */,
 				CB4D92BE1BEC7CE800E889A5 /* MWZoomingScrollView.m in Sources */,
 				CB753AD71BBA0D12007EAAAD /* SMAreasTableViewControllerParent.m in Sources */,
 				CB9695201A9A3EF6009757B7 /* main.m in Sources */,
 				CB4D929D1BEC789000E889A5 /* PSTGridLayoutInfo.m in Sources */,
 				CB99FF451AB61F010067E547 /* UIColor+FromHex.m in Sources */,
-				CB9C21251BA7635100D0D5DC /* SMGlossaryTableViewController.m in Sources */,
 				CB99FF5B1AB6347F0067E547 /* SMLayerAnimation.m in Sources */,
 				CB4D92B91BEC7CE800E889A5 /* MWPhoto.m in Sources */,
 				CB57FA4B1BD754B4009C3B3E /* SMRSSEntry.m in Sources */,
@@ -988,6 +1008,7 @@
 				CB1111DD1BD870B600B41862 /* SMRSSWebViewController.m in Sources */,
 				CB4D92B61BEC7CE800E889A5 /* MWCaptionView.m in Sources */,
 				CB4D929B1BEC789000E889A5 /* PSTCollectionViewLayout.m in Sources */,
+				CB1242AF1C35F82000E114BC /* NJKWebViewProgressView.m in Sources */,
 				CB99FF591AB6347F0067E547 /* SMBaseAnimation.m in Sources */,
 				CB4438291BE832A2004A4BEC /* File.m in Sources */,
 				CBA338A31B8280F0001BA5FF /* SMDataManager.m in Sources */,

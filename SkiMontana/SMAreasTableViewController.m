@@ -459,9 +459,8 @@ static NSString *cellIdentifier;
     pulseAnimation.removedOnCompletion = NO;
     pulseAnimation.autoreverses = NO;
     [CATransaction setCompletionBlock:^{
-        UIViewController *aboutThisApp = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"aboutThisApp"];
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:aboutThisApp];
-        [self presentViewController:navController animated:YES completion:^{
+        UIViewController *aboutThisAppNavController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"aboutThisAppNavigiationController"];
+        [self presentViewController:aboutThisAppNavController animated:YES completion:^{
             [self.aboutThisAppButton.layer removeAnimationForKey:pulseAnimation.keyPath];
             [self.aboutThisAppLabel.layer removeAnimationForKey:pulseAnimation.keyPath];
         }];

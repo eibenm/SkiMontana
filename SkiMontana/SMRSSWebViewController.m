@@ -7,14 +7,19 @@
 //
 
 #import "SMRSSWebViewController.h"
+#import "NJKWebViewProgress.h"
+#import "NJKWebViewProgressView.h"
 
-@interface SMRSSWebViewController () <UIWebViewDelegate>
+@interface SMRSSWebViewController () <UIWebViewDelegate, NJKWebViewProgressDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *back;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *stop;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *refresh;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *forward;
+
+@property (strong, nonatomic) NJKWebViewProgressView *progressView;
+@property (strong, nonatomic) NJKWebViewProgress *progressProxy;
 
 - (void)updateButtons;
 
@@ -26,9 +31,37 @@
 {
     [super viewDidLoad];
     self.title = @"RSS Page Title";
-    (self.webView).delegate = self;
     [self.webView loadRequest:[NSURLRequest requestWithURL:self.feedUrl]];
+    
+    self.progressProxy = [NJKWebViewProgress new];
+    (self.webView).delegate = _progressProxy;
+    (self.progressProxy).webViewProxyDelegate = self;
+    (self.progressProxy).progressDelegate = self;
+    
+    CGFloat progressBarHeight = 2.0f;
+    CGRect navigationBarBounds = self.navigationController.navigationBar.bounds;
+    CGRect barFrame = CGRectMake(0, navigationBarBounds.size.height - progressBarHeight, navigationBarBounds.size.width, progressBarHeight);
+    self.progressView = [[NJKWebViewProgressView alloc] initWithFrame:barFrame];
+    (self.progressView).autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController.navigationBar addSubview:self.progressView];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.progressView removeFromSuperview];
+}
+
+- (void)dealloc
+{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -65,6 +98,13 @@
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     [self updateButtons];
+}
+
+#pragma mark - NJKWebViewProgressDelegate
+
+-(void)webViewProgress:(NJKWebViewProgress *)webViewProgress updateProgress:(float)progress
+{
+    [self.progressView setProgress:progress animated:YES];
 }
 
 @end

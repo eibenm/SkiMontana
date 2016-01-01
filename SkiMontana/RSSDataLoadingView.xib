@@ -25,7 +25,7 @@
                     <rect key="frame" x="91" y="67" width="37" height="37"/>
                 </activityIndicatorView>
             </subviews>
-            <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.27450980392156865" green="0.50980392156862742" blue="0.70588235294117641" alpha="0.89772487331081086" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="CZK-r0-ooK" secondAttribute="trailing" constant="26" id="08c-0B-7BJ"/>
                 <constraint firstItem="ZlZ-4S-Vkk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="91" id="3hA-0o-p5k"/>
