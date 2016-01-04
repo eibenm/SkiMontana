@@ -34,20 +34,20 @@
 {
     RSSDataLoadingView *dataLoadingView = [RSSDataLoadingView new];
     
-    [self.view addSubview:dataLoadingView];
+    [self.tableView addSubview:dataLoadingView];
     
     // Centering data loading view
-    NSLayoutConstraint *horizonalCenterConstraint = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:dataLoadingView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];
-    NSLayoutConstraint *verticalCenterConstraint = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:dataLoadingView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0];
+    NSLayoutConstraint *horizonalCenterConstraint = [NSLayoutConstraint constraintWithItem:self.tableView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:dataLoadingView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];
+    NSLayoutConstraint *verticalCenterConstraint = [NSLayoutConstraint constraintWithItem:self.tableView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:dataLoadingView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0];
     
     dataLoadingView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.view addConstraint:horizonalCenterConstraint];
-    [self.view addConstraint:verticalCenterConstraint];
+    [self.tableView addConstraint:horizonalCenterConstraint];
+    [self.tableView addConstraint:verticalCenterConstraint];
 }
 
 - (void)removeDataLoadingView
 {
-    for (id view in self.view.subviews) {
+    for (id view in self.tableView.subviews) {
         if ([view isKindOfClass:[RSSDataLoadingView class]]) {
             [(RSSDataLoadingView *)view removeFromSuperview];
         }
