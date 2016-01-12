@@ -133,15 +133,15 @@
 
 - (void)verifyReceiptAtPath:(NSString *)receiptPath success:(Success)successBlock failure:(Failure)failureBlock
 {
-	if(![_bundleVersion isEqualToString:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"]])
-	{
-		if(failureBlock)
-		{
-			NSError *error = [NSError errorWithDomain:SCPStoreKitDomain code:SCPErrorCodeVersionNumberInvalid errorDescription:@"Version number invalid" errorFailureReason:@"" errorRecoverySuggestion:@"Make sure the passed version number matches that of the info.plist"];
-			failureBlock(error);
-		}
-		return;
-	}
+//	if(![_bundleVersion isEqualToString:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"]])
+//	{
+//		if(failureBlock)
+//		{
+//			NSError *error = [NSError errorWithDomain:SCPStoreKitDomain code:SCPErrorCodeVersionNumberInvalid errorDescription:@"Version number invalid" errorFailureReason:@"" errorRecoverySuggestion:@"Make sure the passed version number matches that of the info.plist"];
+//			failureBlock(error);
+//		}
+//		return;
+//	}
 	
 	if(![_bundleIdentifier isEqualToString:[NSBundle mainBundle].bundleIdentifier])
 	{
@@ -182,7 +182,7 @@
 	SHA1(input.bytes, input.length, hash.mutableBytes);
     
 	//Check that the current bundleID, bundleVersion and the Hash is equal to that of the receipt
-	if([_bundleIdentifier isEqualToString:receipt.bundleIdentifier] && [_bundleVersion isEqualToString:receipt.version] && [hash isEqualToData:receipt.receiptHash])
+	if([_bundleIdentifier isEqualToString:receipt.bundleIdentifier] /*&& [_bundleVersion isEqualToString:receipt.version]*/ && [hash isEqualToData:receipt.receiptHash])
 	{
 		if(successBlock)
 		{

@@ -189,28 +189,28 @@ static NSString *cellIdentifier;
         
         UIBezierPath *imgRect = [UIBezierPath bezierPathWithRect:CGRectInset(cell.areaImage.bounds, -8.0f, 0)];
 
-        (cell.areaName).text = skiArea.name_area;
-        (cell.areaName).textColor = [UIColor whiteColor];
-        //(cell.areaImage).image = [UIImage imageNamed:[skiArea.name_area stringByAppendingString:@"-thumbnail"]];
-        (cell.areaImage.layer).borderColor = [UIColor darkGrayColor].CGColor;
-        (cell.areaImage.layer).borderWidth = 1.0;
-        (cell.areaConditions).textContainerInset = UIEdgeInsetsZero;
-        (cell.areaConditions.textContainer).lineFragmentPadding = 0;
-        (cell.areaConditions.textContainer).lineBreakMode = NSLineBreakByTruncatingTail;
-        (cell.areaConditions).attributedText = [[NSAttributedString alloc] initWithString:skiArea.conditions attributes:attrsDictionary];
-        (cell.areaConditions.textContainer).exclusionPaths = @[imgRect];
+        cell.areaName.text = skiArea.name_area;
+        cell.areaName.textColor = [UIColor whiteColor];
+        //cell.areaImage.image = [UIImage imageNamed:[skiArea.name_area stringByAppendingString:@"-thumbnail"]];
+        cell.areaImage.layer.borderColor = [UIColor darkGrayColor].CGColor;
+        cell.areaImage.layer.borderWidth = 1.0;
+        cell.areaConditions.textContainerInset = UIEdgeInsetsZero;
+        cell.areaConditions.textContainer.lineFragmentPadding = 0;
+        cell.areaConditions.textContainer.lineBreakMode = NSLineBreakByTruncatingTail;
+        cell.areaConditions.attributedText = [[NSAttributedString alloc] initWithString:skiArea.conditions attributes:attrsDictionary];
+        cell.areaConditions.textContainer.exclusionPaths = @[imgRect];
                 
         if (![_isShowingArray[[skiAreaObjects indexOfObject:skiArea]] boolValue]) {
             cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:arrowDown]];
-            (cell.areaConditionsHeightConstraint).priority = UILayoutPriorityDefaultHigh;
+            cell.areaConditionsHeightConstraint.priority = UILayoutPriorityDefaultHigh;
         }
         else {
             cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:arrowUp]];
-            (cell.areaConditionsHeightConstraint).priority = UILayoutPriorityDefaultLow;
+            cell.areaConditionsHeightConstraint.priority = UILayoutPriorityDefaultLow;
         }
         
         // Setting lock on image if appropriate
-        if ((skiArea.permissions).boolValue == NO) {
+        if (skiArea.permissions.boolValue == NO) {
             UIImageView *lockedView = [[UIImageView alloc] initWithFrame:cell.areaImage.bounds];
             lockedView.image = [UIImage imageNamed:@"lock"];
             lockedView.contentMode = UIViewContentModeCenter;
@@ -230,10 +230,10 @@ static NSString *cellIdentifier;
                 // Main Thread
                 if (!weakOperation.isCancelled) {
                     SMSkiRouteTableViewCell *cell = (SMSkiRouteTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
-                    (cell.areaImage).layer.opacity = 0;
-                    (cell.areaImage).image = image;
+                    cell.areaImage.layer.opacity = 0;
+                    cell.areaImage.image = image;
                     [UIView animateWithDuration:0.4 animations:^{
-                        (cell.areaImage).layer.opacity = 1;
+                        cell.areaImage.layer.opacity = 1;
                     }];
                 }
             }];
@@ -377,15 +377,15 @@ static NSString *cellIdentifier;
 
 #pragma mark - NSFetchedResultsControllerDelegate
 
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
-{
-    [self.tableView beginUpdates];
-}
-
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
-{
-    [self.tableView endUpdates];
-}
+//- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
+//{
+//    [self.tableView beginUpdates];
+//}
+//
+//- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+//{
+//    [self.tableView endUpdates];
+//}
 
 #pragma mark - Navigation
 

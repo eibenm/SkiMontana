@@ -8,6 +8,8 @@
 
 #import "SMReachabilityManager.h"
 
+static NSString *googleUrl = @"www.google.com";
+
 @implementation SMReachabilityManager
 {
     Reachability *hostReachability;
@@ -35,7 +37,7 @@
                                                  name:kReachabilityChangedNotification
                                                object:nil];
     
-    hostReachability = [Reachability reachabilityWithHostName: @"www.google.com"];
+    hostReachability = [Reachability reachabilityWithHostName:googleUrl];
     [hostReachability startNotifier];
 }
 

@@ -102,6 +102,7 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     // Initial Launch - Get Data from bundle
+    // Initial Launch - Set initial system memory values
     
     if (![defaults boolForKey:NS_USER_DEFUALTS_INITAL_LAUNCH]) {
         [self createCopyOfSkiJsonFromBundle];
@@ -126,7 +127,7 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
                     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
                     
                     [NSURLConnection sendAsynchronousRequest:request
-                                                       queue:[[NSOperationQueue alloc] init]
+                                                       queue:[NSOperationQueue new]
                                            completionHandler:completionHandler];
                 }
                 if (status == NetworkStatusDisabled) {
@@ -143,7 +144,8 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
 
 - (void)setAppLockedStateIsUnlocked:(BOOL)unlocked
 {
-    // Set all applicable areas to locked/unlocked
+    // Set all areas to locked/unlocked
+    // Ignore "Free Routes" is all permission changes
     
     NSManagedObjectContext *context = [SMDataManager sharedInstance].managedObjectContext;
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:SM_SkiAreas];

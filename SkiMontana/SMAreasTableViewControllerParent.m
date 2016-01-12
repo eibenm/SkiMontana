@@ -55,19 +55,19 @@
     }
     
     // Adding button that returns to splash view
-    UIButton *homeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    homeButton.frame = CGRectMake(0, 0, 30, 30);
-    homeButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [homeButton setImage:[UIImage imageNamed:@"warning"] forState:UIControlStateNormal];
-    [homeButton addTarget:self action:@selector(popToSplashView) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *homeItem = [[UIBarButtonItem alloc] initWithCustomView:homeButton];
-    self.navigationItem.leftBarButtonItem = homeItem;
+//    UIButton *homeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    homeButton.frame = CGRectMake(0, 0, 30, 30);
+//    homeButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+//    [homeButton setImage:[UIImage imageNamed:@"warning"] forState:UIControlStateNormal];
+//    [homeButton addTarget:self action:@selector(popToSplashView) forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem *homeItem = [[UIBarButtonItem alloc] initWithCustomView:homeButton];
+//    self.navigationItem.leftBarButtonItem = homeItem;
 }
 
-- (void)popToSplashView
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+//- (void)popToSplashView
+//{
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//}
 
 #pragma mark - Display message
 
@@ -93,6 +93,10 @@
 
 - (void)checkReceiptsAfterPurchase
 {
+    // Note that subscription checking no longer checks again bundle versions due to Apple's App receipt not reflecting the most current App version and not validating
+    // The argument in the methods remains though
+    // WHY APPLE, WHY????????
+    
     [[SCPStoreKitReceiptValidator sharedInstance] validateReceiptWithBundleIdentifier:BUNDLE_IDENTIFIER bundleVersion:@"1.0" tryAgain:YES showReceiptAlert:YES alertPresentingViewController:self alertViewTitle:nil alertViewMessage:nil success:^(SCPStoreKitReceipt *receipt) {
         
         NSLog(@"Receipt: %@", receipt.fullDescription);
@@ -114,6 +118,7 @@
         // Unlock App and reload view
         if (active) {
             [[SMUtilities sharedInstance] setAppLockedStateIsUnlocked:YES];
+            self.purchased = [SMIAPHelper checkInAppMemoryPurchasedState];
             NSIndexSet *sections = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, self.tableView.numberOfSections)];
             [self.tableView reloadSections:sections withRowAnimation:UITableViewRowAnimationAutomatic];
             [self alertWithTitle:@"Purhcase Success" message:@"You have successfully subscribed to Ski Bozeman!"];
@@ -127,6 +132,10 @@
 
 - (void)checkReceiptsForSubscriptionChange
 {
+    // Note that subscription checking no longer checks again bundle versions due to Apple's App receipt not reflecting the most current App version and not validating
+    // The argument in the methods remains though
+    // WHY APPLE, WHY????????
+    
     [[SCPStoreKitReceiptValidator sharedInstance] validateReceiptWithBundleIdentifier:BUNDLE_IDENTIFIER bundleVersion:@"1.0" tryAgain:YES showReceiptAlert:YES alertPresentingViewController:self alertViewTitle:nil alertViewMessage:nil success:^(SCPStoreKitReceipt *receipt) {
         
         NSLog(@"Receipt: %@", receipt.fullDescription);
@@ -148,7 +157,6 @@
         NSLog(@"Today's date: %@", [NSDate date]);
         NSLog(@"Latest receipt purchase date: %@", lastTransaction.purchaseDate);
         
-        
         BOOL purchased = self.purchased;
         BOOL active = [SMIAPHelper subscriptionIsActiveWithReceipt:lastTransaction date:[NSDate date]];
         
@@ -157,6 +165,7 @@
         // Subscription is no longer active ... lock the app!
         if (!active) {
             [[SMUtilities sharedInstance] setAppLockedStateIsUnlocked:NO];
+            self.purchased = [SMIAPHelper checkInAppMemoryPurchasedState];
             NSIndexSet *sections = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, self.tableView.numberOfSections)];
             [self.tableView reloadSections:sections withRowAnimation:UITableViewRowAnimationAutomatic];
             [self alertWithTitle:@"Subscription Status" message:@"Your subscription has expired!"];
@@ -165,6 +174,7 @@
         // In the case of restored subscription
         if (purchased == NO && active == YES) {
             [[SMUtilities sharedInstance] setAppLockedStateIsUnlocked:YES];
+            self.purchased = [SMIAPHelper checkInAppMemoryPurchasedState];
             NSIndexSet *sections = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, self.tableView.numberOfSections)];
             [self.tableView reloadSections:sections withRowAnimation:UITableViewRowAnimationAutomatic];
             [self alertWithTitle:@"Subscription Status" message:@"Your subscription has been restored!"];
