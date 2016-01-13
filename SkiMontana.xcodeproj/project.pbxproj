@@ -1140,7 +1140,7 @@
 					"$(PROJECT_DIR)/SkiMontana/OpenSSL/lib",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.eibenm.SkiMontanaTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.eibenm.SkiMontana;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1173,7 +1173,7 @@
 					"$(PROJECT_DIR)/SkiMontana/OpenSSL/lib",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.eibenm.SkiMontanaTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.eibenm.SkiMontana;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

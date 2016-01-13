@@ -44,7 +44,7 @@
     ];
     
     self.purchased = [SMIAPHelper checkInAppMemoryPurchasedState];
-        
+    
     if (TRIAL == NO) {
         if (self.purchased == YES) {
             [self checkReceiptsForSubscriptionChange];
@@ -68,6 +68,15 @@
 //{
 //    [self dismissViewControllerAnimated:YES completion:nil];
 //}
+
+- (void)populateIsShowingArray
+{
+    NSArray *fetchedObjects = (self.fetchedResultsController).fetchedObjects;
+    self.isShowingArray = [[NSMutableArray alloc] initWithCapacity:fetchedObjects.count];
+    [fetchedObjects enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [self.isShowingArray addObject:@NO];
+    }];
+}
 
 #pragma mark - Display message
 
@@ -119,8 +128,10 @@
         if (active) {
             [[SMUtilities sharedInstance] setAppLockedStateIsUnlocked:YES];
             self.purchased = [SMIAPHelper checkInAppMemoryPurchasedState];
-            NSIndexSet *sections = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, self.tableView.numberOfSections)];
-            [self.tableView reloadSections:sections withRowAnimation:UITableViewRowAnimationAutomatic];
+            self.fetchedResultsController = nil;
+            [self.fetchedResultsController performFetch:nil];
+            [self populateIsShowingArray];
+            [self.tableView reloadData];
             [self alertWithTitle:@"Purhcase Success" message:@"You have successfully subscribed to Ski Bozeman!"];
         }
         
@@ -160,14 +171,14 @@
         BOOL purchased = self.purchased;
         BOOL active = [SMIAPHelper subscriptionIsActiveWithReceipt:lastTransaction date:[NSDate date]];
         
-        NSLog(@"%@", (active ? @"active" : @"not active"));
-        
         // Subscription is no longer active ... lock the app!
         if (!active) {
             [[SMUtilities sharedInstance] setAppLockedStateIsUnlocked:NO];
             self.purchased = [SMIAPHelper checkInAppMemoryPurchasedState];
-            NSIndexSet *sections = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, self.tableView.numberOfSections)];
-            [self.tableView reloadSections:sections withRowAnimation:UITableViewRowAnimationAutomatic];
+            self.fetchedResultsController = nil;
+            [self.fetchedResultsController performFetch:nil];
+            [self populateIsShowingArray];
+            [self.tableView reloadData];
             [self alertWithTitle:@"Subscription Status" message:@"Your subscription has expired!"];
         }
         
@@ -175,8 +186,10 @@
         if (purchased == NO && active == YES) {
             [[SMUtilities sharedInstance] setAppLockedStateIsUnlocked:YES];
             self.purchased = [SMIAPHelper checkInAppMemoryPurchasedState];
-            NSIndexSet *sections = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, self.tableView.numberOfSections)];
-            [self.tableView reloadSections:sections withRowAnimation:UITableViewRowAnimationAutomatic];
+            self.fetchedResultsController = nil;
+            [self.fetchedResultsController performFetch:nil];
+            [self populateIsShowingArray];
+            [self.tableView reloadData];
             [self alertWithTitle:@"Subscription Status" message:@"Your subscription has been restored!"];
         }
         
@@ -213,6 +226,7 @@
         [self checkReceiptsAfterPurchase];
     } paymentTransactionStateFailed:^(NSArray *transactions) {
         NSLog(@"Failed products : %@", transactions);
+        [self alertWithTitle:@"Failed Purchase" message:@"Something went wrong with the transaction, try again!"];
     } paymentTransactionStateRestored:^(NSArray *transactions) {
         NSLog(@"Restored products : %@", transactions);
     } failure:^(NSError *error) {

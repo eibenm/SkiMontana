@@ -38,9 +38,9 @@ static NSString *cellIdentifier;
 @end
 
 @implementation SMAreasTableViewController
-{
-    NSMutableArray *_isShowingArray;
-}
+
+@synthesize managedObjectContext = _managedObjectContext;
+@synthesize fetchedResultsController = _fetchedResultsController;
 
 - (void)viewDidLoad
 {
@@ -51,7 +51,7 @@ static NSString *cellIdentifier;
     (self.tableView).delegate = self;
     (self.tableView).dataSource = self;
     
-    self.managedObjectContext = [SMDataManager sharedInstance].managedObjectContext;
+    _managedObjectContext = [SMDataManager sharedInstance].managedObjectContext;
     self.routeSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name_route" ascending:YES];
     self.deviceIsIPhone = ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone);
     
@@ -61,12 +61,7 @@ static NSString *cellIdentifier;
         abort();
     }
     
-    NSArray *fetchedObjects = (self.fetchedResultsController).fetchedObjects;
-    
-    _isShowingArray = [[NSMutableArray alloc] initWithCapacity:fetchedObjects.count];
-    [fetchedObjects enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        [_isShowingArray addObject:@NO];
-    }];
+    [self populateIsShowingArray];
     
     // View for background color (opaque white mask)
     UIView *backgroundColorView = [[UIView alloc]initWithFrame:self.view.frame];
@@ -144,7 +139,7 @@ static NSString *cellIdentifier;
         id <NSFetchedResultsSectionInfo> sectionInfo = (self.fetchedResultsController).sections[section];
         SkiAreas *skiArea = sectionInfo.objects[0];
         NSUInteger indexofCurrentObject = [(self.fetchedResultsController).fetchedObjects indexOfObject:skiArea];
-        if ([_isShowingArray[indexofCurrentObject] boolValue] == NO) {
+        if ([self.isShowingArray[indexofCurrentObject] boolValue] == NO) {
             return 1;
         }
         NSUInteger countRoutes = (skiArea.ski_routes).count;
@@ -200,7 +195,7 @@ static NSString *cellIdentifier;
         cell.areaConditions.attributedText = [[NSAttributedString alloc] initWithString:skiArea.conditions attributes:attrsDictionary];
         cell.areaConditions.textContainer.exclusionPaths = @[imgRect];
                 
-        if (![_isShowingArray[[skiAreaObjects indexOfObject:skiArea]] boolValue]) {
+        if (![self.isShowingArray[[skiAreaObjects indexOfObject:skiArea]] boolValue]) {
             cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:arrowDown]];
             cell.areaConditionsHeightConstraint.priority = UILayoutPriorityDefaultHigh;
         }
@@ -297,7 +292,7 @@ static NSString *cellIdentifier;
     CGRect conditionsRect = CGRectNull;
     
     if (indexPath.row == 0) {
-        if ([_isShowingArray[[skiAreaObjects indexOfObject:skiArea]] boolValue] == NO) {
+        if ([self.isShowingArray[[skiAreaObjects indexOfObject:skiArea]] boolValue] == NO) {
             height = 178.0f;
         }
         else {
@@ -323,7 +318,7 @@ static NSString *cellIdentifier;
     
     // Collapse or expand section when skiArea cells are selected
     if (indexPath.row == 0) {
-        _isShowingArray[index] = [NSNumber numberWithBool:![_isShowingArray[index] boolValue]];
+        self.isShowingArray[index] = [NSNumber numberWithBool:![self.isShowingArray[index] boolValue]];
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
     else {
@@ -344,10 +339,16 @@ static NSString *cellIdentifier;
         return _fetchedResultsController;
     }
     
+    // In case the managed object context gets whiped somehow
+    // This has happened when the App is set to locked/unlocked
+    if (_managedObjectContext == nil) {
+        _managedObjectContext = [SMDataManager sharedInstance].managedObjectContext;
+    }
+    
     [NSFetchedResultsController deleteCacheWithName:nil];
     
     NSFetchRequest *fetchRequest = [NSFetchRequest new];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:SM_SkiAreas inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:SM_SkiAreas inManagedObjectContext:_managedObjectContext];
     
     NSSortDescriptor *sortDescriptor1 = [[NSSortDescriptor alloc] initWithKey:@"name_area" ascending:YES];
     NSSortDescriptor *sortDescriptor2 = [[NSSortDescriptor alloc] initWithKey:@"permissions" ascending:NO];
@@ -365,7 +366,7 @@ static NSString *cellIdentifier;
     
     NSFetchedResultsController *fetchedResultsController =
         [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                            managedObjectContext:self.managedObjectContext
+                                            managedObjectContext:_managedObjectContext
                                               sectionNameKeyPath:@"name_area"
                                                        cacheName:nil];
     

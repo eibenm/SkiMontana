@@ -106,11 +106,12 @@ NSString *const SM_Glossary = @"Glossary";
     }
     
     NSPersistentStoreCoordinator *coordinator = self.persistentStoreCoordinator;
-    if (!coordinator) {
-        return nil;
+    
+    if (coordinator != nil) {
+        _managedObjectContext = [[NSManagedObjectContext alloc] init];
+        _managedObjectContext.persistentStoreCoordinator = coordinator;
     }
-    _managedObjectContext = [[NSManagedObjectContext alloc] init];
-    _managedObjectContext.persistentStoreCoordinator = coordinator;
+    
     return _managedObjectContext;
 }
 

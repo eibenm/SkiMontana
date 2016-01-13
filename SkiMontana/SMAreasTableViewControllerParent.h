@@ -7,13 +7,18 @@
 //
 
 #import "SMViewController.h"
+#import "SMDataManager.h"
 
-@interface SMAreasTableViewControllerParent : SMViewController
+@interface SMAreasTableViewControllerParent : SMViewController <NSFetchedResultsControllerDelegate>
 
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSMutableArray *isShowingArray;
 @property (assign, nonatomic) BOOL deviceIsIPhone;
 @property (assign, nonatomic) BOOL purchased;
 
 - (void)presentIAPActionSheet;
+- (void)populateIsShowingArray;
 
 @end

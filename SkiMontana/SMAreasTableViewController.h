@@ -7,11 +7,7 @@
 //
 
 #import "SMAreasTableViewControllerParent.h"
-#import "SMDataManager.h"
 
-@interface SMAreasTableViewController : SMAreasTableViewControllerParent <NSFetchedResultsControllerDelegate>
-
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@interface SMAreasTableViewController : SMAreasTableViewControllerParent
 
 @end
