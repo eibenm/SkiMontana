@@ -48,8 +48,7 @@
     if (TRIAL == NO) {
         if (self.purchased == YES) {
             [self checkReceiptsForSubscriptionChange];
-        }
-        else {
+        } else {
             [self requestProductsWithProductIdentifiers:self.productIdentifiers];
         }
     }

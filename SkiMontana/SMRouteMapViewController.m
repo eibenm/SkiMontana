@@ -8,6 +8,7 @@
 
 #import "SMRouteMapViewController.h"
 #import "CLLocationHelper.h"
+#import "SMIAPHelper.h"
 #import "Mapbox.h"
 
 #import "SMMapAttributionViewController.h"
@@ -92,9 +93,9 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
         [self.mapView addAnnotation:annotation];
     }
     
+    /*
     // NSLogging
     
-    /*
     NSLog(@"Native tile bounds of '%@':\n\tSouthwest - Lat: %f, Lon: %f,\n\tNortheast - Lat: %f, Lon: %f",
         self.tileSource.shortName,
         self.tileSource.latitudeLongitudeBoundingBox.southWest.latitude,
@@ -138,7 +139,17 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
     [self.mapView zoomWithLatitudeLongitudeBoundsSouthWest:self.coordinateBounds.southwest northEast:self.coordinateBounds.northeast animated:NO];
     float newZoom = self.mapView.zoom - 0.5f;
     (self.mapView).zoom = (newZoom < self.tileSource.maxZoom ? newZoom : self.tileSource.maxZoom);
-    [self.mapView setConstraintsSouthWest:self.areaBounds.southwest northEast:self.areaBounds.northeast];
+    
+    BOOL purchased = [SMIAPHelper checkInAppMemoryPurchasedState];
+    
+    // If app is either trial version or purchased, don't contain files to area bounds
+    if (IS_TRIAL == YES || purchased == YES) {
+        [self.mapView setConstraintsSouthWest:self.tileSource.latitudeLongitudeBoundingBox.southWest
+                                    northEast:self.tileSource.latitudeLongitudeBoundingBox.northEast];
+    } else {
+        [self.mapView setConstraintsSouthWest:self.areaBounds.southwest
+                                    northEast:self.areaBounds.northeast];
+    }
     
     [UIView animateWithDuration:0.25 animations:^{
         (self.mapView.layer).opacity = 1.0f;
