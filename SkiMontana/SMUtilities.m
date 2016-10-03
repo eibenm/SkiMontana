@@ -61,14 +61,9 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
         }
         
         if (data != nil) {
-            NSDictionary *parsedObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+            NSError *error;
+            NSDictionary *parsedObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
             NSDictionary *internalJson = [self skiAppCurrentJson];
-            
-            NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
-            numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
-            
-            float internalVersion = [numberFormatter numberFromString:internalJson[@"version"]].floatValue;
-            float externalVersion = [numberFormatter numberFromString:parsedObject[@"version"]].floatValue;
             
             typedef void (^SuccessMessage)(BOOL appUpdate, NSString *message);
             
@@ -78,24 +73,34 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
                 });
             };
             
-            if (externalVersion > internalVersion) {
-                if ([[SMDataManager sharedInstance] clearPersistentStores]) {
-                    [self copyJsonToDataStore:parsedObject];
-                    if ([self createCopyOfSkiJsonFromData:parsedObject]) {
-                        successMessage(YES, @"Updated Local Data from server");
-                        return;
+            if (parsedObject != nil) {
+                NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
+                numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+                
+                float internalVersion = [numberFormatter numberFromString:internalJson[@"version"]].floatValue;
+                float externalVersion = [numberFormatter numberFromString:parsedObject[@"version"]].floatValue;
+                
+                if (externalVersion > internalVersion) {
+                    if ([[SMDataManager sharedInstance] clearPersistentStores]) {
+                        [self copyJsonToDataStore:parsedObject];
+                        if ([self createCopyOfSkiJsonFromData:parsedObject]) {
+                            successMessage(YES, @"Updated Local Data from server");
+                            return;
+                        }
+                        else {
+                            successMessage(NO, @"Problem writing Local json file from server");
+                            return;
+                        }
                     }
                     else {
-                        successMessage(NO, @"Problem writing Local json file from server");
+                        successMessage(NO, @"Problem clear persistent stores");
                         return;
                     }
                 }
-                else {
-                    successMessage(NO, @"Problem clear persistent stores");
-                    return;
-                }
+                successMessage(NO, @"Version is the same, no changes needed");
+            } else {
+                successMessage(NO, @"JSON object recieved from server could not be parsed");
             }
-            successMessage(NO, @"Version is the same, no changes needed");
         }
     };
     
@@ -135,8 +140,7 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
                     self.failureBlock([NSError errorWithDomain:@"com.eibenm.SkiMontana.NoResponse" code:404 userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(@"Network is disabled", @"") }]);
                 }
             }];
-        }
-        else {
+        } else {
             self.successBlock(NO, @"App is Trial version, no updating will occur");
         }
     }
