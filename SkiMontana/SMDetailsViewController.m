@@ -100,18 +100,18 @@ static CGFloat maxOffsetDiff = 46.0f;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    (self.headerView.areaTitle).text = self.nameArea;
-    (self.headerView.routeTitle).text = self.skiRoute.name_route;
+    self.headerView.areaTitle.text = self.nameArea;
+    self.headerView.routeTitle.text = self.skiRoute.name_route;
     
     self.headerView.layer.zPosition = 2;
     self.offsetStartingY = self.headerView.frame.size.height;
     self.maxOffsetY = self.headerView.frame.size.height - maxOffsetDiff;
     self.routeTopContraintHeight = self.headerView.routeTitleTopConstaint.constant;
     
-    (self.tableView).contentInset = UIEdgeInsetsMake(self.offsetStartingY, 0, 0, 0);
-    (self.headerView).backgroundColor = [UIColor colorwithHexString:@"#0000ff" alpha:0.7];
+    self.tableView.contentInset = UIEdgeInsetsMake(self.offsetStartingY, 0, 0, 0);
+    self.headerView.backgroundColor = [UIColor colorwithHexString:@"#0000ff" alpha:0.7];
     
-    self.notesExist = ((self.skiRoute).notes.length == 0) ? NO : YES;
+    self.notesExist = (self.skiRoute.notes.length == 0) ? NO : YES;
     
     // View for background color (opaque white mask)
     UIView *backgroundColorView = [[UIView alloc]initWithFrame:self.view.frame];
@@ -182,8 +182,7 @@ static CGFloat maxOffsetDiff = 46.0f;
             case 8: cellIdentifier = @"directions"; break;
             case 9: cellIdentifier = @"images"; break;
         }
-    }
-    else {
+    } else {
         switch (indexPath.row) {
             case 0: cellIdentifier = @"map"; break;
             case 1: cellIdentifier = @"overview"; break;
@@ -212,8 +211,7 @@ static CGFloat maxOffsetDiff = 46.0f;
         (cell.mapTapLabel).layer.shadowRadius = 4.0;
         (cell.mapTapLabel).layer.shadowColor = [UIColor blackColor].CGColor;
         (cell.mapTapLabel).layer.shadowOffset = CGSizeMake(0.0, 0.0);
-    }
-    else if ([cellIdentifier isEqualToString:@"content"]) {
+    } else if ([cellIdentifier isEqualToString:@"content"]) {
         (cell.labelElevation).text = [NSString stringWithFormat:@"Elevation Gain: %@ ft", self.skiRoute.elevation_gain];
         (cell.labelVertical).text = [NSString stringWithFormat:@"Vertical: %@", self.skiRoute.vertical];
         (cell.labelSlope).text = [NSString stringWithFormat:@"Aspects: %@", self.skiRoute.aspects];
@@ -221,29 +219,22 @@ static CGFloat maxOffsetDiff = 46.0f;
         (cell.labelSnowfall).text = [NSString stringWithFormat:@"Snowfall: %@", self.skiRoute.snowfall];
         (cell.labelAvalanche).text = [NSString stringWithFormat:@"Terrain Danger: %@", self.skiRoute.avalanche_danger];
         (cell.labelSkierTraffic).text = [NSString stringWithFormat:@"Skier Traffic: %@", self.skiRoute.skier_traffic];
-    }
-    else if ([cellIdentifier isEqualToString:@"overview"]) {
+    } else if ([cellIdentifier isEqualToString:@"overview"]) {
         (cell.labelOverviewInformation).text = self.skiRoute.overview;
-    }
-    else if ([cellIdentifier isEqualToString:@"avalanche"]) {
+    } else if ([cellIdentifier isEqualToString:@"avalanche"]) {
         (cell.labelAvalancheInformation).text = self.skiRoute.avalanche_info;
-    }
-    else if ([cellIdentifier isEqualToString:@"getting_there"]) {
+    } else if ([cellIdentifier isEqualToString:@"getting_there"]) {
         (cell.labelDirectionsInformation).text = self.skiRoute.directions;
-    }
-    else if ([cellIdentifier isEqualToString:@"notes"]) {
+    } else if ([cellIdentifier isEqualToString:@"notes"]) {
         (cell.labelNotesInformation).text = self.skiRoute.notes;
-    }
-    else if ([cellIdentifier isEqualToString:@"waypoint_guidance"]) {
+    } else if ([cellIdentifier isEqualToString:@"waypoint_guidance"]) {
         (cell.labelWaypointGuidanceInformation).text = self.skiRoute.gps_guidance;
-    }
-    else if ([cellIdentifier isEqualToString:@"kml"]) {
+    } else if ([cellIdentifier isEqualToString:@"kml"]) {
         nil;
     }
     else if ([cellIdentifier isEqualToString:@"directions"]) {
         nil;
-    }
-    else if ([cellIdentifier isEqualToString:@"images"]) {
+    } else if ([cellIdentifier isEqualToString:@"images"]) {
         // Add KML Image
         NSString *kmlImage;
         NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"filename" ascending:YES];
@@ -307,8 +298,7 @@ static CGFloat maxOffsetDiff = 46.0f;
             case 9: height = 240.0f; break;
             default: break;
         }
-    }
-    else {
+    } else {
         switch (indexPath.row) {
             case 0: height = 180.0f; break;
             case 1: height = 188.0f; break;
@@ -408,8 +398,7 @@ static CGFloat maxOffsetDiff = 46.0f;
         
         if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"comgooglemaps://"]]) {
             [[UIApplication sharedApplication] openURL:googleUrl];
-        }
-        else {
+        } else {
             [[UIApplication sharedApplication] openURL:appleMapsUrl];
         }
         
@@ -422,8 +411,7 @@ static CGFloat maxOffsetDiff = 46.0f;
             NSURL *fileUrl = [[NSBundle mainBundle] URLForResource:self.skiRoute.name_route withExtension:@"kmz"];
             self.docController = [UIDocumentInteractionController interactionControllerWithURL:fileUrl];
             [self.docController presentOpenInMenuFromRect:CGRectZero inView:self.view animated:YES];
-        }
-        else {
+        } else {
             [self showNeedGoogleEarthAlert];
         }
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -474,14 +462,12 @@ static CGFloat maxOffsetDiff = 46.0f;
         self.headerView.headerViewHeight.constant = self.maxOffsetY;
         self.headerView.routeTitleTopConstaint.constant = self.routeTopContraintHeight - (maxOffsetDiff * scalingFactor);
         self.headerView.areaTitle.layer.opacity = 0;
-    }
-    else if (offsetDiff > 0) {
+    } else if (offsetDiff > 0) {
         self.tableView.contentInset = UIEdgeInsetsMake(self.offsetStartingY, 0, 0, 0);
         self.headerView.headerViewHeight.constant = self.offsetStartingY;
         self.headerView.routeTitleTopConstaint.constant = self.routeTopContraintHeight;
         self.headerView.areaTitle.layer.opacity = 1.0f;
-    }
-    else {
+    } else {
         self.tableView.contentInset = UIEdgeInsetsMake(ABS(offset), 0, 0, 0);
         self.headerView.headerViewHeight.constant = ABS(offset);
         self.headerView.routeTitleTopConstaint.constant = self.routeTopContraintHeight - (ABS(offsetDiff) * scalingFactor);
@@ -501,6 +487,7 @@ static CGFloat maxOffsetDiff = 46.0f;
     if (index < (self.photos).count) {
         return self.photos[index];
     }
+    
     return nil;
 }
 
@@ -509,6 +496,7 @@ static CGFloat maxOffsetDiff = 46.0f;
     if (index < (self.photos).count) {
         return self.photos[index];
     }
+    
     return nil;
 }
 

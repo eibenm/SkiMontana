@@ -49,16 +49,16 @@
 
 - (void)layoutSubviews
 {
-    (self.routeBackgroundLayer).frame = CGRectMake(5, 0, CGRectGetWidth(self.bounds) - 10, CGRectGetHeight(self.bounds));
     [super layoutSubviews];
+    (self.routeBackgroundLayer).frame = CGRectMake(5, 0, CGRectGetWidth(self.bounds) - 10, CGRectGetHeight(self.bounds));
 }
 
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
 {
+    [super setHighlighted:highlighted animated:animated];
     [UIView animateWithDuration:0.2 animations:^{
         (self.routeBackgroundLayer.layer).opacity = (highlighted ? 0.65f : 0.5f);
     }];
-    [super setHighlighted:highlighted animated:animated];
 }
 
 @end

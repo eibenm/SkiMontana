@@ -160,8 +160,7 @@ static NSString *cellIdentifier;
     
     if (cell == nil) {
         cell = [[SMSkiRouteTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
-    }
-    else {
+    } else {
         [[cell.contentView viewWithTag:500] removeFromSuperview];
     }
     
@@ -182,8 +181,6 @@ static NSString *cellIdentifier;
             NSForegroundColorAttributeName: [UIColor whiteColor]
         };
         
-        UIBezierPath *imgRect = [UIBezierPath bezierPathWithRect:CGRectInset(cell.areaImage.bounds, -8.0f, 0)];
-
         cell.areaName.text = skiArea.name_area;
         cell.areaName.textColor = [UIColor whiteColor];
         //cell.areaImage.image = [UIImage imageNamed:[skiArea.name_area stringByAppendingString:@"-thumbnail"]];
@@ -193,13 +190,11 @@ static NSString *cellIdentifier;
         cell.areaConditions.textContainer.lineFragmentPadding = 0;
         cell.areaConditions.textContainer.lineBreakMode = NSLineBreakByTruncatingTail;
         cell.areaConditions.attributedText = [[NSAttributedString alloc] initWithString:skiArea.conditions attributes:attrsDictionary];
-        cell.areaConditions.textContainer.exclusionPaths = @[imgRect];
-                
+
         if (![self.isShowingArray[[skiAreaObjects indexOfObject:skiArea]] boolValue]) {
             cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:arrowDown]];
             cell.areaConditionsHeightConstraint.priority = UILayoutPriorityDefaultHigh;
-        }
-        else {
+        } else {
             cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:arrowUp]];
             cell.areaConditionsHeightConstraint.priority = UILayoutPriorityDefaultLow;
         }
@@ -241,10 +236,11 @@ static NSString *cellIdentifier;
         }
         
         (cell.areaImage).image = nil;
-    }
     
-    // Ski Route
-    else {
+    } else {
+        
+        // Ski Route
+        
         NSArray *skiRoutesArray = [skiArea.ski_routes sortedArrayUsingDescriptors:@[self.routeSortDescriptor]];
         SkiRoutes *skiRoute = skiRoutesArray[indexPath.row - 1];
         NSDictionary *underlineAttribute = @{
@@ -269,11 +265,22 @@ static NSString *cellIdentifier;
 
 #pragma mark - UITableViewDelegate
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [cell layoutIfNeeded];
+    
+    if (indexPath.row == 0) {
+        SMSkiRouteTableViewCell *skiCell = (SMSkiRouteTableViewCell *)cell;
+        UIBezierPath *imgRect = [UIBezierPath bezierPathWithRect:CGRectInset(skiCell.areaImage.bounds, -8.0f, 0)];
+        skiCell.areaConditions.textContainer.exclusionPaths = @[imgRect];
+    }
+}
+
 // Remove asynch image operation if cell leaves screen before loaded up.
 - (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        NSArray *skiAreaObjects = (self.fetchedResultsController).fetchedObjects;
+        NSArray *skiAreaObjects = self.fetchedResultsController.fetchedObjects;
         SkiAreas *skiArea = skiAreaObjects[indexPath.section];
         NSString *imageName = [skiArea.name_area stringByAppendingString:@"-thumbnail"];
         NSBlockOperation *ongoingImageOperation = [self.imageLoadingOperationsDictionary objectForKey:imageName];
@@ -286,7 +293,7 @@ static NSString *cellIdentifier;
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSArray *skiAreaObjects = (self.fetchedResultsController).fetchedObjects;
+    NSArray *skiAreaObjects = self.fetchedResultsController.fetchedObjects;
     SkiAreas *skiArea = skiAreaObjects[indexPath.section];
     CGFloat height = UITableViewAutomaticDimension;
     CGRect conditionsRect = CGRectNull;
@@ -294,16 +301,14 @@ static NSString *cellIdentifier;
     if (indexPath.row == 0) {
         if ([self.isShowingArray[[skiAreaObjects indexOfObject:skiArea]] boolValue] == NO) {
             height = 178.0f;
-        }
-        else {
+        } else {
             // Estimating a better height if row is expanded
             NSAttributedString * attributedString = [[NSAttributedString alloc] initWithString:skiArea.conditions attributes:@{ NSFontAttributeName:[UIFont mediumSkiMontanaFontOfSize:14]}];
             CGSize constraintSize = CGSizeMake(tableView.frame.size.width - 15, MAXFLOAT);
             conditionsRect = [attributedString boundingRectWithSize:constraintSize options:(NSStringDrawingUsesLineFragmentOrigin |NSStringDrawingUsesFontLeading) context:nil];
             height = (conditionsRect.size.height < 178.0f) ? 178.0f : conditionsRect.size.height;
         }
-    }
-    else {
+    } else {
         height = 135.0f;
     }
     
@@ -320,8 +325,7 @@ static NSString *cellIdentifier;
     if (indexPath.row == 0) {
         self.isShowingArray[index] = [NSNumber numberWithBool:![self.isShowingArray[index] boolValue]];
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationAutomatic];
-    }
-    else {
+    } else {
         // Present IAP options if needed
         NSArray *skiAreaObjects = (self.fetchedResultsController).fetchedObjects;
         SkiAreas *skiArea = skiAreaObjects[indexPath.section];
