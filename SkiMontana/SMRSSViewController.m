@@ -62,8 +62,8 @@
     
     self.title = @"GNFAC Advisory";
     
-    (self.tableView).delegate = self;
-    (self.tableView).dataSource = self;
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     
     self.avyFeedList = [NSMutableArray array];
     
@@ -78,8 +78,7 @@
         
         if (error != nil) {
             [self handleError:error];
-        }
-        else {
+        } else {
             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
             if (((httpResponse.statusCode / 100) == 2) && [response.MIMEType isEqual:@"application/rss+xml"]) {
                 // Update the UI and start parsing the data,
@@ -88,8 +87,7 @@
                 //
                 SMRSSParseOperation *parseOperation = [[SMRSSParseOperation alloc] initWithData:data];
                 [self.parseQueue addOperation:parseOperation];
-            }
-            else {
+            } else {
                 NSString *errorString = NSLocalizedString(@"HTTP Error", @"Error message displayed when receving a connection error.");
                 NSDictionary *userInfo = @{ NSLocalizedDescriptionKey: errorString };
                 NSError *reportError = [NSError errorWithDomain:@"HTTP" code:httpResponse.statusCode userInfo:userInfo];
@@ -191,7 +189,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return (self.avyFeedList).count;
+    return self.avyFeedList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -244,13 +242,12 @@
         SFSafariViewController *safariVC = [[SFSafariViewController alloc]initWithURL:rssFeed.link entersReaderIfAvailable:NO];
         safariVC.delegate = self;
         [self presentViewController:safariVC animated:YES completion:nil];
-    }
-    else {
+    } else {
         UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         SMRSSWebViewController *webViewController = [storyboard instantiateViewControllerWithIdentifier:@"rssWebViewController"];
         webViewController.feedUrl = rssFeed.link;
         UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:nil action:nil];
-        (self.navigationItem).backBarButtonItem = newBackButton;
+        self.navigationItem.backBarButtonItem = newBackButton;
         [self.navigationController pushViewController:webViewController animated:YES];
     }
     

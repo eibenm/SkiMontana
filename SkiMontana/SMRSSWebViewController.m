@@ -34,15 +34,15 @@
     [self.webView loadRequest:[NSURLRequest requestWithURL:self.feedUrl]];
     
     self.progressProxy = [NJKWebViewProgress new];
-    (self.webView).delegate = _progressProxy;
-    (self.progressProxy).webViewProxyDelegate = self;
-    (self.progressProxy).progressDelegate = self;
+    self.webView.delegate = _progressProxy;
+    self.progressProxy.webViewProxyDelegate = self;
+    self.progressProxy.progressDelegate = self;
     
     CGFloat progressBarHeight = 2.0f;
     CGRect navigationBarBounds = self.navigationController.navigationBar.bounds;
     CGRect barFrame = CGRectMake(0, navigationBarBounds.size.height - progressBarHeight, navigationBarBounds.size.width, progressBarHeight);
     self.progressView = [[NJKWebViewProgressView alloc] initWithFrame:barFrame];
-    (self.progressView).autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+    self.progressView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
 }
 
 - (void)viewWillAppear:(BOOL)animated

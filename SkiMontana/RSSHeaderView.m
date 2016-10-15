@@ -43,17 +43,17 @@
     self.constraints = [[NSMutableArray alloc] init];
     [[NSBundle mainBundle] loadNibNamed:@"RSSHeaderView" owner:self options:nil];
     [self addSubview:self.view];
-    (self.view).translatesAutoresizingMaskIntoConstraints = NO;
+    self.view.translatesAutoresizingMaskIntoConstraints = NO;
     
     // Adding baseline to view
     CGRect rect = self.view.frame;
     self.bottomBorder = [CALayer layer];
-    (self.bottomBorder).frame = CGRectMake(0, CGRectGetHeight(rect) - 2.5f, CGRectGetWidth(rect), 5.0f);
-    (self.bottomBorder).backgroundColor = [UIColor grayColor].CGColor;
-    (self.bottomBorder).masksToBounds = NO;
-    (self.bottomBorder).shadowOpacity = 0.4;
-    (self.bottomBorder).shadowRadius = 3.0f;
-    (self.bottomBorder).shadowOffset = CGSizeMake(0, 2);
+    self.bottomBorder.frame = CGRectMake(0, CGRectGetHeight(rect) - 2.5f, CGRectGetWidth(rect), 5.0f);
+    self.bottomBorder.backgroundColor = [UIColor grayColor].CGColor;
+    self.bottomBorder.masksToBounds = NO;
+    self.bottomBorder.shadowOpacity = 0.4;
+    self.bottomBorder.shadowRadius = 3.0f;
+    self.bottomBorder.shadowOffset = CGSizeMake(0, 2);
     
     [self.view.layer addSublayer:self.bottomBorder];
     
@@ -76,7 +76,7 @@
 - (void)drawRect:(CGRect)rect
 {
     [super drawRect:rect];
-    (self.bottomBorder).frame = CGRectMake(0, CGRectGetHeight(rect) - 2.5f, CGRectGetWidth(rect), 5.0f);
+    self.bottomBorder.frame = CGRectMake(0, CGRectGetHeight(rect) - 2.5f, CGRectGetWidth(rect), 5.0f);
 }
 
 @end

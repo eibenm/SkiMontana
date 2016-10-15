@@ -40,8 +40,23 @@ static CGFloat maxOffsetDiff = 46.0f;
 
 @implementation SMDetailsViewController
 
+//- (void)viewDidAppear:(BOOL)animated
+//{
+//    [super viewDidAppear:animated];
+//    
+//    for (UIView *subview in [self.view subviews]) {
+//        NSLog(@"%@", subview);
+//    }
+//    
+//    [self.headerView layoutIfNeeded];
+//    NSLog(@"did layout: Headerview frame: %@", NSStringFromCGRect(self.headerView.frame));
+//    NSLog(@"did layout: Headerview bounds: %@", NSStringFromCGRect(self.headerView.bounds));
+//}
+
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     
     // Adding custom back button
@@ -50,9 +65,9 @@ static CGFloat maxOffsetDiff = 46.0f;
     [self.backButton setTitle:@"Back" forState:UIControlStateNormal];
     [self.backButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.backButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
-    (self.backButton).titleLabel.font = [UIFont boldSkiMontanaFontOfSize:17.0f];
-    (self.backButton).translatesAutoresizingMaskIntoConstraints = NO;
-    (self.backButton).layer.zPosition = 100.0f;
+    self.backButton.titleLabel.font = [UIFont boldSkiMontanaFontOfSize:17.0f];
+    self.backButton.translatesAutoresizingMaskIntoConstraints = NO;
+    self.backButton.layer.zPosition = 100.0f;
     [self.backButton sizeToFit];
     [self.view addSubview:self.backButton];
     NSDictionary *views = @{ @"backButton": self.backButton, @"topLayoutGuide": self.topLayoutGuide };
@@ -62,24 +77,23 @@ static CGFloat maxOffsetDiff = 46.0f;
     // Creating mask on route title so it doesn't overflow underneath the back button
     if (!self.maskLayer ) {
         self.maskLayer = [CAGradientLayer layer];
-        (self.maskLayer).colors = @[(id)[UIColor clearColor].CGColor, (id)[UIColor clearColor].CGColor, (id)[UIColor whiteColor].CGColor, (id)[UIColor whiteColor].CGColor];
-        (self.maskLayer).locations = @[@0, @0.13, @0.15, @1.0];
-        (self.maskLayer).anchorPoint = CGPointMake(0, 0.25);
-        (self.maskLayer).startPoint = CGPointMake(0.0, 0.5);
-        (self.maskLayer).endPoint = CGPointMake(1.0, 0.5);
+        self.maskLayer.colors = @[(id)[UIColor clearColor].CGColor, (id)[UIColor clearColor].CGColor, (id)[UIColor whiteColor].CGColor, (id)[UIColor whiteColor].CGColor];
+        self.maskLayer.locations = @[@0, @0.13, @0.15, @1.0];
+        self.maskLayer.anchorPoint = CGPointMake(0, 0.25);
+        self.maskLayer.startPoint = CGPointMake(0.0, 0.5);
+        self.maskLayer.endPoint = CGPointMake(1.0, 0.5);
         
-        (self.headerView).routeTitle.layer.mask = self.maskLayer;
-        //[(self.headerView).routeTitle.layer addSublayer:self.maskLayer];
-        (self.headerView).routeTitle.layer.masksToBounds = YES;
+        self.headerView.routeTitle.layer.mask = self.maskLayer;
+        //[self.headerView.routeTitle.layer addSublayer:self.maskLayer];
+        self.headerView.routeTitle.layer.masksToBounds = YES;
     }
-    
-    [super viewWillAppear:animated];
 }
 
 - (void)viewDidLayoutSubviews
 {
-    (self.maskLayer).bounds = (self.headerView).bounds;
     [super viewDidLayoutSubviews];
+    
+    self.maskLayer.bounds = self.headerView.bounds;
 }
 
 - (void)dismissViewController
@@ -89,8 +103,8 @@ static CGFloat maxOffsetDiff = 46.0f;
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
     [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 - (void)viewDidLoad
@@ -102,6 +116,9 @@ static CGFloat maxOffsetDiff = 46.0f;
     
     self.headerView.areaTitle.text = self.nameArea;
     self.headerView.routeTitle.text = self.skiRoute.name_route;
+    
+    // Make sure the headerview layout is initialized before making runtime calculations off it
+    [self.headerView layoutIfNeeded];
     
     self.headerView.layer.zPosition = 2;
     self.offsetStartingY = self.headerView.frame.size.height;
@@ -206,29 +223,29 @@ static CGFloat maxOffsetDiff = 46.0f;
     cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:0.0f green:0.0f blue:0.6f alpha:0.2];
     
     if ([cellIdentifier isEqualToString:@"map"]) {
-        (cell.imageMapBackground).image = [UIImage imageNamed:self.skiRoute.name_route];
-        (cell.mapTapLabel).layer.shadowOpacity = 1.0;
-        (cell.mapTapLabel).layer.shadowRadius = 4.0;
-        (cell.mapTapLabel).layer.shadowColor = [UIColor blackColor].CGColor;
-        (cell.mapTapLabel).layer.shadowOffset = CGSizeMake(0.0, 0.0);
+        cell.imageMapBackground.image = [UIImage imageNamed:self.skiRoute.name_route];
+        cell.mapTapLabel.layer.shadowOpacity = 1.0;
+        cell.mapTapLabel.layer.shadowRadius = 4.0;
+        cell.mapTapLabel.layer.shadowColor = [UIColor blackColor].CGColor;
+        cell.mapTapLabel.layer.shadowOffset = CGSizeMake(0.0, 0.0);
     } else if ([cellIdentifier isEqualToString:@"content"]) {
-        (cell.labelElevation).text = [NSString stringWithFormat:@"Elevation Gain: %@ ft", self.skiRoute.elevation_gain];
-        (cell.labelVertical).text = [NSString stringWithFormat:@"Vertical: %@", self.skiRoute.vertical];
-        (cell.labelSlope).text = [NSString stringWithFormat:@"Aspects: %@", self.skiRoute.aspects];
-        (cell.labelDistance).text = [NSString stringWithFormat:@"Distance: ~%@ mi", self.skiRoute.distance];
-        (cell.labelSnowfall).text = [NSString stringWithFormat:@"Snowfall: %@", self.skiRoute.snowfall];
-        (cell.labelAvalanche).text = [NSString stringWithFormat:@"Terrain Danger: %@", self.skiRoute.avalanche_danger];
-        (cell.labelSkierTraffic).text = [NSString stringWithFormat:@"Skier Traffic: %@", self.skiRoute.skier_traffic];
+        cell.labelElevation.text = [NSString stringWithFormat:@"Elevation Gain: %@ ft", self.skiRoute.elevation_gain];
+        cell.labelVertical.text = [NSString stringWithFormat:@"Vertical: %@", self.skiRoute.vertical];
+        cell.labelSlope.text = [NSString stringWithFormat:@"Aspects: %@", self.skiRoute.aspects];
+        cell.labelDistance.text = [NSString stringWithFormat:@"Distance: ~%@ mi", self.skiRoute.distance];
+        cell.labelSnowfall.text = [NSString stringWithFormat:@"Snowfall: %@", self.skiRoute.snowfall];
+        cell.labelAvalanche.text = [NSString stringWithFormat:@"Terrain Danger: %@", self.skiRoute.avalanche_danger];
+        cell.labelSkierTraffic.text = [NSString stringWithFormat:@"Skier Traffic: %@", self.skiRoute.skier_traffic];
     } else if ([cellIdentifier isEqualToString:@"overview"]) {
-        (cell.labelOverviewInformation).text = self.skiRoute.overview;
+        cell.labelOverviewInformation.text = self.skiRoute.overview;
     } else if ([cellIdentifier isEqualToString:@"avalanche"]) {
-        (cell.labelAvalancheInformation).text = self.skiRoute.avalanche_info;
+        cell.labelAvalancheInformation.text = self.skiRoute.avalanche_info;
     } else if ([cellIdentifier isEqualToString:@"getting_there"]) {
-        (cell.labelDirectionsInformation).text = self.skiRoute.directions;
+        cell.labelDirectionsInformation.text = self.skiRoute.directions;
     } else if ([cellIdentifier isEqualToString:@"notes"]) {
-        (cell.labelNotesInformation).text = self.skiRoute.notes;
+        cell.labelNotesInformation.text = self.skiRoute.notes;
     } else if ([cellIdentifier isEqualToString:@"waypoint_guidance"]) {
-        (cell.labelWaypointGuidanceInformation).text = self.skiRoute.gps_guidance;
+        cell.labelWaypointGuidanceInformation.text = self.skiRoute.gps_guidance;
     } else if ([cellIdentifier isEqualToString:@"kml"]) {
         nil;
     }
@@ -238,7 +255,7 @@ static CGFloat maxOffsetDiff = 46.0f;
         // Add KML Image
         NSString *kmlImage;
         NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"filename" ascending:YES];
-        NSArray *routeImages = [(self.skiRoute).ski_route_images sortedArrayUsingDescriptors:@[sortDescriptor]];
+        NSArray *routeImages = [self.skiRoute.ski_route_images sortedArrayUsingDescriptors:@[sortDescriptor]];
         for (File *file in routeImages) {
             if (file.kml_image.boolValue == YES) {
                 kmlImage = file.avatar;
@@ -246,8 +263,8 @@ static CGFloat maxOffsetDiff = 46.0f;
             }
         }
         self.kmlImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kmlImage]];
-        (self.kmlImage).contentMode = UIViewContentModeScaleAspectFill;
-        (self.kmlImage).translatesAutoresizingMaskIntoConstraints = NO;
+        self.kmlImage.contentMode = UIViewContentModeScaleAspectFill;
+        self.kmlImage.translatesAutoresizingMaskIntoConstraints = NO;
         [cell.contentView addSubview:self.kmlImage];
         NSDictionary *imageViews = @{ @"kmlImage": self.kmlImage };
         [cell.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[kmlImage]|" options:kNilOptions metrics:nil views:imageViews]];
@@ -256,14 +273,14 @@ static CGFloat maxOffsetDiff = 46.0f;
         
         // Add KML Label
         self.kmlLabel = [UILabel new];
-        (self.kmlLabel).text = @"View Route Images";
-        (self.kmlLabel).textColor = [UIColor whiteColor];
-        (self.kmlLabel).font = [UIFont fontWithName:@"Avenir Book" size:16.0f];
-        (self.kmlLabel).layer.shadowOpacity = 1.0;
-        (self.kmlLabel).layer.shadowRadius = 4.0;
-        (self.kmlLabel).layer.shadowColor = [UIColor blackColor].CGColor;
-        (self.kmlLabel).layer.shadowOffset = CGSizeMake(0.0, 0.0);
-        (self.kmlLabel).translatesAutoresizingMaskIntoConstraints = NO;
+        self.kmlLabel.text = @"View Route Images";
+        self.kmlLabel.textColor = [UIColor whiteColor];
+        self.kmlLabel.font = [UIFont fontWithName:@"Avenir Book" size:16.0f];
+        self.kmlLabel.layer.shadowOpacity = 1.0;
+        self.kmlLabel.layer.shadowRadius = 4.0;
+        self.kmlLabel.layer.shadowColor = [UIColor blackColor].CGColor;
+        self.kmlLabel.layer.shadowOffset = CGSizeMake(0.0, 0.0);
+        self.kmlLabel.translatesAutoresizingMaskIntoConstraints = NO;
         [cell.contentView addSubview:self.kmlLabel];
         NSDictionary *labelViews = @{ @"kmlLabel":self.kmlLabel };
         [cell.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[kmlLabel]-8-|" options:kNilOptions metrics:nil views:labelViews]];
@@ -362,15 +379,15 @@ static CGFloat maxOffsetDiff = 46.0f;
         [browser setCurrentPhotoIndex:0];
         
         [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            (self.kmlImage).transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.1, 1.1);
-            (self.kmlLabel).transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.1, 1.1);
+            self.kmlImage.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.1, 1.1);
+            self.kmlLabel.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.1, 1.1);
         } completion:^(BOOL finished) {
             // Push MWPhotoBrowser Controller
             [self.navigationController pushViewController:browser animated:YES];
             // Remove animation 1 sec after pushed controller .... this is hacky
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                (self.kmlImage).transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.0, 1.0);
-                (self.kmlLabel).transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.0, 1.0);
+                self.kmlImage.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.0, 1.0);
+                self.kmlLabel.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.0, 1.0);
             });
         }];
         
@@ -455,7 +472,7 @@ static CGFloat maxOffsetDiff = 46.0f;
     // Adjusting labels in header
     // Adjuting opacity of area label
     
-    //NSLog(@"%f", offsetDiff);
+    // NSLog(@"%f", offsetDiff);
     
     if (offsetDiff < (-1 * maxOffsetDiff)) {
         self.tableView.contentInset = UIEdgeInsetsMake(self.maxOffsetY, 0, 0, 0);

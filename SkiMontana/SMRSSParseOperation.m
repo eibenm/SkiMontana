@@ -63,7 +63,7 @@ NSString *kAvyFeedMessageErrorKey = @"AvyFeedMsgErrorKey";
     [parser parse];
     
     /*
-     Depending on the total number of earthquakes parsed, the last batch might not have been a "full" batch, and thus not been part of the regular batch transfer. So, we check the count of the array and, if necessary, send it to the main thread.
+     Depending on the total number of entries parsed, the last batch might not have been a "full" batch, and thus not been part of the regular batch transfer. So, we check the count of the array and, if necessary, send it to the main thread.
      */
     if ((self.currentParseBatch).count > 0) {
         [self performSelectorOnMainThread:@selector(addAvyFeedToList:) withObject:self.currentParseBatch waitUntilDone:NO];
@@ -97,14 +97,14 @@ static NSString * const kUpdatedElementName = @"pubDate";
         _didAbortParsing = YES;
         [parser abortParsing];
     }
+    
     if ([elementName isEqualToString:kEntryElementName]) {
         SMRSSEntry *rssEntry = [[SMRSSEntry alloc] init];
         self.currentAvyFeedObject = rssEntry;
-    }
-    else if ([elementName isEqualToString:kTitleElementName] ||
-             [elementName isEqualToString:kUpdatedElementName] ||
-             [elementName isEqualToString:kDescriptionElementName] ||
-             [elementName isEqualToString:kLinkElementName]) {
+    } else if ([elementName isEqualToString:kTitleElementName] ||
+               [elementName isEqualToString:kUpdatedElementName] ||
+               [elementName isEqualToString:kDescriptionElementName] ||
+               [elementName isEqualToString:kLinkElementName]) {
         _accumulatingParsedCharacterData = YES;
         [self.currentParsedCharacterData setString:@""];
     }
@@ -119,25 +119,21 @@ static NSString * const kUpdatedElementName = @"pubDate";
             [self performSelectorOnMainThread:@selector(addAvyFeedToList:) withObject:self.currentParseBatch waitUntilDone:NO];
             self.currentParseBatch = [NSMutableArray array];
         }
-    }
-    else if ([elementName isEqualToString:kTitleElementName]) {
+    } else if ([elementName isEqualToString:kTitleElementName]) {
         (self.currentAvyFeedObject).title = self.currentParsedCharacterData;
         if (self.currentAvyFeedObject != nil) {
-            (self.currentAvyFeedObject).title = [self.currentParsedCharacterData copy];
+            self.currentAvyFeedObject.title = [self.currentParsedCharacterData copy];
         }
-    }
-    else if ([elementName isEqualToString:kLinkElementName]) {
+    } else if ([elementName isEqualToString:kLinkElementName]) {
         if (self.currentAvyFeedObject != nil) {
             NSString *urlString = [self.currentParsedCharacterData stringByAppendingString:@"?theme=mobile_simple"];
-            (self.currentAvyFeedObject).link = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+            self.currentAvyFeedObject.link = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         }
-    }
-    else if ([elementName isEqualToString:kDescriptionElementName]) {
+    } else if ([elementName isEqualToString:kDescriptionElementName]) {
         if (self.currentAvyFeedObject != nil) {
-            (self.currentAvyFeedObject).desc = [self.currentParsedCharacterData copy];
+            self.currentAvyFeedObject.desc = [self.currentParsedCharacterData copy];
         }
-    }
-    else if ([elementName isEqualToString:kUpdatedElementName]) {
+    } else if ([elementName isEqualToString:kUpdatedElementName]) {
         (self.currentAvyFeedObject).pubDate = [_dateFormatter dateFromString:self.currentParsedCharacterData];
     }
     _accumulatingParsedCharacterData = NO;

@@ -269,6 +269,7 @@ static NSString *cellIdentifier;
 {
     [cell layoutIfNeeded];
     
+    // Make sure text in first cell for each section wraps around the image
     if (indexPath.row == 0) {
         SMSkiRouteTableViewCell *skiCell = (SMSkiRouteTableViewCell *)cell;
         UIBezierPath *imgRect = [UIBezierPath bezierPathWithRect:CGRectInset(skiCell.areaImage.bounds, -8.0f, 0)];

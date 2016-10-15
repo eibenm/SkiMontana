@@ -30,19 +30,18 @@
     [super viewDidLoad];
     
     self.title = @"Current Advisory";
-    NSURL *currentAdvisory = [NSURL URLWithString:@"http://www.mtavalanche.com/current?theme=mobile_simple"];
-    [self.webView loadRequest:[NSURLRequest requestWithURL:currentAdvisory]];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.mtavalanche.com/current?theme=mobile_simple"]]];
     
     self.progressProxy = [NJKWebViewProgress new];
-    (self.webView).delegate = _progressProxy;
-    (self.progressProxy).webViewProxyDelegate = self;
-    (self.progressProxy).progressDelegate = self;
+    self.webView.delegate = _progressProxy;
+    self.progressProxy.webViewProxyDelegate = self;
+    self.progressProxy.progressDelegate = self;
     
     CGFloat progressBarHeight = 2.0f;
     CGRect navigationBarBounds = self.navigationController.navigationBar.bounds;
     CGRect barFrame = CGRectMake(0, navigationBarBounds.size.height - progressBarHeight, navigationBarBounds.size.width, progressBarHeight);
     self.progressView = [[NJKWebViewProgressView alloc] initWithFrame:barFrame];
-    (self.progressView).autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+    self.progressView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -69,9 +68,9 @@
 
 - (void)updateButtons
 {
-    self.forward.enabled = (self.webView).canGoForward;
-    self.back.enabled = (self.webView).canGoBack;
-    self.stop.enabled = (self.webView).loading;
+    self.forward.enabled = self.webView.canGoForward;
+    self.back.enabled = self.webView.canGoBack;
+    self.stop.enabled = self.webView.loading;
 }
 
 #pragma mark - UIWebViewDelegate
@@ -112,7 +111,7 @@
 {
     if ([segue.identifier isEqualToString:@"showRSS"]) {
         UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:nil action:nil];
-        (self.navigationItem).backBarButtonItem = newBackButton;
+        self.navigationItem.backBarButtonItem = newBackButton;
     }
 }
 

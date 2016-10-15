@@ -31,8 +31,8 @@
     self.constraints = [[NSMutableArray alloc] init];
     [[NSBundle mainBundle] loadNibNamed:@"RSSDataLoadingView" owner:self options:nil];
     [self addSubview:self.view];
-    (self.view).layer.cornerRadius = 4.0f;
-    (self.view).translatesAutoresizingMaskIntoConstraints = NO;
+    self.view.layer.cornerRadius = 4.0f;
+    self.view.translatesAutoresizingMaskIntoConstraints = NO;
     [self setNeedsUpdateConstraints];
 }
 
