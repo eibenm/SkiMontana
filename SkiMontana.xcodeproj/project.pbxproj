@@ -131,11 +131,11 @@
 		CBB8A4DB1C27464D007D5D0C /* hyalite.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CBB8A4CF1C2743DC007D5D0C /* hyalite.mbtiles */; };
 		CBB8A4DC1C27464D007D5D0C /* mtEllisChestnut.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CBB8A4D01C2743DC007D5D0C /* mtEllisChestnut.mbtiles */; };
 		CBB8A4DD1C27464D007D5D0C /* northernMadison.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CBB8A4D11C2743DC007D5D0C /* northernMadison.mbtiles */; };
-		CBB8A4DE1C27464D007D5D0C /* overviewMap.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CBB8A4D21C2743DC007D5D0C /* overviewMap.mbtiles */; };
 		CBB8A4DF1C27464D007D5D0C /* telemarkMeadows.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CBB8A4D31C2743DC007D5D0C /* telemarkMeadows.mbtiles */; };
 		CBB8A4E01C27464D007D5D0C /* theFin.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CBB8A4D41C2743DC007D5D0C /* theFin.mbtiles */; };
 		CBB8A4E11C27464D007D5D0C /* theSkillet.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CBB8A4D51C2743DC007D5D0C /* theSkillet.mbtiles */; };
 		CBB8A4E21C27464D007D5D0C /* theSphinx.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CBB8A4D61C2743DC007D5D0C /* theSphinx.mbtiles */; };
+		CBC047721DB73142001017A1 /* overviewMap.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = CBC047711DB7312D001017A1 /* overviewMap.mbtiles */; };
 		CBF160A31BE0626700B29232 /* SMRSSCurrentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF160A21BE0626700B29232 /* SMRSSCurrentViewController.m */; };
 		CBF466201BBE534F00791383 /* SCPStoreKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF4661F1BBE534F00791383 /* SCPStoreKitManager.m */; };
 		CBF466241BBE536500791383 /* NSError+SCPStoreKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF466231BBE536500791383 /* NSError+SCPStoreKitManager.m */; };
@@ -358,11 +358,11 @@
 		CBB8A4CF1C2743DC007D5D0C /* hyalite.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = hyalite.mbtiles; path = Tiles/hyalite.mbtiles; sourceTree = "<group>"; };
 		CBB8A4D01C2743DC007D5D0C /* mtEllisChestnut.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = mtEllisChestnut.mbtiles; path = Tiles/mtEllisChestnut.mbtiles; sourceTree = "<group>"; };
 		CBB8A4D11C2743DC007D5D0C /* northernMadison.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = northernMadison.mbtiles; path = Tiles/northernMadison.mbtiles; sourceTree = "<group>"; };
-		CBB8A4D21C2743DC007D5D0C /* overviewMap.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = overviewMap.mbtiles; path = Tiles/overviewMap.mbtiles; sourceTree = "<group>"; };
 		CBB8A4D31C2743DC007D5D0C /* telemarkMeadows.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = telemarkMeadows.mbtiles; path = Tiles/telemarkMeadows.mbtiles; sourceTree = "<group>"; };
 		CBB8A4D41C2743DC007D5D0C /* theFin.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = theFin.mbtiles; path = Tiles/theFin.mbtiles; sourceTree = "<group>"; };
 		CBB8A4D51C2743DC007D5D0C /* theSkillet.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = theSkillet.mbtiles; path = Tiles/theSkillet.mbtiles; sourceTree = "<group>"; };
 		CBB8A4D61C2743DC007D5D0C /* theSphinx.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = theSphinx.mbtiles; path = Tiles/theSphinx.mbtiles; sourceTree = "<group>"; };
+		CBC047711DB7312D001017A1 /* overviewMap.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = overviewMap.mbtiles; path = Tiles/overviewMap.mbtiles; sourceTree = "<group>"; };
 		CBF160A11BE0626700B29232 /* SMRSSCurrentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRSSCurrentViewController.h; sourceTree = "<group>"; };
 		CBF160A21BE0626700B29232 /* SMRSSCurrentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRSSCurrentViewController.m; sourceTree = "<group>"; };
 		CBF4661E1BBE534F00791383 /* SCPStoreKitManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCPStoreKitManager.h; path = SkiMontana/SCPStoreKitManager/SCPStoreKitManager.h; sourceTree = "<group>"; };
@@ -720,7 +720,7 @@
 				CBB8A4CF1C2743DC007D5D0C /* hyalite.mbtiles */,
 				CBB8A4D01C2743DC007D5D0C /* mtEllisChestnut.mbtiles */,
 				CBB8A4D11C2743DC007D5D0C /* northernMadison.mbtiles */,
-				CBB8A4D21C2743DC007D5D0C /* overviewMap.mbtiles */,
+				CBC047711DB7312D001017A1 /* overviewMap.mbtiles */,
 				CBB8A4D31C2743DC007D5D0C /* telemarkMeadows.mbtiles */,
 				CBB8A4D41C2743DC007D5D0C /* theFin.mbtiles */,
 				CBB8A4D51C2743DC007D5D0C /* theSkillet.mbtiles */,
@@ -878,7 +878,7 @@
 				CBB8A4DB1C27464D007D5D0C /* hyalite.mbtiles in Resources */,
 				CBB8A4DC1C27464D007D5D0C /* mtEllisChestnut.mbtiles in Resources */,
 				CBB8A4DD1C27464D007D5D0C /* northernMadison.mbtiles in Resources */,
-				CBB8A4DE1C27464D007D5D0C /* overviewMap.mbtiles in Resources */,
+				CBC047721DB73142001017A1 /* overviewMap.mbtiles in Resources */,
 				CBB8A4DF1C27464D007D5D0C /* telemarkMeadows.mbtiles in Resources */,
 				CBB8A4E01C27464D007D5D0C /* theFin.mbtiles in Resources */,
 				CBB8A4E11C27464D007D5D0C /* theSkillet.mbtiles in Resources */,
