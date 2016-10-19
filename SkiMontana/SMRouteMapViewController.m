@@ -46,7 +46,7 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
     // Setting up Navigation Bar
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissViewController)];
     self.navItem = [[UINavigationItem alloc] initWithTitle:self.skiRoute.name_route];
-    (self.navItem).leftBarButtonItem = backButton;
+    self.navItem.leftBarButtonItem = backButton;
     [self.navigationBar setItems:@[self.navItem] animated:NO];
     
     // Setting up Mapbox
@@ -54,14 +54,14 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
     NSURL *tileUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:mbtilesArray.firstObject ofType:mbtilesArray.lastObject]];
     self.tileSource = [[RMMBTilesSource alloc] initWithTileSetURL:tileUrl];
     self.mapView = [[RMMapView alloc] initWithFrame:self.mapViewContainer.bounds andTilesource:self.tileSource];
-    (self.mapView).delegate = self;
-    (self.mapView).autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-    (self.mapView).adjustTilesForRetinaDisplay = YES;
-    (self.mapView).showsUserLocation = YES;
-    (self.mapView).showLogoBug = NO;
-    (self.mapView).hideAttribution = YES;
+    self.mapView.delegate = self;
+    self.mapView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    self.mapView.adjustTilesForRetinaDisplay = YES;
+    self.mapView.showsUserLocation = YES;
+    self.mapView.showLogoBug = NO;
+    self.mapView.hideAttribution = YES;
     [self.mapViewContainer addSubview:self.mapView];
-    (self.mapView.layer).opacity = 0;
+    self.mapView.layer.opacity = 0;
     
     // Parsing bounds out of route bounds strings
     NSArray *boundsNortheast = [self.skiRoute.bounds_northeast componentsSeparatedByString:@","];
@@ -131,14 +131,14 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
         default: break;
     }
     
-    (self.navItem).rightBarButtonItem = [[RMUserTrackingBarButtonItem alloc] initWithMapView:self.mapView];
-    (self.navItem.rightBarButtonItem).tintColor = [UIColor colorWithRed:0.120 green:0.550 blue:0.670 alpha:1.000];
-    (self.mapView).userTrackingMode = RMUserTrackingModeNone;
+    self.navItem.rightBarButtonItem = [[RMUserTrackingBarButtonItem alloc] initWithMapView:self.mapView];
+    self.navItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:0.120 green:0.550 blue:0.670 alpha:1.000];
+    self.mapView.userTrackingMode = RMUserTrackingModeNone;
     
     // Setting zoom around markers ... setting to max zoom of tileset if overzoomed
     [self.mapView zoomWithLatitudeLongitudeBoundsSouthWest:self.coordinateBounds.southwest northEast:self.coordinateBounds.northeast animated:NO];
     float newZoom = self.mapView.zoom - 0.5f;
-    (self.mapView).zoom = (newZoom < self.tileSource.maxZoom ? newZoom : self.tileSource.maxZoom);
+    self.mapView.zoom = (newZoom < self.tileSource.maxZoom ? newZoom : self.tileSource.maxZoom);
     
     BOOL purchased = [SMIAPHelper checkInAppMemoryPurchasedState];
     
@@ -152,7 +152,7 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
     }
     
     [UIView animateWithDuration:0.25 animations:^{
-        (self.mapView.layer).opacity = 1.0f;
+        self.mapView.layer.opacity = 1.0f;
     }];
 }
 
@@ -258,12 +258,12 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
 {
     UIButton *attributionButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [attributionButton setTitle:@"Legend" forState:UIControlStateNormal];
-    (attributionButton.titleLabel).font = [UIFont boldSkiMontanaFontOfSize:20.0f];
+    attributionButton.titleLabel.font = [UIFont boldSkiMontanaFontOfSize:20.0f];
     [attributionButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    (attributionButton.layer).shadowColor = [UIColor blackColor].CGColor;
-    (attributionButton.layer).shadowOffset = CGSizeMake(0, 0);
-    (attributionButton.layer).shadowRadius = 3.0f;
-    (attributionButton.layer).shadowOpacity = 0.8f;
+    attributionButton.layer.shadowColor = [UIColor blackColor].CGColor;
+    attributionButton.layer.shadowOffset = CGSizeMake(0, 0);
+    attributionButton.layer.shadowRadius = 3.0f;
+    attributionButton.layer.shadowOpacity = 0.8f;
     attributionButton.autoresizingMask = (UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin);
     [attributionButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [attributionButton addTarget:self action:@selector(showAttribution:) forControlEvents:UIControlEventTouchUpInside];
@@ -280,8 +280,8 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
     NSString *rightFormatString = @"H:[attributionButton]-rightSpacing-|";
     
     NSDictionary *views = @{
-        @"attributionButton" : attributionButton,
-        @"bottomLayoutGuide" : self.bottomLayoutGuide
+        @"attributionButton": attributionButton,
+        @"bottomLayoutGuide": self.bottomLayoutGuide
     };
     
     [self.view addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:bottomFormatString options:kNilOptions metrics:@{ @"bottomSpacing" : @(8) } views:views]];

@@ -86,13 +86,11 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
                         if ([self createCopyOfSkiJsonFromData:parsedObject]) {
                             successMessage(YES, @"Updated Local Data from server");
                             return;
-                        }
-                        else {
+                        } else {
                             successMessage(NO, @"Problem writing Local json file from server");
                             return;
                         }
-                    }
-                    else {
+                    } else {
                         successMessage(NO, @"Problem clear persistent stores");
                         return;
                     }
@@ -215,6 +213,7 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
     if (success) {
         return YES;
     }
+    
     return NO;
 }
 
@@ -237,6 +236,7 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
     if (success) {
         return YES;
     }
+    
     return NO;
 }
 
@@ -251,6 +251,7 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
     if(!success) {
         NSLog(@"Error excluding %@ from iCloud backup. Error: %@", URL.lastPathComponent, error.localizedDescription);
     }
+    
     return success;
 }
 

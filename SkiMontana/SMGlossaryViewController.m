@@ -29,20 +29,20 @@ static NSString *cellIdentifier = @"glossaryTerm";
 {
 	[super viewDidLoad];
     
-    (self.tableView).dataSource = self;
-    (self.tableView).delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     self.managedObjectContext = [SMDataManager sharedInstance].managedObjectContext;
 
     // Setup the Search Controller
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
-    (self.searchController).searchResultsUpdater = self;
-    (self.searchController).searchBar.delegate = self;
-    (self.searchController).dimsBackgroundDuringPresentation = NO;
-    (self.searchController).searchBar.showsScopeBar = NO;
-    (self.searchController).searchBar.scopeButtonTitles = [NSArray array];
-    (self.searchController).searchBar.searchBarStyle = UISearchBarStyleProminent;
+    self.searchController.searchResultsUpdater = self;
+    self.searchController.searchBar.delegate = self;
+    self.searchController.dimsBackgroundDuringPresentation = NO;
+    self.searchController.searchBar.showsScopeBar = NO;
+    self.searchController.searchBar.scopeButtonTitles = [NSArray array];
+    self.searchController.searchBar.searchBarStyle = UISearchBarStyleProminent;
     self.definesPresentationContext = YES;
-    (self.tableView).tableHeaderView = (self.searchController).searchBar;
+    self.tableView.tableHeaderView = (self.searchController).searchBar;
     [self.searchController.searchBar sizeToFit];
     
     NSError *error;
@@ -55,7 +55,7 @@ static NSString *cellIdentifier = @"glossaryTerm";
     self.selectedObjectID = nil;
     
     // View for background color (opaque white mask)
-    UIView *backgroundColorView = [[UIView alloc]initWithFrame:self.view.frame];
+    UIView *backgroundColorView = [[UIView alloc] initWithFrame:self.view.frame];
     backgroundColorView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.8];
     [self.view addSubview:backgroundColorView];
     [self.view sendSubviewToBack:backgroundColorView];
@@ -86,14 +86,14 @@ static NSString *cellIdentifier = @"glossaryTerm";
 - (void)filterContentForSearchText:(NSString *)searchText
 {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"term BEGINSWITH[cd] %@", searchText];
-    (self.searchFetchRequest).predicate = predicate;
+    self.searchFetchRequest.predicate = predicate;
     self.filteredResults = [self.managedObjectContext executeFetchRequest:self.searchFetchRequest error:nil];
     [self.tableView reloadData];
 }
 
 - (BOOL)searchControllerActive
 {
-    return (self.searchController).active && ![(self.searchController).searchBar.text isEqualToString:@""];
+    return self.searchController.active && ![self.searchController.searchBar.text isEqualToString:@""];
 }
 
 #pragma mark - UITableViewDataSource
@@ -106,7 +106,7 @@ static NSString *cellIdentifier = @"glossaryTerm";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if ([self searchControllerActive]) {
-        return (self.filteredResults).count;
+        return self.filteredResults.count;
     }
     
     id <NSFetchedResultsSectionInfo> sectionInfo = (self.fetchedResultsController.sections)[section];
@@ -134,8 +134,7 @@ static NSString *cellIdentifier = @"glossaryTerm";
         });
         cell.descriptionLabel.text = glossary.desc;
         cell.descriptionLabel.hidden = NO;
-    }
-    else {
+    } else {
         cell.descriptionLabel.text = @"";
         cell.descriptionLabel.hidden = YES;
     }

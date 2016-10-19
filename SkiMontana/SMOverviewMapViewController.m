@@ -37,14 +37,14 @@
     NSURL *tileUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"overviewMap" ofType:@"mbtiles"]];
     self.tileSource = [[RMMBTilesSource alloc] initWithTileSetURL:tileUrl];
     self.mapView = [[RMMapView alloc] initWithFrame:self.mapViewContainer.bounds andTilesource:self.tileSource];
-    (self.mapView).delegate = self;
-    (self.mapView).autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-    (self.mapView).adjustTilesForRetinaDisplay = YES;
-    (self.mapView).showsUserLocation = YES;
-    (self.mapView).showLogoBug = NO;
-    (self.mapView).hideAttribution = YES;
+    self.mapView.delegate = self;
+    self.mapView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    self.mapView.adjustTilesForRetinaDisplay = YES;
+    self.mapView.showsUserLocation = YES;
+    self.mapView.showLogoBug = NO;
+    self.mapView.hideAttribution = YES;
     [self.mapViewContainer addSubview:self.mapView];
-    (self.mapView).layer.opacity = 0;
+    self.mapView.layer.opacity = 0;
     [self.mapView setZoom:10.5f atCoordinate:CLLocationCoordinate2DMake(45.72, -110.80) animated:NO];
     RMSphericalTrapezium boundingBox = self.tileSource.latitudeLongitudeBoundingBox;
     [self.mapView setConstraintsSouthWest:boundingBox.southWest northEast:boundingBox.northEast];
@@ -74,10 +74,10 @@
     
     self.navigationItem.rightBarButtonItem = [[RMUserTrackingBarButtonItem alloc] initWithMapView:self.mapView];
     self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:0.120 green:0.550 blue:0.670 alpha:1.000];
-    (self.mapView).userTrackingMode = RMUserTrackingModeNone;
+    self.mapView.userTrackingMode = RMUserTrackingModeNone;
     
     [UIView animateWithDuration:0.25 animations:^{
-        (self.mapView.layer).opacity = 1.0f;
+        self.mapView.layer.opacity = 1.0f;
     }];
 }
 

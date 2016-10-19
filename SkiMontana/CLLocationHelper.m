@@ -15,6 +15,7 @@
     if (![CLLocationManager locationServicesEnabled]) {
         return LocationServiceDisabled;
     }
+    
     if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
         return LocationServiceDisabled;
     }
