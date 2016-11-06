@@ -1143,7 +1143,7 @@
 					"$(PROJECT_DIR)/SkiMontana/OpenSSL/lib",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.eibenm.SkiMontanaTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.eibenm.SkiMontana;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "454662e5-bb53-4037-99d5-688df4f93a21";
 				PROVISIONING_PROFILE_SPECIFIER = "Ski Montana Development";
@@ -1161,7 +1161,7 @@
 				GCC_PREFIX_HEADER = "SkiMontana/SkiMontana-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEV=0",
-					"TRIAL=0",
+					"TRIAL=1",
 					"$(inherited)",
 				);
 				HEADER_SEARCH_PATHS = (
@@ -1179,7 +1179,7 @@
 					"$(PROJECT_DIR)/SkiMontana/OpenSSL/lib",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.eibenm.SkiMontanaTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.eibenm.SkiMontana;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "a98faebe-d3c9-4ce2-9ac3-2df5f918738b";
 				PROVISIONING_PROFILE_SPECIFIER = "Ski Montana Distribution";
