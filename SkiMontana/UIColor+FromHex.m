@@ -10,7 +10,7 @@
 
 @implementation UIColor (FromHex)
 
-+ (UIColor *)colorwithHexString:(NSString *)hexStr alpha:(CGFloat)alpha;
++ (UIColor *)colorwithHexString:(NSString *)hexStr alpha:(CGFloat)alpha
 {
     //-----------------------------------------
     // Convert hex string to an integer

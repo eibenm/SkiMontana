@@ -48,8 +48,8 @@ static NSString *cellIdentifier;
 
     self.title = @"Ski Bozeman";
     
-    (self.tableView).delegate = self;
-    (self.tableView).dataSource = self;
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     
     _managedObjectContext = [SMDataManager sharedInstance].managedObjectContext;
     self.routeSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name_route" ascending:YES];
@@ -88,11 +88,11 @@ static NSString *cellIdentifier;
     
     // Configuring "Overview Map" View
     [self.overviewMapButton setImage:[UIImage imageNamed:@"overview_map"] forState:UIControlStateNormal];
-    (self.overviewMapButton).imageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.overviewMapButton.imageView.contentMode = UIViewContentModeScaleAspectFill;
     
     // Configuring "About This App" View
     [self.aboutThisAppButton setImage:[UIImage imageNamed:@"Skin Track"] forState:UIControlStateNormal];
-    (self.aboutThisAppButton).imageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.aboutThisAppButton.imageView.contentMode = UIViewContentModeScaleAspectFill;
     self.aboutThisAppView.backgroundColor = [UIColor clearColor];
     
     // Initializing asynch image loading queue
@@ -130,19 +130,19 @@ static NSString *cellIdentifier;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return (self.fetchedResultsController).sections.count;
+    return self.fetchedResultsController.sections.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if ((self.fetchedResultsController).sections.count > 0) {
-        id <NSFetchedResultsSectionInfo> sectionInfo = (self.fetchedResultsController).sections[section];
+        id <NSFetchedResultsSectionInfo> sectionInfo = self.fetchedResultsController.sections[section];
         SkiAreas *skiArea = sectionInfo.objects[0];
         NSUInteger indexofCurrentObject = [(self.fetchedResultsController).fetchedObjects indexOfObject:skiArea];
         if ([self.isShowingArray[indexofCurrentObject] boolValue] == NO) {
             return 1;
         }
-        NSUInteger countRoutes = (skiArea.ski_routes).count;
+        NSUInteger countRoutes = skiArea.ski_routes.count;
         return countRoutes + 1;
     }
     
@@ -235,7 +235,7 @@ static NSString *cellIdentifier;
             [self.imageLoadingOperationQueue addOperation:loadImageIntoCellOp];
         }
         
-        (cell.areaImage).image = nil;
+        cell.areaImage.image = nil;
     
     } else {
         
@@ -402,10 +402,10 @@ static NSString *cellIdentifier;
         return YES;
     }
     
-    NSArray *skiAreaObjects = (self.fetchedResultsController).fetchedObjects;
-    NSIndexPath *indexPath = (self.tableView).indexPathForSelectedRow;
+    NSArray *skiAreaObjects = self.fetchedResultsController.fetchedObjects;
+    NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
     SkiAreas *skiArea = skiAreaObjects[indexPath.section];
-    if ((skiArea.permissions).boolValue == NO) {
+    if (skiArea.permissions.boolValue == NO) {
         return NO;
     }
     
