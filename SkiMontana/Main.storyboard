@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="amG-dg-XFq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="amG-dg-XFq">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,16 +23,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="asY-5s-JFT">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="glossaryTerm" rowHeight="70" id="0Uc-Xn-GiB" customClass="SMGlossaryTableViewCell">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="70"/>
+                                        <rect key="frame" x="0.0" y="28" width="1000" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Uc-Xn-GiB" id="kC6-0j-Sud">
-                                            <frame key="frameInset" width="375" height="69"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1000" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Term Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggb-aP-MMF">
+                                                    <rect key="frame" x="8" y="8" width="359" height="19"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="19" id="f0m-4x-JFA"/>
                                                     </constraints>
@@ -38,6 +43,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAb-7T-HtI">
+                                                    <rect key="frame" x="8" y="35" width="359" height="27"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -77,7 +83,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="749-Em-TzC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4080.8000000000002" y="1059.2203898050975"/>
+            <point key="canvasLocation" x="6057" y="-1499"/>
         </scene>
         <!--Overview Map View Controller-->
         <scene sceneID="68j-L3-dvD">
@@ -92,6 +98,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XGz-8D-zE9">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
@@ -124,17 +131,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CjX-rc-ptT">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <view key="tableHeaderView" clipsSubviews="YES" contentMode="scaleToFill" id="FUm-JV-fGS" userLabel="Overview Map">
-                                    <rect key="frame" x="0.0" y="64" width="375" height="120"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TNV-vt-fUG">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                             <connections>
                                                 <action selector="didSelectOverviewMap:" destination="A15-bb-RHp" eventType="touchUpInside" id="mgB-ik-WGC"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview Map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQR-U9-3VM">
+                                            <rect key="frame" x="8" y="8" width="133" height="28"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="28" id="YdX-Z0-n7o"/>
                                                 <constraint firstAttribute="width" constant="133" id="ml6-9Y-Sep"/>
@@ -155,10 +165,11 @@
                                     </constraints>
                                 </view>
                                 <view key="tableFooterView" clipsSubviews="YES" contentMode="scaleToFill" id="9Dl-o8-41x" userLabel="About This App">
-                                    <rect key="frame" x="0.0" y="525" width="375" height="124"/>
+                                    <rect key="frame" x="0.0" y="461" width="375" height="124"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="shq-1p-bv5" userLabel="About This App Button">
+                                            <rect key="frame" x="0.0" y="4" width="375" height="120"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="120" id="Xd7-w8-n2R"/>
                                             </constraints>
@@ -167,6 +178,7 @@
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About This App" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UtH-AG-sKm" userLabel="About This App Label">
+                                            <rect key="frame" x="8" y="8" width="143" height="28"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="28" id="DpS-Cm-cEJ"/>
                                                 <constraint firstAttribute="width" constant="143" id="T6a-Xh-Peu"/>
@@ -188,13 +200,14 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SkiArea" rowHeight="178" id="aq7-Ou-EBo" customClass="SMSkiAreaTableViewCell">
-                                        <rect key="frame" x="0.0" y="212" width="375" height="178"/>
+                                        <rect key="frame" x="0.0" y="148" width="375" height="178"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aq7-Ou-EBo" id="dZZ-Ih-V8M">
-                                            <frame key="frameInset" width="375" height="178"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="178"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Area Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="QSo-98-6ip">
+                                                    <rect key="frame" x="12" y="12" width="351" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="28" id="39M-Vt-cl3"/>
                                                     </constraints>
@@ -203,12 +216,14 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OtC-EQ-hmF">
+                                                    <rect key="frame" x="12" y="48" width="120" height="114"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="120" id="MjT-MV-8X1"/>
                                                         <constraint firstAttribute="height" constant="114" id="Rqs-jP-v3e"/>
                                                     </constraints>
                                                 </imageView>
                                                 <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="Conditions" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eke-Xi-LmH" userLabel="Area Conditions">
+                                                    <rect key="frame" x="12" y="48" width="351" height="114"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="114" id="vMO-jz-El6"/>
                                                     </constraints>
@@ -248,32 +263,37 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SkiRoute" rowHeight="135" id="NJu-VN-nha" customClass="SMSkiRouteTableViewCell">
-                                        <rect key="frame" x="0.0" y="390" width="375" height="135"/>
+                                        <rect key="frame" x="0.0" y="326" width="375" height="135"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NJu-VN-nha" id="6YL-5Q-GwW">
-                                            <frame key="frameInset" width="375" height="135"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="135"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Route Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lei-SV-7B3">
+                                                    <rect key="frame" x="8" y="12" width="359" height="28"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" verticalCompressionResistancePriority="755" text="Vertical" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzM-ry-0PL">
+                                                    <rect key="frame" x="12" y="64.5" width="355" height="19.5"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" verticalCompressionResistancePriority="755" text="Elevation Gain" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pM1-h4-kZy">
+                                                    <rect key="frame" x="12" y="84" width="355" height="19.5"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" verticalCompressionResistancePriority="755" text="Distance" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H9Q-1D-RQX">
+                                                    <rect key="frame" x="12" y="103.5" width="355" height="19.5"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" verticalCompressionResistancePriority="755" text="Quip" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOq-05-Zhp">
+                                                    <rect key="frame" x="12" y="44" width="355" height="20.5"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -305,7 +325,7 @@
                                             <outlet property="routeQuip" destination="hOq-05-Zhp" id="9Dx-MA-tXs"/>
                                             <outlet property="routeTitle" destination="lei-SV-7B3" id="HAA-Gg-ALJ"/>
                                             <outlet property="routeVertical" destination="yzM-ry-0PL" id="cbL-2u-4qU"/>
-                                            <segue destination="WiC-dg-xrT" kind="show" identifier="showRoute" id="HrP-x9-axB"/>
+                                            <segue destination="arP-3r-JB3" kind="showDetail" identifier="showRoute" id="4Cx-bg-LYG"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -321,7 +341,7 @@
                     <navigationItem key="navigationItem" id="Vp1-7E-Ndl">
                         <barButtonItem key="rightBarButtonItem" title="Advisory" id="d9m-aE-7ni">
                             <connections>
-                                <segue destination="ZTw-sO-m5z" kind="show" identifier="showAdvisory" id="B4n-8h-rni"/>
+                                <segue destination="clr-vw-qfU" kind="presentation" identifier="showAdvisory" id="B4n-8h-rni"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -336,7 +356,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XE4-L8-Rez" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3309" y="-420"/>
+            <point key="canvasLocation" x="5151" y="-744"/>
         </scene>
         <!--RSS Feed-->
         <scene sceneID="smK-8y-8XK">
@@ -351,24 +371,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CqE-ZA-fuR">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="rssCell" textLabel="eJu-uO-8fh" detailTextLabel="WRI-uK-fJq" style="IBUITableViewCellStyleSubtitle" id="hL8-ve-0hB">
-                                        <rect key="frame" x="0.0" y="92" width="1000" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hL8-ve-0hB" id="scG-lf-EUN">
-                                            <frame key="frameInset" width="818" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eJu-uO-8fh">
-                                                    <frame key="frameInset" minX="164" minY="6" width="31.5" height="19.5"/>
+                                                    <rect key="frame" x="15" y="5" width="32" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WRI-uK-fJq">
-                                                    <frame key="frameInset" minX="164" minY="25.5" width="40.5" height="13.5"/>
+                                                    <rect key="frame" x="15" y="25" width="41" height="14"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -394,7 +415,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lwz-Xw-bWG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4081" y="328"/>
+            <point key="canvasLocation" x="7876" y="-744.3778110944528"/>
         </scene>
         <!--Details View Controller-->
         <scene sceneID="ttY-J6-yIr">
@@ -409,13 +430,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3hk-Yq-jPO" userLabel="Header View" customClass="SMDetailsHeaderView">
+                                <rect key="frame" x="0.0" y="64" width="375" height="85"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Route Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wlg-2v-XPg">
+                                        <rect key="frame" x="8" y="17" width="359" height="30.5"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="22"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Area Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kU-Ob-wdg">
+                                        <rect key="frame" x="8" y="47.5" width="359" height="23.5"/>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -438,6 +462,7 @@
                                 </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="5VO-kt-fgf">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" red="0.37642045454545459" green="0.37642045454545459" blue="0.37642045454545459" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
@@ -445,15 +470,17 @@
                                         <rect key="frame" x="0.0" y="22" width="375" height="180"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="w0b-Sj-Lxo" id="vMy-uN-hHT">
-                                            <frame key="frameInset" width="375" height="180"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J09-16-QYS">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="180" id="5sG-w3-9IC"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tap for map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GuO-kO-d2q">
+                                                    <rect key="frame" x="293" y="8" width="74" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="74" id="4f7-fh-Mum"/>
                                                         <constraint firstAttribute="height" constant="20" id="D48-bg-B2Q"/>
@@ -481,10 +508,11 @@
                                         <rect key="frame" x="0.0" y="202" width="375" height="188"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wh1-AX-YgL" id="a08-5f-Eaa">
-                                            <frame key="frameInset" width="375" height="188"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="188"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stats" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BgU-nt-w5h">
+                                                    <rect key="frame" x="8" y="18" width="359" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="2Bx-8t-2em"/>
                                                     </constraints>
@@ -493,6 +521,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Elevation Gain:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bm0-ry-qN1">
+                                                    <rect key="frame" x="8" y="40" width="359" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="fgT-ok-1Z0"/>
                                                     </constraints>
@@ -501,6 +530,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skiable Vertical:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g95-wO-egg">
+                                                    <rect key="frame" x="8" y="60" width="359" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="xuT-Zo-2NR"/>
                                                     </constraints>
@@ -509,6 +539,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Slope Aspect:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2d-FF-98t">
+                                                    <rect key="frame" x="8" y="80" width="359" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="FpR-Ly-hEC"/>
                                                     </constraints>
@@ -517,6 +548,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance to Summit:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jpH-5g-sOD">
+                                                    <rect key="frame" x="8" y="100" width="359" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="skC-DG-EVh"/>
                                                     </constraints>
@@ -525,6 +557,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avalanche Terrain Danger:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbW-iN-YOE">
+                                                    <rect key="frame" x="8" y="140" width="359" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="2os-Ll-dF6"/>
                                                     </constraints>
@@ -533,6 +566,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skier Traffic:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbZ-o5-iGN">
+                                                    <rect key="frame" x="8" y="160" width="359" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="NTT-Hl-hT6"/>
                                                     </constraints>
@@ -541,6 +575,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Annual Snowfall:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Zc-Qa-ngm">
+                                                    <rect key="frame" x="8" y="120" width="359" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="Sd2-gp-Shb"/>
                                                     </constraints>
@@ -592,15 +627,17 @@
                                         <rect key="frame" x="0.0" y="390" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6fH-um-t4D" id="vhn-K8-t20">
-                                            <frame key="frameInset" width="375" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F3N-Y3-0Cr">
+                                                    <rect key="frame" x="8" y="10" width="359" height="17"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" verticalCompressionResistancePriority="755" text="Overview Information" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ATT-vF-7N3">
+                                                    <rect key="frame" x="12" y="32" width="351" height="20"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -630,15 +667,17 @@
                                         <rect key="frame" x="0.0" y="450" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pZe-Ld-syU" id="pvp-ye-xEs">
-                                            <frame key="frameInset" width="375" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avalanche Information" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aou-c0-9Y0">
+                                                    <rect key="frame" x="8" y="10" width="359" height="14"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" verticalCompressionResistancePriority="755" text="Avalanche Information" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mrV-yR-6DY">
+                                                    <rect key="frame" x="12" y="32" width="351" height="20"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -668,15 +707,17 @@
                                         <rect key="frame" x="0.0" y="510" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="prn-QN-eRt" id="iq5-UR-hBa">
-                                            <frame key="frameInset" width="375" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Getting There" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RHA-t3-ZmD">
+                                                    <rect key="frame" x="8" y="10" width="359" height="14"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" verticalCompressionResistancePriority="755" text="Directions Information" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KuG-uj-BMO">
+                                                    <rect key="frame" x="12" y="32" width="351" height="20"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -706,15 +747,17 @@
                                         <rect key="frame" x="0.0" y="570" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WWB-CL-WPd" id="e5q-Yx-q22">
-                                            <frame key="frameInset" width="375" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOz-Jf-y2e">
+                                                    <rect key="frame" x="8" y="10" width="359" height="14"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" verticalCompressionResistancePriority="755" text="Notes Information" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THk-b4-Ibg">
+                                                    <rect key="frame" x="12" y="32" width="351" height="20"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -744,15 +787,17 @@
                                         <rect key="frame" x="0.0" y="630" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8A5-uM-axC" id="QTy-Qc-WwU">
-                                            <frame key="frameInset" width="375" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waypoint Guidance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btf-WH-03z">
+                                                    <rect key="frame" x="8" y="10" width="359" height="14"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" verticalCompressionResistancePriority="755" text="Waypoint Guidance Information" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Cd-df-cxe">
+                                                    <rect key="frame" x="12" y="32" width="351" height="20"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -782,12 +827,14 @@
                                         <rect key="frame" x="0.0" y="690" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x8G-vW-Epr" id="fPl-pf-IzX">
-                                            <frame key="frameInset" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J3t-5g-uSj" userLabel="Google Earth View">
+                                                    <rect key="frame" x="85" y="8" width="205" height="28"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open Google Earth" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mrg-BY-ar6">
+                                                            <rect key="frame" x="44" y="0.0" width="161" height="28"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="28" id="K3Y-Ln-33y"/>
                                                                 <constraint firstAttribute="width" constant="161" id="vX4-SH-Kc5"/>
@@ -797,6 +844,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="google_earth" translatesAutoresizingMaskIntoConstraints="NO" id="Kjo-IH-YHJ">
+                                                            <rect key="frame" x="0.0" y="0.0" width="40" height="28"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="40" id="ZF7-Bx-Ihp"/>
                                                                 <constraint firstAttribute="height" constant="28" id="dgS-T0-f2R"/>
@@ -828,17 +876,21 @@
                                         <rect key="frame" x="0.0" y="734" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Utx-Qz-KXf" id="Pce-RJ-l3E">
-                                            <frame key="frameInset" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xrc-uM-fNd" userLabel="Directions View">
+                                                    <rect key="frame" x="75" y="8" width="226" height="28"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get Driving Directions" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6x-o0-dHD">
+                                                            <rect key="frame" x="44" y="0.0" width="182" height="28"/>
                                                             <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map" translatesAutoresizingMaskIntoConstraints="NO" id="iG4-3F-jDW"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map" translatesAutoresizingMaskIntoConstraints="NO" id="iG4-3F-jDW">
+                                                            <rect key="frame" x="0.0" y="0.0" width="40" height="28"/>
+                                                        </imageView>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="g6x-o0-dHD" firstAttribute="leading" secondItem="iG4-3F-jDW" secondAttribute="trailing" constant="4" id="6YH-7G-xWi"/>
@@ -865,7 +917,7 @@
                                         <rect key="frame" x="0.0" y="778" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rYV-v6-dgn" id="TDW-Gb-diR">
-                                            <frame key="frameInset" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <accessibility key="accessibilityConfiguration">
@@ -885,6 +937,7 @@
                             <constraint firstItem="3hk-Yq-jPO" firstAttribute="leading" secondItem="Xk5-yW-wzU" secondAttribute="leading" id="sLk-BT-HPt"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Jcb-im-EcB"/>
                     <connections>
                         <outlet property="headerView" destination="3hk-Yq-jPO" id="rv1-Yr-h6f"/>
                         <outlet property="tableView" destination="5VO-kt-fgf" id="hDB-Id-pHh"/>
@@ -892,7 +945,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tFf-UY-69w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4080.8000000000002" y="-418.74062968515744"/>
+            <point key="canvasLocation" x="5150" y="12"/>
         </scene>
         <!--Route Map View Controller-->
         <scene sceneID="SJ2-tk-N5j">
@@ -907,11 +960,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="90a-cF-b8f">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="TXn-bV-VWS"/>
                                 </constraints>
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bja-ab-gc8">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
@@ -933,7 +988,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8sn-mC-n4G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4865" y="-418"/>
+            <point key="canvasLocation" x="6057" y="11"/>
         </scene>
         <!--RSS Web View-->
         <scene sceneID="u1F-TG-xWM">
@@ -948,9 +1003,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DMv-WO-27F">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pbh-fK-QJ1">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="NiO-yO-l1k"/>
                                 </constraints>
@@ -1002,7 +1059,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iTu-Ih-fWn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4865" y="328"/>
+            <point key="canvasLocation" x="8772" y="-744.3778110944528"/>
         </scene>
         <!--Intro View Controller-->
         <scene sceneID="ped-4o-KWy">
@@ -1017,8 +1074,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZh-r9-IGu" userLabel="Background View">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6jl-gC-a6T" userLabel="Disclaimer Text">
+                                        <rect key="frame" x="57.5" y="286" width="260" height="279"/>
                                         <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" priority="750" constant="279" id="NwB-kZ-R3a"/>
@@ -1030,6 +1089,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ski Bozman" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RgU-7m-gN1" userLabel="Title" customClass="SMLabel">
+                                        <rect key="frame" x="8" y="40" width="359" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="SeQ-Eg-Y7g"/>
                                             <constraint firstAttribute="height" constant="55" id="lG8-UN-zEc"/>
@@ -1044,6 +1104,7 @@
                                         </variation>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k25-nX-han">
+                                        <rect key="frame" x="57.5" y="573" width="260" height="64"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="260" id="Sjf-g3-Iq1"/>
                                             <constraint firstAttribute="height" constant="64" id="hhN-wR-eNY"/>
@@ -1058,6 +1119,7 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="warning" translatesAutoresizingMaskIntoConstraints="NO" id="S3m-hU-fq6">
+                                        <rect key="frame" x="57.5" y="203" width="260" height="75"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="260" id="8I9-CL-axR"/>
                                             <constraint firstAttribute="height" constant="75" id="yaX-6j-M3n"/>
@@ -1102,9 +1164,40 @@
             <point key="canvasLocation" x="2515" y="-1180"/>
         </scene>
         <!--Navigation Controller-->
+        <scene sceneID="LDa-VN-bdl">
+            <objects>
+                <navigationController id="Mp0-nE-Owu" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="14O-se-FHy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="A15-bb-RHp" kind="relationship" relationship="rootViewController" id="z8q-JW-ovn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ICU-5K-8LA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4263" y="-744"/>
+        </scene>
+        <!--Split View Controller-->
+        <scene sceneID="evB-0b-JWD">
+            <objects>
+                <splitViewController id="HgA-nR-9mZ" customClass="SMSplitViewController" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" id="uSV-BW-FvD"/>
+                    <connections>
+                        <segue destination="Mp0-nE-Owu" kind="relationship" relationship="masterViewController" id="XJ1-Wi-74p"/>
+                        <segue destination="arP-3r-JB3" kind="relationship" relationship="detailViewController" id="iwP-mv-bCR"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JiY-h7-SXR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3308" y="-420"/>
+        </scene>
+        <!--Navigation Controller-->
         <scene sceneID="H99-4H-Pk6">
             <objects>
-                <navigationController storyboardIdentifier="baseNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="t8Q-qA-foi" customClass="SMNavigationController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="baseNavigationController" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="t8Q-qA-foi" customClass="SMNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XdJ-N7-WEa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1112,7 +1205,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="A15-bb-RHp" kind="relationship" relationship="rootViewController" id="vF7-dm-alh"/>
+                        <segue destination="HgA-nR-9mZ" kind="relationship" relationship="rootViewController" id="sKN-C7-JtS"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GJh-tM-ilb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1132,15 +1225,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cUs-cV-Qjz">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p21-o7-4fb" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1366.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pro Tips" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sjf-P9-14d">
+                                                <rect key="frame" x="8" y="8" width="359" height="25"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ylY-WI-R9U" userLabel="About This App">
+                                                <rect key="frame" x="8" y="41" width="359" height="245.5"/>
                                                 <string key="text">While viewing the maps, clicking the arrow icon in the upper right hand corner twice allows you to turn on the compass in the iPhone and rotate the maps depending on where you point the device.
 
 While still in cell coverage/on wifi, you can open Google Earth via the route page and scroll around the map to cache the aerial imagery on Google Earth.  Your device will store a limited amount of map data locally and allows you to use it offline.  This is very helpful for finding those hidden glades of glory or scoping your latest chute.</string>
@@ -1148,21 +1245,25 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data Discussion" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SpM-h1-DPU">
+                                                <rect key="frame" x="8" y="294.5" width="359" height="25"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CLs-qf-7Nu" userLabel="About This App">
+                                                <rect key="frame" x="8" y="327.5" width="359" height="341.5"/>
                                                 <string key="text">All map data, save for the ski info, is from publicly available datasets from around the web which have various data accuracies.  The elevation data in particular only has a resolution of 33ft, meaning lots of dangerous zones can’t be seen on the maps.  Make sure to check out the legend to understand what the shading represents on the terrain map and do take note that even if an area is green, if it is below avalanche terrain you can still be in a dangerous zone. While the data is an aid in safe travel, it should not be treated as fact given the resolution of the data doesn’t allow for small rollovers and other features that increase the slope angle to a dangerous angle to be displayed.  Use your brain just as you would have before you had access to this data.  Ski/Board safe, have fun, and don’t let the map data lull you into a false sense of security.</string>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get in Touch" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8z-Az-mG8">
+                                                <rect key="frame" x="8" y="677" width="359" height="25"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J9T-gL-ZPe">
+                                                <rect key="frame" x="8" y="744" width="359" height="34"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                 <state key="normal" title="www.bozemanskiguide.com"/>
                                                 <connections>
@@ -1170,11 +1271,13 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Disclaimer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AzD-x3-qk0">
+                                                <rect key="frame" x="8" y="914" width="359" height="22"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qAI-Wp-GRE">
+                                                <rect key="frame" x="8" y="797.5" width="359" height="34"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                 <state key="normal" title="ty@gneisssoftware.com"/>
                                                 <connections>
@@ -1182,21 +1285,25 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Need Support?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dIr-Ji-5dI">
+                                                <rect key="frame" x="8" y="778" width="359" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="14"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy Policy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xts-Qf-aG2">
+                                                <rect key="frame" x="8" y="839.5" width="359" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="14"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wEW-qv-A3c" userLabel="About This App">
+                                                <rect key="frame" x="8" y="944" width="359" height="360.5"/>
                                                 <string key="text">No warranty or guarantee of accuracy is either expressed or implied by the publishers of this app. GPS waypoints, maps, route descriptions and all other information should not be considered fact (i.e. it is beta) and shall always be superseded by your own observations in the backcountry. Map data has a resolution of about 33ft - this means a cliff as large as 32 feet may not even show up on the map. In addition, the GPS accuracy of your device may vary hugely in accuracy, and can be further impacted by trees, steep slopes and mountains. This app is not a substitute for hiring a professional guiding service or taking the appropriate amount of safety training. Weather and snow conditions often change rapidly — always make sure you take proper safety precautions, including but not limited to hiring a professional guide if you do not have professional avalanche and wilderness first aid training.</string>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5dO-eW-Au5">
+                                                <rect key="frame" x="8" y="1312.5" width="359" height="34"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                 <state key="normal" title="Manage Subscriptions"/>
                                                 <connections>
@@ -1204,6 +1311,7 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ban-ov-FDx">
+                                                <rect key="frame" x="8" y="710" width="359" height="34"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                 <state key="normal" title="www.gneisssoftware.com"/>
                                                 <connections>
@@ -1211,6 +1319,7 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="26s-YH-8P8">
+                                                <rect key="frame" x="8" y="867" width="359" height="34"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                 <state key="normal" title="www.gneisssoftware.com/privacy"/>
                                                 <connections>
@@ -1294,7 +1403,7 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AQn-oK-bFL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3309" y="1060"/>
+            <point key="canvasLocation" x="5150" y="-1499"/>
         </scene>
         <!--Current Advisory-->
         <scene sceneID="vq0-BJ-paU">
@@ -1309,9 +1418,11 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GcW-hP-vR5">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SeD-zW-fRh">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="orP-Vl-pjA"/>
                                 </constraints>
@@ -1370,7 +1481,7 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ZO-rc-exI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3309" y="328"/>
+            <point key="canvasLocation" x="6996" y="-744.3778110944528"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Bq6-RL-pxQ">
@@ -1388,7 +1499,43 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0xv-5n-lXb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2531" y="1060"/>
+            <point key="canvasLocation" x="4262" y="-1500"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ufN-27-Dqg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="arP-3r-JB3" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZL0-lr-m5w">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="WiC-dg-xrT" kind="relationship" relationship="rootViewController" id="0hJ-EK-PYn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aCd-Hx-MtN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4262" y="13"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4Ww-0e-rqY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="clr-vw-qfU" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5Mo-KP-QT7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ZTw-sO-m5z" kind="relationship" relationship="rootViewController" id="tV7-1G-ExU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vMm-jd-Ona" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6056.8000000000002" y="-744.3778110944528"/>
         </scene>
     </scenes>
     <resources>
@@ -1396,4 +1543,7 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
         <image name="map" width="40" height="40"/>
         <image name="warning" width="300" height="263"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="4Cx-bg-LYG"/>
+    </inferredMetricsTieBreakers>
 </document>

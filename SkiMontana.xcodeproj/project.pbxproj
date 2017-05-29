@@ -106,6 +106,7 @@
 		CB96952E1A9A3EF6009757B7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB96952C1A9A3EF6009757B7 /* LaunchScreen.xib */; };
 		CB9695451A9A3FC1009757B7 /* SMIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9695441A9A3FC1009757B7 /* SMIntroViewController.m */; };
 		CB96954C1A9A43A7009757B7 /* SMConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = CB96954B1A9A43A7009757B7 /* SMConstants.m */; };
+		CB99579A1EDB7AE700BD0193 /* SMSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9957991EDB7AE700BD0193 /* SMSplitViewController.m */; };
 		CB99FF451AB61F010067E547 /* UIColor+FromHex.m in Sources */ = {isa = PBXBuildFile; fileRef = CB99FF441AB61F010067E547 /* UIColor+FromHex.m */; };
 		CB99FF4D1AB634270067E547 /* SMNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB99FF4A1AB634270067E547 /* SMNavigationController.m */; };
 		CB99FF4E1AB634270067E547 /* SMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB99FF4C1AB634270067E547 /* SMViewController.m */; };
@@ -318,6 +319,8 @@
 		CB9695461A9A415F009757B7 /* SkiMontana-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SkiMontana-Prefix.pch"; sourceTree = "<group>"; };
 		CB96954A1A9A43A7009757B7 /* SMConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMConstants.h; sourceTree = "<group>"; };
 		CB96954B1A9A43A7009757B7 /* SMConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMConstants.m; sourceTree = "<group>"; };
+		CB9957981EDB7AE700BD0193 /* SMSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSplitViewController.h; sourceTree = "<group>"; };
+		CB9957991EDB7AE700BD0193 /* SMSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSplitViewController.m; sourceTree = "<group>"; };
 		CB99FF431AB61F010067E547 /* UIColor+FromHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FromHex.h"; sourceTree = "<group>"; };
 		CB99FF441AB61F010067E547 /* UIColor+FromHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FromHex.m"; sourceTree = "<group>"; };
 		CB99FF491AB634270067E547 /* SMNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMNavigationController.h; sourceTree = "<group>"; };
@@ -672,6 +675,8 @@
 				CB99FF4A1AB634270067E547 /* SMNavigationController.m */,
 				CB99FF4B1AB634270067E547 /* SMViewController.h */,
 				CB99FF4C1AB634270067E547 /* SMViewController.m */,
+				CB9957981EDB7AE700BD0193 /* SMSplitViewController.h */,
+				CB9957991EDB7AE700BD0193 /* SMSplitViewController.m */,
 				CB99FF5F1AB635940067E547 /* SMTableViewController.h */,
 				CB99FF601AB635940067E547 /* SMTableViewController.m */,
 				CB54F5F91B9FD93100D93401 /* SMDetailsHeaderView.h */,
@@ -963,6 +968,7 @@
 				CBA338D91B82BACB001BA5FF /* Reachability.m in Sources */,
 				CB45978C1C336B1900648372 /* RSSDataLoadingView.m in Sources */,
 				CBF4662E1BBE537F00791383 /* SCPStoreKitIAPReceipt.m in Sources */,
+				CB99579A1EDB7AE700BD0193 /* SMSplitViewController.m in Sources */,
 				CB4D92971BEC789000E889A5 /* PSTCollectionViewController.m in Sources */,
 				CB4438261BE832A2004A4BEC /* SkiAreas+CoreDataProperties.m in Sources */,
 				CBA338C31B82A3DD001BA5FF /* SkiDataModel.xcdatamodeld in Sources */,

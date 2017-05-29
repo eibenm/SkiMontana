@@ -421,7 +421,8 @@ static NSString *cellIdentifier;
         SkiAreas *skiArea = skiAreaObjects[indexPath.section];
         NSArray *skiRoutesArray = [skiArea.ski_routes sortedArrayUsingDescriptors:@[self.routeSortDescriptor]];
         SkiRoutes *skiRoute = skiRoutesArray[indexPath.row - 1];
-        SMDetailsViewController *viewController = segue.destinationViewController;
+        SMDetailsViewController *viewController = ((UINavigationController *)segue.destinationViewController).childViewControllers.firstObject;
+        
         viewController.nameArea = skiArea.name_area;
         viewController.skiRoute = skiRoute;
         UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:nil action:nil];

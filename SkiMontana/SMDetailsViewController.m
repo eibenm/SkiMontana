@@ -12,6 +12,7 @@
 #import "SMDetailsTableViewCell.h"
 #import "SMSlideAnimation.h"
 #import "MWPhotoBrowser.h"
+#import "SMUtilities.h"
 
 static NSString *cellIdentifier;
 
@@ -23,13 +24,13 @@ static CGFloat maxOffsetDiff = 46.0f;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet SMDetailsHeaderView *headerView;
 
-@property (strong, nonatomic) UIButton *backButton;
+//@property (strong, nonatomic) UIButton *backButton;
 @property (strong, nonatomic) UIDocumentInteractionController *docController;
 @property (assign, nonatomic) CGFloat offsetStartingY;
 @property (assign, nonatomic) CGFloat maxOffsetY;
 @property (assign, nonatomic) CGFloat routeTopContraintHeight;
 @property (strong, nonatomic) NSMutableArray *photos;
-@property (strong, nonatomic) CAGradientLayer *maskLayer;
+//@property (strong, nonatomic) CAGradientLayer *maskLayer;
 @property (assign, nonatomic) BOOL notesExist;
 
 // Images Cell
@@ -40,23 +41,11 @@ static CGFloat maxOffsetDiff = 46.0f;
 
 @implementation SMDetailsViewController
 
-//- (void)viewDidAppear:(BOOL)animated
-//{
-//    [super viewDidAppear:animated];
-//    
-//    for (UIView *subview in [self.view subviews]) {
-//        NSLog(@"%@", subview);
-//    }
-//    
-//    [self.headerView layoutIfNeeded];
-//    NSLog(@"did layout: Headerview frame: %@", NSStringFromCGRect(self.headerView.frame));
-//    NSLog(@"did layout: Headerview bounds: %@", NSStringFromCGRect(self.headerView.bounds));
-//}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
+    /*
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     
     // Adding custom back button
@@ -87,13 +76,14 @@ static CGFloat maxOffsetDiff = 46.0f;
         //[self.headerView.routeTitle.layer addSublayer:self.maskLayer];
         self.headerView.routeTitle.layer.masksToBounds = YES;
     }
+    */
 }
 
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
     
-    self.maskLayer.bounds = self.headerView.bounds;
+//    self.maskLayer.bounds = self.headerView.bounds;
 }
 
 - (void)dismissViewController
@@ -111,8 +101,15 @@ static CGFloat maxOffsetDiff = 46.0f;
 {
     [super viewDidLoad];
     
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
+    self.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
+    self.navigationItem.leftItemsSupplementBackButton = YES;
+    
+    if (self.skiRoute == nil) {
+        [self loadFirstRoute];
+    } else {
+        self.tableView.delegate = self;
+        self.tableView.dataSource = self;
+    }
     
     self.headerView.areaTitle.text = self.nameArea;
     self.headerView.routeTitle.text = self.skiRoute.name_route;
@@ -152,6 +149,45 @@ static CGFloat maxOffsetDiff = 46.0f;
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[backgroundColorView]|" options:kNilOptions metrics:nil views:backgroundColorViews]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[backgroundImageView]|" options:kNilOptions metrics:nil views:backgroundImageViews]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[backgroundImageView]|" options:kNilOptions metrics:nil views:backgroundImageViews]];
+}
+
+- (void)loadFirstRoute
+{
+    BOOL purchased = [SMIAPHelper checkInAppMemoryPurchasedState];
+    
+    NSManagedObjectContext *managedObjectContext = [SMDataManager sharedInstance].managedObjectContext;
+    
+    NSFetchRequest *fetchRequest = [NSFetchRequest new];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:SM_SkiAreas inManagedObjectContext:managedObjectContext];
+    
+    NSSortDescriptor *sortDescriptor1 = [[NSSortDescriptor alloc] initWithKey:@"name_area" ascending:YES];
+    NSSortDescriptor *sortDescriptor2 = [[NSSortDescriptor alloc] initWithKey:@"permissions" ascending:NO];
+    NSArray *descriptors = @[sortDescriptor2, sortDescriptor1];
+    
+    // Don't display the free areas if app is purchased or a trial
+    if (IS_TRIAL == YES || purchased == YES) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name_area != %@", @"Free Routes"];
+        fetchRequest.predicate = predicate;
+    }
+    
+    fetchRequest.entity = entity;
+    fetchRequest.fetchLimit = 1;
+    fetchRequest.sortDescriptors = descriptors;
+    
+    NSError *error = nil;
+    NSArray *results = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    if (results) {
+        NSSortDescriptor *routeSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name_route" ascending:YES];
+        SkiAreas *skiArea = results.firstObject;
+        NSArray *skiRoutesArray = [skiArea.ski_routes sortedArrayUsingDescriptors:@[routeSortDescriptor]];
+        SkiRoutes *skiRoute = skiRoutesArray.firstObject;
+        
+        self.nameArea = skiArea.name_area;
+        self.skiRoute = skiRoute;
+        self.tableView.delegate = self;
+        self.tableView.dataSource = self;
+    }
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator

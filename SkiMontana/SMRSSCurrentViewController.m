@@ -29,7 +29,10 @@
 {
     [super viewDidLoad];
     
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:self action:@selector(dismissViewController)];
+    
     self.title = @"Current Advisory";
+    self.navigationItem.leftBarButtonItem = backButton;
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.mtavalanche.com/current?theme=mobile_simple"]]];
     
     self.progressProxy = [NJKWebViewProgress new];
@@ -42,6 +45,11 @@
     CGRect barFrame = CGRectMake(0, navigationBarBounds.size.height - progressBarHeight, navigationBarBounds.size.width, progressBarHeight);
     self.progressView = [[NJKWebViewProgressView alloc] initWithFrame:barFrame];
     self.progressView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+}
+
+- (void)dismissViewController
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated

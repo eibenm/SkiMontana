@@ -27,13 +27,16 @@ static NSString * const ICLOUD_SMAPP_RECEIPTS =          @"ski_montana_app_recei
 
 #pragma mark - General Macros
 
+#define IS_IPAD   (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+
 #define SM_LogBool(BOOL) NSLog(@"%s: %@", #BOOL, BOOL ? @"YES" : @"NO" )
 
 #pragma mark - Conditional Compiles
 
 #if DEV == 1
 
-static NSString * const SKIAPP_JSON_URL =                @"http://eibenm.com/devbackcountryskiapp/skimontanadata/skiappdata.json";
+static NSString * const SKIAPP_JSON_URL =                @"http://eibenm.com/backcountryskiapp/skimontanadata/skiappdata.json";
 static NSString * const BUNDLE_IDENTIFIER =              @"com.eibenm.SkiMontanaTest";
 static NSString * const kIdentifierSubscription1Month =  @"com.eibenm.SkiMontana.1Month.Dev";
 static NSString * const kIdentifierSubscription1Year =   @"com.eibenm.SkiMontana.1Year.Dev";

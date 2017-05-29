@@ -53,7 +53,7 @@
     self.animationController.fromViewController = fromVC;
     self.animationController.toViewController = toVC;
     
-    if (self.interactionEnabled){
+    if (self.interactionEnabled) {
         [self.animationController setInteractionEnabled];
     }
     
