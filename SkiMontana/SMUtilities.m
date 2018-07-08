@@ -10,7 +10,7 @@
 #import "SMDataManager.h"
 #import "SMReachabilityManager.h"
 
-typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
+typedef void (^SkiDataCompletionHandler)(NSData *, NSURLResponse *, NSError *);
 
 @interface SMUtilities()
 
@@ -54,7 +54,7 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
     self.successBlock = successBlock;
     self.failureBlock = failureBlock;
     
-    SkiDataCompletionHandler completionHandler = ^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+    SkiDataCompletionHandler completionHandler = ^( NSData *data, NSURLResponse *response, NSError *connectionError) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
@@ -130,10 +130,7 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
                                                      timeoutInterval:10.0];
                 
                 [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-                
-                [NSURLConnection sendAsynchronousRequest:request
-                                                   queue:[NSOperationQueue new]
-                                       completionHandler:completionHandler];
+                [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:completionHandler] resume];
             }
             if (status == NetworkStatusDisabled) {
                 NSLog(@"Network Disabled");

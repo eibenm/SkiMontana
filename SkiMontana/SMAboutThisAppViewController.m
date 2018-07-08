@@ -81,7 +81,7 @@ static NSString *manageSubscriptionsUrl = @"https://buy.itunes.apple.com/WebObje
 {
     NSURL *gneisssoftwareUrl = [NSURL URLWithString:gneisssoftware];
     if ([[UIApplication sharedApplication] canOpenURL:gneisssoftwareUrl]) {
-        [[UIApplication sharedApplication] openURL:gneisssoftwareUrl];
+        [[UIApplication sharedApplication] openURL:gneisssoftwareUrl options:@{} completionHandler:nil];
     }
 }
 
@@ -89,22 +89,22 @@ static NSString *manageSubscriptionsUrl = @"https://buy.itunes.apple.com/WebObje
 {
     NSURL *bozemanSkiGuideUrl = [NSURL URLWithString:bozemanSkiGuide];
     if ([[UIApplication sharedApplication] canOpenURL:bozemanSkiGuideUrl]) {
-        [[UIApplication sharedApplication] openURL:bozemanSkiGuideUrl];
+        [[UIApplication sharedApplication] openURL:bozemanSkiGuideUrl options:@{} completionHandler:nil];
     }
 }
 
 - (IBAction)didClickEmailTyAtGneisssoftware:(id)sender
 {
-    NSString *emailUrl = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *emailUrl = [email stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     NSURL *developerSuppport = [NSURL URLWithString:emailUrl];
-    [[UIApplication sharedApplication] openURL:developerSuppport];
+    [[UIApplication sharedApplication] openURL:developerSuppport options:@{} completionHandler:nil];
 }
 
 - (IBAction)didClickViewPrivacyPolicy:(id)sender
 {
     NSURL *privacyPolicyUrl = [NSURL URLWithString:privacyPolicy];
     if ([[UIApplication sharedApplication] canOpenURL:privacyPolicyUrl]) {
-        [[UIApplication sharedApplication] openURL:privacyPolicyUrl];
+        [[UIApplication sharedApplication] openURL:privacyPolicyUrl options:@{} completionHandler:nil];
     }
 }
 
@@ -112,7 +112,7 @@ static NSString *manageSubscriptionsUrl = @"https://buy.itunes.apple.com/WebObje
 {
     NSURL *manageUrl = [NSURL URLWithString:manageSubscriptionsUrl];
     if ([[UIApplication sharedApplication] canOpenURL:manageUrl]) {
-        [[UIApplication sharedApplication] openURL:manageUrl];
+        [[UIApplication sharedApplication] openURL:manageUrl options:@{} completionHandler:nil];
     }
 }
 

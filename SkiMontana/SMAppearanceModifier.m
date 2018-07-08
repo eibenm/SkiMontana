@@ -23,11 +23,8 @@
     [UINavigationBar appearance].barStyle = UIBarStyleDefault;
     [UINavigationBar appearance].titleTextAttributes = @{
         NSForegroundColorAttributeName: [UIColor blackColor],
-        //NSShadowAttributeName: shadow,
         NSFontAttributeName: [UIFont boldSkiMontanaFontOfSize:20.0f],
     };
-    
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     /* UIBarButton Item Customizations */
     

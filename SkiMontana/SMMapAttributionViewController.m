@@ -92,7 +92,7 @@
     
     NSDictionary *views = @{
         @"attributionButton" : attributionButton,
-        @"bottomLayoutGuide" : self.bottomLayoutGuide
+        @"bottomLayoutGuide" : self.view.safeAreaLayoutGuide.bottomAnchor
     };
     
     [self.view addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:bottomFormatString options:kNilOptions metrics:@{ @"bottomSpacing" : @(8) } views:views]];

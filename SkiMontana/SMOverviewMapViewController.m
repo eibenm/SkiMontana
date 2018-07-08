@@ -90,7 +90,7 @@
     UIAlertAction *settingsAction = [UIAlertAction actionWithTitle:@"Settings" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         NSURL *settingsUrl = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
         if ([[UIApplication sharedApplication] canOpenURL:settingsUrl]) {
-            [[UIApplication sharedApplication] openURL:settingsUrl];
+            [[UIApplication sharedApplication] openURL:settingsUrl options:@{} completionHandler:nil];
         }
     }];
     
@@ -131,7 +131,7 @@
     
     NSDictionary *views = @{
         @"attributionButton": attributionButton,
-        @"bottomLayoutGuide": self.bottomLayoutGuide
+        @"bottomLayoutGuide": self.view.safeAreaLayoutGuide.bottomAnchor
     };
     
     [self.view addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:bottomFormatString options:kNilOptions metrics:@{ @"bottomSpacing" : @(8) } views:views]];

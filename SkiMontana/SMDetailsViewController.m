@@ -454,9 +454,9 @@ static CGFloat maxOffsetDiff = 46.0f;
         NSURL *appleMapsUrl = [NSURL URLWithString:[NSString stringWithFormat:@"http://maps.apple.com/?daddr=%f,%f&dirflg=d&t=h", latitude, longitude]];
         
         if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"comgooglemaps://"]]) {
-            [[UIApplication sharedApplication] openURL:googleUrl];
+            [[UIApplication sharedApplication] openURL:googleUrl options:@{} completionHandler:nil];
         } else {
-            [[UIApplication sharedApplication] openURL:appleMapsUrl];
+            [[UIApplication sharedApplication] openURL:appleMapsUrl options:@{} completionHandler:nil];
         }
         
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -481,7 +481,7 @@ static CGFloat maxOffsetDiff = 46.0f;
     UIAlertAction *googleEarthAction = [UIAlertAction actionWithTitle:@"Get Google Earth" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         NSURL *itunesGoogleEarthLink = [NSURL URLWithString:@"https://itunes.apple.com/us/app/google-earth/id293622097?mt=8"];
         if ([[UIApplication sharedApplication] canOpenURL:itunesGoogleEarthLink]) {
-            [[UIApplication sharedApplication] openURL:itunesGoogleEarthLink];
+            [[UIApplication sharedApplication] openURL:itunesGoogleEarthLink options:@{} completionHandler:nil];
         }
     }];
     

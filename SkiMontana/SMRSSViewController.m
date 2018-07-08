@@ -70,11 +70,14 @@
     static NSString *feedURLString = @"http://www.mtavalanche.com/advisory/feed";
     NSURLRequest *avyFeedURLRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:feedURLString]];
     
-    [NSURLConnection sendAsynchronousRequest:avyFeedURLRequest
-                                       queue:[NSOperationQueue mainQueue]
-                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    [[[NSURLSession sharedSession] dataTaskWithRequest:avyFeedURLRequest
+                                     completionHandler:^(NSData *data,
+                                                         NSURLResponse *response,
+                                                         NSError *error) {
+                                         
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        });
         
         if (error != nil) {
             [self handleError:error];
@@ -95,7 +98,7 @@
                 [self handleError:reportError];
             }
         }
-    }];
+    }] resume];
     
     // Start the status bar network activity indicator.
     // We'll turn it off when the connection finishes or experiences an error.
@@ -241,7 +244,7 @@
     SMRSSEntry *rssFeed = (self.avyFeedList)[indexPath.row];
     
     if (isIOS9OrLater()) {
-        SFSafariViewController *safariVC = [[SFSafariViewController alloc]initWithURL:rssFeed.link entersReaderIfAvailable:NO];
+        SFSafariViewController *safariVC = [[SFSafariViewController alloc]initWithURL:rssFeed.link];
         safariVC.delegate = self;
         [self presentViewController:safariVC animated:YES completion:nil];
     } else {
