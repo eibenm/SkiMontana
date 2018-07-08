@@ -12,14 +12,7 @@
 
 + (BOOL)checkInAppMemoryPurchasedState
 {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:NS_USER_DEFUALTS_PURCHASED];
-}
-
-+ (void)setInAppMemoryPurchasedStatePurchased:(BOOL)purchased
-{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setBool:purchased forKey:NS_USER_DEFUALTS_PURCHASED];
-    [defaults synchronize];
+    return [[NSUserDefaults standardUserDefaults] boolForKey:NS_USER_DEFAULTS_PURCHASED];
 }
 
 + (BOOL)subscriptionIsActiveWithReceipt:(SCPStoreKitIAPReceipt *)transaction date:(NSDate *)date

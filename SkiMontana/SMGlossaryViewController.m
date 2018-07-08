@@ -43,6 +43,8 @@ static NSString *cellIdentifier = @"glossaryTerm";
     self.searchController.searchBar.searchBarStyle = UISearchBarStyleProminent;
     self.definesPresentationContext = YES;
     self.tableView.tableHeaderView = (self.searchController).searchBar;
+    self.tableView.estimatedRowHeight = UITableViewAutomaticDimension;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
     [self.searchController.searchBar sizeToFit];
     
     NSError *error;

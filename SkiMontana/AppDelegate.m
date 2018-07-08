@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 #import "SMAppearanceModifier.h"
+#import "SMUtilities.h"
+#import "SMNavigationController.h"
+#import "SMAreasTableViewController.h"
 
 @interface AppDelegate ()
 
@@ -19,7 +22,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [SMAppearanceModifier defaultAppearance];
-    [SMConstants documentsFolderIfSimulator];
+    
+    [[SMUtilities sharedInstance] printDocumentsFolderIfSimulator];
+    [[SMUtilities sharedInstance] initUserDefaults];
+    [[SMUtilities sharedInstance] checkForAppStateChange];
     
     return YES;
 }
@@ -49,6 +55,41 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+// Handling force touch shortcut items from ios
+- (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler
+{
+    NSString* viewAdvisoryKey = [NSString stringWithFormat:@"%@.viewAdvisory", [[NSBundle mainBundle] bundleIdentifier]];
+
+    if ([shortcutItem.type isEqualToString:viewAdvisoryKey]) {
+        SMNavigationController *navController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"baseNavigationController"];
+        self.window.rootViewController = navController;
+        SMAreasTableViewController *controller = [self getAreasTableViewController:navController];
+        if (controller != nil) {
+            [controller performSegueWithIdentifier:@"showAdvisory" sender:controller];
+        }
+        [self.window makeKeyAndVisible];
+        completionHandler(YES);
+    }
+    
+    completionHandler(NO);
+}
+
+// Recursively getting SMAreasTableViewController from view controller hierarchy
+- (SMAreasTableViewController *)getAreasTableViewController:(UIViewController *)baseViewController
+{
+    for (UIViewController *controller in baseViewController.childViewControllers) {
+        if ([controller isKindOfClass:[SMAreasTableViewController class]]) {
+            return (SMAreasTableViewController *)controller;
+        } else {
+            if (controller.childViewControllers.count > 0) {
+                return [self getAreasTableViewController:controller];
+            }
+        }
+    }
+    
+    return nil;
 }
 
 @end

@@ -13,8 +13,6 @@
 
 + (BOOL)checkInAppMemoryPurchasedState;
 
-+ (void)setInAppMemoryPurchasedStatePurchased:(BOOL)purchased;
-
 + (BOOL)subscriptionIsActiveWithReceipt:(SCPStoreKitIAPReceipt *)transaction date:(NSDate *)date;
 
 @end

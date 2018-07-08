@@ -35,8 +35,6 @@
 {
     [super viewDidLoad];
     
-    self.deviceIsIPhone = ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone);
-    
     self.productIdentifiers = [NSSet setWithObjects:
         kIdentifierSubscription1Month,
         kIdentifierSubscription1Year,
@@ -45,36 +43,22 @@
     
     self.purchased = [SMIAPHelper checkInAppMemoryPurchasedState];
     
-    if (TRIAL == NO) {
+    if (IS_TRIAL == NO) {
         if (self.purchased == YES) {
             [self checkReceiptsForSubscriptionChange];
         } else {
             [self requestProductsWithProductIdentifiers:self.productIdentifiers];
         }
     }
-    
-    // Adding button that returns to splash view
-//    UIButton *homeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    homeButton.frame = CGRectMake(0, 0, 30, 30);
-//    homeButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
-//    [homeButton setImage:[UIImage imageNamed:@"warning"] forState:UIControlStateNormal];
-//    [homeButton addTarget:self action:@selector(popToSplashView) forControlEvents:UIControlEventTouchUpInside];
-//    UIBarButtonItem *homeItem = [[UIBarButtonItem alloc] initWithCustomView:homeButton];
-//    self.navigationItem.leftBarButtonItem = homeItem;
 }
-
-//- (void)popToSplashView
-//{
-//    [self dismissViewControllerAnimated:YES completion:nil];
-//}
 
 - (void)populateIsShowingArray
 {
     NSArray *fetchedObjects = (self.fetchedResultsController).fetchedObjects;
     self.isShowingArray = [[NSMutableArray alloc] initWithCapacity:fetchedObjects.count];
-    [fetchedObjects enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    for (int i = 0; i < fetchedObjects.count; i++) {
         [self.isShowingArray addObject:@NO];
-    }];
+    }
 }
 
 #pragma mark - Display message
@@ -124,9 +108,10 @@
         BOOL active = [SMIAPHelper subscriptionIsActiveWithReceipt:lastTransaction date:[NSDate date]];
         
         // Unlock App and reload view
-        if (active) {
-            [[SMUtilities sharedInstance] setAppLockedStateIsUnlocked:YES];
-            self.purchased = [SMIAPHelper checkInAppMemoryPurchasedState];
+        if (active == YES) {
+            [[SMUtilities sharedInstance] setNSUserDefaultValueWithBool:YES andKey:NS_USER_DEFAULTS_PURCHASED];
+            [[SMUtilities sharedInstance] checkForAppStateChange];
+            self.purchased = YES;
             self.fetchedResultsController = nil;
             [self.fetchedResultsController performFetch:nil];
             [self populateIsShowingArray];
@@ -171,9 +156,10 @@
         BOOL active = [SMIAPHelper subscriptionIsActiveWithReceipt:lastTransaction date:[NSDate date]];
         
         // Subscription is no longer active ... lock the app!
-        if (!active) {
-            [[SMUtilities sharedInstance] setAppLockedStateIsUnlocked:NO];
-            self.purchased = [SMIAPHelper checkInAppMemoryPurchasedState];
+        if (active == NO) {
+            [[SMUtilities sharedInstance] setNSUserDefaultValueWithBool:NO andKey:NS_USER_DEFAULTS_PURCHASED];
+            [[SMUtilities sharedInstance] checkForAppStateChange];
+            self.purchased = NO;
             self.fetchedResultsController = nil;
             [self.fetchedResultsController performFetch:nil];
             [self populateIsShowingArray];
@@ -183,8 +169,9 @@
         
         // In the case of restored subscription
         if (purchased == NO && active == YES) {
-            [[SMUtilities sharedInstance] setAppLockedStateIsUnlocked:YES];
-            self.purchased = [SMIAPHelper checkInAppMemoryPurchasedState];
+            [[SMUtilities sharedInstance] setNSUserDefaultValueWithBool:YES andKey:NS_USER_DEFAULTS_PURCHASED];
+            [[SMUtilities sharedInstance] checkForAppStateChange];
+            self.purchased = YES;
             self.fetchedResultsController = nil;
             [self.fetchedResultsController performFetch:nil];
             [self populateIsShowingArray];

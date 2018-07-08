@@ -80,7 +80,8 @@
             [self handleError:error];
         } else {
             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-            if (((httpResponse.statusCode / 100) == 2) && [response.MIMEType isEqual:@"application/rss+xml"]) {
+            if (([response.MIMEType isEqual:@"application/rss+xml"] || [response.MIMEType isEqual:@"text/html"]) &&
+                (httpResponse.statusCode == 200)) {
                 // Update the UI and start parsing the data,
                 // Spawn an NSOperation to parse the avy feed data so that the UI is not
                 // blocked while the application parses the XML data.
@@ -88,7 +89,7 @@
                 SMRSSParseOperation *parseOperation = [[SMRSSParseOperation alloc] initWithData:data];
                 [self.parseQueue addOperation:parseOperation];
             } else {
-                NSString *errorString = NSLocalizedString(@"HTTP Error", @"Error message displayed when receving a connection error.");
+                NSString *errorString = NSLocalizedString(@"There was an error loading the RSS feed!", @"Error message displayed when receving a connection error.");
                 NSDictionary *userInfo = @{ NSLocalizedDescriptionKey: errorString };
                 NSError *reportError = [NSError errorWithDomain:@"HTTP" code:httpResponse.statusCode userInfo:userInfo];
                 [self handleError:reportError];
@@ -136,6 +137,7 @@
     NSString *okTitle = NSLocalizedString(@"OK ", @"OK Title for alert displayed when download or parse error occurs.");
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:alertTitle message:errorMessage delegate:nil cancelButtonTitle:okTitle otherButtonTitles:nil];
     [alertView show];
+    [self removeDataLoadingView];
 }
 
 - (void)addAvyFeeds:(NSNotification *)notification

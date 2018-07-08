@@ -17,6 +17,16 @@ typedef void(^SMFailure)(NSError *error);
 
 - (void)downloadSMJsonWithSuccess:(SMSuccess)successBlock error:(SMFailure)failureBlock;
 
+- (void)initializeAppOnLaunch;
+
 - (void)setAppLockedStateIsUnlocked:(BOOL)unlocked;
+
+- (void)initUserDefaults;
+
+- (void)setNSUserDefaultValueWithBool:(BOOL)value andKey:(NSString *)key;
+
+- (void)printDocumentsFolderIfSimulator;
+
+- (void)checkForAppStateChange;
 
 @end

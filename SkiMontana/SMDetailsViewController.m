@@ -149,6 +149,9 @@ static CGFloat maxOffsetDiff = 46.0f;
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[backgroundColorView]|" options:kNilOptions metrics:nil views:backgroundColorViews]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[backgroundImageView]|" options:kNilOptions metrics:nil views:backgroundImageViews]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[backgroundImageView]|" options:kNilOptions metrics:nil views:backgroundImageViews]];
+    
+//    self.tableView.estimatedRowHeight = UITableViewAutomaticDimension;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
 }
 
 - (void)loadFirstRoute
@@ -288,6 +291,7 @@ static CGFloat maxOffsetDiff = 46.0f;
     else if ([cellIdentifier isEqualToString:@"directions"]) {
         nil;
     } else if ([cellIdentifier isEqualToString:@"images"]) {
+        
         // Add KML Image
         NSString *kmlImage;
         NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"filename" ascending:YES];

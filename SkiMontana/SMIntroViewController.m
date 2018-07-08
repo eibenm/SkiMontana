@@ -29,41 +29,11 @@
 {
     [super viewDidLoad];
     
-    NSDictionary *attrsDictionary = @{ NSKernAttributeName: @1 };
-    (self.titleLabel).attributedText = [[NSAttributedString alloc] initWithString:@"Ski Bozeman" attributes:attrsDictionary];
+    self.titleLabel.attributedText = [[NSAttributedString alloc] initWithString:@"Ski Bozeman" attributes:@{ NSKernAttributeName: @1 }];
+    self.disclaimerTextView.layer.cornerRadius = 5.0f;
+    [self.startSkiingBtn setTitle:@"I Agree" forState:UIControlStateNormal];
+    [self initializeApplication];
     
-    UIEdgeInsets insets = UIEdgeInsetsMake(0.0f, 10.0f, 0.0f, 10.0f);
-    UIImage *skiButton = [UIImage imageNamed:@"start_skiing"];
-    
-    (self.disclaimerTextView).layer.cornerRadius = 5.0f;
-    (self.startSkiingBtn).userInteractionEnabled = NO;
-    (self.startSkiingBtn).layer.opacity = 0.8;
-    [self.startSkiingBtn setTitle:@"Updating ..." forState:UIControlStateNormal];
-    [self.startSkiingBtn setBackgroundImage:[skiButton resizableImageWithCapInsets:insets]
-                                   forState:UIControlStateNormal];
-    
-    void (^setButtonEnabled)(void) = ^(void) {
-        (self.startSkiingBtn).userInteractionEnabled = YES;
-        [self.startSkiingBtn setTitle:@"I Agree" forState:UIControlStateNormal];
-        [UIView animateWithDuration:0.25 animations:^{
-            (self.startSkiingBtn).layer.opacity = 1.0;
-        }];
-    };
-    
-    [[SMUtilities sharedInstance] downloadSMJsonWithSuccess:^(BOOL appUpdated, NSString *message) {
-        if (appUpdated == YES) {
-            NSLog(@"Download success: App has been updated");
-            NSLog(@"Message: %@", message);
-        }
-        else {
-            NSLog(@"Download success: App has NOT been updated");
-            NSLog(@"Message: %@", message);
-        }
-        setButtonEnabled();
-    } error:^(NSError *error) {
-        NSLog(@"Download failure: Error: %@", error.localizedDescription);
-        setButtonEnabled();
-    }];
     
     // Setup Background Image
     UIImage *image = [UIImage imageNamed:@"landing_image"];
@@ -73,29 +43,7 @@
     [self.backgroundView addSubview:imageView];
     [self.backgroundView sendSubviewToBack:imageView];
     
-    // Set up Snow Particle Layer
-    CAEmitterLayer *emitterLayer = [CAEmitterLayer layer];
-    emitterLayer.emitterPosition = CGPointMake(self.view.bounds.origin.x - 50, self.view.bounds.origin.y);
-    emitterLayer.emitterZPosition = 10;
-    emitterLayer.emitterSize = CGSizeMake(self.view.bounds.size.width, 0);
-    emitterLayer.emitterShape = kCAEmitterLayerSphere;
-    
-    CAEmitterCell *emitterCell = [CAEmitterCell emitterCell];
-    emitterCell.scale = 0.1;
-    emitterCell.scaleRange = 0.2;
-    emitterCell.emissionRange = (CGFloat)M_PI_2;
-    emitterCell.lifetime = 5.0;
-    emitterCell.birthRate = 15;
-    emitterCell.velocity = 200;
-    emitterCell.velocityRange = 50;
-    emitterCell.yAcceleration = 80;
-    emitterCell.xAcceleration = -40;
-    
-    emitterCell.contents = (id)[UIImage imageNamed:@"snow_particle"].CGImage;
-    
-    emitterLayer.emitterCells = @[emitterCell];
-    
-    [self.backgroundView.layer addSublayer:emitterLayer];
+    [self.backgroundView.layer addSublayer:[self getEmitterLayer]];
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -133,6 +81,34 @@
     return UIInterfaceOrientationPortrait;
 }
 
+- (CAEmitterLayer *) getEmitterLayer
+{
+    // Set up Snow Particle Layer
+    
+    CAEmitterLayer *emitterLayer = [CAEmitterLayer layer];
+    emitterLayer.emitterPosition = CGPointMake(self.view.bounds.origin.x - 50, self.view.bounds.origin.y);
+    emitterLayer.emitterZPosition = 10;
+    emitterLayer.emitterSize = CGSizeMake(self.view.bounds.size.width, 0);
+    emitterLayer.emitterShape = kCAEmitterLayerSphere;
+    
+    CAEmitterCell *emitterCell = [CAEmitterCell emitterCell];
+    emitterCell.scale = 0.1;
+    emitterCell.scaleRange = 0.2;
+    emitterCell.emissionRange = (CGFloat)M_PI_2;
+    emitterCell.lifetime = 5.0;
+    emitterCell.birthRate = 15;
+    emitterCell.velocity = 200;
+    emitterCell.velocityRange = 50;
+    emitterCell.yAcceleration = 80;
+    emitterCell.xAcceleration = -40;
+    
+    emitterCell.contents = (id)[UIImage imageNamed:@"snow_particle"].CGImage;
+    
+    emitterLayer.emitterCells = @[emitterCell];
+    
+    return emitterLayer;
+}
+
 - (IBAction)startSkiingAction:(id)sender
 {
     SMIntroViewController *thisViewController = (SMIntroViewController *)self;
@@ -141,6 +117,44 @@
     thisViewController.animationController = layerAnimation;
     navController.transitioningDelegate = self.transitioningDelegate;
     [self presentViewController:navController animated:YES completion:nil];
+}
+
+- (void)initializeApplication
+{
+    [[SMUtilities sharedInstance] initializeAppOnLaunch];
+}
+
+- (void)initializeApplicationDeprecated
+{
+    self.startSkiingBtn.userInteractionEnabled = NO;
+    self.startSkiingBtn.layer.opacity = 0.8;
+    [self.startSkiingBtn setTitle:@"Updating ..." forState:UIControlStateNormal];
+    
+    void (^setButtonEnabled)(void) = ^(void) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            (self.startSkiingBtn).userInteractionEnabled = YES;
+            [self.startSkiingBtn setTitle:@"I Agree" forState:UIControlStateNormal];
+            [UIView animateWithDuration:0.25 animations:^{
+                (self.startSkiingBtn).layer.opacity = 1.0;
+            }];
+        });
+    };
+    
+    [[SMUtilities sharedInstance] downloadSMJsonWithSuccess:^(BOOL appUpdated, NSString *message) {
+        if (appUpdated == YES) {
+            NSLog(@"Download success: App has been updated");
+            NSLog(@"Message: %@", message);
+        }
+        else {
+            NSLog(@"Download success: App has NOT been updated");
+            NSLog(@"Message: %@", message);
+        }
+        setButtonEnabled();
+    } error:^(NSError *error) {
+        NSLog(@"Download failure: Error: %@", error.localizedDescription);
+        setButtonEnabled();
+    }];
+
 }
 
 @end

@@ -22,6 +22,7 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
 @implementation SMUtilities
 {
     NSFileManager *_fileManager;
+    NSUserDefaults *_defaults;
 }
 
 #pragma mark - Singleton
@@ -41,6 +42,7 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
     self = [super init];
     if (self) {
         _fileManager = [NSFileManager defaultManager];
+        _defaults = [NSUserDefaults standardUserDefaults];
     }
     return self;
 }
@@ -53,7 +55,10 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
     self.failureBlock = failureBlock;
     
     SkiDataCompletionHandler completionHandler = ^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        });
     
         if (connectionError != nil) {
             self.failureBlock(connectionError);
@@ -102,45 +107,53 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
         }
     };
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
     // Initial Launch - Get Data from bundle
     // Initial Launch - Set initial system memory values
     
-    if (![defaults boolForKey:NS_USER_DEFUALTS_INITAL_LAUNCH]) {
+    if ([_defaults boolForKey:NS_USER_DEFUALTS_IS_INITAL_LAUNCH] == YES) {
+        [[SMDataManager sharedInstance] clearPersistentStores];
         [self createCopyOfSkiJsonFromBundle];
         [self copyJsonToDataStore:[self skiAppCurrentJson]];
-        [defaults setBool:NO  forKey:NS_USER_DEFUALTS_PURCHASED];
-        [defaults setBool:YES forKey:NS_USER_DEFUALTS_INITAL_LAUNCH];
-        [defaults synchronize];
+        [self setNSUserDefaultValueWithBool:NO andKey:NS_USER_DEFUALTS_IS_INITAL_LAUNCH];
+        [_defaults synchronize];
         self.successBlock(NO, @"First app launch, no updated needed");
     }
     
     // Not initial launch, get data from cloud
     
     else {
-        if (IS_TRIAL == NO) {
-            [[SMReachabilityManager sharedManager] checkNetworkStatusWithCompletionHandler:^(BOOL success, CurrentNetworkStatus status) {
-                if (status == NetworkStatusEnabled) {
-                    NSLog(@"Network Enabled");
-                    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:SKIAPP_JSON_URL]
-                                                             cachePolicy:NSURLRequestReloadIgnoringCacheData
-                                                         timeoutInterval:10.0];
-                    
-                    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-                    
-                    [NSURLConnection sendAsynchronousRequest:request
-                                                       queue:[NSOperationQueue new]
-                                           completionHandler:completionHandler];
-                }
-                if (status == NetworkStatusDisabled) {
-                    NSLog(@"Network Disabled");
-                    self.failureBlock([NSError errorWithDomain:@"com.eibenm.SkiMontana.NoResponse" code:404 userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(@"Network is disabled", @"") }]);
-                }
-            }];
-        } else {
-            self.successBlock(NO, @"App is Trial version, no updating will occur");
-        }
+        [[SMReachabilityManager sharedManager] checkNetworkStatusWithCompletionHandler:^(BOOL success, CurrentNetworkStatus status) {
+            if (status == NetworkStatusEnabled) {
+                NSLog(@"Network Enabled");
+                NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:SKIAPP_JSON_URL]
+                                                         cachePolicy:NSURLRequestReloadIgnoringCacheData
+                                                     timeoutInterval:10.0];
+                
+                [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+                
+                [NSURLConnection sendAsynchronousRequest:request
+                                                   queue:[NSOperationQueue new]
+                                       completionHandler:completionHandler];
+            }
+            if (status == NetworkStatusDisabled) {
+                NSLog(@"Network Disabled");
+                self.failureBlock([NSError errorWithDomain:@"com.eibenm.SkiMontana.NoResponse" code:404 userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(@"Network is disabled", @"") }]);
+            }
+        }];
+    }
+}
+
+- (void)initializeAppOnLaunch
+{
+    // Initial Launch - Get Data from bundle
+    // Initial Launch - Set initial system memory values
+    
+    if ([_defaults boolForKey:NS_USER_DEFUALTS_IS_INITAL_LAUNCH] == YES) {
+        [[SMDataManager sharedInstance] clearPersistentStores];
+        [self createCopyOfSkiJsonFromBundle];
+        [self copyJsonToDataStore:[self skiAppCurrentJson]];
+        [self setNSUserDefaultValueWithBool:NO andKey:NS_USER_DEFUALTS_IS_INITAL_LAUNCH];
+        [_defaults synchronize];
     }
 }
 
@@ -170,10 +183,100 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
         NSLog(@"Whoops, couldn't save: %@", saveError.localizedDescription);
         return;
     }
+}
+
+- (void)initUserDefaults
+{
+    if ([_defaults objectForKey:NS_USER_DEFUALTS_IS_INITAL_LAUNCH] == nil) {
+        [self setNSUserDefaultValueWithBool:YES andKey:NS_USER_DEFUALTS_IS_INITAL_LAUNCH];
+    }
     
-    // Set on device memory to true/false purchased state
+    if ([_defaults objectForKey:NS_USER_DEFAULTS_PURCHASED] == nil) {
+        [self setNSUserDefaultValueWithBool:NO andKey:NS_USER_DEFAULTS_PURCHASED];
+    }
     
-    [SMIAPHelper setInAppMemoryPurchasedStatePurchased:unlocked];
+    if ([_defaults objectForKey:NS_USER_DEFAULTS_IS_TRIAL] == nil) {
+        [self setNSUserDefaultValueWithBool:NO andKey:NS_USER_DEFAULTS_IS_TRIAL];
+    }
+}
+
+- (void)setNSUserDefaultValueWithBool:(BOOL)value andKey:(NSString *)key
+{
+    [_defaults setBool:value forKey:key];
+    [_defaults synchronize];
+}
+
+- (void)printDocumentsFolderIfSimulator
+{
+#if TARGET_IPHONE_SIMULATOR
+    NSLog(@"App Documents Dir: \n%@\n\n", [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory
+                                                                                  inDomains:NSUserDomainMask] firstObject]);
+#endif
+}
+
+- (void)checkForAppStateChange
+{
+    // Don't execute this code, if this is the first app launch
+    if ([_defaults boolForKey:NS_USER_DEFUALTS_IS_INITAL_LAUNCH] == YES) {
+        return;
+    }
+    
+    // Checking database unlocked state ...
+    
+    NSManagedObjectContext *context = [SMDataManager sharedInstance].managedObjectContext;
+    
+    NSFetchRequest *fetchRequest = [NSFetchRequest new];
+    fetchRequest.entity = [NSEntityDescription entityForName:SM_SkiAreas inManagedObjectContext:context];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"name_area != %@", @"Free Routes"];
+    fetchRequest.fetchLimit = 1;
+    fetchRequest.sortDescriptors = @[
+         [[NSSortDescriptor alloc] initWithKey:@"name_area" ascending:NO]
+     ];
+    
+    NSError *error = nil;
+    NSArray<SkiAreas *> *results = [context executeFetchRequest:fetchRequest error:&error];
+    
+    if (error != nil) {
+        return;
+    }
+    
+    if (results.count != 1) {
+        return;
+    }
+    
+    BOOL isLocked = results.firstObject.permissions.boolValue == YES ? NO : YES;
+    BOOL isPurchased = [SMIAPHelper checkInAppMemoryPurchasedState];
+    
+    // is database currently locked?
+    // what is the trial status currently ?
+    
+    if (IS_TRIAL == NO) {
+        if (isLocked == YES && isPurchased == YES) {
+            // app is purchased, but still locked ... unlock app !
+            [self setAppLockedStateIsUnlocked:YES];
+        } else if (isLocked == YES && isPurchased == NO) {
+            // do nothing ... not currently purchased
+        } else if (isLocked == NO && isPurchased == YES) {
+            // do nothing ... already purchased
+        } else if (isLocked == NO && isPurchased == NO) {
+            // trial may have changed ... lock the app!
+            [self setAppLockedStateIsUnlocked:NO];
+        }
+    }
+    
+    if (IS_TRIAL == YES) {
+        if (isLocked == YES && isPurchased == YES) {
+            // app is purchased, but still locked ... unlock app !
+            [self setAppLockedStateIsUnlocked:YES];
+        } else if (isLocked == YES && isPurchased == NO) {
+            // trial may have changed ... unlock the app!
+            [self setAppLockedStateIsUnlocked:YES];
+        } else if (isLocked == NO && isPurchased == YES) {
+            // do nothing ... app is already purchased
+        } else if (isLocked == NO && isPurchased == NO) {
+            // do nothing ... app is in trial mode
+        }
+    }
 }
 
 #pragma mark - Private Utility Methods
@@ -262,6 +365,8 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
     NSArray *skiAreas = parsedObject[@"skiAreas"];
     NSArray *glossary = parsedObject[@"glossary"];
     
+    BOOL purchased = [SMIAPHelper checkInAppMemoryPurchasedState];
+    
     for (NSDictionary *skiAreaJson in skiAreas) {
         SkiAreas *skiArea = [NSEntityDescription insertNewObjectForEntityForName:SM_SkiAreas inManagedObjectContext:context];
         skiArea.bounds_northeast = skiAreaJson[@"bounds_northeast"];
@@ -269,7 +374,12 @@ typedef void (^SkiDataCompletionHandler)(NSURLResponse *, NSData *, NSError *);
         skiArea.color = skiAreaJson[@"color"];
         skiArea.conditions = skiAreaJson[@"conditions"];
         skiArea.name_area = skiAreaJson[@"name_area"];
-        skiArea.permissions = (IS_TRIAL ? @YES : skiAreaJson[@"permissions"]);
+        
+        if ([skiArea.name_area isEqualToString:@"Free Routes"]) {
+            skiArea.permissions = @YES;
+        } else {
+            skiArea.permissions = (IS_TRIAL || purchased ? @YES : skiAreaJson[@"permissions"]);
+        }
         
         NSDictionary *skiAreaImage = skiAreaJson[@"skiarea_image"];
         

@@ -53,7 +53,6 @@ static NSString *cellIdentifier;
     
     _managedObjectContext = [SMDataManager sharedInstance].managedObjectContext;
     self.routeSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name_route" ascending:YES];
-    self.deviceIsIPhone = ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone);
     
     NSError *error;
     if (![self.fetchedResultsController performFetch:&error]) {
@@ -99,6 +98,9 @@ static NSString *cellIdentifier;
     if (!self.imageLoadingOperationQueue) {
         self.imageLoadingOperationQueue = [NSOperationQueue new];
     }
+    
+//    self.tableView.estimatedRowHeight = UITableViewAutomaticDimension;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
 }
 
 - (void)viewDidLayoutSubviews
@@ -268,7 +270,7 @@ static NSString *cellIdentifier;
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [cell layoutIfNeeded];
-    
+
     // Make sure text in first cell for each section wraps around the image
     if (indexPath.row == 0) {
         SMSkiRouteTableViewCell *skiCell = (SMSkiRouteTableViewCell *)cell;
