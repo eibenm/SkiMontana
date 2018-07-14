@@ -197,7 +197,7 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
     UIAlertAction *settingsAction = [UIAlertAction actionWithTitle:@"Settings" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         NSURL *settingsUrl = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
         if ([[UIApplication sharedApplication] canOpenURL:settingsUrl]) {
-            [[UIApplication sharedApplication] openURL:settingsUrl];
+            [[UIApplication sharedApplication] openURL:settingsUrl options:@{} completionHandler:nil];
         }
     }];
     
@@ -276,16 +276,11 @@ CLLocationCoordinate2D const bozemanCoords = (CLLocationCoordinate2D){45.682145,
     
     [self.view addSubview:attributionButton];
     
-    NSString *bottomFormatString = @"V:[attributionButton]-bottomSpacing-[bottomLayoutGuide]";
-    NSString *rightFormatString = @"H:[attributionButton]-rightSpacing-|";
-    
-    NSDictionary *views = @{
-        @"attributionButton": attributionButton,
-        @"bottomLayoutGuide": self.view.safeAreaLayoutGuide.bottomAnchor
-    };
-    
-    [self.view addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:bottomFormatString options:kNilOptions metrics:@{ @"bottomSpacing" : @(8) } views:views]];
-    [self.view addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:rightFormatString options:kNilOptions metrics:@{ @"rightSpacing" : @(8) } views:views]];
+
+    UILayoutGuide *guide = self.view.safeAreaLayoutGuide;
+    NSLayoutConstraint *rightConstraint = [attributionButton.rightAnchor constraintEqualToAnchor:guide.rightAnchor constant:-8.0f];
+    NSLayoutConstraint *bottomConstraint = [attributionButton.bottomAnchor constraintEqualToAnchor:guide.bottomAnchor constant:0];
+    [NSLayoutConstraint activateConstraints:@[rightConstraint, bottomConstraint]];
 }
 
 - (void)showAttribution:(id)sender

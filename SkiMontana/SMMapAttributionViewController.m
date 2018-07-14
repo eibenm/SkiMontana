@@ -87,16 +87,10 @@
     
     [self.view addSubview:attributionButton];
     
-    NSString *bottomFormatString = @"V:[attributionButton]-bottomSpacing-[bottomLayoutGuide]";
-    NSString *rightFormatString = @"H:[attributionButton]-rightSpacing-|";
-    
-    NSDictionary *views = @{
-        @"attributionButton" : attributionButton,
-        @"bottomLayoutGuide" : self.view.safeAreaLayoutGuide.bottomAnchor
-    };
-    
-    [self.view addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:bottomFormatString options:kNilOptions metrics:@{ @"bottomSpacing" : @(8) } views:views]];
-    [self.view addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:rightFormatString options:kNilOptions metrics:@{ @"rightSpacing" : @(8) } views:views]];
+    UILayoutGuide *guide = self.view.safeAreaLayoutGuide;
+    NSLayoutConstraint *rightConstraint = [attributionButton.rightAnchor constraintEqualToAnchor:guide.rightAnchor constant:-8.0f];
+    NSLayoutConstraint *bottomConstraint = [attributionButton.bottomAnchor constraintEqualToAnchor:guide.bottomAnchor constant:0];
+    [NSLayoutConstraint activateConstraints:@[rightConstraint, bottomConstraint]];
 }
 
 - (void)legendDismiss:(id)sender

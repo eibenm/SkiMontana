@@ -62,7 +62,6 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

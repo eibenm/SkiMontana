@@ -85,9 +85,10 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-    if (navigationType == UIWebViewNavigationTypeLinkClicked) {
-        return NO;
-    }
+//    // Disables link navigation
+//    if (navigationType == UIWebViewNavigationTypeLinkClicked) {
+//        return NO;
+//    }
     
     return YES;
 }

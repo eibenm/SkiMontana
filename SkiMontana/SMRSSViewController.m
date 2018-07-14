@@ -23,6 +23,8 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+@property (strong, nonatomic) NSDateFormatter *dateFormatter;
+
 @property (nonatomic) NSMutableArray *avyFeedList;
 @property (nonatomic) NSOperationQueue *parseQueue;
 
@@ -59,6 +61,9 @@
     [super viewDidLoad];
     
     [self setupDataLoadingView];
+    
+    self.dateFormatter = [[NSDateFormatter alloc] init];
+    [self.dateFormatter setDateFormat:@"MMM dd, yyyy HH:mm"];
     
     self.title = @"GNFAC Advisory";
     
@@ -138,8 +143,11 @@
     NSString *errorMessage = [error localizedDescription];
     NSString *alertTitle = NSLocalizedString(@"Error", @"Title for alert displayed when download or parse error occurs.");
     NSString *okTitle = NSLocalizedString(@"OK ", @"OK Title for alert displayed when download or parse error occurs.");
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:alertTitle message:errorMessage delegate:nil cancelButtonTitle:okTitle otherButtonTitles:nil];
-    [alertView show];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:alertTitle message:errorMessage preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:okTitle style:UIAlertActionStyleDefault handler:nil];
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
+    
     [self removeDataLoadingView];
 }
 
@@ -204,22 +212,15 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
     SMRSSEntry *rssFeed = (self.avyFeedList)[indexPath.row];
     
-    NSDateFormatter *formater = [[NSDateFormatter alloc] init];
-    [formater setDateFormat:@"MMM dd, yyyy HH:mm"];
-    
-    //cell.textLabel.text = [formater stringFromDate:rssFeed.pubDate];
-    
-    cell.textLabel.text = rssFeed.title;
-    cell.detailTextLabel.text = rssFeed.link.absoluteString;
-    
+    cell.textLabel.text = [self.dateFormatter stringFromDate:rssFeed.pubDate];
     cell.textLabel.font = [UIFont skiMontanaFontOfSize:18.0];
-    cell.detailTextLabel.font = [UIFont skiMontanaFontOfSize:10.0];
     
+    // Adjust font to shrink, if bigger than line
     cell.textLabel.numberOfLines = 1;
     cell.textLabel.adjustsFontSizeToFitWidth = YES;
     cell.textLabel.minimumScaleFactor = 10.0/[UIFont labelFontSize];
