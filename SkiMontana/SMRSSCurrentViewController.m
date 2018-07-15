@@ -10,6 +10,9 @@
 
 #import "SMRSSCurrentViewController.h"
 
+static NSString *KVEstimatedProgress;
+static void * KVContext = &KVContext;
+
 @interface SMRSSCurrentViewController () <WKNavigationDelegate>
 
 @property (weak, nonatomic) IBOutlet WKWebView *webView;
@@ -18,20 +21,57 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *refresh;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *forward;
 
+@property (strong, nonatomic) UIProgressView *progressView;
+
 @end
 
 @implementation SMRSSCurrentViewController
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+    KVEstimatedProgress = NSStringFromSelector(@selector(estimatedProgress));
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:self action:@selector(dismissViewController)];
-    
+
     self.title = @"Current Advisory";
     self.navigationItem.leftBarButtonItem = backButton;
     self.webView.navigationDelegate = self;
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.mtavalanche.com/current?theme=mobile_simple"]]];
+
+    // Adding progress view
+    self.progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+    self.progressView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+    self.progressView.hidden = YES;
+    self.progressView.alpha = 0.0f;
+    [self.navigationController.navigationBar addSubview:self.progressView];
+    CGRect navigationBarBounds = self.navigationController.navigationBar.bounds;
+    self.progressView.frame = CGRectMake(0, navigationBarBounds.size.height - 2, navigationBarBounds.size.width, 2);
+
+    NSURL *url = [NSURL URLWithString:@"http://www.mtavalanche.com/current?theme=mobile_simple"];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
+    [self.webView addObserver:self forKeyPath:KVEstimatedProgress options:NSKeyValueObservingOptionNew context:KVContext];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary<NSKeyValueChangeKey,id> *)change
+                       context:(void *)context
+{
+    if (context != KVContext) {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+        return;
+    }
+    
+    if ([object isKindOfClass:[WKWebView class]] && [keyPath isEqualToString:KVEstimatedProgress]) {
+        [self.progressView setAlpha:1.0f];
+        [self.progressView setProgress:self.webView.estimatedProgress animated:YES];
+        if (self.webView.estimatedProgress >= 1.0f) {
+            [UIView animateWithDuration:0.2 delay:0.2 options:UIViewAnimationOptionCurveEaseOut animations:^{
+                [self.progressView setAlpha:0.0f];
+            } completion:^(BOOL finished) {
+                [self.progressView setProgress:0.0f animated:NO];
+            }];
+        }
+    }
 }
 
 - (void)dismissViewController
@@ -42,12 +82,16 @@
 - (void)dealloc
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    [self.webView removeObserver:self forKeyPath:KVEstimatedProgress];
+    [self.progressView removeFromSuperview];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
 }
+
+#pragma mark - Button Actions
 
 - (IBAction)back:(id)sender
 {
@@ -96,12 +140,14 @@ decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionH
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(null_unspecified WKNavigation *)navigation
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    [self.progressView setHidden:NO];
     [self updateButtons];
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    [self.progressView setHidden:YES];
     [self updateButtons];
 }
 
