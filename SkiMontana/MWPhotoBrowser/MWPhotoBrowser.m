@@ -79,9 +79,6 @@
     _thumbPhotos = [[NSMutableArray alloc] init];
     _currentGridContentOffset = CGPointMake(0, CGFLOAT_MAX);
     _didSavePreviousStateOfNavBar = NO;
-    if ([self respondsToSelector:@selector(automaticallyAdjustsScrollViewInsets)]){
-        self.automaticallyAdjustsScrollViewInsets = NO;
-    }
     
     // Listen for MWPhoto notifications
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -342,12 +339,10 @@
         _leaveStatusBarAlone = YES;
     }
     BOOL fullScreen = YES;
-#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
-    if (SYSTEM_VERSION_LESS_THAN(@"7")) fullScreen = self.wantsFullScreenLayout;
-#endif
     if (!_leaveStatusBarAlone && fullScreen && UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         _previousStatusBarStyle = [[UIApplication sharedApplication] statusBarStyle];
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:animated];
+//        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:animated];
+        [self setNeedsStatusBarAppearanceUpdate];
     }
     
     // Navigation bar appearance
@@ -388,15 +383,6 @@
     [NSObject cancelPreviousPerformRequestsWithTarget:self]; // Cancel any pending toggles from taps
     [self setControlsHidden:NO animated:NO permanent:YES];
     
-    // Status bar
-    BOOL fullScreen = YES;
-#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
-    if (SYSTEM_VERSION_LESS_THAN(@"7")) fullScreen = self.wantsFullScreenLayout;
-#endif
-    if (!_leaveStatusBarAlone && fullScreen && UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        [[UIApplication sharedApplication] setStatusBarStyle:_previousStatusBarStyle animated:animated];
-    }
-    
 	// Super
 	[super viewWillDisappear:animated];
     
@@ -405,6 +391,11 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     _viewIsActive = YES;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return _previousStatusBarStyle;
 }
 
 - (void)willMoveToParentViewController:(UIViewController *)parent {
@@ -535,53 +526,52 @@
 
 #pragma mark - Rotation
 
-- (BOOL)shouldAutorotate {
+- (BOOL)shouldAutorotate
+{
     return YES;
 }
 
-#if __IPHONE_OS_VERSION_MAX_ALLOWED < 90000
-- (NSUInteger)supportedInterfaceOrientations
-#else
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations
-#endif
 {
     return UIInterfaceOrientationMaskAll;
 }
 
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    
-	// Remember page index before rotation
-	_pageIndexBeforeRotation = _currentPageIndex;
-	_rotating = YES;
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    // Remember page index before rotation
+    _pageIndexBeforeRotation = _currentPageIndex;
+    _rotating = YES;
     
     // In iOS 7 the nav bar gets shown after rotation, but might as well do this for everything!
     if ([self areControlsHidden]) {
         // Force hidden
         self.navigationController.navigationBarHidden = YES;
     }
-	
-}
-
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-	
-	// Perform layout
-	_currentPageIndex = _pageIndexBeforeRotation;
-	
-	// Delay control holding
-	[self hideControlsAfterDelay];
     
-    // Layout
-    [self layoutVisiblePages];
-	
-}
+    
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
 
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-	_rotating = NO;
-    // Ensure nav bar isn't re-displayed
-    if ([self areControlsHidden]) {
-        self.navigationController.navigationBarHidden = NO;
-        self.navigationController.navigationBar.alpha = 0;
-    }
+        // Perform layout
+        self->_currentPageIndex = self->_pageIndexBeforeRotation;
+        
+        // Delay control holding
+        [self hideControlsAfterDelay];
+        
+        // Layout
+        [self layoutVisiblePages];
+        
+    } completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        
+        self->_rotating = NO;
+        // Ensure nav bar isn't re-displayed
+        if ([self areControlsHidden]) {
+            self.navigationController.navigationBarHidden = NO;
+            self.navigationController.navigationBar.alpha = 0;
+        }
+        
+    }];
+    
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
 }
 
 #pragma mark - Data
@@ -1225,58 +1215,13 @@
     if (!_leaveStatusBarAlone) {
         if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
             
-            // iOS 7
             // Hide status bar
-            if (!_isVCBasedStatusBarAppearance) {
-                
-                // Non-view controller based
-                [[UIApplication sharedApplication] setStatusBarHidden:hidden withAnimation:animated ? UIStatusBarAnimationSlide : UIStatusBarAnimationNone];
-                
-            } else {
-                
-                // View controller based so animate away
-                _statusBarShouldBeHidden = hidden;
-                [UIView animateWithDuration:animationDuration animations:^(void) {
-                    [self setNeedsStatusBarAppearanceUpdate];
-                } completion:^(BOOL finished) {}];
-                
-            }
+            // View controller based so animate away
+            _statusBarShouldBeHidden = hidden;
+            [UIView animateWithDuration:animationDuration animations:^(void) {
+                [self setNeedsStatusBarAppearanceUpdate];
+            } completion:^(BOOL finished) {}];
 
-        } else {
-            
-            // iOS < 7
-            // Status bar and nav bar positioning
-            BOOL fullScreen = YES;
-#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
-            if (SYSTEM_VERSION_LESS_THAN(@"7")) fullScreen = self.wantsFullScreenLayout;
-#endif
-            if (fullScreen) {
-                
-                // Need to get heights and set nav bar position to overcome display issues
-                
-                // Get status bar height if visible
-                CGFloat statusBarHeight = 0;
-                if (![UIApplication sharedApplication].statusBarHidden) {
-                    CGRect statusBarFrame = [[UIApplication sharedApplication] statusBarFrame];
-                    statusBarHeight = MIN(statusBarFrame.size.height, statusBarFrame.size.width);
-                }
-                
-                // Status Bar
-                [[UIApplication sharedApplication] setStatusBarHidden:hidden withAnimation:animated?UIStatusBarAnimationFade:UIStatusBarAnimationNone];
-                
-                // Get status bar height if visible
-                if (![UIApplication sharedApplication].statusBarHidden) {
-                    CGRect statusBarFrame = [[UIApplication sharedApplication] statusBarFrame];
-                    statusBarHeight = MIN(statusBarFrame.size.height, statusBarFrame.size.width);
-                }
-                
-                // Set navigation bar frame
-                CGRect navBarFrame = self.navigationController.navigationBar.frame;
-                navBarFrame.origin.y = statusBarHeight;
-                self.navigationController.navigationBar.frame = navBarFrame;
-                
-            }
-            
         }
     }
     

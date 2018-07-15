@@ -536,12 +536,12 @@ static CGFloat maxOffsetDiff = 46.0f;
 
 - (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser
 {
-    return (self.photos).count;
+    return self.photos.count;
 }
 
 - (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index
 {
-    if (index < (self.photos).count) {
+    if (index < self.photos.count) {
         return self.photos[index];
     }
     
@@ -550,7 +550,7 @@ static CGFloat maxOffsetDiff = 46.0f;
 
 - (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser thumbPhotoAtIndex:(NSUInteger)index
 {
-    if (index < (self.photos).count) {
+    if (index < self.photos.count) {
         return self.photos[index];
     }
     

@@ -246,14 +246,4 @@
     }
 }
 
-#pragma mark - UIAlertViewDelegate methods
-
-- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-    if(buttonIndex != alertView.cancelButtonIndex)
-    {
-        [self requestNewReceipt];
-    }
-}
-
 @end

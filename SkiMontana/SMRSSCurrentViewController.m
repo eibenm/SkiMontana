@@ -29,8 +29,6 @@ static void * KVContext = &KVContext;
 
 - (void)viewDidLoad
 {
-    KVEstimatedProgress = NSStringFromSelector(@selector(estimatedProgress));
-    
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:self action:@selector(dismissViewController)];
 
     self.title = @"Current Advisory";
@@ -46,8 +44,12 @@ static void * KVContext = &KVContext;
     CGRect navigationBarBounds = self.navigationController.navigationBar.bounds;
     self.progressView.frame = CGRectMake(0, navigationBarBounds.size.height - 2, navigationBarBounds.size.width, 2);
 
+    // Load url request
     NSURL *url = [NSURL URLWithString:@"http://www.mtavalanche.com/current?theme=mobile_simple"];
     [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
+    
+    // Observe key values
+    KVEstimatedProgress = NSStringFromSelector(@selector(estimatedProgress));
     [self.webView addObserver:self forKeyPath:KVEstimatedProgress options:NSKeyValueObservingOptionNew context:KVContext];
 }
 
