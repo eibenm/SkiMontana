@@ -7,10 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CB1111DD1BD870B600B41862 /* SMRSSWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1111DC1BD870B600B41862 /* SMRSSWebViewController.m */; };
 		CB1112011BDA8B5C00B41862 /* RSSHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB1112001BDA8B5C00B41862 /* RSSHeaderView.xib */; };
-		CB1242AE1C35F82000E114BC /* NJKWebViewProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1242AB1C35F82000E114BC /* NJKWebViewProgress.m */; };
-		CB1242AF1C35F82000E114BC /* NJKWebViewProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1242AD1C35F82000E114BC /* NJKWebViewProgressView.m */; };
 		CB17F6731AA93F4600048BC5 /* SMSkiAreaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB17F6721AA93F4600048BC5 /* SMSkiAreaTableViewCell.m */; };
 		CB17F6761AA93F5C00048BC5 /* SMSkiRouteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB17F6751AA93F5C00048BC5 /* SMSkiRouteTableViewCell.m */; };
 		CB2B346A1BAE058F007067C3 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2B34691BAE058F007067C3 /* StoreKit.framework */; };
@@ -151,13 +148,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CB1111DB1BD870B600B41862 /* SMRSSWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRSSWebViewController.h; sourceTree = "<group>"; };
-		CB1111DC1BD870B600B41862 /* SMRSSWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRSSWebViewController.m; sourceTree = "<group>"; };
 		CB1112001BDA8B5C00B41862 /* RSSHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RSSHeaderView.xib; sourceTree = "<group>"; };
-		CB1242AA1C35F82000E114BC /* NJKWebViewProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJKWebViewProgress.h; sourceTree = "<group>"; };
-		CB1242AB1C35F82000E114BC /* NJKWebViewProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJKWebViewProgress.m; sourceTree = "<group>"; };
-		CB1242AC1C35F82000E114BC /* NJKWebViewProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJKWebViewProgressView.h; sourceTree = "<group>"; };
-		CB1242AD1C35F82000E114BC /* NJKWebViewProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJKWebViewProgressView.m; sourceTree = "<group>"; };
 		CB17F6711AA93F4600048BC5 /* SMSkiAreaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSkiAreaTableViewCell.h; sourceTree = "<group>"; };
 		CB17F6721AA93F4600048BC5 /* SMSkiAreaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSkiAreaTableViewCell.m; sourceTree = "<group>"; };
 		CB17F6741AA93F5C00048BC5 /* SMSkiRouteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSkiRouteTableViewCell.h; sourceTree = "<group>"; };
@@ -412,8 +403,6 @@
 				CBF160A21BE0626700B29232 /* SMRSSCurrentViewController.m */,
 				CB57FA461BD74BEB009C3B3E /* SMRSSViewController.h */,
 				CB57FA471BD74BEB009C3B3E /* SMRSSViewController.m */,
-				CB1111DB1BD870B600B41862 /* SMRSSWebViewController.h */,
-				CB1111DC1BD870B600B41862 /* SMRSSWebViewController.m */,
 				CB57FA4C1BD75F60009C3B3E /* SMRSSParseOperation.h */,
 				CB57FA4D1BD75F60009C3B3E /* SMRSSParseOperation.m */,
 				CB57FA491BD754B4009C3B3E /* SMRSSEntry.h */,
@@ -426,18 +415,6 @@
 				CB45978B1C336B1900648372 /* RSSDataLoadingView.m */,
 			);
 			name = "RSS Feed";
-			sourceTree = "<group>";
-		};
-		CB1242B01C35F82B00E114BC /* NJKWebViewProgress */ = {
-			isa = PBXGroup;
-			children = (
-				CB1242AA1C35F82000E114BC /* NJKWebViewProgress.h */,
-				CB1242AB1C35F82000E114BC /* NJKWebViewProgress.m */,
-				CB1242AC1C35F82000E114BC /* NJKWebViewProgressView.h */,
-				CB1242AD1C35F82000E114BC /* NJKWebViewProgressView.m */,
-			);
-			name = NJKWebViewProgress;
-			path = SkiMontana;
 			sourceTree = "<group>";
 		};
 		CB235EAE1A9A591C0002E482 /* Utility Classes */ = {
@@ -476,7 +453,6 @@
 		CB437C3E1A9C230600315353 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CB1242B01C35F82B00E114BC /* NJKWebViewProgress */,
 				CB4D92A11BEC7CDD00E889A5 /* MWPhotoBrowser */,
 				CB7761861BEC6913005D84B7 /* PSTCollectionView */,
 				CBF466211BBE535800791383 /* SCPStoreKitManager */,
@@ -977,7 +953,6 @@
 				CBA338C31B82A3DD001BA5FF /* SkiDataModel.xcdatamodeld in Sources */,
 				CB7446261AEEA36A0070B36D /* SMDetailsInformationTableViewCell.m in Sources */,
 				CB7446291AEEA38E0070B36D /* SMDetailsTableViewCell.m in Sources */,
-				CB1242AE1C35F82000E114BC /* NJKWebViewProgress.m in Sources */,
 				CB99FF4D1AB634270067E547 /* SMNavigationController.m in Sources */,
 				CB8F30A21BC4D3D600F4FA2C /* SMArrowView.m in Sources */,
 				CB54F5FB1B9FD93100D93401 /* SMDetailsHeaderView.m in Sources */,
@@ -1013,10 +988,8 @@
 				CB4438271BE832A2004A4BEC /* SkiAreas.m in Sources */,
 				CB4D92941BEC789000E889A5 /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,
 				CB99FF5D1AB6347F0067E547 /* SMSlideAnimation.m in Sources */,
-				CB1111DD1BD870B600B41862 /* SMRSSWebViewController.m in Sources */,
 				CB4D92B61BEC7CE800E889A5 /* MWCaptionView.m in Sources */,
 				CB4D929B1BEC789000E889A5 /* PSTCollectionViewLayout.m in Sources */,
-				CB1242AF1C35F82000E114BC /* NJKWebViewProgressView.m in Sources */,
 				CB99FF591AB6347F0067E547 /* SMBaseAnimation.m in Sources */,
 				CB4438291BE832A2004A4BEC /* File.m in Sources */,
 				CBA338A31B8280F0001BA5FF /* SMDataManager.m in Sources */,

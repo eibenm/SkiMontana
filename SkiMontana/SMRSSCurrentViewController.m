@@ -6,20 +6,17 @@
 //  Copyright © 2015 Gneiss Software. All rights reserved.
 //
 
+#import <WebKit/WebKit.h>
+
 #import "SMRSSCurrentViewController.h"
-#import "NJKWebViewProgress.h"
-#import "NJKWebViewProgressView.h"
 
-@interface SMRSSCurrentViewController () <UIWebViewDelegate, NJKWebViewProgressDelegate>
+@interface SMRSSCurrentViewController () <WKNavigationDelegate>
 
-@property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (weak, nonatomic) IBOutlet WKWebView *webView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *back;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *stop;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *refresh;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *forward;
-
-@property (strong, nonatomic) NJKWebViewProgressView *progressView;
-@property (strong, nonatomic) NJKWebViewProgress *progressProxy;
 
 @end
 
@@ -33,35 +30,13 @@
     
     self.title = @"Current Advisory";
     self.navigationItem.leftBarButtonItem = backButton;
+    self.webView.navigationDelegate = self;
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.mtavalanche.com/current?theme=mobile_simple"]]];
-    
-    self.progressProxy = [NJKWebViewProgress new];
-    self.webView.delegate = _progressProxy;
-    self.progressProxy.webViewProxyDelegate = self;
-    self.progressProxy.progressDelegate = self;
-    
-    CGFloat progressBarHeight = 2.0f;
-    CGRect navigationBarBounds = self.navigationController.navigationBar.bounds;
-    CGRect barFrame = CGRectMake(0, navigationBarBounds.size.height - progressBarHeight, navigationBarBounds.size.width, progressBarHeight);
-    self.progressView = [[NJKWebViewProgressView alloc] initWithFrame:barFrame];
-    self.progressView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
 }
 
 - (void)dismissViewController
 {
     [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self.navigationController.navigationBar addSubview:self.progressView];
-}
-
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    [self.progressView removeFromSuperview];
 }
 
 - (void)dealloc
@@ -74,6 +49,30 @@
     [super didReceiveMemoryWarning];
 }
 
+- (IBAction)back:(id)sender
+{
+    if (self.webView.canGoBack) {
+        [self.webView goBack];
+    }
+}
+
+- (IBAction)stop:(id)sender
+{
+    [self.webView stopLoading];
+}
+
+- (IBAction)refresh:(id)sender
+{
+    [self.webView reload];
+}
+
+- (IBAction)forward:(id)sender
+{
+    if (self.webView.canGoForward) {
+        [self.webView goForward];
+    }
+}
+
 - (void)updateButtons
 {
     self.forward.enabled = self.webView.canGoForward;
@@ -81,41 +80,36 @@
     self.stop.enabled = self.webView.loading;
 }
 
-#pragma mark - UIWebViewDelegate
+#pragma mark - WKNavigationDelegate
 
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+- (void)webView:(WKWebView *)webView
+decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler;
 {
-//    // Disables link navigation
-//    if (navigationType == UIWebViewNavigationTypeLinkClicked) {
-//        return NO;
+//    if (navigationAction.navigationType == WKNavigationTypeLinkActivated) {
+//        decisionHandler(WKNavigationActionPolicyCancel);
+//        return;
 //    }
     
-    return YES;
+    decisionHandler(WKNavigationActionPolicyAllow);
 }
 
-- (void)webViewDidStartLoad:(UIWebView *)webView
+- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(null_unspecified WKNavigation *)navigation
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     [self updateButtons];
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     [self updateButtons];
 }
 
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+- (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error
 {
+    NSLog(@"webView: %@ didFailNavigation: %@ withError: %@\n", webView, navigation, error);
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     [self updateButtons];
-}
-
-#pragma mark - NJKWebViewProgressDelegate
-
--(void)webViewProgress:(NJKWebViewProgress *)webViewProgress updateProgress:(float)progress
-{
-    [self.progressView setProgress:progress animated:YES];
 }
 
 #pragma mark - Navigation

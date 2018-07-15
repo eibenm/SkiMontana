@@ -6,17 +6,6 @@
 //  Copyright (c) 2014 Gneiss Software. All rights reserved.
 //
 
-
-static inline BOOL isIOS8OrLater()
-{
-    return [[[UIDevice currentDevice] systemVersion] floatValue] >= 8;
-}
-
-static inline BOOL isIOS9OrLater()
-{
-    return [[[UIDevice currentDevice] systemVersion] floatValue] >= 9;
-}
-
 static NSString * const SKIAPP_JSON =                       @"skiappdata.json";
 static NSString * const MAPBOX_ACCESS_TOKEN =               @"pk.eyJ1IjoiZWliZW5tIiwiYSI6ImNBMU11WjAifQ.AVf0Ym7u2Rq4F9KQJ5kPQw";
 static NSString * const NS_USER_DEFUALTS_IS_INITAL_LAUNCH = @"initialAppLaunch";

@@ -7,7 +7,7 @@
 //
 
 #import "SMRSSViewController.h"
-#import "SMRSSWebViewController.h"
+//#import "SMRSSWebViewController.h"
 #import "SMRSSParseOperation.h"
 #import "SMRSSEntry.h"
 
@@ -244,18 +244,9 @@
 {
     SMRSSEntry *rssFeed = (self.avyFeedList)[indexPath.row];
     
-    if (isIOS9OrLater()) {
-        SFSafariViewController *safariVC = [[SFSafariViewController alloc]initWithURL:rssFeed.link];
-        safariVC.delegate = self;
-        [self presentViewController:safariVC animated:YES completion:nil];
-    } else {
-        UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        SMRSSWebViewController *webViewController = [storyboard instantiateViewControllerWithIdentifier:@"rssWebViewController"];
-        webViewController.feedUrl = rssFeed.link;
-        UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:nil action:nil];
-        self.navigationItem.backBarButtonItem = newBackButton;
-        [self.navigationController pushViewController:webViewController animated:YES];
-    }
+    SFSafariViewController *safariVC = [[SFSafariViewController alloc] initWithURL:rssFeed.link];
+    safariVC.delegate = self;
+    [self presentViewController:safariVC animated:YES completion:nil];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

@@ -982,77 +982,6 @@
             </objects>
             <point key="canvasLocation" x="6057" y="11"/>
         </scene>
-        <!--RSS Web View-->
-        <scene sceneID="u1F-TG-xWM">
-            <objects>
-                <viewController storyboardIdentifier="rssWebViewController" title="RSS Web View" id="Ujp-Cy-zLy" customClass="SMRSSWebViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="afc-Uj-BaY"/>
-                        <viewControllerLayoutGuide type="bottom" id="iny-mr-3Yz"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="hB8-sL-8pr">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DMv-WO-27F">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pbh-fK-QJ1">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="NiO-yO-l1k"/>
-                                </constraints>
-                                <items>
-                                    <barButtonItem systemItem="rewind" id="7na-d9-aZX">
-                                        <connections>
-                                            <action selector="goBack" destination="DMv-WO-27F" id="N8s-xq-tos"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="XbW-6R-32n"/>
-                                    <barButtonItem systemItem="stop" id="AZP-PW-LQC">
-                                        <connections>
-                                            <action selector="stopLoading" destination="DMv-WO-27F" id="TxS-IQ-490"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Jg5-F5-Koo"/>
-                                    <barButtonItem systemItem="refresh" id="MQp-FM-eVo">
-                                        <connections>
-                                            <action selector="reload" destination="DMv-WO-27F" id="bOY-Js-Uhe"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="4mz-d1-P3s"/>
-                                    <barButtonItem systemItem="fastForward" id="eiK-ZF-Oz8">
-                                        <connections>
-                                            <action selector="goForward" destination="DMv-WO-27F" id="YcX-eU-XH3"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="iny-mr-3Yz" firstAttribute="top" secondItem="DMv-WO-27F" secondAttribute="bottom" id="GwD-fE-Il7"/>
-                            <constraint firstAttribute="trailing" secondItem="DMv-WO-27F" secondAttribute="trailing" id="OMW-sf-aoI"/>
-                            <constraint firstItem="DMv-WO-27F" firstAttribute="leading" secondItem="hB8-sL-8pr" secondAttribute="leading" id="Pbh-F2-xOr"/>
-                            <constraint firstAttribute="trailing" secondItem="pbh-fK-QJ1" secondAttribute="trailing" id="QdH-mg-S5X"/>
-                            <constraint firstItem="iny-mr-3Yz" firstAttribute="top" secondItem="pbh-fK-QJ1" secondAttribute="bottom" id="eTV-8h-LuP"/>
-                            <constraint firstItem="pbh-fK-QJ1" firstAttribute="leading" secondItem="hB8-sL-8pr" secondAttribute="leading" id="hyX-1j-Gqi"/>
-                            <constraint firstItem="DMv-WO-27F" firstAttribute="top" secondItem="hB8-sL-8pr" secondAttribute="top" id="yfE-Lp-qNu"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="back" destination="7na-d9-aZX" id="ng2-63-rSh"/>
-                        <outlet property="forward" destination="eiK-ZF-Oz8" id="Ncb-eb-lOV"/>
-                        <outlet property="refresh" destination="MQp-FM-eVo" id="sS6-yl-SGW"/>
-                        <outlet property="stop" destination="AZP-PW-LQC" id="P5u-Cm-SbA"/>
-                        <outlet property="webView" destination="DMv-WO-27F" id="2zr-ke-Aeo"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iTu-Ih-fWn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="8772" y="-744.3778110944528"/>
-        </scene>
         <!--Intro View Controller-->
         <scene sceneID="ped-4o-KWy">
             <objects>
@@ -1408,10 +1337,14 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GcW-hP-vR5">
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c2h-G7-q9k">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SeD-zW-fRh">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <constraints>
@@ -1420,25 +1353,25 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                                 <items>
                                     <barButtonItem systemItem="rewind" id="lIv-rl-nGH">
                                         <connections>
-                                            <action selector="goBack" destination="GcW-hP-vR5" id="heH-sK-TMW"/>
+                                            <action selector="back:" destination="ZTw-sO-m5z" id="WVh-q1-AYA"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="9XJ-Ia-5ig"/>
                                     <barButtonItem systemItem="stop" id="IX5-nw-aaS">
                                         <connections>
-                                            <action selector="stopLoading" destination="GcW-hP-vR5" id="idS-Ft-fBV"/>
+                                            <action selector="stop:" destination="ZTw-sO-m5z" id="WRj-nP-rYr"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="D4p-85-12X"/>
                                     <barButtonItem systemItem="refresh" id="Hyh-7a-5GY">
                                         <connections>
-                                            <action selector="reload" destination="GcW-hP-vR5" id="BsC-cI-UBM"/>
+                                            <action selector="refresh:" destination="ZTw-sO-m5z" id="jkf-j3-xr4"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="P4k-kF-I8V"/>
                                     <barButtonItem systemItem="fastForward" id="ecb-ex-smj">
                                         <connections>
-                                            <action selector="goForward" destination="GcW-hP-vR5" id="oK8-A7-qaz"/>
+                                            <action selector="forward:" destination="ZTw-sO-m5z" id="WND-1e-EfV"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -1446,13 +1379,13 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="c2h-G7-q9k" firstAttribute="top" secondItem="brR-6u-06l" secondAttribute="top" id="1JL-y0-2W4"/>
+                            <constraint firstAttribute="trailing" secondItem="c2h-G7-q9k" secondAttribute="trailing" id="F2K-ct-bIn"/>
+                            <constraint firstItem="vhq-qO-ZhO" firstAttribute="top" secondItem="c2h-G7-q9k" secondAttribute="bottom" constant="44" id="M6J-WY-y4b"/>
                             <constraint firstItem="SeD-zW-fRh" firstAttribute="leading" secondItem="brR-6u-06l" secondAttribute="leading" id="Oc0-Ba-xd7"/>
-                            <constraint firstAttribute="trailing" secondItem="GcW-hP-vR5" secondAttribute="trailing" id="aJi-Kg-syc"/>
-                            <constraint firstItem="vhq-qO-ZhO" firstAttribute="top" secondItem="GcW-hP-vR5" secondAttribute="bottom" constant="44" id="cIa-sQ-n39"/>
-                            <constraint firstItem="GcW-hP-vR5" firstAttribute="leading" secondItem="brR-6u-06l" secondAttribute="leading" id="duh-Yv-STU"/>
+                            <constraint firstItem="c2h-G7-q9k" firstAttribute="leading" secondItem="brR-6u-06l" secondAttribute="leading" id="eKU-dZ-SJb"/>
                             <constraint firstItem="vhq-qO-ZhO" firstAttribute="top" secondItem="SeD-zW-fRh" secondAttribute="bottom" id="hBA-qy-uIy"/>
                             <constraint firstAttribute="trailing" secondItem="SeD-zW-fRh" secondAttribute="trailing" id="rnr-LE-BVs"/>
-                            <constraint firstItem="GcW-hP-vR5" firstAttribute="top" secondItem="brR-6u-06l" secondAttribute="top" id="ukb-Xb-jGC"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Advisory" id="ofW-X5-GYf">
@@ -1467,7 +1400,7 @@ While still in cell coverage/on wifi, you can open Google Earth via the route pa
                         <outlet property="forward" destination="ecb-ex-smj" id="Jna-g7-gsb"/>
                         <outlet property="refresh" destination="Hyh-7a-5GY" id="ftd-hP-udS"/>
                         <outlet property="stop" destination="IX5-nw-aaS" id="1FL-Sw-f37"/>
-                        <outlet property="webView" destination="GcW-hP-vR5" id="5J0-Pw-BzK"/>
+                        <outlet property="webView" destination="c2h-G7-q9k" id="lAm-si-UsI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ZO-rc-exI" userLabel="First Responder" sceneMemberID="firstResponder"/>
