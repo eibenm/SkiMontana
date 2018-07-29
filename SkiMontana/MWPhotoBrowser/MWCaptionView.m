@@ -14,7 +14,7 @@ static const CGFloat labelPadding = 10;
 // Private
 @interface MWCaptionView () {
     id <MWPhoto> _photo;
-    UILabel *_label;    
+    UILabel *_label;
 }
 @end
 
@@ -50,8 +50,8 @@ static const CGFloat labelPadding = 10;
 
 - (void)setupCaption {
     _label = [[UILabel alloc] initWithFrame:CGRectIntegral(CGRectMake(labelPadding, 0,
-                                                       self.bounds.size.width-labelPadding*2,
-                                                       self.bounds.size.height))];
+                                                                      self.bounds.size.width-labelPadding*2,
+                                                                      self.bounds.size.height))];
     _label.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     _label.opaque = NO;
     _label.backgroundColor = [UIColor clearColor];

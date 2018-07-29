@@ -20,7 +20,7 @@
 #pragma mark - Class Methods
 
 + (MWPhoto *)photoWithImage:(UIImage *)image {
-	return [[MWPhoto alloc] initWithImage:image];
+    return [[MWPhoto alloc] initWithImage:image];
 }
 
 // Deprecated
@@ -29,31 +29,31 @@
 }
 
 + (MWPhoto *)photoWithURL:(NSURL *)url {
-	return [[MWPhoto alloc] initWithURL:url];
+    return [[MWPhoto alloc] initWithURL:url];
 }
 
 #pragma mark - Init
 
 - (id)initWithImage:(UIImage *)image {
-	if ((self = [super init])) {
-		_image = image;
-	}
-	return self;
+    if ((self = [super init])) {
+        _image = image;
+    }
+    return self;
 }
 
 // Deprecated
 - (id)initWithFilePath:(NSString *)path {
-	if ((self = [super init])) {
-		_photoURL = [NSURL fileURLWithPath:path];
-	}
-	return self;
+    if ((self = [super init])) {
+        _photoURL = [NSURL fileURLWithPath:path];
+    }
+    return self;
 }
 
 - (id)initWithURL:(NSURL *)url {
-	if ((self = [super init])) {
-		_photoURL = [url copy];
-	}
-	return self;
+    if ((self = [super init])) {
+        _photoURL = [url copy];
+    }
+    return self;
 }
 
 #pragma mark - MWPhoto Protocol Methods
@@ -115,7 +115,7 @@
 
 // Release if we can get it again from path or url
 - (void)unloadUnderlyingImage {
-	self.underlyingImage = nil;
+    self.underlyingImage = nil;
 }
 
 - (void)imageLoadingComplete {
